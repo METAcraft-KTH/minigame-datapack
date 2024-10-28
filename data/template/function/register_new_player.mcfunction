@@ -1,5 +1,5 @@
 ### Give registered tag
-tag @s add template.registered
+tag @s add GAMENAME.registered
 
 ### Registraion logic
 

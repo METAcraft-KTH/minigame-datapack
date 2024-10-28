@@ -2,5 +2,15 @@
     "pack": {
         "pack_format": 57,
         "description": "Template"
+    },
+    "filter": {
+        "block": [
+            {
+                "path": "minecraft:recipe/"
+            },
+            {
+                "path": "minecraft:advancement/"
+            }
+        ]
     }
 }
