@@ -12,7 +12,7 @@ scoreboard players set state.ingame GAMENAME.game 2
 scoreboard players set state.postgame GAMENAME.game 3
 
 ### REPLACE 1 WITH UNIQUE GAME ID IN THE TOURNAMENT!!!!!!
-scoreboard players set game.id GAMENAME.game 1
+scoreboard players set GAMENAME.id GLOBAL 1
 
 ## GAMENAME.player_left
 scoreboard objectives add GAMENAME.player_left minecraft.custom:minecraft.leave_game "Player left"
@@ -22,8 +22,8 @@ scoreboard objectives add GAMENAME.timer dummy "Timer"
 
 
 ### bossbar
-bossbar add template:timer ""
-bossbar set template:timer visible false
+bossbar add gamename:timer ""
+bossbar set gamename:timer visible false
 
 ### Initialize teams
 

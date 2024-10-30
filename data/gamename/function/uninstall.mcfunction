@@ -7,4 +7,4 @@ scoreboard objectives remove GAMENAME.player_left
 
 
 ### Remove bossbar
-bossbar remove template:timer
+bossbar remove gamename:timer
