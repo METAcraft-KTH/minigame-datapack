@@ -49,7 +49,12 @@ From here you can see the pattern of how a minigame datapack works. Each gamesta
     - It counts down the timer, runs tick game logic etc.
     - Control flow (decide which state to run next) can be in this function, or it can call another function. Whichever is more convenient, but try to make it clear.
 
-The gamestate can be expanded with any number of functions, advancements etc as necessary. For clarity, try to make sure everything is placed in folders by the same gamestate name.
+The gamestate can be expanded with any number of functions, advancements etc as necessary. **For clarity,** try to make sure everything is placed in folders by the same gamestate name. If a function is used in multiple places, one solution would be to put it in the `utility` folder.
+
+> [!WARNING]  
+> Advancements will trigger even if the current gamestate doesn't match. Always check if `?state GAMENAME.game` matches in the reward function, and stop executing if it doesn't match.
+>
+> Example: If an advancement triggers by item pickup during ingame, we don't want it to run its function during pregame.
 
 Once the postgame ends, make sure to update `game.id` to the next game's.
 
