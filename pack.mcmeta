@@ -6,10 +6,12 @@
     "filter": {
         "block": [
             {
-                "path": "minecraft:recipe/"
+                "namespace": "minecraft",
+                "path": "advancement/.*"
             },
             {
-                "path": "minecraft:advancement/"
+                "namespace": "minecraft",
+                "path": "recipe/.*"
             }
         ]
     }
