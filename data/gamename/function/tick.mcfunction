@@ -1,5 +1,6 @@
 # if this game is NOT the active game, do not do anything
 execute unless score game.id GLOBAL = id GAMENAME.config run return -1
+execute unless score ?state GAMENAME.game matches -2147483648..2147483647 run function gamename:load
 
 # Pre tick: Check for new & rejoining players and update their states
 # todo: remove registered tag after the game is over, so it can be run again?
