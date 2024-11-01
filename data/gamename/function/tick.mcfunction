@@ -4,7 +4,6 @@ execute unless score game.id GLOBAL = id GAMENAME.config run return -1
 # Pre tick: Check for new & rejoining players and update their states
 # todo: remove registered tag after the game is over, so it can be run again?
 execute as @a[tag=!GAMENAME.registered] run function gamename:register_new_player
-execute as @a if score @s GLOBAL.player_left matches 1.. run function gamename:player_join
 execute as @a[scores={GLOBAL.time_alive=0},tag=!GLOBAL.is_dead] run tag @s add GLOBAL.is_dead
 execute as @a[scores={GLOBAL.time_alive=1..},tag=GLOBAL.is_dead] run tag @s remove GLOBAL.is_dead
 
