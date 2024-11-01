@@ -5,7 +5,7 @@ scoreboard players set ?state GAMENAME.game 2
 function gamename:states/pregame/configure_gamerule
 
 # initialize timer
-execute store result bossbar gamename:timer max run scoreboard players get time.pregame GAMENAME.config
+execute store result bossbar gamename:timer max run scoreboard players get time.ingame GAMENAME.config
 scoreboard players set ?timer GAMENAME.game 0
 
 # tp everyone to the arena
