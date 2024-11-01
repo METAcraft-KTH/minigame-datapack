@@ -47,7 +47,7 @@ gamerule showDeathMessages true
 gamerule snowAccumulationHeight 1
 gamerule spawnChunkRadius 0
 gamerule spawnRadius 0
-gamerule spectatorsGenerateChunks false
+gamerule spectatorsGenerateChunks true
 gamerule tntExplosionDropDecay false
 gamerule universalAnger false
 gamerule waterSourceConversion true
