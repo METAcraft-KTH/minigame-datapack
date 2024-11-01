@@ -1,0 +1,3 @@
+advancement revoke @s only qq:using_shield
+execute unless score ?state qq.game = state.ingame qq.config run return 0
+tag @s add qq.BlockingWithShield

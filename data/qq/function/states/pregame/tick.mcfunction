@@ -1,0 +1,24 @@
+## PREGAME: Players have just TPed from the lobby to the arena. Maybe run a cutscene and/or display game instructions
+
+# manage rejoin etc (you should prob not be able to die in this phase)
+execute as @a[scores={GLOBAL.player_left=1..}] run function qq:states/pregame/join
+execute as @a[scores={GLOBAL.time_alive=0}] run function qq:states/pregame/while_dead
+execute as @a[scores={GLOBAL.time_alive=1}] run function qq:states/pregame/respawn
+
+# increment timer
+scoreboard players add ?timer qq.game 1
+# calculate remaining time
+scoreboard players operation #remainingseconds qq.game = time.pregame qq.config
+scoreboard players operation #remainingseconds qq.game -= ?timer qq.game
+scoreboard players operation #remainingseconds qq.game /= 20 GLOBAL
+scoreboard players operation #displayminutes qq.game = #remainingseconds qq.game
+scoreboard players operation #displayminutes qq.game /= 60 GLOBAL
+scoreboard players operation #displayseconds qq.game = #remainingseconds qq.game
+scoreboard players operation #displayseconds qq.game %= 60 GLOBAL
+# display remaining time
+execute if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Intro ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Intro ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute store result bossbar qq:timer value run scoreboard players get ?timer qq.game
+
+## start game (for real)
+execute if score ?timer qq.game >= time.pregame qq.config run function qq:states/ingame/start

@@ -1,0 +1,1 @@
+give @s trident[unbreakable={show_in_tooltip:false}, enchantments={levels:{loyalty:1},show_in_tooltip:true}]

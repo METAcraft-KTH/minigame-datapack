@@ -1,0 +1,1 @@
+give @s crossbow[unbreakable={show_in_tooltip:false},custom_data={reload:1b, raycast:1b}]

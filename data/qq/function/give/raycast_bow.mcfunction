@@ -1,0 +1,1 @@
+give @s bow[unbreakable={show_in_tooltip:false},custom_data={raycast:1b}]
