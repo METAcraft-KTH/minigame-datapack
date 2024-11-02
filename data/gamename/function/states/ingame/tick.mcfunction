@@ -1,9 +1,9 @@
 ## INGAME PHASE: The game has begun, and people are playing
 
 # manage rejoin etc
-execute as @a[scores={GLOBAL.player_left=1..}] run function gamename:states/ingame/join
-execute as @a[scores={GLOBAL.time_alive=0}] run function gamename:states/ingame/while_dead
-execute as @a[scores={GLOBAL.time_alive=1}] run function gamename:states/ingame/respawn
+execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function gamename:states/ingame/join
+execute as @a[scores={GLOBAL.time_alive=0},tag=!admin] run function gamename:states/ingame/while_dead
+execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function gamename:states/ingame/respawn
 
 # increment timer
 scoreboard players add ?timer GAMENAME.game 1

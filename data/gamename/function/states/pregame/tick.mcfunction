@@ -1,9 +1,9 @@
 ## PREGAME: Players have just TPed from the lobby to the arena. Maybe run a cutscene and/or display game instructions
 
 # manage rejoin etc (you should prob not be able to die in this phase)
-execute as @a[scores={GLOBAL.player_left=1..}] run function gamename:states/pregame/join
-execute as @a[scores={GLOBAL.time_alive=0}] run function gamename:states/pregame/while_dead
-execute as @a[scores={GLOBAL.time_alive=1}] run function gamename:states/pregame/respawn
+execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function gamename:states/pregame/join
+execute as @a[scores={GLOBAL.time_alive=0},tag=!admin] run function gamename:states/pregame/while_dead
+execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function gamename:states/pregame/respawn
 
 # increment timer
 scoreboard players add ?timer GAMENAME.game 1
