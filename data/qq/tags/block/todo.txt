@@ -1,11 +1,9 @@
 Might want to add to partial:
-beds
 snow
 fences
 fence gates
 repeater
-cake + candle cake
-trapdors
+cake + candle cake // added as bottom slab
 iron bars
 glass pane + colored
 lily pad
@@ -17,7 +15,7 @@ heads
 anvils
 chests
 comparator
-daylight sensors
+daylight sensors // added as bottom slab
 hopppers
 end rod
 chorus plant
@@ -29,12 +27,9 @@ bamboo
 scaffolding
 grindstone
 lectern
-stonecutter
 bell
 lantern
 soul lantern
-sculk sernsor
-calibrated sculk sernsor
 sculk shrieker
 lightning rod
 pointed dripstone
@@ -43,4 +38,3 @@ heavy core
 
 special actions:
 bell
-decorated pots

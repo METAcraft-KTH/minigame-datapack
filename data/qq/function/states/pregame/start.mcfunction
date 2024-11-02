@@ -15,4 +15,5 @@ tp @a @n[tag=qq.tp.arena]
 team add qq.players "Players"
 team modify qq.players nametagVisibility hideForOwnTeam
 team modify qq.players seeFriendlyInvisibles false
-team join qq.players @a
+team modify qq.players friendlyFire false
+team join qq.players @a[tag=!admin]

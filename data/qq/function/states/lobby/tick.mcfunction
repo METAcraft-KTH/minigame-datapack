@@ -1,9 +1,9 @@
 ## LOBBY PHASE: Players are still in the Campus lobby.
 
 # manage rejoin etc
-execute as @a[scores={GLOBAL.player_left=1..}] run function qq:states/lobby/join
-execute as @a[scores={GLOBAL.time_alive=0}] run function qq:states/lobby/while_dead
-execute as @a[scores={GLOBAL.time_alive=1}] run function qq:states/lobby/respawn
+execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function qq:states/lobby/join
+execute as @a[scores={GLOBAL.time_alive=0},tag=!admin] run function qq:states/lobby/while_dead
+execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function qq:states/lobby/respawn
 
 # increment timer
 scoreboard players add ?timer qq.game 1

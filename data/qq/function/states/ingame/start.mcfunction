@@ -10,3 +10,6 @@ scoreboard players set ?timer qq.game 0
 
 # tp everyone to the arena
 tp @a @n[tag=qq.tp.arena]
+
+# pvp on
+team modify qq.players friendlyFire true

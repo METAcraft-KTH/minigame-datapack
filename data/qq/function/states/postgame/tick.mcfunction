@@ -1,9 +1,9 @@
 ## POSTGAME: The game has ended, and players will be teleported back soon.
 
 # manage rejoin etc (you should prob not be able to die in this phase)
-execute as @a[scores={GLOBAL.player_left=1..}] run function qq:states/postgame/join
-execute as @a[scores={GLOBAL.time_alive=0}] run function qq:states/postgame/while_dead
-execute as @a[scores={GLOBAL.time_alive=1}] run function qq:states/postgame/respawn
+execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function qq:states/postgame/join
+execute as @a[scores={GLOBAL.time_alive=0},tag=!admin] run function qq:states/postgame/while_dead
+execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function qq:states/postgame/respawn
 
 # increment timer
 scoreboard players add ?timer qq.game 1

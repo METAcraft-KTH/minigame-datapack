@@ -4,7 +4,7 @@ execute unless score ?state qq.game matches -2147483648..2147483647 run function
 
 # Pre tick: Check for new & rejoining players and update their states
 # todo: remove registered tag after the game is over, so it can be run again?
-execute as @a[tag=!qq.registered] run function qq:register_new_player
+execute as @a[tag=!qq.registered,tag=!admin] run function qq:register_new_player
 execute as @a[scores={GLOBAL.time_alive=0},tag=!GLOBAL.is_dead] run tag @s add GLOBAL.is_dead
 execute as @a[scores={GLOBAL.time_alive=1..},tag=GLOBAL.is_dead] run tag @s remove GLOBAL.is_dead
 

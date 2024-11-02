@@ -8,10 +8,10 @@ scoreboard players set ?timer qq.game 0
 # tp everyone to the arena
 tp @a @n[tag=qq.tp.arena]
 
-# remove team
-team remove qq.players
+# pvp off
+team modify qq.players friendlyFire false
 
 # clear effects
-effect clear @a speed
-effect clear @a weakness
-effect clear @a invisibility
+effect clear @a[tag=!admin] speed
+effect clear @a[tag=!admin] weakness
+effect clear @a[tag=!admin] invisibility

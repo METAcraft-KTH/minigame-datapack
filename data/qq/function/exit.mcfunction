@@ -18,6 +18,7 @@ function qq:exit_gamerule
 team remove qq.yellow
 team remove qq.gold
 team remove qq.red
+team remove qq.players
 tag @e remove hit
 
 ## !!!EDIT BELOW!!! change to next game's id
