@@ -7,3 +7,6 @@ scoreboard players set ?timer qq.game 0
 
 # Reset here because it havent been reset while mode disabled
 scoreboard players reset @a GLOBAL.player_left
+
+# Reset mode
+scoreboard players set mode qq.config 0
