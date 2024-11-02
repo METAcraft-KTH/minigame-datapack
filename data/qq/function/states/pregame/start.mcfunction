@@ -8,6 +8,9 @@ function qq:states/pregame/configure_gamerule
 execute store result bossbar qq:timer max run scoreboard players get time.pregame qq.config
 scoreboard players set ?timer qq.game 0
 
+# set map
+# TODO: give tag qq.tp.arena to whatever map is next depending on mode qq.config
+
 # tp everyone to the arena
 tp @a @n[tag=qq.tp.arena]
 

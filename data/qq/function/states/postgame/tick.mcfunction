@@ -20,5 +20,5 @@ execute if score #displayseconds qq.game matches ..9 run bossbar set qq:timer na
 execute if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
 execute store result bossbar qq:timer value run scoreboard players get ?timer qq.game
 
-## return to lobby
-execute if score ?timer qq.game >= time.postgame qq.config run function qq:exit
+## next mode or return to lobby
+execute if score ?timer qq.game >= time.postgame qq.config run function qq:states/postgame/next_mode

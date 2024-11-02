@@ -22,3 +22,12 @@ execute store result bossbar qq:timer value run scoreboard players get ?timer qq
 
 ## start game (for real)
 execute if score ?timer qq.game >= time.pregame qq.config run function qq:states/ingame/start
+
+# disallow offhand
+execute as @a[tag=!admin] if items entity @s weapon.offhand * at @s run function qq:states/ingame/no_offhand
+
+# Disallow dropping items
+execute as @e[type=item] at @s on origin if entity @s[tag=!admin] run tag @n[type=item] add qq.pickup
+execute as @e[type=item,tag=qq.pickup] at @s on origin run data modify entity @n[type=item] Owner set from entity @s UUID
+execute as @e[type=item,tag=qq.pickup] run data modify entity @s PickupDelay set value 0s
+execute as @e[type=item,tag=qq.pickup] at @s on origin run tp @n[type=item] @s
