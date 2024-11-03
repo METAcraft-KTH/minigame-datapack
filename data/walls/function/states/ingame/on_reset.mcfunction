@@ -7,4 +7,4 @@ $data modify block ~ ~ ~ posZ set from storage walls:maps r$(id)_map.posZ
 $data modify block ~ ~ ~ rotation set from storage walls:maps r$(id)_map.rotation
 $data modify block ~ ~ ~ mirror set from storage walls:maps r$(id)_map.mirror
 setblock ~ ~1 ~ redstone_block
-#fill ~ ~ ~ ~ ~1 ~ barrier
+fill ~ ~ ~ ~ ~1 ~ barrier

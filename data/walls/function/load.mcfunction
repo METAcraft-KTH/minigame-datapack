@@ -23,10 +23,11 @@ scoreboard players set state.pregame WALLS.config 1
 scoreboard players set state.r1.initial WALLS.config 2
 scoreboard players set state.r1.wall_drop WALLS.config 3
 scoreboard players set state.r1.deathmatch WALLS.config 4
-scoreboard players set state.r2.initial WALLS.config 5
-scoreboard players set state.r2.wall_drop WALLS.config 6
-scoreboard players set state.r2.deathmatch WALLS.config 7
-scoreboard players set state.postgame WALLS.config 8
+scoreboard players set state.midgame WALLS.config 5
+scoreboard players set state.r2.initial WALLS.config 6
+scoreboard players set state.r2.wall_drop WALLS.config 7
+scoreboard players set state.r2.deathmatch WALLS.config 8
+scoreboard players set state.postgame WALLS.config 9
 
 # how long each gamestate should last
 ## !!!EDIT BELOW!!! numbers are in ticks
@@ -35,6 +36,7 @@ scoreboard players set time.pregame WALLS.config 600
 scoreboard players set time.r1.initial WALLS.config 7200
 scoreboard players set time.r1.wall_drop WALLS.config 6000
 scoreboard players set time.r1.deathmatch WALLS.config 2400
+scoreboard players set time.midgame WALLS.config 600
 scoreboard players set time.r2.initial WALLS.config 3600
 scoreboard players set time.r2.wall_drop WALLS.config 3600
 scoreboard players set time.r2.deathmatch WALLS.config 2400
@@ -67,11 +69,11 @@ scoreboard objectives add WALLS.wall_height dummy
 scoreboard objectives add WALLS.type dummy
 scoreboard objectives add WALLS.ids dummy
 
-scoreboard players set lava.point_x_dist WALLS.config 128
-scoreboard players set lava.point_z_dist WALLS.config 128
+scoreboard players set lava.point_x_dist WALLS.config 127
+scoreboard players set lava.point_z_dist WALLS.config 127
 scoreboard players set lava.timer WALLS.config 6000
 scoreboard players set lava.delay WALLS.config 20
 scoreboard players set lava.max_y WALLS.config 63
 
-scoreboard players set wall_length WALLS.config 128
-scoreboard players set wall_height WALLS.config 128
+scoreboard players set wall_length WALLS.config 79
+scoreboard players set wall_height WALLS.config 127

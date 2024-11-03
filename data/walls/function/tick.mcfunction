@@ -17,6 +17,7 @@ execute if score ?state WALLS.game = state.pregame WALLS.config run function wal
 execute if score ?state WALLS.game = state.r1.initial WALLS.config run function walls:states/ingame/tick
 execute if score ?state WALLS.game = state.r1.wall_drop WALLS.config run function walls:states/ingame/tick
 execute if score ?state WALLS.game = state.r1.deathmatch WALLS.config run function walls:states/ingame/tick
+execute if score ?state WALLS.game = state.midgame WALLS.config run function walls:states/midgame/tick
 execute if score ?state WALLS.game = state.r2.initial WALLS.config run function walls:states/ingame/tick
 execute if score ?state WALLS.game = state.r2.wall_drop WALLS.config run function walls:states/ingame/tick
 execute if score ?state WALLS.game = state.r2.deathmatch WALLS.config run function walls:states/ingame/tick

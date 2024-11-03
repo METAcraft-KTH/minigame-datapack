@@ -6,4 +6,7 @@ execute store result bossbar walls:timer max run scoreboard players get time.pos
 scoreboard players set ?timer WALLS.game 0
 
 # tp everyone to the arena
-tp @a[tag=!admin] @n[tag=WALLS.tp.arena]
+
+
+
+bossbar set walls:timer color white

@@ -23,7 +23,7 @@ scoreboard players set game.id GLOBAL 5
 
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=WALLS.tp.lobby]
-spawnpoint @s ~ ~ ~ ~
+execute as @a[tag=!admin] at @s run spawnpoint @s ~ ~ ~ ~
 
 
 

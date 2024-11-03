@@ -2,5 +2,3 @@
 
 ## !!!ADD BELOW!!! do whatever you need.
 # remember that things like awarding kills is better done with advancements.
-
-execute unless function walls:states/ingame/is_initial run gamemode spectator @s

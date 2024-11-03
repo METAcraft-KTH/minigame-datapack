@@ -10,7 +10,8 @@ scoreboard players set ?timer WALLS.game 0
 
 function walls:states/ingame/on_initial_start
 
-tp @e[tag=WALLS.lava_point] ~ -64 ~
+execute as @e[tag=WALLS.lava_point] at @s run tp @s ~ -63 ~
+scoreboard players operation @e[tag=WALLS.lava_point] WALLS.lava_timer = lava.timer WALLS.config
 
 tag @a[tag=!admin] remove WALLS.in_r2
 tag @a[tag=!admin] add WALLS.in_r1
