@@ -8,5 +8,4 @@ scoreboard players set ?timer hh.game 0
 # tp everyone to the arena
 tp @a @n[tag=hh.tp.arena]
 
-execute as @a[tag=!admin] run attribute @s minecraft:max_health base set 20
-effect give @a[tag=!admin] minecraft:instant_health 1 9 true
+execute as @a[tag=!admin] run function hh:utility/remove_halfheart

@@ -2,5 +2,5 @@
 scoreboard players reset @s GLOBAL.player_left
 
 ## !!!ADD BELOW!!! do whatever you need, e.g. checking they're at the lobby/arena and tp them if not
-attribute @s[tag=!admin] minecraft:max_health base set 1
+function hh:utility/set_halfheart
 team join hh.players @s
