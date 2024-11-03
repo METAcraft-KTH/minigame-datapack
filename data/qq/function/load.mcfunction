@@ -9,9 +9,10 @@ scoreboard players add raySize qq.config 0
 scoreboard objectives add qq.raycast dummy
 scoreboard players set #100 qq.raycast 100
 scoreboard players set #20 qq.raycast 20
-scoreboard objectives add qq.Points custom:player_kills "Points"
+scoreboard objectives add qq.Points dummy "Points"
 # the two global objectives are redeclared here, so the linter won't complain about "unknown objectives"
 scoreboard objectives add GLOBAL dummy
+scoreboard objectives add GLOBAL.player_in_state dummy
 scoreboard objectives add GLOBAL.player_left minecraft.custom:leave_game
 scoreboard objectives add GLOBAL.time_alive minecraft.custom:minecraft.time_since_death
 scoreboard players set 20 GLOBAL 20
@@ -56,3 +57,4 @@ scoreboard players set #60 var 60
 scoreboard players set #80 var 80
 
 scoreboard objectives add qq.rclickCooldown dummy
+scoreboard objectives add qq.tridentInvis dummy

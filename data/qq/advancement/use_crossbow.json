@@ -12,7 +12,7 @@
       }
     },
     "rewards": {
-      "function": "qq:use_crossbow"
+      "function": "qq:utility/misc/using_crossbow"
     }
   }
   

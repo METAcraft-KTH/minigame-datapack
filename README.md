@@ -1,6 +1,18 @@
-Self-contained datapacks for minigame tournaments. Start from template branch.
+## One in the Quiver Documentation
+### Spawnpoints:
+`/function qq:give/dev/spawnpoint`
+Right click to place spawnpoint_preview, give it diamond_chestplate to lock in.
+Any tags will carry over from the preview except:
+    - Previews will be tagged `qq.spawnpoint_preview`
+    - Actual spawnpoints will be tgged `qq.spawnpoint`
+Give it tags such as `qq.arena1` or whatever arena it is on.
+Make sure to add the definition for new arenas in function `qq:states/pregame/setup_arena`
 
-## Documentation
+### Other map placables
+- Lobby tp `/execute align xz run summon minecraft:marker ~.5 ~ ~.5 {Tags:["qq.tp.lobby"],Rotation:[0.0d,0.0d]}`
+- Arena spectate cam `/function qq:utility/misc/create_spectate {arena:1}`
+
+## Template Documentation
 
 ### Objectives & Variables
 

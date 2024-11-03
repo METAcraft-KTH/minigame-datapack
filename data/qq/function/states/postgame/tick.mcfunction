@@ -16,8 +16,14 @@ scoreboard players operation #displayminutes qq.game /= 60 GLOBAL
 scoreboard players operation #displayseconds qq.game = #remainingseconds qq.game
 scoreboard players operation #displayseconds qq.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
-execute if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+# if not last mode
+execute unless score mode qq.config matches 3 if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Travelling to next mode in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute unless score mode qq.config matches 3 if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Travelling to next mode in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+
+# if last mode
+execute if score mode qq.config matches 3 if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute if score mode qq.config matches 3 if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+
 execute store result bossbar qq:timer value run scoreboard players get ?timer qq.game
 
 ## next mode or return to lobby

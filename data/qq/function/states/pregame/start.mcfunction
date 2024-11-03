@@ -4,15 +4,19 @@ scoreboard players set ?state qq.game 1
 # various configs
 function qq:states/pregame/configure_gamerule
 
+# new state, reset GLOBAL.player_in_state
+scoreboard players reset * GLOBAL.player_in_state
+scoreboard players set @a GLOBAL.player_in_state 1
+
 # initialize timer
 execute store result bossbar qq:timer max run scoreboard players get time.pregame qq.config
 scoreboard players set ?timer qq.game 0
 
 # set map
-# TODO: give tag qq.tp.arena to whatever map is next depending on mode qq.config
+function qq:states/pregame/setup_arena
 
 # tp everyone to the arena
-tp @a @n[tag=qq.tp.arena]
+tp @a @n[tag=qq.spawnpoint, tag=qq.active_arena]
 
 # put everyone in a team
 team add qq.players "Players"
@@ -20,3 +24,11 @@ team modify qq.players nametagVisibility hideForOwnTeam
 team modify qq.players seeFriendlyInvisibles false
 team modify qq.players friendlyFire false
 team join qq.players @a[tag=!admin]
+
+# reset inventory but no arrows
+execute as @a[tag=!admin] run function qq:states/ingame/reset_inventory
+execute as @a[tag=!admin] run clear @s arrow
+
+# reset scores
+scoreboard players reset * qq.Points
+xp set @a 0 levels

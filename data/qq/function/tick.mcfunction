@@ -29,3 +29,4 @@ function qq:utility/tick
 execute as @a if predicate qq:on_ground run tag @s add onGround
 execute as @a unless predicate qq:on_ground run tag @s remove onGround
 tag @a[tag=qq.BlockingWithShield] remove qq.BlockingWithShield
+tag @a[tag=qq.jumpJustDown] remove qq.jumpJustDown

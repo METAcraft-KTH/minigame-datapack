@@ -1,6 +1,10 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
 scoreboard players set ?state qq.game 0
 
+# new state, reset GLOBAL.player_in_state
+scoreboard players reset * GLOBAL.player_in_state
+scoreboard players set @a GLOBAL.player_in_state 1
+
 # initialize timer
 execute store result bossbar qq:timer max run scoreboard players get time.lobby qq.config
 scoreboard players set ?timer qq.game 0
