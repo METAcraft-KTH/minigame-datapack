@@ -41,6 +41,11 @@ execute if score ?state WALLS.game = state.r2.deathmatch WALLS.config run bossba
 
 execute as @e[tag=WALLS.lava_point] at @s run function walls:states/ingame/lava/update_lava_points
 
+execute as @a[tag=!admin] at @s if function walls:states/ingame/should_grant_idle_points run function walls:states/ingame/grant_points_idle
+
+scoreboard players add idle_point_timer WALLS.game 1
+execute if score idle_point_timer WALLS.game matches 100.. run scoreboard players set idle_point_timer WALLS.game 0
+
 function walls:states/ingame/check_victory
 
 
