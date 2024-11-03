@@ -1,3 +1,5 @@
+execute unless score game.id GLOBAL = id WALLS.config as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function walls:cleanup
+
 # if this game is NOT the active game, do not do anything
 execute unless score game.id GLOBAL = id WALLS.config run return -1
 execute unless score ?state WALLS.game matches -2147483648..2147483647 run function walls:load

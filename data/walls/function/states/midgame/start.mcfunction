@@ -8,5 +8,4 @@ scoreboard players set ?timer WALLS.game 0
 # tp everyone to the arena
 
 
-
 bossbar set walls:timer color white
