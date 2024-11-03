@@ -3,3 +3,4 @@ scoreboard players reset @s GLOBAL.player_left
 
 ## !!!ADD BELOW!!! do whatever you need, e.g. checking they're at the lobby/arena and tp them if not
 function walls:cleanup
+gamemode adventure @s

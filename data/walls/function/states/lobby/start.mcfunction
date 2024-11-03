@@ -6,3 +6,4 @@ execute store result bossbar walls:timer max run scoreboard players get time.lob
 scoreboard players set ?timer WALLS.game 0
 
 scoreboard players reset @a GLOBAL.player_left
+gamemode adventure @a[tag=!admin]

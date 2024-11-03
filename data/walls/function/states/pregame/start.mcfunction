@@ -9,3 +9,4 @@ execute store result bossbar walls:timer max run scoreboard players get time.pre
 scoreboard players set ?timer WALLS.game 0
 
 # tp everyone to the arena
+gamemode adventure @a[tag=!admin]

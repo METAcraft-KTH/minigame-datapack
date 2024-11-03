@@ -9,3 +9,4 @@ scoreboard players set ?timer WALLS.game 0
 
 
 bossbar set walls:timer color white
+gamemode adventure @a[tag=!admin]

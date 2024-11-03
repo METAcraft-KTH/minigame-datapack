@@ -54,8 +54,8 @@ function walls:states/ingame/check_victory
 
 execute if score ?state WALLS.game = state.r1.initial WALLS.config if score ?timer WALLS.game >= time.r1.initial WALLS.config run function walls:states/ingame/start.r1.drop_wall
 execute if score ?state WALLS.game = state.r1.wall_drop WALLS.config if score ?timer WALLS.game >= time.r1.wall_drop WALLS.config run function walls:states/ingame/start.r1.deathmatch
-execute if score ?state WALLS.game = state.r1.deathmatch WALLS.config if score ?timer WALLS.game >= time..r1.deathmatch WALLS.config run function walls:states/midgame/start
+execute if score ?state WALLS.game = state.r1.deathmatch WALLS.config if score ?timer WALLS.game >= time.r1.deathmatch WALLS.config run function walls:states/ingame/gameover/draw
 execute if score ?state WALLS.game = state.r2.initial WALLS.config if score ?timer WALLS.game >= time.r2.initial WALLS.config run function walls:states/ingame/start.r2.drop_wall
 execute if score ?state WALLS.game = state.r2.wall_drop WALLS.config if score ?timer WALLS.game >= time.r2.wall_drop WALLS.config run function walls:states/ingame/start.r2.deathmatch
-execute if score ?state WALLS.game = state.r2.deathmatch WALLS.config if score ?timer WALLS.game >= time.r2.deathmatch WALLS.config run function walls:states/postgame/start
+execute if score ?state WALLS.game = state.r2.deathmatch WALLS.config if score ?timer WALLS.game >= time.r2.deathmatch WALLS.config run function walls:states/ingame/gameover/draw
 

@@ -1,5 +1,5 @@
 # This function is called when the playable part of the minigame ends.
-scoreboard players operation ?state WALLS.game = state.lobby WALLS.config
+scoreboard players operation ?state WALLS.game = state.postgame WALLS.config
 
 # initialize timer
 execute store result bossbar walls:timer max run scoreboard players get time.postgame WALLS.config
@@ -10,3 +10,4 @@ scoreboard players set ?timer WALLS.game 0
 
 
 bossbar set walls:timer color white
+gamemode adventure @a[tag=!admin]

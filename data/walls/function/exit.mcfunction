@@ -17,6 +17,7 @@ function walls:exit_gamerule
 # scoreboard values
 
 clear @a[tag=!admin]
+gamemode adventure @a[tag=!admin]
 
 ## !!!EDIT BELOW!!! change to next game's id
 scoreboard players set game.id GLOBAL 5
