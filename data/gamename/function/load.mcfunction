@@ -6,6 +6,7 @@ scoreboard objectives add GAMENAME.config dummy
 execute unless score ?state GAMENAME.game matches -2147483648..2147483647 run scoreboard players set ?state GAMENAME.game -1
 # the two global objectives are redeclared here, so the linter won't complain about "unknown objectives"
 scoreboard objectives add GLOBAL dummy
+scoreboard objectives add GLOBAL.player_in_state dummy
 scoreboard objectives add GLOBAL.player_left minecraft.custom:leave_game
 scoreboard objectives add GLOBAL.time_alive minecraft.custom:minecraft.time_since_death
 scoreboard players set 20 GLOBAL 20

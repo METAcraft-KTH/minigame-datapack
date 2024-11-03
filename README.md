@@ -8,6 +8,9 @@ All occurrences of `GAMENAME` (both uppercase and lowercase) is to be replaced b
 
 - `GLOBAL` all dummy global variables.
     - `game.id` the current active game.
+- `GLOBAL.player_in_state` 1 if player is in the right state, undefiened otherwise.
+    - do `scoreboard players reset * GLOBAL.player_in_state` and `scoreboard players set @a GLOBAL.player_in_state 1` whenever the state changes.
+    - done in all phase start functions by default.
 - `GLOBAL.player_left` is used to detect players leaving the game. It is reset individually upon rejoin to make sure the player is at a valid location.
     - no variables in this objective.
 - `GLOBAL.time_alive` is used to detect players dying and respawning.
