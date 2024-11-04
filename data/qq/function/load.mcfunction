@@ -34,7 +34,7 @@ scoreboard players set state.postgame qq.config 3
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby qq.config 3600
 scoreboard players set time.pregame qq.config 300
-scoreboard players set time.ingame qq.config 12000
+scoreboard players set time.ingame qq.config 4800
 scoreboard players set time.postgame qq.config 300
 
 # bossbar
