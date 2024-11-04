@@ -3,11 +3,15 @@
 `/function qq:give/dev/spawnpoint`
 Right click to place spawnpoint_preview, give it diamond_chestplate to lock in.
 Any tags will carry over from the preview except:
-    - Previews will be tagged `qq.spawnpoint_preview`
-    - Actual spawnpoints will be tgged `qq.spawnpoint`
+- Previews will be tagged `qq.spawnpoint_preview`
+- Actual spawnpoints will be tagged `qq.spawnpoint`
 Give it tags such as `qq.arena1` or whatever arena it is on.
 Make sure to add the definition for new arenas in function `qq:states/pregame/setup_arena`
 
+Useful commands for placing spawnpoints:
+- `/effect give @e[tag=qq.spawnpoint_preview] minecraft:glowing 180 0 true`
+- `/tag @e[tag=qq.spawnpoint_preview,distance=..400] add qq.arena1`
+- `/item replace entity @e[tag=qq.spawnpoint_preview,distance=..400] armor.chest with minecraft:diamond_chestplate`
 ### Other map placables
 - Lobby tp `/execute align xz run summon minecraft:marker ~.5 ~ ~.5 {Tags:["qq.tp.lobby"],Rotation:[0.0d,0.0d]}`
 - Arena spectate cam `/function qq:utility/misc/create_spectate {arena:1}`
