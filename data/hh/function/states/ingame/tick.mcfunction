@@ -22,3 +22,8 @@ execute store result bossbar hh:timer value run scoreboard players get ?timer hh
 
 ## end game
 execute if score ?timer hh.game >= time.ingame hh.config run function hh:states/postgame/start
+
+## Skipping
+execute as @a if score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/allow_skipping
+execute as @a unless score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/disallow_skipping
+execute as @a if score @s hh.skip matches 1 run function hh:states/ingame/skip

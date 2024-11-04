@@ -1,0 +1,25 @@
+[
+    {
+        "function": "minecraft:set_components",
+        "components": {
+            "minecraft:attribute_modifiers": {
+                "modifiers": [
+                    {
+                        "id": "halfheart",
+                        "type": "minecraft:max_health",
+                        "amount": -19,
+                        "operation": "add_value",
+                        "slot": "any"
+                    }
+                ],
+                "show_in_tooltip": false
+            },
+            "minecraft:enchantments": {
+                "levels": {
+                    "minecraft:binding_curse": 1
+                },
+                "show_in_tooltip": false
+            }
+        }
+    }
+]

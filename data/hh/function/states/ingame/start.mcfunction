@@ -12,3 +12,8 @@ scoreboard players set ?timer hh.game 0
 tp @a @n[tag=hh.tp.arena]
 
 execute as @a[tag=!admin] run function hh:utility/set_halfheart
+
+# reset scores
+scoreboard players reset * hh.skip
+scoreboard players reset * hh.totalDeaths
+scoreboard players reset * hh.checkpointDeaths

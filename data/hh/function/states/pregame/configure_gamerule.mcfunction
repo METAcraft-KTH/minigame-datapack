@@ -42,7 +42,7 @@ gamerule playersNetherPortalDefaultDelay 80
 gamerule projectilesCanBreakBlocks true
 gamerule randomTickSpeed 0
 gamerule reducedDebugInfo false
-gamerule sendCommandFeedback true
+gamerule sendCommandFeedback false
 gamerule showDeathMessages true
 gamerule snowAccumulationHeight 1
 gamerule spawnChunkRadius 0

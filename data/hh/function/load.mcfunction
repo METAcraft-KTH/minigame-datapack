@@ -37,3 +37,7 @@ bossbar set hh:timer visible false
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE hh:exit FUNCTION
 #team add ...
+scoreboard objectives add hh.skip trigger "Skip"
+scoreboard objectives add hh.totalDeaths deathCount "Deaths"
+scoreboard objectives add hh.checkpointDeaths deathCount
+scoreboard objectives add hh.checkpoint dummy "Checkpoint"
