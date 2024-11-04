@@ -19,5 +19,5 @@ effect clear @a[tag=!admin] invisibility
 
 # respawn everyone
 scoreboard players add @a[gamemode=spectator,tag=!admin] GLOBAL.time_alive 60
-tp @a[gamemode=spectator,tag=!admin] @e[tag=qq.spawnpoint,tag=qq.active_arena,distance=..400,limit=1,sort=random]
+execute as @a[gamemode=spectator,tag=!admin] run tp @s @e[tag=qq.spawnpoint,tag=qq.active_arena,limit=1,sort=random]
 gamemode adventure @a[gamemode=spectator,tag=!admin]

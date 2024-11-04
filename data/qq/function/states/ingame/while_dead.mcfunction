@@ -3,6 +3,6 @@
 ## !!!ADD BELOW!!! do whatever you need.
 # remember that things like awarding kills is better done with advancements.
 gamemode spectator @s
-execute at @s run tp @s @e[tag=qq.spectate,tag=qq.active_arena,limit=1,sort=random]
+tp @s @e[tag=qq.spectate,tag=qq.active_arena,limit=1,sort=random]
 
 tag @s remove hit

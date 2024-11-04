@@ -25,4 +25,4 @@ tag @e remove hit
 scoreboard players set game.id GLOBAL 3
 
 # TP everyone back to lobby
-tp @a @n[tag=qq.tp.lobby]
+tp @a[tag=!admin] @n[tag=qq.tp.lobby]

@@ -4,5 +4,5 @@ execute unless score game.id GLOBAL matches 2 run return 0
 
 # kill with damage
 execute on attacker run tag @s add attacker
-damage @s 100 minecraft:trident by @p[tag=attacker]
-tag @a[tag=attacker] remove attacker
+damage @s 100 minecraft:trident by @n[tag=attacker]
+tag @n[tag=attacker] remove attacker

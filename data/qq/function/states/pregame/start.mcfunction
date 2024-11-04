@@ -16,7 +16,7 @@ scoreboard players set ?timer qq.game 0
 function qq:states/pregame/setup_arena
 
 # tp everyone to the arena
-tp @a @n[tag=qq.spawnpoint, tag=qq.active_arena]
+execute as @a[tag=!admin] run tp @s @e[tag=qq.spawnpoint,tag=qq.active_arena,limit=1,sort=random]
 
 # put everyone in a team
 team add qq.players "Players"

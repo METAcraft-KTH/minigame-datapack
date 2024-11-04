@@ -1,5 +1,5 @@
 # trail
-execute as @a[tag=thisShooter] run function qq:raycast/particle_trail
+execute as @n[tag=thisShooter] run function qq:raycast/particle_trail
 
 # cut the raycast short if colliding with partial block
 execute if block ~ ~ ~ #qq:partial run function qq:raycast/partial
@@ -17,7 +17,7 @@ execute if score .itt qq.raycast matches 1.. positioned ~-0.5 ~-0.5 ~-0.5 as @n[
 # test for hit targets
 execute if score raySize qq.config matches 0 if score .itt qq.raycast matches 1.. positioned ~-0.15 ~-0.15 ~-0.15 as @e[type=#qq:targets,tag=!thisOwner,tag=!hit,dx=0] positioned ~-0.7 ~-0.7 ~-0.7 if entity @s[dx=0] run function qq:raycast/hit
 execute if score raySize qq.config matches 1 if score .itt qq.raycast matches 1.. positioned ~-0.25 ~-0.25 ~-0.25 as @e[type=#qq:targets,tag=!thisOwner,tag=!hit,dx=0] positioned ~-0.5 ~-0.5 ~-0.5 if entity @s[dx=0] run function qq:raycast/hit
-execute if score raySize qq.config matches 2 if score .itt qq.raycast matches 1.. positioned ~-0.5 ~-0.5 ~-0.5 as @e[type=#qq:targets,tag=!thisOwner,tag=!hit,dx=0] run function qq:raycast/hit
+execute if score raySize qq.config matches 2 if score .itt qq.raycast matches 1.. positioned ~-0.50 ~-0.50 ~-0.50 as @e[type=#qq:targets,tag=!thisOwner,tag=!hit,dx=0] run function qq:raycast/hit
 
 execute if score .itt qq.raycast matches 1.. if block ~ ~ ~ #qq:targets run function qq:raycast/blockhit
 

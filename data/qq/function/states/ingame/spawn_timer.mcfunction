@@ -17,4 +17,4 @@ execute if score @s GLOBAL.time_alive matches 1.. at @s run spectate @n[tag=qq.s
 execute unless score @s GLOBAL.time_alive matches 60 run return 0
 
 gamemode adventure @s
-tp @s @e[tag=qq.spawnpoint,tag=qq.active_arena,distance=..200,limit=1,sort=random]
+tp @s @e[tag=qq.spawnpoint,tag=qq.active_arena,limit=1,sort=random]

@@ -1,7 +1,8 @@
 {
-  "values":[
-	"minecraft:villager",
-	"minecraft:player",
-  "minecraft:pillager"
-  ]
+    "values": [
+        "minecraft:villager",
+        "minecraft:player",
+        "minecraft:pillager",
+        "metacraft:player"
+    ]
 }
