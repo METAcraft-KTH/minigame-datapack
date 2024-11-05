@@ -14,3 +14,10 @@ scoreboard players reset @a GLOBAL.player_left
 
 # Reset mode
 scoreboard players set mode qq.config 0
+
+## put everyone on a team
+team add qq.players "Players"
+team modify qq.players nametagVisibility hideForOwnTeam
+team modify qq.players seeFriendlyInvisibles false
+team modify qq.players friendlyFire false
+team join qq.players @a[tag=!admin]

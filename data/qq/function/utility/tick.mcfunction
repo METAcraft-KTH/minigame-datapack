@@ -14,7 +14,7 @@ execute as @a if predicate qq:reload_offhand run item modify entity @s weapon.of
 execute as @e[type=snowball,predicate=qq:is_flyball] at @s on origin run ride @s mount @n[type=snowball,predicate=qq:is_flyball]
 
 # jump pad
-execute as @e[type=marker,tag=jumpPad] at @s as @p[distance=..1.5,tag=onGround,predicate=qq:jump] run summon minecraft:wind_charge ~ ~ ~ {Motion:[0.0d,-0.1d,0.0d],acceleration_power:10.0d}
+execute as @e[tag=qq.jump_pad] at @s as @p[distance=..1.5,tag=onGround,predicate=qq:jump] run summon minecraft:wind_charge ~ ~ ~ {Motion:[0.0d,-0.1d,0.0d],acceleration_power:10.0d}
 
 # spawnpoint
 scoreboard players remove @a[scores={qq.rclickCooldown=1..}] qq.rclickCooldown 1

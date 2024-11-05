@@ -1,1 +1,0 @@
-execute align xz run summon marker ~.5 ~ ~.5 {Tags:["jumpPad"]}
