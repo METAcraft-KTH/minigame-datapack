@@ -68,6 +68,7 @@ scoreboard objectives add WALLS.wall_length dummy
 scoreboard objectives add WALLS.wall_height dummy
 scoreboard objectives add WALLS.type dummy
 scoreboard objectives add WALLS.ids dummy
+scoreboard objectives add WALLS.reset_ids dummy
 
 scoreboard players set lava.point_x_dist WALLS.config 127
 scoreboard players set lava.point_z_dist WALLS.config 127

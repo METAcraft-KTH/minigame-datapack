@@ -4,8 +4,11 @@ Storage:
 walls:maps
 
 Setting maps: 
-/data modify storage walls:maps r1_map set from block \<pos\>
-/data modify storage walls:maps r2_map set from block \<pos\>
+/data modify storage walls:maps r1_map append from block \<pos\>
+/data modify storage walls:maps r2_map append from block \<pos\>
+id is the index in r1_map or r2_map respectively.
+/scoreboard players set @n\[tag=WALLS.r1_reset] WALLS.reset_ids \<id\>
+/scoreboard players set @n\[tag=WALLS.r2_reset] WALLS.reset_ids \<id\>
 
 Important tags:
 WALLS.lava_point
