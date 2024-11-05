@@ -58,3 +58,4 @@ scoreboard players set #80 var 80
 
 scoreboard objectives add qq.rclickCooldown dummy
 scoreboard objectives add qq.tridentInvis dummy
+scoreboard objectives add qq.ray_particle dummy
