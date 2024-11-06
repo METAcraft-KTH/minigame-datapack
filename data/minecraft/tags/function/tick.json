@@ -1,5 +1,6 @@
 {
     "values": [
-        "tnt:tick"
+        "tnt:tick",
+        "tnt:universal/tick"
     ]
 }
