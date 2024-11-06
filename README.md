@@ -3,17 +3,17 @@ Self-contained datapacks for minigame tournaments. Start from template branch.
 ## Game documentation
 
 scoreboard 
-- `round.max tnt.config` no. of last round before game ends and postgame triggers. default `15`
-- `round.prot tnt.config` no. of round to give out safety chestplates. `2`
-- `round.arena2 tnt.config` no. of round to evacuate people from arena 1 to 2. `6`
-- `round.arena3 tnt.config` no. of round to evacuate people from arena 2 to 3. `11`
-- `num.bomb tnt.config` %p of online people to give out TNT to. `20` in arena 1, `25` in arena 2, `25` in arena 3.
-- `num.prot tnt.config` %p of online people to give out chestplate to. *Unused for now* `10`
+- `round.max tnttag.config` no. of last round before game ends and postgame triggers. default `15`
+- `round.prot tnttag.config` no. of round to give out safety chestplates. `2`
+- `round.arena2 tnttag.config` no. of round to evacuate people from arena 1 to 2. `6`
+- `round.arena3 tnttag.config` no. of round to evacuate people from arena 2 to 3. `11`
+- `num.bomb tnttag.config` %p of online people to give out TNT to. `20` in arena 1, `25` in arena 2, `28` in arena 3.
+- `num.prot tnttag.config` %p of online people to give out chestplate to. *Unused for now* `10`
     - calculated constantly. players who log out with the chestplate do not keep it upon rejoin.
-- `num.dmg tnt.config` how many points to gain from not being blown up. `250`, `150`, `50`
-- `num.risk tnt.config` how many ticks to wait between each point gain while holding a TNT. `10`
-- `num.gain tnt.config` how many ticks to wait between each point gain while wearing a chestplate. *Unused for now* `15`
-- `?round tnt.game` start from 0. at start of each tagging phase, compare against configs.
+- `num.survive tnttag.config` how many points to gain from not being blown up. `100`, `150`, `200`
+- `num.risk tnttag.config` how many ticks to wait between each point gain while holding a TNT. `10`
+- `num.gain tnttag.config` how many ticks to wait between each point gain while wearing a chestplate. *Unused for now* `20`
+- `?round tnttag.game` start from 0. at start of each tagging phase, compare against configs.
 
 ## Template documentation
 
@@ -29,14 +29,14 @@ scoreboard
 - `GLOBAL.time_alive` is used to detect players dying and respawning.
     - no variables in this objective.
     - this score is set to 0 when the player dies (or is in the respawn menu if `doImmediateRespawn` is false), and increments by 1 per tick while the player is alive.
-- `tnt.game` all dummy variables related to the game.
+- `tnttag.game` all dummy variables related to the game.
     - `?state` the game's current state.
     - `?timer` variable used to keep track of the gamestate's MAIN timer.
-- `tnt.config` all constant values referenced by the game. All of them should be defined in [load.mcfunction](/data/tnt/function/load.mcfunction).
+- `tnttag.config` all constant values referenced by the game. All of them should be defined in [load.mcfunction](/data/tnt/function/load.mcfunction).
     - `id` the unique ID used to identify the game, compared with `game.id GLOBAL` to see if the game should be running or not.
     - `state.*` control which values of `?state` correspond to which gamestates. Used by the main tick function.
     - `time.*` control how long the specified phase should last (MAIN timer). Used by each phase's tick function.
-- Additional `tnt.*` objectives can be created to suit the game's needs, just make sure they're namespaced with the `tnt.` prefix.
+- Additional `tnttag.*` objectives can be created to suit the game's needs, just make sure they're namespaced with the `tnttag.` prefix.
 
 #### Other constants
 
@@ -47,16 +47,16 @@ scoreboard
 
 These entities should be placed manually in the world.
 
-- `tnt.tp.arena` marker in the game arena. Everyone gets TPed here on game start (`function tnt:states/pregame/start`)
-- `tnt.tp.lobby` marker in the main lobby. Everyone gets TPed here on game end (`function tnt:exit`)
+- `tnttag.tp.arena` marker in the game arena. Everyone gets TPed here on game start (`function tnttag:states/pregame/start`)
+- `tnttag.tp.lobby` marker in the main lobby. Everyone gets TPed here on game end (`function tnttag:exit`)
 
 ## Game loop
 
 The game loop starts with something like this:
 
 1. When the previous game ends, its datapack changes `game.id` to the next game's.
-2. The datapack with the corresponding ID (defined in `id tnt.config`) runs, starting with the `tnt:states/lobby/start` function, since the `?state` variable should be pre-configured to `-1`.
-3. It then sets `?state` to `0`, activating `tnt:states/lobby/tick`. This function ticks down until the game begins, where it then calls `tnt:states/pregame/start`...
+2. The datapack with the corresponding ID (defined in `id tnttag.config`) runs, starting with the `tnttag:states/lobby/start` function, since the `?state` variable should be pre-configured to `-1`.
+3. It then sets `?state` to `0`, activating `tnttag:states/lobby/tick`. This function ticks down until the game begins, where it then calls `tnttag:states/pregame/start`...
 
 From here you can see the pattern of how a minigame datapack works. Each gamestate has a folder of the same name, with *at least* the following functions:
 - `start.mcfunction`: called by the previous state when it ends.
@@ -68,7 +68,7 @@ From here you can see the pattern of how a minigame datapack works. Each gamesta
 The gamestate can be expanded with any number of functions, advancements etc as necessary. **For clarity,** try to make sure everything is placed in folders by the same gamestate name. If a function is used in multiple places, one solution would be to put it in the `utility` folder.
 
 > [!WARNING]  
-> Advancements will trigger even if the current gamestate doesn't match. Always check if `?state tnt.game` matches in the reward function, and stop executing if it doesn't match.
+> Advancements will trigger even if the current gamestate doesn't match. Always check if `?state tnttag.game` matches in the reward function, and stop executing if it doesn't match.
 >
 > Example: If an advancement triggers by item pickup during ingame, we don't want it to run its function during pregame.
 
@@ -81,5 +81,5 @@ Once the postgame ends, make sure to update `game.id` to the next game's.
     - Datapacks will be easier to troubleshoot and debug if they all behave similarly.
 - Every state is designed to have a hard time limit to prevent a game from taking too long.
     - The game can (and should) end early when needed, such as when only 1 player remains, but there needs to be an upper bound.
-- ALL tags must be namespaced (prefixed) with `tnt.`.
+- ALL tags must be namespaced (prefixed) with `tnttag.`.
 - TEMPORARY variables should start with `#` to denote that they are temporary and should never be read from if they weren't created in the same function.
