@@ -1,0 +1,18 @@
+{
+    "criteria": {
+        "": {
+            "trigger": "minecraft:using_item",
+            "conditions": {
+                "item": {
+                    "items": "minecraft:blaze_rod",
+                    "predicates": {
+                        "minecraft:custom_data": "{checkpointPlacer:1b}"
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "hh:universal/checkpoint/create_preview"
+    }
+}

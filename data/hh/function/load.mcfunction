@@ -41,3 +41,4 @@ scoreboard objectives add hh.skip trigger "Skip"
 scoreboard objectives add hh.totalDeaths deathCount "Deaths"
 scoreboard objectives add hh.checkpointDeaths deathCount
 scoreboard objectives add hh.checkpoint dummy "Checkpoint"
+scoreboard objectives add hh.rclickCooldown dummy
