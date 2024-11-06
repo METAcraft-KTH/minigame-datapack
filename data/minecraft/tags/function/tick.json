@@ -1,5 +1,6 @@
 {
     "values": [
-        "gamename:tick"
+        "gamename:tick",
+        "gamename:universal/tick"
     ]
 }
