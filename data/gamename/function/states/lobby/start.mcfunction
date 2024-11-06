@@ -10,3 +10,6 @@ execute store result bossbar gamename:timer max run scoreboard players get time.
 scoreboard players set ?timer GAMENAME.game 0
 
 scoreboard players reset @a GLOBAL.player_left
+
+# reset all players
+execute as @a[tag=!admin] run function gamename:states/lobby/reset_player

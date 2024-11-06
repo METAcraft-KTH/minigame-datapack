@@ -14,3 +14,6 @@ scoreboard players set ?timer GAMENAME.game 0
 
 # tp everyone to the arena
 tp @a @n[tag=GAMENAME.tp.arena]
+
+# reset all players
+execute as @a[tag=!admin] run function gamename:states/ingame/reset_player
