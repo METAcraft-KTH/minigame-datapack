@@ -2,11 +2,11 @@
 # It is meant to reset everything just before the next game initializes.
 
 # Remove scoreboards
-scoreboard players reset * GAMENAME.game
+scoreboard players reset * tnt.game
 # Remove bossbar
-bossbar remove gamename:timer
+bossbar remove tnt:timer
 # reset gamerules
-function gamename:exit_gamerule
+function tnt:exit_gamerule
 
 
 ## !!!EDIT BELOW!!! CHECKLIST OF THINGS TO RESET:
@@ -17,7 +17,7 @@ function gamename:exit_gamerule
 # scoreboard values
 
 ## !!!EDIT BELOW!!! change to next game's id
-scoreboard players set game.id GLOBAL 
+scoreboard players set game.id GLOBAL 2
 
 # TP everyone back to lobby
-tp @a @n[tag=GAMENAME.tp.lobby]
+tp @a @n[tag=tnt.tp.lobby]

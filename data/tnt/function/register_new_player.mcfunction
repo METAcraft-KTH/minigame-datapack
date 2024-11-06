@@ -1,5 +1,5 @@
 ### Give registered tag
-tag @s add GAMENAME.registered
+tag @s add tnt.registered
 
 ### Registraion logic
 

@@ -1,4 +1,4 @@
-# This function is called when the game ends and everyone is TPed back to the main lobby. Called by gamename:exit.
+# This function is called when the game ends and everyone is TPed back to the main lobby. Called by tnt:exit.
 
 ## Set gamerules
 gamerule announceAdvancements false

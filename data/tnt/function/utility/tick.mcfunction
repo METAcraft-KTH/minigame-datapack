@@ -1,0 +1,1 @@
+# this function runs every tick, as it is called by tnt:tick with no conditions. do what you want with it.
