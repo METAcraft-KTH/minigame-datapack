@@ -28,7 +28,9 @@ scoreboard players set state.postgame tnt.config 3
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby tnt.config 3600
 scoreboard players set time.pregame tnt.config 600
-scoreboard players set time.ingame tnt.config 12000
+# these values are 60 seconds and 15 seconds respectively, only for the first round - they're set to shorter intervals at the end of each state.
+scoreboard players set time.ingame_tag tnt.config 1200
+scoreboard players set time.ingame_grace tnt.config 300
 scoreboard players set time.postgame tnt.config 600
 
 # bossbar
@@ -37,4 +39,4 @@ bossbar set tnt:timer visible false
 
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE tnt:exit FUNCTION
-#team add ...
+scoreboard players set round tnt.config 15

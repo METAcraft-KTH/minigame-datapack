@@ -1,5 +1,20 @@
 Self-contained datapacks for minigame tournaments. Start from template branch.
 
+## Game documentation
+
+scoreboard 
+- `round.max tnt.config` no. of last round before game ends and postgame triggers. default `15`
+- `round.prot tnt.config` no. of round to give out safety chestplates. `2`
+- `round.arena2 tnt.config` no. of round to evacuate people from arena 1 to 2. `6`
+- `round.arena3 tnt.config` no. of round to evacuate people from arena 2 to 3. `11`
+- `num.bomb tnt.config` %p of online people to give out TNT to. `20` in arena 1, `25` in arena 2, `25` in arena 3.
+- `num.prot tnt.config` %p of online people to give out chestplate to. *Unused for now* `10`
+    - calculated constantly. players who log out with the chestplate do not keep it upon rejoin.
+- `num.dmg tnt.config` how many points to gain from not being blown up. `250`, `150`, `50`
+- `num.risk tnt.config` how many ticks to wait between each point gain while holding a TNT. `10`
+- `num.gain tnt.config` how many ticks to wait between each point gain while wearing a chestplate. *Unused for now* `15`
+- `?round tnt.game` start from 0. at start of each tagging phase, compare against configs.
+
 ## Template documentation
 
 ### Objectives & Variables
