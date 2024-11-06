@@ -1,4 +1,4 @@
-execute unless score game.id GLOBAL = id WALLS.config as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function walls:cleanup
+execute unless score game.id GLOBAL = id WALLS.config as @a[scores={GLOBAL.player_left=1..},tag=!admin] if score @s GLOBAL.player_in_state = id WALLS.config run function walls:cleanup
 
 # if this game is NOT the active game, do not do anything
 execute unless score game.id GLOBAL = id WALLS.config run return -1
@@ -34,3 +34,5 @@ function walls:utility/tick
 
 ## !!!ADD BELOW!!! Post tick
 # add anything else
+
+scoreboard players operation @a[tag=!admin] GLOBAL.player_in_state = id WALLS.config
