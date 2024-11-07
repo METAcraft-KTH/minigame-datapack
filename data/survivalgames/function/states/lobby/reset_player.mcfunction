@@ -1,5 +1,5 @@
 ## Called when a player the server joins in a different gamestate than before
-scoreboard players set @s GLOBAL.player_in_state 1
+scoreboard players operation @s GLOBAL.player_in_state =
 
 ## Reset logic
 effect clear @s
