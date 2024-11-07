@@ -6,3 +6,8 @@ execute store result bossbar hh:timer max run scoreboard players get time.lobby 
 scoreboard players set ?timer hh.game 0
 
 scoreboard players reset @a GLOBAL.player_left
+
+# NEW STATE, reset GLOBAL.player_in_state and reset all players
+scoreboard players reset * GLOBAL.player_in_state
+scoreboard players set @a GLOBAL.player_in_state 1
+execute as @a[tag=!admin] run function hh:states/lobby/reset_player

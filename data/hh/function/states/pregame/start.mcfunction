@@ -15,3 +15,13 @@ tp @a @n[tag=hh.tp.arena]
 team add hh.players "Players"
 team modify hh.players friendlyFire false
 team join hh.players @a[tag=!admin]
+
+# reset checkpoint for players
+scoreboard players set @a hh.checkpoint 0
+
+# NEW STATE, reset GLOBAL.player_in_state and reset all players
+scoreboard players reset * GLOBAL.player_in_state
+scoreboard players set @a GLOBAL.player_in_state 1
+execute as @a[tag=!admin] run function hh:states/pregame/reset_player
+
+fill 50004 101 2007 49998 100 2007 minecraft:air

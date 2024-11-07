@@ -27,3 +27,6 @@ execute if score ?timer hh.game >= time.ingame hh.config run function hh:states/
 execute as @a if score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/allow_skipping
 execute as @a unless score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/disallow_skipping
 execute as @a if score @s hh.skip matches 1 run function hh:states/ingame/skip
+
+# reaching a checkpoint
+execute as @a[tag=!admin] if predicate hh:on_ground at @s if score @n[tag=hh.checkpoint,distance=..3] hh.checkpoint > @s hh.checkpoint run function hh:states/ingame/reach_checkpoint
