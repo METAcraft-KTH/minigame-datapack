@@ -21,4 +21,5 @@ team remove hh.players
 scoreboard players set game.id GLOBAL 6
 
 # TP everyone back to lobby
-tp @a @n[tag=hh.tp.lobby]
+tp @a[tag=!admin] @n[tag=hh.tp.lobby]
+execute as @a at @n[tag=hh.tp.lobby] run spawnpoint @s ~ ~ ~ ~
