@@ -5,6 +5,7 @@
         "#mineable/pickaxe",
         "#mineable/shovel",
         "light",
-        "air"
+        "air",
+        "water"
     ]
 }

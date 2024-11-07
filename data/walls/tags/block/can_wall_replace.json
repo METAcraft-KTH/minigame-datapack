@@ -1,8 +1,6 @@
 {
     "values": [
-        "air",
-        "water",
-        "stone",
+        "#walls:can_lava_replace",
         "lava"
     ]
 }
