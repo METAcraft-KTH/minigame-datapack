@@ -32,3 +32,4 @@ execute as @a[tag=!admin] run clear @s arrow
 # reset scores
 scoreboard players reset * qq.Points
 xp set @a 0 levels
+xp set @a 0 points
