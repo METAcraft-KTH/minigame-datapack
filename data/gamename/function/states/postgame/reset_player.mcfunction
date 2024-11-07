@@ -3,4 +3,4 @@ scoreboard players set @s GLOBAL.player_in_state 1
 
 ## Reset logic
 effect clear @s
-clear @a
+clear @s
