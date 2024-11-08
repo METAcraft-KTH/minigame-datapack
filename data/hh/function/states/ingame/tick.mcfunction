@@ -35,4 +35,4 @@ execute as @a[tag=!admin] if predicate hh:on_ground at @s if score @n[tag=hh.che
 execute as @a if score @s hh.checkpoint matches 9..10 at @s run function hh:states/ingame/elytra
 
 # finish
-execute as @a if score @s hh.checkpoint matches 10 if predicate hh:on_ground if block ~ ~-0.1 ~ pink_concrete run function hh:states/ingame/finish
+execute as @a if score @s hh.checkpoint matches 10 if predicate hh:on_ground at @s if block ~ ~-0.1 ~ pink_concrete run function hh:states/ingame/finish

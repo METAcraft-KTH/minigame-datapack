@@ -2,7 +2,9 @@
 scoreboard players add @s hh.checkpoint 1
 
 # find next checkpoint
+tag @s add this
 execute as @e[tag=hh.checkpoint] if score @s hh.checkpoint = @p[tag=this] hh.checkpoint run tag @s add thisCP
+tag @s remove this
 
 # return if no checkpoint was found
 execute unless entity @e[tag=thisCP] run scoreboard players remove @s hh.checkpoint 1
