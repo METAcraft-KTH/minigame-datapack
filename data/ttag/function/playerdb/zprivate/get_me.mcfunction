@@ -1,0 +1,1 @@
+$data modify storage ttag:pdb out set from storage ttag:pdb players[{UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}]
