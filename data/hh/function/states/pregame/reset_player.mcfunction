@@ -8,3 +8,5 @@ xp set @s 0 levels
 xp set @s 0 points
 
 tp @s @n[tag=hh.tp.arena]
+execute at @s run spawnpoint @s ~ ~ ~ ~
+gamemode adventure @s

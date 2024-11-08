@@ -5,3 +5,4 @@ scoreboard players set @s GLOBAL.player_in_state 1
 effect clear @s
 clear @s
 tp @s[tag=!admin] @n[tag=hh.tp.lobby]
+gamemode adventure @s

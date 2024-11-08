@@ -1,0 +1,2 @@
+execute if predicate hh:on_ground unless block ~ ~-0.1 ~-0.5 pink_concrete_powder unless block ~ ~-0.1 ~-0.5 pink_concrete run damage @s 1 freeze
+item replace entity @s armor.chest with elytra[unbreakable={show_in_tooltip:false},enchantments={binding_curse:1}]

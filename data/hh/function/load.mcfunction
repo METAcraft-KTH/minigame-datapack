@@ -28,8 +28,8 @@ scoreboard players set state.postgame hh.config 3
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby hh.config 3600
 scoreboard players set time.pregame hh.config 600
-scoreboard players set time.ingame hh.config 12000
-scoreboard players set time.postgame hh.config 600
+scoreboard players set time.ingame hh.config 18000
+scoreboard players set time.postgame hh.config 300
 
 # bossbar
 bossbar add hh:timer ""

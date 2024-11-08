@@ -1,2 +1,2 @@
-execute unless items entity @s armor.head * run item replace entity @s armor.head with stone_button[minecraft:custom_data={halfheart:1b}]
+execute unless items entity @s armor.head * run item replace entity @s armor.head with stone_button[minecraft:custom_data={halfheart:1b}, minecraft:item_name="Brain"]
 item modify entity @s armor.head hh:halfheart

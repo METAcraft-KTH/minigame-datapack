@@ -1,5 +1,6 @@
 {
     "values": [
-        "hh:tick"
+        "hh:tick",
+        "hh:universal/tick"
     ]
 }

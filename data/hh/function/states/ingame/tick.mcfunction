@@ -24,9 +24,15 @@ execute store result bossbar hh:timer value run scoreboard players get ?timer hh
 execute if score ?timer hh.game >= time.ingame hh.config run function hh:states/postgame/start
 
 ## Skipping
-execute as @a if score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/allow_skipping
-execute as @a unless score @s hh.checkpointDeaths matches 3.. run function hh:states/ingame/disallow_skipping
+execute as @a if score @s hh.checkpointDeaths matches 5.. run function hh:states/ingame/allow_skipping
+execute as @a unless score @s hh.checkpointDeaths matches 5.. run function hh:states/ingame/disallow_skipping
 execute as @a if score @s hh.skip matches 1 run function hh:states/ingame/skip
 
 # reaching a checkpoint
 execute as @a[tag=!admin] if predicate hh:on_ground at @s if score @n[tag=hh.checkpoint,distance=..3] hh.checkpoint > @s hh.checkpoint run function hh:states/ingame/reach_checkpoint
+
+# elytra
+execute as @a if score @s hh.checkpoint matches 9..10 at @s run function hh:states/ingame/elytra
+
+# finish
+execute as @a if score @s hh.checkpoint matches 10 if predicate hh:on_ground if block ~ ~-0.1 ~ pink_concrete run function hh:states/ingame/finish

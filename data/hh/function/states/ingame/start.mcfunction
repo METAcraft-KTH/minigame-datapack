@@ -18,6 +18,6 @@ scoreboard players reset * hh.checkpointDeaths
 #scoreboard players set @a GLOBAL.player_in_state 1
 #execute as @a[tag=!admin] run function hh:states/ingame/reset_player
 
-fill 50004 101 2007 49998 100 2007 minecraft:barrier
+fill 50004 101 2007 49998 100 2007 minecraft:air
 
 execute as @a[tag=!admin] run function hh:utility/set_halfheart

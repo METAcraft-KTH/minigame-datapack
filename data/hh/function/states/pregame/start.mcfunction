@@ -9,7 +9,7 @@ execute store result bossbar hh:timer max run scoreboard players get time.pregam
 scoreboard players set ?timer hh.game 0
 
 # tp everyone to the arena
-tp @a @n[tag=hh.tp.arena]
+tp @a[tag=!admin] @n[tag=hh.tp.arena]
 
 # add team
 team add hh.players "Players"
@@ -24,4 +24,4 @@ scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function hh:states/pregame/reset_player
 
-fill 50004 101 2007 49998 100 2007 minecraft:air
+fill 50004 101 2007 49998 100 2007 minecraft:barrier

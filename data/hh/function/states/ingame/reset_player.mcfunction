@@ -6,5 +6,8 @@ effect clear @s
 clear @s
 xp set @s 0 levels
 xp set @s 0 points
+gamemode adventure @s
 
 tp @s @n[tag=hh.tp.arena]
+execute at @s run spawnpoint @s ~ ~ ~ ~
+gamemode adventure @s
