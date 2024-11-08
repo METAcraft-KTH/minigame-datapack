@@ -2,3 +2,4 @@
 
 effect clear @s
 clear @s
+effect give @s saturation infinite 0 true

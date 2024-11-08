@@ -13,7 +13,7 @@ execute if score ?state tnttag.game = state.init tnttag.config run function tntt
 execute if score ?state tnttag.game = state.lobby tnttag.config run function tnttag:states/lobby/tick
 
 ## !!!EDIT BELOW!!! gamestate-specific tick functions
-execute if score ?state tnttag.game = state.pregame tnttag.config run function tnttag:states/pregame/tick
+#execute if score ?state tnttag.game = state.pregame tnttag.config run function tnttag:states/pregame/tick
 execute if score ?state tnttag.game = state.ingame_tag tnttag.config run function tnttag:states/ingame_tag/tick
 execute if score ?state tnttag.game = state.ingame_grace tnttag.config run function tnttag:states/ingame_grace/tick
 execute if score ?state tnttag.game = state.postgame tnttag.config run function tnttag:states/postgame/tick

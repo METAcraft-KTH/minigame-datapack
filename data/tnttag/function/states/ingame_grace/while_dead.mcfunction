@@ -2,3 +2,5 @@
 
 ## !!!ADD BELOW!!! do whatever you need.
 # remember that things like awarding kills is better done with advancements.
+
+tag @a add ttag.died

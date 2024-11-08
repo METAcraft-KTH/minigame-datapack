@@ -20,7 +20,13 @@ execute if score #displayseconds tnttag.game matches ..9 run bossbar set tnttag:
 execute if score #displayseconds tnttag.game matches 10.. run bossbar set tnttag:timer name ["MINECRAFT HEXATHLON starts in ",{"score": {"name": "#displayminutes","objective": "tnttag.game"}},":",{"score": {"name": "#displayseconds","objective": "tnttag.game"}}]
 execute store result bossbar tnttag:timer value run scoreboard players get ?timer tnttag.game
 
-## TODO: set spawn point & world spawn
+## set spawn point & world spawn
+spawnpoint @a 10000 64 0 0
+setworldspawn 10000 64 0 0
+gamemode adventure @a[tag=!admin,gamemode=!adventure]
+
+title @a[tag=!uni_selected] actionbar {"text":"Welcome to MINECRAFT HEXATHLON! You have not selected your university. Talk to the glowing NPC!"}
+title @a[tag=uni_selected] actionbar {"text":"Welcome to MINECRAFT HEXATHLON! You have selected your university. Get ready to start!"}
 
 ## start game
 execute if score ?timer tnttag.game >= time.lobby tnttag.config run function tnttag:states/pregame/start

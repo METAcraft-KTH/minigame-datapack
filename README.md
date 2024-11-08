@@ -7,7 +7,7 @@ scoreboard
 - `round.prot tnttag.config` no. of round to give out safety chestplates. `2`
 - `round.arena2 tnttag.config` no. of round to evacuate people from arena 1 to 2. `6`
 - `round.arena3 tnttag.config` no. of round to evacuate people from arena 2 to 3. `11`
-- `num.bomb tnttag.config` %p of online people to give out TNT to, minimum 1. `20` in arena 1, `25` in arena 2, `28` in arena 3.
+- `num.bomb tnttag.config` %p of online people to give out TNT to, minimum 1. `20` in arena 1, `25` in arena 2, `35` in arena 3.
 - `num.prot tnttag.config` %p of online people to give out chestplate to. *Unused for now* `10`
     - calculated constantly. players who log out with the chestplate do not keep it upon rejoin.
 - `num.survive tnttag.config` how many points to gain from not being blown up. `100`, `150`, `200`
