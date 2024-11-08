@@ -16,9 +16,11 @@ scoreboard players operation #displayminutes tnttag.game /= 60 GLOBAL
 scoreboard players operation #displayseconds tnttag.game = #remainingseconds tnttag.game
 scoreboard players operation #displayseconds tnttag.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds tnttag.game matches ..9 run bossbar set tnttag:timer name [{"score": {"name": "#displayminutes","objective": "tnttag.game"}},":0",{"score": {"name": "#displayseconds","objective": "tnttag.game"}}," until tnt begins"]
-execute if score #displayseconds tnttag.game matches 10.. run bossbar set tnttag:timer name [{"score": {"name": "#displayminutes","objective": "tnttag.game"}},":",{"score": {"name": "#displayseconds","objective": "tnttag.game"}}," until tnt begins"]
+execute if score #displayseconds tnttag.game matches ..9 run bossbar set tnttag:timer name ["MINECRAFT HEXATHLON starts in ",{"score": {"name": "#displayminutes","objective": "tnttag.game"}},":0",{"score": {"name": "#displayseconds","objective": "tnttag.game"}}]
+execute if score #displayseconds tnttag.game matches 10.. run bossbar set tnttag:timer name ["MINECRAFT HEXATHLON starts in ",{"score": {"name": "#displayminutes","objective": "tnttag.game"}},":",{"score": {"name": "#displayseconds","objective": "tnttag.game"}}]
 execute store result bossbar tnttag:timer value run scoreboard players get ?timer tnttag.game
+
+## TODO: set spawn point & world spawn
 
 ## start game
 execute if score ?timer tnttag.game >= time.lobby tnttag.config run function tnttag:states/pregame/start

@@ -21,7 +21,8 @@ scoreboard players set state.init tnttag.config -1
 scoreboard players set state.lobby tnttag.config 0
 ## !!!EDIT BELOW!!! add more states as needed for the game.
 scoreboard players set state.pregame tnttag.config 1
-scoreboard players set state.ingame tnttag.config 2
+scoreboard players set state.ingame_tag tnttag.config 21
+scoreboard players set state.ingame_grace tnttag.config 22
 scoreboard players set state.postgame tnttag.config 3
 
 # how long each gamestate should last

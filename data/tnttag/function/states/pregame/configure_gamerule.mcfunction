@@ -23,7 +23,7 @@ gamerule doWardenSpawning false
 gamerule doWeatherCycle false
 gamerule drowningDamage true
 gamerule enderPearlsVanishOnDeath true
-gamerule fallDamage true
+gamerule fallDamage false
 gamerule fireDamage true
 gamerule forgiveDeadPlayers true
 gamerule freezeDamage true
