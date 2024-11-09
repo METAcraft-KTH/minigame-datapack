@@ -32,7 +32,7 @@ execute if score #text ttag.game matches 3 run tellraw @a [{"text":"\nROUND OVER
 execute if score #text ttag.game matches 4 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"You played well, maybe even the best.\n","color":"gray"}]
 execute if score #text ttag.game matches 5 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Hold on, I need to sit down.\n","color":"gray"}]
 execute if score #text ttag.game matches 6 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Don't jump out of your seat now.\n","color":"gray"}]
-execute if score #text ttag.game matches 7 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Prepare for next round!\n","color":"gray"}]
+execute if score #text ttag.game matches 7 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Well, that just happened.\n","color":"gray"}]
 execute if score #text ttag.game matches 8 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Give yourself a pat on the back.\n","color":"gray"}]
 execute if score #text ttag.game matches 9 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"gg no re\n","color":"gray"}]
 execute if score #text ttag.game matches 10 run tellraw @a [{"text":"\nROUND OVER! ","color":"red","bold":true},{"text":"Let's not do that again.\n","color":"gray"}]

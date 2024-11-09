@@ -7,6 +7,9 @@ scoreboard players set ?timer ttag.game 0
 
 bossbar set ttag:timer color green
 
+# if returning to lobby, set longer time
+scoreboard players set time.ingame_grace ttag.config 400
+
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1

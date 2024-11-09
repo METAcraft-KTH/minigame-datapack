@@ -15,9 +15,13 @@ function ttag:exit_gamerule
 # inventories (+ ender chest if used)
 # tags
 # scoreboard values
+setworldspawn 0 64 0
+spawnpoint @a[tag=!admin] 0 64 0
 
 ## !!!EDIT BELOW!!! change to next game's id
 scoreboard players set game.id GLOBAL 2
 
 # TP everyone back to lobby
-tp @a @n[tag=ttag.tp.lobby]
+tp @a[tag=!admin] @n[tag=ttag.tp.lobby]
+clear @a[tag=!admin]
+effect clear @a[tag=!admin]
