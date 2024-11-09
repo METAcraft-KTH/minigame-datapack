@@ -20,4 +20,5 @@ execute if score mode qq.config matches 0 as @a[tag=!admin] run function qq:stat
 execute if score mode qq.config matches 2 as @a[tag=!admin] run function qq:states/ingame/give_arrow
 
 # set score to 0 in order to make give it a value
-scoreboard players set @a qq.Points 0
+scoreboard players set @a[tag=!admin] qq.Points 0
+scoreboard objectives setdisplay sidebar qq.Points
