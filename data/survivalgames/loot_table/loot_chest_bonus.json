@@ -1,0 +1,30 @@
+{
+    "pools": [
+      {
+        "rolls": {
+            "min": 3,
+            "max": 4
+        },
+        "entries": [
+
+        { "type": "minecraft:item", "name":"iron_helmet", "weight": 2 },
+        { "type": "minecraft:item", "name":"iron_chestplate", "weight": 1 },
+        { "type": "minecraft:item", "name":"iron_leggings", "weight": 1 },
+        { "type": "minecraft:item", "name":"iron_boots", "weight": 2 },
+        { "type": "minecraft:item", "name":"chainmail_chestplate", "weight": 4 },
+        { "type": "minecraft:item", "name":"chainmail_leggings", "weight": 3 },
+        { "type": "minecraft:item", "name":"chainmail_boots", "weight": 4 },
+        { "type": "minecraft:item", "name":"diamond", "weight": 1 },
+        { "type": "minecraft:item", "name":"bow", "weight": 3 },
+        { "type": "minecraft:item", "name":"iron_ingot", "weight": 2 },
+        { "type": "minecraft:item", "name":"cooked_beef", "weight": 1 },
+        { "type": "minecraft:item", "name":"golden_apple", "weight": 1 },
+        { "type": "minecraft:item", "name":"stick", "weight": 5 },
+        { "type": "minecraft:item", "name":"bread", "weight": 5 },
+        { "type": "minecraft:item", "name":"stone_sword", "weight": 2 },
+        { "type": "minecraft:item", "name":"stone_axe", "weight": 3 }
+
+        ]
+    }
+]
+}

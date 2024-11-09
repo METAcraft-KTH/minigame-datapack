@@ -1,0 +1,15 @@
+{
+	"criteria": {
+		"requirement": {
+			"trigger": "player_killed_entity",
+			"conditions": {
+				"entity": {
+					"type": "player"
+				}
+			}
+		}
+	},
+	"rewards": {
+		"function": "survivalgames:grant_points_kill"
+	}
+}

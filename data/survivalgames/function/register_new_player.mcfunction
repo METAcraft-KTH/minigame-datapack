@@ -1,5 +1,5 @@
 ### Give registered tag
-tag @s add GAMENAME.registered
+tag @s add SURVIVALGAMES.registered
 
 ### Registraion logic
 

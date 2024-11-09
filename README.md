@@ -2,6 +2,12 @@ Self-contained datapacks for minigame tournaments. Start from template branch.
 
 ## Documentation
 
+
+Important tags:
+SURVIVALGAMES.starting_point
+SURVIVALGAMES.middle
+
+
 ### Objectives & Variables
 
 All occurrences of `SURVIVALGAMES` (both uppercase and lowercase) is to be replaced by a unique name for the game, in order to prevent namespace conflicts.

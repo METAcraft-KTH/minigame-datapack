@@ -14,7 +14,7 @@ scoreboard players set 60 GLOBAL 60
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
-scoreboard players set id SURVIVALGAMES.config
+scoreboard players set id SURVIVALGAMES.config 6
 
 # gamestate (DO NOT change init and lobby)
 scoreboard players set state.init SURVIVALGAMES.config -1
@@ -32,10 +32,15 @@ scoreboard players set time.ingame SURVIVALGAMES.config 12000
 scoreboard players set time.postgame SURVIVALGAMES.config 600
 
 # bossbar
-bossbar add gamename:timer ""
-bossbar set gamename:timer visible false
+bossbar add survivalgames:timer ""
+bossbar set survivalgames:timer visible false
 
 # additional configs: creating teams etc
-## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE gamename:exit FUNCTION
+## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE survivalgames:exit FUNCTION
 scoreboard objectives add SURVIVALGAMES.tmp dummy
 scoreboard objectives add SURVIVALGAMES.arena_id dummy
+scoreboard objectives add SURVIVALGAMES.lobby_sizes dummy
+scoreboard objectives add SURVIVALGAMES.player_round dummy
+
+scoreboard players set arena_radius SURVIVALGAMES.config 50
+scoreboard players set round_count SURVIVALGAMES.config 3

@@ -1,0 +1,48 @@
+{
+    "pools": [
+      {
+        "rolls": {
+            "min": 4,
+            "max": 6
+        },
+        "entries": [
+            { "type": "minecraft:item", "name":"stone_sword", "weight": 3 },
+            { "type": "minecraft:item", "name":"golden_sword", "weight": 3 },
+            { "type": "minecraft:item", "name":"stone_axe", "weight": 4 },
+            { "type": "minecraft:item", "name":"wooden_axe", "weight": 4 },
+            { "type": "minecraft:item", "name":"wooden_sword", "weight": 4 },
+            { "type": "minecraft:item", "name":"golden_axe", "weight": 3 },
+            { "type": "minecraft:item", "name":"mushroom_stew", "weight": 5 },
+            { "type": "minecraft:item", "name":"stone_hoe", "weight": 3 },
+            { "type": "minecraft:item", "name":"leather_helmet", "weight": 4 },
+            { "type": "minecraft:item", "name":"leather_chestplate", "weight": 3 },
+            { "type": "minecraft:item", "name":"leather_leggings", "weight": 3 },
+            { "type": "minecraft:item", "name":"leather_boots", "weight": 4 },
+            { "type": "minecraft:item", "name":"arrow", "weight": 2, "functions": [
+                {
+                    "function": "minecraft:set_count",
+                    "count": 2
+                }
+            ] 
+            },
+            { "type": "minecraft:item", "name":"fishing_rod", "weight": 1 },
+            { "type": "minecraft:item", "name":"compass", "weight": 1 },
+            { "type": "minecraft:item", "name":"stick", "weight": 4 },
+            { "type": "minecraft:item", "name":"iron_ingot", "weight": 2 },
+            { "type": "minecraft:item", "name":"golden_helmet", "weight": 2 },
+            { "type": "minecraft:item", "name":"golden_chestplate", "weight": 1 },
+            { "type": "minecraft:item", "name":"golden_leggings", "weight": 1 },
+            { "type": "minecraft:item", "name":"golden_boots", "weight": 2 },
+            { "type": "minecraft:item", "name":"chainmail_chestplate", "weight": 1 },
+            { "type": "minecraft:item", "name":"chainmail_leggings", "weight": 1 },
+            { "type": "minecraft:item", "name":"cooked_beef", "weight": 3, "functions": [
+                {
+                    "function": "minecraft:set_count",
+                    "count": 2
+                }
+            ] 
+            }
+        ]
+      }
+    ]
+  }

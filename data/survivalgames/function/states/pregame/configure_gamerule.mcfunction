@@ -4,7 +4,7 @@
 gamerule announceAdvancements false
 gamerule blockExplosionDropDecay false
 gamerule commandBlockOutput false
-gamerule commandModificationBlockLimit 32768
+gamerule commandModificationBlockLimit 2147483647
 gamerule disableElytraMovementCheck false
 gamerule disablePlayerMovementCheck false
 gamerule disableRaids true

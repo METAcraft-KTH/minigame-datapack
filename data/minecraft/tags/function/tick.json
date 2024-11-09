@@ -1,6 +1,6 @@
 {
     "values": [
-        "gamename:tick",
-        "gamename:universal/tick"
+        "survivalgames:tick",
+        "survivalgames:universal/tick"
     ]
 }

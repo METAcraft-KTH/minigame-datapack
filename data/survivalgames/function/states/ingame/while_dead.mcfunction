@@ -2,3 +2,6 @@
 
 ## !!!ADD BELOW!!! do whatever you need.
 # remember that things like awarding kills is better done with advancements.
+
+gamemode spectator
+execute at @s run function survivalgames:run_with_range {function: "survivalgames:grant_points_death"}
