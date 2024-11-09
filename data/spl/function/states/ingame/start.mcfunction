@@ -15,3 +15,11 @@ tp @a @n[tag=spl.tp.arena]
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function spl:states/ingame/reset_player
+
+# custom
+scoreboard players set ?rain spl.game 0
+
+datapack enable "file/everyspleef_dmgtypes"
+
+gamerule doTileDrops false
+gamerule mobGriefing false

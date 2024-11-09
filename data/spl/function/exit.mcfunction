@@ -21,3 +21,5 @@ scoreboard players set game.id GLOBAL 4
 
 # TP everyone back to lobby
 tp @a @n[tag=spl.tp.lobby]
+execute at @n[tag=spl.tp.lobby] run setworldspawn ~ ~ ~ 0
+gamemode adventure @a[tag=!admin]

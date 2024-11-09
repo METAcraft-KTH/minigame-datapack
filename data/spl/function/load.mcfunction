@@ -28,7 +28,7 @@ scoreboard players set state.postgame spl.config 3
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby spl.config 3600
 scoreboard players set time.pregame spl.config 600
-scoreboard players set time.ingame spl.config 12000
+scoreboard players set time.ingame spl.config 4800
 scoreboard players set time.postgame spl.config 600
 
 # bossbar
@@ -38,3 +38,8 @@ bossbar set spl:timer visible false
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE spl:exit FUNCTION
 #team add ...
+scoreboard objectives add Spleef.State dummy
+scoreboard objectives add Spleef.JumpCooldown dummy
+scoreboard objectives add Spleef.Temp dummy
+scoreboard objectives add Spleef.Y dummy
+scoreboard objectives add Spleef.PlayerPlacement dummy

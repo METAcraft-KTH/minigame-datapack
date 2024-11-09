@@ -23,10 +23,10 @@ gamerule doWardenSpawning false
 gamerule doWeatherCycle false
 gamerule drowningDamage true
 gamerule enderPearlsVanishOnDeath true
-gamerule fallDamage true
-gamerule fireDamage true
+gamerule fallDamage false
+gamerule fireDamage false
 gamerule forgiveDeadPlayers true
-gamerule freezeDamage true
+gamerule freezeDamage false
 gamerule globalSoundEvents true
 gamerule keepInventory true
 gamerule lavaSourceConversion false

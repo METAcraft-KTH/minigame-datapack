@@ -1,0 +1,9 @@
+execute at @n[tag=spl.tp.arena] run fill ~21 170 ~21 ~-21 170 ~-21 snow_block
+execute at @n[tag=spl.tp.arena] run fill ~21 165 ~21 ~-21 165 ~-21 snow_block
+execute at @n[tag=spl.tp.arena] run fill ~21 160 ~21 ~-21 160 ~-21 snow_block
+execute at @n[tag=spl.tp.arena] run fill ~21 155 ~21 ~-21 155 ~-21 snow_block
+execute at @n[tag=spl.tp.arena] run fill ~21 150 ~21 ~-21 150 ~-21 snow_block
+execute at @n[tag=spl.tp.arena] run fill ~22 180 ~22 ~22 140 ~-22 glass replace air
+execute at @n[tag=spl.tp.arena] run fill ~22 180 ~22 ~-22 140 ~22 glass replace air
+execute at @n[tag=spl.tp.arena] run fill ~-22 180 ~-22 ~22 140 ~-22 glass replace air
+execute at @n[tag=spl.tp.arena] run fill ~-22 180 ~-22 ~-22 140 ~22 glass replace air

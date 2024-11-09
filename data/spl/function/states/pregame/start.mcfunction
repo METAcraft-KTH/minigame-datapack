@@ -8,8 +8,11 @@ function spl:states/pregame/configure_gamerule
 execute store result bossbar spl:timer max run scoreboard players get time.pregame spl.config
 scoreboard players set ?timer spl.game 0
 
+## build spleef arena
+function spl:states/pregame/build_arena
+
 # tp everyone to the arena
-tp @a @n[tag=spl.tp.arena]
+execute at @n[tag=spl.tp.arena] run tp @a[tag=!admin] ~ 180 ~
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
