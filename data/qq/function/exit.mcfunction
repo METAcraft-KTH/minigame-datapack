@@ -22,6 +22,7 @@ team remove qq.players
 tag @e remove hit
 
 ## !!!EDIT BELOW!!! change to next game's id
+scoreboard objectives setdisplay sidebar
 scoreboard players set game.id GLOBAL 3
 
 # TP everyone back to lobby
