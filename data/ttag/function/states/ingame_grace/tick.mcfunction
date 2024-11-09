@@ -20,15 +20,19 @@ bossbar set ttag:timer color red
 execute if score #displayseconds ttag.game matches ..9 run bossbar set ttag:timer name ["Next round begins in ",{"score": {"name": "#displayminutes","objective": "ttag.game"}},":0",{"score": {"name": "#displayseconds","objective": "ttag.game"}}]
 execute if score #displayseconds ttag.game matches 10.. run bossbar set ttag:timer name ["Next round begins in ",{"score": {"name": "#displayminutes","objective": "ttag.game"}},":",{"score": {"name": "#displayseconds","objective": "ttag.game"}}]
 execute store result bossbar ttag:timer value run scoreboard players get ?timer ttag.game
+title @a[tag=!admin] actionbar "Waiting for next round..."
 
 # give effects
-effect give @a[team=ttag.tagged,tag=!admin] speed 2 3 true
-effect give @a[team=ttag.tagged,tag=!admin] jump_boost 2 0 true
 effect give @a[team=!ttag.tagged,tag=!admin] speed 2 1 true
 effect give @a[tag=!admin] regeneration 2 9 true
 
-## wait 5 ticks to check for death by TNT
-execute if score ?timer ttag.game matches 5 run function ttag:states/ingame_grace/check_alive
+## wait to check for death by TNT
+execute if score ?timer ttag.game matches 3 run function ttag:states/ingame_grace/check_alive
+
+# spawnpoint for each arena (notice different cutoffs compared to ingame_tag's spawnpoint setter)
+execute if score ?round ttag.game < round.arena2 ttag.config run spawnpoint @a[tag=!admin] 10000 64 0 0
+execute if score ?round ttag.game >= round.arena2 ttag.config if score ?round ttag.game < round.arena3 ttag.config at @n[tag=ttag.arena2.spawn] run spawnpoint @a[tag=!admin] ~ ~ ~ 0
+execute if score ?round ttag.game >= round.arena3 ttag.config at @n[tag=ttag.arena3.spawn] run spawnpoint @a[tag=!admin] ~ ~ ~ 0
 
 ## end game if round max, else new round
 execute if score ?timer ttag.game >= time.ingame_grace ttag.config if score ?round ttag.game >= round.max ttag.config run return run function ttag:states/postgame/start

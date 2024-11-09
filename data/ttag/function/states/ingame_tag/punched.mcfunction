@@ -19,9 +19,12 @@ execute on attacker run effect clear @s jump_boost
 ## display
 tag @a remove ttag.temp.attacker
 execute on attacker run tag @s add ttag.temp.attacker
+team modify ttag.tagged prefix ""
 tellraw @s [{"selector":"@p[tag=ttag.temp.attacker]","color":"red"},{"text":" tagged you","color":"gray"}]
 tellraw @p[tag=ttag.temp.attacker] [{"text":"you tagged ","color":"gray"},{"selector":"@s","color":"red"}]
 execute at @s run particle lava ~ ~1 ~ .5 .5 .5 0 5 normal @a
-#execute at @s run playsound entity.arrow.hit_player player @s ~ ~ ~
+team modify ttag.tagged prefix [{"text":"[","color":"white","bold":true},{"text":"TNT","color":"red"},"] "]
+# playsound
+execute at @s run playsound entity.creeper.hurt player @s ~ ~ ~
 execute on attacker at @s run playsound entity.arrow.hit_player player @s ~ ~ ~
 tag @a remove ttag.temp.attacker

@@ -32,7 +32,7 @@ scoreboard players set time.lobby ttag.config 3600
 scoreboard players set time.pregame ttag.config 600
 # these values are 60 seconds and 15 seconds respectively, only for the first round - they're set to shorter intervals at the end & again upon arena change.
 scoreboard players set time.ingame_tag ttag.config 1200
-scoreboard players set time.ingame_grace ttag.config 300
+scoreboard players set time.ingame_grace ttag.config 200
 scoreboard players set time.postgame ttag.config 600
 
 # bossbar
@@ -48,12 +48,7 @@ team modify ttag.tagged prefix [{"text":"[","color":"white","bold":true},{"text"
 
 # see config readme
 scoreboard players set round.max ttag.config 15
-scoreboard players set round.prot ttag.config 2
 scoreboard players set round.arena2 ttag.config 6
-scoreboard players set round.arena3 ttag.config 11
+scoreboard players set round.arena3 ttag.config 12
 scoreboard players set num.bomb ttag.config 20
-scoreboard players set num.prot ttag.config 10
-scoreboard players set num.survive ttag.config 50
-scoreboard players set num.risk ttag.config 40
-scoreboard players set num.gain ttag.config 20
 scoreboard players set ?round ttag.game 0

@@ -4,16 +4,19 @@ Self-contained datapacks for minigame tournaments. Start from template branch.
 
 scoreboard 
 - `round.max ttag.config` no. of last round before game ends and postgame triggers. default `15`
-- `round.prot ttag.config` no. of round to give out safety chestplates. `2`
 - `round.arena2 ttag.config` no. of round to evacuate people from arena 1 to 2. `6`
-- `round.arena3 ttag.config` no. of round to evacuate people from arena 2 to 3. `11`
+- `round.arena3 ttag.config` no. of round to evacuate people from arena 2 to 3. `12`
 - `num.bomb ttag.config` %p of online people to give out TNT to, minimum 1. `20` in arena 1, `25` in arena 2, `35` in arena 3.
-- `num.prot ttag.config` %p of online people to give out chestplate to. *Unused for now* `10`
-    - calculated constantly. players who log out with the chestplate do not keep it upon rejoin.
-- `num.survive ttag.config` how many points to gain from not being blown up. `100`, `150`, `200`
-- `num.risk ttag.config` how many ticks to wait between each point gain while holding a TNT. `10`
-- `num.gain ttag.config` how many ticks to wait between each point gain while wearing a chestplate. *Unused for now* `20`
+- points for surviving is hardcoded.
 - `?round ttag.game` start from 0. at start of each tagging phase, compare against configs.
+
+entities
+- `ttag.arena1.beacon` block above arena 1's red beacon.
+- `ttag.arena2.beacon` block above arena 2's red beacon.
+- `ttag.arena2.spawn` arena 2's spawn point.
+- `ttag.arena3.spawn` arena 3's spawn point.
+- `ttag.arena2.entrance` sets successful evacuation to arena 2. (gives tag: `ttag.arena2.player`)
+- `ttag.arena3.entrance` sets successful evacuation to arena 3. (gives tag: `ttag.arena3.player`)
 
 ## Template documentation
 

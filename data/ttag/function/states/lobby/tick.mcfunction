@@ -21,7 +21,7 @@ execute if score #displayseconds ttag.game matches 10.. run bossbar set ttag:tim
 execute store result bossbar ttag:timer value run scoreboard players get ?timer ttag.game
 
 ## set spawn point & world spawn
-spawnpoint @a 10000 64 0 0
+spawnpoint @a[tag=!admin] 10000 64 0 0
 setworldspawn 10000 64 0 0
 gamemode adventure @a[tag=!admin,gamemode=!adventure]
 
