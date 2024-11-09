@@ -1,7 +1,10 @@
 ## this function will run every tick regardless of game.id
 
 # jump pad
-execute as @e[tag=qq.jump_pad] at @s as @p[distance=..1.5,tag=onGround,predicate=qq:jump] run summon minecraft:wind_charge ~ ~ ~ {Motion:[0.0d,-0.1d,0.0d],acceleration_power:10.0d}
+execute as @e[tag=qq.jump_pad] at @s as @p[distance=..1.5,tag=qq.mayUseJumpPad,predicate=qq:jump] run summon minecraft:wind_charge ~ ~ ~ {Motion:[0.0d,-0.1d,0.0d],acceleration_power:10.0d}
+
+execute as @a if predicate qq:on_ground run tag @s add qq.mayUseJumpPad
+execute as @a unless predicate qq:on_ground run tag @s remove qq.mayUseJumpPad
 
 # spawnpoint
 scoreboard players remove @a[scores={qq.rclickCooldown=1..}] qq.rclickCooldown 1
