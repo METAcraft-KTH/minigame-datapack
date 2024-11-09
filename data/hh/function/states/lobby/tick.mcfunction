@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes hh.game /= 60 GLOBAL
 scoreboard players operation #displayseconds hh.game = #remainingseconds hh.game
 scoreboard players operation #displayseconds hh.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds hh.game matches ..9 run bossbar set hh:timer name [{"score": {"name": "#displayminutes","objective": "hh.game"}},":0",{"score": {"name": "#displayseconds","objective": "hh.game"}}," until hh begins"]
-execute if score #displayseconds hh.game matches 10.. run bossbar set hh:timer name [{"score": {"name": "#displayminutes","objective": "hh.game"}},":",{"score": {"name": "#displayseconds","objective": "hh.game"}}," until hh begins"]
+execute if score #displayseconds hh.game matches ..9 run bossbar set hh:timer name [{"score": {"name": "#displayminutes","objective": "hh.game"}},":0",{"score": {"name": "#displayseconds","objective": "hh.game"}}," until Half Heart Race begins"]
+execute if score #displayseconds hh.game matches 10.. run bossbar set hh:timer name [{"score": {"name": "#displayminutes","objective": "hh.game"}},":",{"score": {"name": "#displayseconds","objective": "hh.game"}}," until Half Heart Race begins"]
 execute store result bossbar hh:timer value run scoreboard players get ?timer hh.game
 
 ## start game
