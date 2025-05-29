@@ -1,6 +1,7 @@
 # This function is called when the game ends and everyone is TPed back to the main lobby. Called by gamename:exit.
 
 ## Set gamerules
+gamerule allowFireTicksAwayFromPlayer false
 gamerule announceAdvancements false
 gamerule blockExplosionDropDecay false
 gamerule commandBlockOutput false
@@ -15,6 +16,7 @@ gamerule doImmediateRespawn true
 gamerule doInsomnia false
 gamerule doLimitedCrafting false
 gamerule doMobLoot true
+gamerule doMobSpawning false
 gamerule doPatrolSpawning false
 gamerule doTileDrops true
 gamerule doTraderSpawning false
@@ -39,6 +41,7 @@ gamerule mobGriefing false
 gamerule naturalRegeneration true
 gamerule playersNetherPortalCreativeDelay 1
 gamerule playersNetherPortalDefaultDelay 80
+gamerule playersSleepingPercentage 100
 gamerule projectilesCanBreakBlocks true
 gamerule randomTickSpeed 0
 gamerule reducedDebugInfo false
@@ -48,6 +51,7 @@ gamerule snowAccumulationHeight 1
 gamerule spawnChunkRadius 0
 gamerule spawnRadius 0
 gamerule spectatorsGenerateChunks false
+gamerule tntExplodes true
 gamerule tntExplosionDropDecay false
 gamerule universalAnger false
 gamerule waterSourceConversion true
