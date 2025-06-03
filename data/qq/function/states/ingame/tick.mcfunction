@@ -29,8 +29,8 @@ execute if score mode qq.config matches 2 if score #displayseconds qq.game match
 execute if score mode qq.config matches 2 if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Quake Mode ends in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
 
 # Ghost Trick
-execute if score mode qq.config matches 3 if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Ghost Trick ends in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
-execute if score mode qq.config matches 3 if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Ghost Trick ends in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute if score mode qq.config matches 3 if score #displayseconds qq.game matches ..9 run bossbar set qq:timer name ["Trident Trick ends in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":0",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
+execute if score mode qq.config matches 3 if score #displayseconds qq.game matches 10.. run bossbar set qq:timer name ["Trident Trick ends in ",{"score": {"name": "#displayminutes","objective": "qq.game"}},":",{"score": {"name": "#displayseconds","objective": "qq.game"}}]
 
 
 execute store result bossbar qq:timer value run scoreboard players get ?timer qq.game

@@ -3,6 +3,6 @@
         "minecraft:villager",
         "minecraft:player",
         "minecraft:pillager",
-        "metacraft:player"
+        "minecraft:skeleton"
     ]
 }

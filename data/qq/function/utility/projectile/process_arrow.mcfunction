@@ -1,2 +1,2 @@
-## Set damage and no pickup and despawn after 5 seconds in ground
-data merge entity @s {damage:100, pickup:0b, life:1160s}
+## Set no pickup and despawn after 5 seconds in ground
+execute unless score arrowPickup qq.config matches 1.. run data merge entity @s {pickup:0b, life:1160s}

@@ -10,15 +10,17 @@ experience add @s 1 levels
 effect give @s instant_health 1 9
 
 # POINT SYSTEM
-function score:add_points {points:25}
+execute if score @s qq.Points matches 21.. run return run function score:add_points {points:3}
+function score:add_points {points:20}
 execute unless score @s qq.Points matches 20 run return 0
 scoreboard players add #num20kills qq.Points 1
 tellraw @a ["",{"selector":"@s","bold":true,"color":"yellow"},{"text":" is number ","color":"gold"},{"score":{"name":"#num20kills","objective":"qq.Points"}},{"text":" to reach 20 kills!","color":"gold"}]
-function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..7 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..6 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..5 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..4 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..3 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..2 run function score:add_points {points:25}
-execute if score #num20kills qq.Points matches ..1 run function score:add_points {points:25}
+
+execute if score #num20kills qq.Points matches 8.. run return run function score:add_points {points:20}
+execute if score #num20kills qq.Points matches 7 run return run function score:add_points {points:40}
+execute if score #num20kills qq.Points matches 6 run return run function score:add_points {points:60}
+execute if score #num20kills qq.Points matches 5 run return run function score:add_points {points:80}
+execute if score #num20kills qq.Points matches 4 run return run function score:add_points {points:90}
+execute if score #num20kills qq.Points matches 3 run return run function score:add_points {points:100}
+execute if score #num20kills qq.Points matches 2 run return run function score:add_points {points:110}
+execute if score #num20kills qq.Points matches 1 run return run function score:add_points {points:125}

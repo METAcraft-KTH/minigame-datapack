@@ -26,6 +26,7 @@ team modify qq.players friendlyFire false
 team join qq.players @a[tag=!admin]
 
 # reset inventory but no arrows
+effect give @a[tag=!admin] instant_health 2 99 true
 execute as @a[tag=!admin] run function qq:states/ingame/reset_inventory
 execute as @a[tag=!admin] run clear @s arrow
 

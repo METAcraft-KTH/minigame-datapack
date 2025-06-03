@@ -1,7 +1,7 @@
 tag @s add thisTrident
 
 ## Set damage (does not work sadly)
-data merge entity @s {damage:100}
+#data merge entity @s {damage:100}
 
 ## Set color
 execute at @s on origin if score @s qq.Points matches 5..9 run team join qq.yellow @n[type=minecraft:trident, tag=thisTrident]

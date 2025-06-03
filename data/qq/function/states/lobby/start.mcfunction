@@ -21,3 +21,10 @@ team modify qq.players nametagVisibility hideForOwnTeam
 team modify qq.players seeFriendlyInvisibles false
 team modify qq.players friendlyFire false
 team join qq.players @a[tag=!admin]
+
+# reset all players' hunger, health, effects, xp, inventory
+effect clear @a[tag=!admin]
+effect give @a[tag=!admin] saturation 2 99 true
+effect give @a[tag=!admin] instant_health 2 99 true
+xp set @a[tag=!admin] 0
+clear @a[tag=!admin]

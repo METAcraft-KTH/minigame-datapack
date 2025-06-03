@@ -1,3 +1,5 @@
+# if is bot, give arrow scoreboard
+
 # if already has arrow, give then return
 execute if items entity @s container.* arrow run return run give @s arrow
 
