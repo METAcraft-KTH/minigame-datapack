@@ -23,6 +23,7 @@ team modify qq.players friendlyFire false
 team join qq.players @a[tag=!admin]
 
 # reset all players' hunger, health, effects, xp, inventory
+gamemode adventure @a[tag=!admin]
 effect clear @a[tag=!admin]
 effect give @a[tag=!admin] saturation 2 99 true
 effect give @a[tag=!admin] instant_health 2 99 true

@@ -34,3 +34,5 @@ execute as @a[tag=!admin] run clear @s arrow
 scoreboard players reset * qq.Points
 xp set @a 0 levels
 xp set @a 0 points
+
+gamemode adventure @a[tag=!admin]
