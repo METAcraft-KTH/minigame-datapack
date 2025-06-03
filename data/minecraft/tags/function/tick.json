@@ -1,6 +1,6 @@
 {
     "values": [
-        "gamename:tick",
-        "gamename:universal/tick"
+        "koth:tick",
+        "koth:universal/tick"
     ]
 }

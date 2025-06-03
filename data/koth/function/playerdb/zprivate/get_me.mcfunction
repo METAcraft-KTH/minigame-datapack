@@ -1,0 +1,1 @@
+$data modify storage koth:pdb out set from storage koth:pdb players[{UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}]
