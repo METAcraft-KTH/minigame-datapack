@@ -20,7 +20,7 @@ scoreboard players set 60 GLOBAL 60
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
-scoreboard players set id qq.config 2
+scoreboard players set id qq.config 3
 
 # gamestate (DO NOT change init and lobby)
 scoreboard players set state.init qq.config -1

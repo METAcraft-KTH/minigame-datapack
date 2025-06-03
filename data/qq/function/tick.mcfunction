@@ -1,3 +1,7 @@
+# if this game is NOT the active game, do not do anything
+execute unless score game.id GLOBAL = id qq.config run return -1
+execute unless score ?state qq.game matches -2147483648..2147483647 run function qq:load
+
 # Pre tick: Check for new & rejoining players and update their states
 # todo: remove registered tag after the game is over, so it can be run again?
 execute as @a[tag=!qq.registered,tag=!admin] run function qq:register_new_player
