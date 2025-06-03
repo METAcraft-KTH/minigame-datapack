@@ -20,4 +20,4 @@ function gamename:exit_gamerule
 scoreboard players set game.id GLOBAL 
 
 # TP everyone back to lobby
-tp @a @n[tag=GAMENAME.tp.lobby]
+tp @a[tag=!admin] @n[tag=GAMENAME.tp.lobby]

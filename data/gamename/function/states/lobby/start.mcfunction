@@ -12,8 +12,9 @@ scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function gamename:states/lobby/reset_player
 
-# reset all players' hunger, health, effects, xp
-effect clear @a
-effect give @a saturation 2 99 true
-effect give @a instant_health 2 99 true
-xp set @a 0
+# reset all players' hunger, health, effects, xp, inventory
+effect clear @a[tag=!admin]
+effect give @a[tag=!admin] saturation 2 99 true
+effect give @a[tag=!admin] instant_health 2 99 true
+xp set @a[tag=!admin] 0
+clear @a[tag=!admin]

@@ -6,7 +6,7 @@ execute store result bossbar gamename:timer max run scoreboard players get time.
 scoreboard players set ?timer GAMENAME.game 0
 
 # tp everyone to the arena
-tp @a @n[tag=GAMENAME.tp.arena]
+tp @a[tag=!admin] @n[tag=GAMENAME.tp.arena]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
