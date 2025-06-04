@@ -18,14 +18,14 @@ gamerule doLimitedCrafting false
 gamerule doMobLoot true
 gamerule doMobSpawning false
 gamerule doPatrolSpawning false
-gamerule doTileDrops true
+gamerule doTileDrops false
 gamerule doTraderSpawning false
 gamerule doVinesSpread false
 gamerule doWardenSpawning false
 gamerule doWeatherCycle false
 gamerule drowningDamage true
 gamerule enderPearlsVanishOnDeath true
-gamerule fallDamage true
+gamerule fallDamage false
 gamerule fireDamage true
 gamerule forgiveDeadPlayers true
 gamerule freezeDamage true
