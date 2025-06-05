@@ -10,6 +10,7 @@ scoreboard players set ?timer spleef.game 0
 
 # tp everyone to the arena
 tp @a[tag=!admin] @n[tag=spleef.tp.arena]
+gamemode adventure @a[tag=!admin]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
@@ -23,3 +24,6 @@ effect give @a[tag=!admin] instant_health 2 99 true
 xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
+
+# generate map
+function spleef:utility/game/blocks/place/run

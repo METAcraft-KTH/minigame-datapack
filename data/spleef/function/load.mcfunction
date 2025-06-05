@@ -21,7 +21,9 @@ scoreboard players set state.init spleef.config -1
 scoreboard players set state.lobby spleef.config 0
 ## !!!EDIT BELOW!!! add more states as needed for the game.
 scoreboard players set state.pregame spleef.config 1
-scoreboard players set state.ingame spleef.config 2
+scoreboard players set state.ingame_spleef spleef.config 21
+scoreboard players set state.ingame_run spleef.config 22
+scoreboard players set state.ingame_freeze spleef.config 23
 scoreboard players set state.postgame spleef.config 3
 
 # how long each gamestate should last
@@ -38,5 +40,7 @@ bossbar set spleef:timer visible false
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE spleef:exit FUNCTION
 #team add ...
-scoreboard objectives add spleef.temp dummy
+scoreboard objectives add spleef.Y dummy
 scoreboard objectives add spleef.blockmined minecraft.used:golden_pickaxe
+
+execute positioned 50023 32 23 unless entity @n[type=marker,tag=spleef.tp.arena,distance=..1] run summon marker ~ ~ ~ {Tags:["spleef.tp.arena"]}

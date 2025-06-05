@@ -1,2 +1,0 @@
-execute positioned 50032 10 32 as @e[tag=spleef.floor1,distance=..100,type=marker] at @s run function spleef:states/ingame/blocks/destroy/as_marker
-schedule function spleef:states/ingame/blocks/destroy/run2 1t
