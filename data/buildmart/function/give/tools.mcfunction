@@ -1,0 +1,5 @@
+give @s diamond_pickaxe[can_break=[{blocks:["cobblestone", "iron_ore", "coal_ore", "gold_ore", "lapis_ore", "diamond_ore", "redstone_ore", "obsidian", "nether_gold_ore", "nether_quartz_ore", "ancient_debris", "crying_obsidian"]}],unbreakable={}]
+give @s iron_axe[can_break=[{blocks:["oak_log"]}],unbreakable={}]
+give @s iron_hoe[can_break=[{blocks:["sugar_cane", "wheat"]}],unbreakable={}]
+give @s iron_shovel[can_break=[{blocks:["soul_sand"]}],unbreakable={}]
+give @s iron_sword[unbreakable={}]
