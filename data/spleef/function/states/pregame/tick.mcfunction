@@ -24,8 +24,6 @@ execute store result bossbar spleef:timer value run scoreboard players get ?time
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run tellraw @s {"text":"Whoa, hey, you don't wanna do that.","color":"gray"}
 execute as @a[tag=!admin,scores={spleef.Y=..0}] at @s run tp @s @n[tag=spleef.tp.arena,type=marker,distance=..1000]
 
-# fill offhand w wind charges
-item replace entity @a[tag=!admin] weapon.offhand with wind_charge[use_cooldown={seconds:1.0f}]
 
 ## start game (for real)
 execute if score ?timer spleef.game >= time.pregame spleef.config run function spleef:states/ingame_spleef/start

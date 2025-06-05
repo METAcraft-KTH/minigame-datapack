@@ -29,5 +29,7 @@ clear @a[tag=!admin]
 scoreboard players set ?colors spleef.game 3
 function spleef:utility/game/blocks/place/run
 
+item replace entity @a[tag=!admin] weapon.offhand with wind_charge
+
 # set round number
 scoreboard players set ?round.number spleef.game 0

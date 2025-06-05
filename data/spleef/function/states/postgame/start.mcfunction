@@ -6,7 +6,7 @@ execute store result bossbar spleef:timer max run scoreboard players get time.po
 scoreboard players set ?timer spleef.game 0
 
 # tp everyone to the arena
-tp @a[tag=!admin] @n[tag=spleef.tp.arena]
+#tp @a[tag=!admin] @n[tag=spleef.tp.arena]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state

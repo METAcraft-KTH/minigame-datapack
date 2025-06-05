@@ -46,7 +46,7 @@ gamerule projectilesCanBreakBlocks true
 gamerule randomTickSpeed 0
 gamerule reducedDebugInfo false
 gamerule sendCommandFeedback true
-gamerule showDeathMessages true
+gamerule showDeathMessages false
 gamerule snowAccumulationHeight 1
 gamerule spawnChunkRadius 0
 gamerule spawnRadius 0

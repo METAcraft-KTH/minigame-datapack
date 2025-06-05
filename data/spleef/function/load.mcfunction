@@ -29,7 +29,7 @@ scoreboard players set state.postgame spleef.config 3
 # how long each gamestate should last
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby spleef.config 3600
-scoreboard players set time.pregame spleef.config 600
+scoreboard players set time.pregame spleef.config 400
 scoreboard players set time.ingame_spleef spleef.config 600
 scoreboard players set time.ingame_run spleef.config 100
 scoreboard players set time.ingame_freeze spleef.config 100
