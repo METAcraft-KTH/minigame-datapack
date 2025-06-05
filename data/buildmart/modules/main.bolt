@@ -1,0 +1,7 @@
+from buildmart:lib import getItems
+
+function buildmart:clear_tags:
+	for item in getItems():
+		tag @s remove item.replace(":", ".")
+
+

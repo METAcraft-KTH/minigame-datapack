@@ -1,0 +1,15 @@
+{
+	"data_pack": {
+		"load": ["."]
+	},
+	"require": [
+		"bolt"
+	],
+	"pipeline": ["mecha"],
+	"output": "build",
+	"meta": {
+		"bolt": {
+			"entrypoint": "buildmart:main"
+		}
+	}
+}

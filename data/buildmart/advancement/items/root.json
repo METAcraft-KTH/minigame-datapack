@@ -1,0 +1,25 @@
+{
+	"criteria": {
+		"dummy": {
+			"trigger": "impossible"
+		}
+	},
+	"display": {
+		"icon": {
+			"id": "book"
+		},
+		"announce_to_chat": false,
+		"background": "minecraft:gui/advancements/backgrounds/adventure",
+		"description": {
+			"text": "Items to Collect"
+		},
+		"show_toast": false,
+		"title": {
+			"text": "Items"
+		},
+		"hidden": true
+	},
+	"requirements": [
+		["dummy"]
+	]
+}

@@ -6,3 +6,5 @@ effect clear @s
 clear @s
 experience set @s 0 levels
 experience set @s 0 points
+
+function buildmart:states/ingame/init_player

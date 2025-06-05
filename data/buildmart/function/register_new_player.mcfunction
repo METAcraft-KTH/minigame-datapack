@@ -1,5 +1,5 @@
 ### Give registered tag
-tag @s add GAMENAME.registered
+tag @s add buildmart.registered
 
 ### Registraion logic
 

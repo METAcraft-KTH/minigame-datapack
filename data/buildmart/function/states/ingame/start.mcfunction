@@ -1,17 +1,19 @@
 # This function is called when the playable minigame actually begins.
-scoreboard players set ?state GAMENAME.game 2
+scoreboard players set ?state buildmart.game 2
+
+execute store result score ?game-id buildmart.game run random value -2147483648..2147483647
 
 # various configs
-function gamename:states/pregame/configure_gamerule
+function buildmart:states/pregame/configure_gamerule
 
 # initialize timer
-execute store result bossbar gamename:timer max run scoreboard players get time.ingame GAMENAME.config
-scoreboard players set ?timer GAMENAME.game 0
+execute store result bossbar buildmart:timer max run scoreboard players get time.ingame buildmart.config
+scoreboard players set ?timer buildmart.game 0
 
-# tp everyone to the arena
-tp @a[tag=!admin] @n[tag=GAMENAME.tp.arena]
+function buildmart:states/ingame/init_items
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
-execute as @a[tag=!admin] run function gamename:states/ingame/reset_player
+execute as @a[tag=!admin] run function buildmart:states/ingame/reset_player
+

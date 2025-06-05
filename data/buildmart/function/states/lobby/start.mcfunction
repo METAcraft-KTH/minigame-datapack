@@ -1,16 +1,16 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
-scoreboard players set ?state GAMENAME.game 0
+scoreboard players set ?state buildmart.game 0
 
 # initialize timer
-execute store result bossbar gamename:timer max run scoreboard players get time.lobby GAMENAME.config
-scoreboard players set ?timer GAMENAME.game 0
+execute store result bossbar buildmart:timer max run scoreboard players get time.lobby buildmart.config
+scoreboard players set ?timer buildmart.game 0
 
 scoreboard players reset @a GLOBAL.player_left
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
-execute as @a[tag=!admin] run function gamename:states/lobby/reset_player
+execute as @a[tag=!admin] run function buildmart:states/lobby/reset_player
 
 # reset all players' hunger, health, effects, xp, inventory
 effect clear @a[tag=!admin]

@@ -1,20 +1,20 @@
 # This function is called after lobby time ends, and we want to TP everyone to the arena.
-scoreboard players set ?state GAMENAME.game 1
+scoreboard players set ?state buildmart.game 1
 
 # various configs
-function gamename:states/pregame/configure_gamerule
+function buildmart:states/pregame/configure_gamerule
 
 # initialize timer
-execute store result bossbar gamename:timer max run scoreboard players get time.pregame GAMENAME.config
-scoreboard players set ?timer GAMENAME.game 0
+execute store result bossbar buildmart:timer max run scoreboard players get time.pregame buildmart.config
+scoreboard players set ?timer buildmart.game 0
 
 # tp everyone to the arena
-tp @a[tag=!admin] @n[tag=GAMENAME.tp.arena]
+tp @a[tag=!admin] @n[tag=buildmart.tp.arena]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
-execute as @a[tag=!admin] run function gamename:states/pregame/reset_player
+execute as @a[tag=!admin] run function buildmart:states/pregame/reset_player
 
 # reset all players' hunger, health, effects, xp, inventory
 effect clear @a[tag=!admin]

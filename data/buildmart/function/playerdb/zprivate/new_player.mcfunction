@@ -1,1 +1,1 @@
-$execute unless data storage gamename:pdb players[{UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}] run data modify storage gamename:pdb players append value {UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}
+$execute unless data storage buildmart:pdb players[{UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}] run data modify storage buildmart:pdb players append value {UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}

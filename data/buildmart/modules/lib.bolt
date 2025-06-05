@@ -1,0 +1,10 @@
+import json
+
+def getItems():
+	itemFile = open("valid_items.json", "r")
+
+	itemList = json.load(itemFile)
+	itemFile.close()
+	return itemList
+
+
