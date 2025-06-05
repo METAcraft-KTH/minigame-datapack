@@ -11,8 +11,8 @@ execute if score ?colors spleef.game matches 5 store result score . spleef.temp 
 execute if score ?colors spleef.game matches 6 store result score . spleef.temp run random value 1..6
 
 execute if score . spleef.temp matches 1 run setblock ~ ~ ~ red_terracotta
-execute if score . spleef.temp matches 2 run setblock ~ ~ ~ blue_terracotta
-execute if score . spleef.temp matches 3 run setblock ~ ~ ~ green_terracotta
-execute if score . spleef.temp matches 4 run setblock ~ ~ ~ pink_terracotta
-execute if score . spleef.temp matches 5 run setblock ~ ~ ~ yellow_terracotta
-execute if score . spleef.temp matches 6 run setblock ~ ~ ~ purple_terracotta
+execute if score . spleef.temp matches 2 run setblock ~ ~ ~ yellow_terracotta
+execute if score . spleef.temp matches 3 run setblock ~ ~ ~ orange_terracotta
+execute if score . spleef.temp matches 4 run setblock ~ ~ ~ purple_terracotta
+execute if score . spleef.temp matches 5 run setblock ~ ~ ~ green_terracotta
+execute if score . spleef.temp matches 6 run setblock ~ ~ ~ blue_terracotta

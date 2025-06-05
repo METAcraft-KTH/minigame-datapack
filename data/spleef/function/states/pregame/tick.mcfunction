@@ -21,7 +21,6 @@ execute if score #displayseconds spleef.game matches 10.. run bossbar set spleef
 execute store result bossbar spleef:timer value run scoreboard players get ?timer spleef.game
 
 # tp players back onto the platform
-execute as @a[tag=!admin] at @s store result score @s spleef.Y run data get entity @s Pos[1] 1
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run tellraw @s {"text":"Whoa, hey, you don't wanna do that.","color":"gray"}
 execute as @a[tag=!admin,scores={spleef.Y=..0}] at @s run tp @s @n[tag=spleef.tp.arena,type=marker,distance=..1000]
 
@@ -29,4 +28,4 @@ execute as @a[tag=!admin,scores={spleef.Y=..0}] at @s run tp @s @n[tag=spleef.tp
 item replace entity @a[tag=!admin] weapon.offhand with wind_charge[use_cooldown={seconds:1.0f}]
 
 ## start game (for real)
-execute if score ?timer spleef.game >= time.pregame spleef.config run function spleef:states/ingame/start
+execute if score ?timer spleef.game >= time.pregame spleef.config run function spleef:states/ingame_spleef/start

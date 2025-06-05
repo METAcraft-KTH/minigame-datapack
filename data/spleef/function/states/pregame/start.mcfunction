@@ -26,4 +26,8 @@ xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
 
 # generate map
+scoreboard players set ?colors spleef.game 3
 function spleef:utility/game/blocks/place/run
+
+# set round number
+scoreboard players set ?round.number spleef.game 0

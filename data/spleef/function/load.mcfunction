@@ -30,7 +30,9 @@ scoreboard players set state.postgame spleef.config 3
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby spleef.config 3600
 scoreboard players set time.pregame spleef.config 600
-scoreboard players set time.ingame spleef.config 12000
+scoreboard players set time.ingame_spleef spleef.config 600
+scoreboard players set time.ingame_run spleef.config 100
+scoreboard players set time.ingame_freeze spleef.config 100
 scoreboard players set time.postgame spleef.config 600
 
 # bossbar

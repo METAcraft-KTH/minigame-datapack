@@ -6,4 +6,4 @@ gamemode spectator
 tp @s @n[tag=spleef.tp.arena]
 
 # gib points
-execute as @a[tag=!admin,gamemode=!spectator] run function score:add_points {points:2}
+execute as @a[tag=!admin,gamemode=!spectator] run function score:add_points {points:4}

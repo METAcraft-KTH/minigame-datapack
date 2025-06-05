@@ -14,7 +14,9 @@ execute if score ?state spleef.game = state.lobby spleef.config run function spl
 
 ## !!!EDIT BELOW!!! gamestate-specific tick functions
 execute if score ?state spleef.game = state.pregame spleef.config run function spleef:states/pregame/tick
-execute if score ?state spleef.game = state.ingame spleef.config run function spleef:states/ingame/tick
+execute if score ?state spleef.game = state.ingame_spleef spleef.config run function spleef:states/ingame_spleef/tick
+execute if score ?state spleef.game = state.ingame_run spleef.config run function spleef:states/ingame_run/tick
+execute if score ?state spleef.game = state.ingame_freeze spleef.config run function spleef:states/ingame_freeze/tick
 execute if score ?state spleef.game = state.postgame spleef.config run function spleef:states/postgame/tick
 
 ## Make bossbar visible
