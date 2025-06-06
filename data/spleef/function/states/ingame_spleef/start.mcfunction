@@ -45,6 +45,7 @@ function spleef:utility/game/blocks/place/run
 
 # ""random"" event
 execute if score ?round.number spleef.game matches 2 run title @a subtitle "btw, spleef to restore hunger"
+execute if score ?round.number spleef.game matches 2 run title @a actionbar "🎵 BadApple!! (noteblock arr. Akitsuki4852)"
 
 execute if score ?round.number spleef.game matches 3 run title @a subtitle "Bomberman Edition"
 execute if score ?round.number spleef.game matches 3 run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 5
