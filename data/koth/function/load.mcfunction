@@ -32,9 +32,16 @@ scoreboard players set time.ingame koth.config 12000
 scoreboard players set time.postgame koth.config 600
 
 # bossbar
-bossbar add koth:timer ""
+bossbar add koth:timer "King of Three Hills"
 bossbar set koth:timer visible false
 
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE koth:exit FUNCTION
 #team add ...
+
+team add koth.blue
+team modify koth.blue color blue
+team modify koth.blue friendlyFire false
+team add koth.red
+team modify koth.red color red
+team modify koth.red friendlyFire false

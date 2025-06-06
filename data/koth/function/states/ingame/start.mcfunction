@@ -8,8 +8,12 @@ function koth:states/pregame/configure_gamerule
 execute store result bossbar koth:timer max run scoreboard players get time.ingame koth.config
 scoreboard players set ?timer koth.game 0
 
+# Assign teams
+pointsystem join-scoreboard-teams-balanced @a[tag=!admin] koth.blue koth.red
+
 # tp everyone to the arena
-tp @a[tag=!admin] @n[tag=koth.tp.arena]
+tp @a[tag=!admin,team=koth.blue] @n[tag=koth.tp.blue]
+tp @a[tag=!admin,team=koth.red] @n[tag=koth.tp.red]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
