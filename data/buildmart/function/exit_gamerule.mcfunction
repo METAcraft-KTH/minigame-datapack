@@ -55,4 +55,4 @@ gamerule tntExplodes true
 gamerule tntExplosionDropDecay false
 gamerule universalAnger false
 gamerule waterSourceConversion true
-function buildmart:replace_broken_blocks {value: "false"}
+function buildmart:gamerule/replace_broken_blocks {value: "false"}
