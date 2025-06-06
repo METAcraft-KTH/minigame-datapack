@@ -79,6 +79,7 @@ execute if score ?round.number spleef.game matches 11 run give @a[tag=!admin] ex
 execute if score ?round.number spleef.game matches 11 run give @a[tag=!admin] stick[item_model="cod",item_name="Daskefisk",enchantments={knockback:1}] 1
 execute if score ?round.number spleef.game matches 11 as @a[tag=!admin,gamemode=adventure] at @s run summon chicken ~ 32 ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true,equipment:{mainhand:{id:"golden_pickaxe",components:{enchantments:{knockback:3}}}}}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:5,duration:-1,show_particles:false}]}
 
+execute if score ?round.number spleef.game matches 12 run title @a subtitle "something might happen..."
 execute if score ?round.number spleef.game matches 13 run title @a subtitle "ok last round i swear"
 
 execute if score ?round.number spleef.game matches 4.. run give @a[tag=!admin] arrow
