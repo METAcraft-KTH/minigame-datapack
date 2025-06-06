@@ -12,3 +12,5 @@ tp @a[tag=!admin] @n[tag=buildmart.tp.arena]
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function buildmart:states/postgame/reset_player
+
+function #buildmart:map_reset
