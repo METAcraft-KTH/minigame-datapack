@@ -50,23 +50,23 @@ execute if score ?round.number spleef.game matches 3 run title @a subtitle "Bomb
 execute if score ?round.number spleef.game matches 3 run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 5
 
 execute if score ?round.number spleef.game matches 4 run title @a subtitle "sumo tendencies"
-execute if score ?round.number spleef.game matches 4.. run give @a[tag=!admin] bow[enchantments={infinity:1,punch:1},unbreakable={},item_name="This bow does not break blocks"]
+execute if score ?round.number spleef.game matches 4..7 run give @a[tag=!admin] bow[enchantments={infinity:1,punch:1},unbreakable={},item_name="This bow does not break blocks"]
 execute if score ?round.number spleef.game matches 4 run give @a[tag=!admin] stick[item_model="cod",item_name="Daskefisk",enchantments={knockback:1}] 1
+
 execute if score ?round.number spleef.game matches 5 run title @a subtitle "CHICKEN JOCKEY!!!"
-execute if score ?round.number spleef.game matches 5 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 5 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 5 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 5 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
+execute if score ?round.number spleef.game matches 5 as @a[tag=!admin,gamemode=adventure] at @s run summon chicken ~ 32 ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true,equipment:{mainhand:{id:"golden_pickaxe",components:{enchantments:{knockback:3}}}}}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:5,duration:-1,show_particles:false}]}
 
 execute if score ?round.number spleef.game matches 6 run title @a subtitle "baby man edition"
 execute if score ?round.number spleef.game matches 6 as @a[tag=!admin] run attribute @s scale modifier add spleef:babyman -0.5 add_multiplied_base
 
-execute if score ?round.number spleef.game matches 7 run title @a subtitle "probably tnt run"
+execute if score ?round.number spleef.game matches 7 run title @a subtitle "this might be tnt run"
 
-execute if score ?round.number spleef.game matches 8 run title @a subtitle "No spleef. Figure it out"
+execute if score ?round.number spleef.game matches 8 run title @a subtitle "No pickaxe. Figure it out"
 execute if score ?round.number spleef.game matches 8 run clear @a[tag=!admin] golden_pickaxe
+execute if score ?round.number spleef.game matches 8.. run give @a[tag=!admin] bow[enchantments={infinity:1,punch:1},unbreakable={},item_name="This bow DOES break blocks"]
 execute if score ?round.number spleef.game matches 8.. run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 3
-execute if score ?round.number spleef.game matches 8 run item replace entity @a[tag=!admin] inventory.1 with golden_pickaxe[can_break={blocks:["red_terracotta","orange_terracotta","yellow_terracotta","black_terracotta","purple_terracotta","blue_terracotta","green_terracotta"]},unbreakable={},item_name="Mildly Inefficient Spleef For Food",item_model="white_stained_glass_pane",enchantments={knockback:2,efficiency:5}]
+execute if score ?round.number spleef.game matches 8 run item replace entity @a[tag=!admin] inventory.1 with golden_pickaxe[can_break={blocks:["red_terracotta","orange_terracotta","yellow_terracotta","black_terracotta","purple_terracotta","blue_terracotta","green_terracotta"]},unbreakable={},item_name="I can eat blocks, it does not hurt me",item_model="white_stained_glass_pane",enchantments={knockback:1,efficiency:3}]
+execute if score ?round.number spleef.game matches 8 run effect clear @a[tag=!admin] hunger
 
 execute if score ?round.number spleef.game matches 9 run title @a subtitle "BIG man edition"
 execute if score ?round.number spleef.game matches 9 as @a[tag=!admin] run attribute @s scale modifier add spleef:bigman 0.5 add_multiplied_base
@@ -76,11 +76,11 @@ execute if score ?round.number spleef.game matches 10 run title @a subtitle "oop
 execute if score ?round.number spleef.game matches 11 run title @a subtitle "whatever, random bs go"
 execute if score ?round.number spleef.game matches 11 run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 10
 execute if score ?round.number spleef.game matches 11 run give @a[tag=!admin] stick[item_model="cod",item_name="Daskefisk",enchantments={knockback:1}] 1
-execute if score ?round.number spleef.game matches 11 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 11 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 11 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
-execute if score ?round.number spleef.game matches 11 at @n[tag=spleef.tp.arena,type=marker] run summon chicken ~ ~ ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:3}]}
+execute if score ?round.number spleef.game matches 11 as @a[tag=!admin,gamemode=adventure] at @s run summon chicken ~ 32 ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true,equipment:{mainhand:{id:"golden_pickaxe",components:{enchantments:{knockback:3}}}}}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:5,duration:-1,show_particles:false}]}
 
 execute if score ?round.number spleef.game matches 13 run title @a subtitle "ok last round i swear"
 
 execute if score ?round.number spleef.game matches 4.. run give @a[tag=!admin] arrow
+
+# play music
+execute as @a at @s run function spleefmusic:badapple/play

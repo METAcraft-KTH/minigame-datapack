@@ -33,3 +33,11 @@ item replace entity @a[tag=!admin] weapon.offhand with wind_charge
 
 # set round number
 scoreboard players set ?round.number spleef.game 0
+
+execute as @a run function spleefmusic:badapple/stop
+
+tellraw @a {"text":"\nGAME 5: HELA HAVET SPLEEFAR","color":"gold","bold":true}
+tellraw @a {"text":"- Don't fall into the void",color:"gray"}
+tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
+tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
+tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}

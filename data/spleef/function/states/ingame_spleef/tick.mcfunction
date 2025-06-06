@@ -29,5 +29,9 @@ execute if score ?round.number spleef.game matches 11 as @a[tag=!admin,gamemode=
 # darkness
 execute if score ?round.number spleef.game matches 10 run effect give @a[tag=!admin,gamemode=adventure] darkness 2 0 true
 
+# break floors
+execute if score ?round.number spleef.game matches 12 if score ?timer spleef.game matches 200 positioned 50032 10 32 as @e[tag=spleef.floor3,distance=..100,type=marker] at @s run setblock ~ ~ ~ air
+execute if score ?round.number spleef.game matches 12 if score ?timer spleef.game matches 400 positioned 50032 10 32 as @e[tag=spleef.floor2,distance=..100,type=marker] at @s run setblock ~ ~ ~ air
+
 ## end game
 execute if score ?timer spleef.game >= time.ingame_spleef spleef.config run function spleef:states/ingame_run/start

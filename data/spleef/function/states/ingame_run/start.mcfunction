@@ -8,9 +8,9 @@ function spleef:states/pregame/configure_gamerule
 execute if score ?round.number spleef.game matches 1 run scoreboard players set time.ingame_run spleef.config 100
 execute if score ?round.number spleef.game matches 2 run scoreboard players set time.ingame_run spleef.config 80
 execute if score ?round.number spleef.game matches 3 run scoreboard players set time.ingame_run spleef.config 60
-execute if score ?round.number spleef.game matches 4..5 run scoreboard players set time.ingame_run spleef.config 45
+execute if score ?round.number spleef.game matches 4..5 run scoreboard players set time.ingame_run spleef.config 50
 execute if score ?round.number spleef.game matches 6..8 run scoreboard players set time.ingame_run spleef.config 40
-execute if score ?round.number spleef.game matches 9.. run scoreboard players set time.ingame_run spleef.config 35
+execute if score ?round.number spleef.game matches 9.. run scoreboard players set time.ingame_run spleef.config 30
 
 # initialize timer
 execute store result bossbar spleef:timer max run scoreboard players get time.ingame_run spleef.config

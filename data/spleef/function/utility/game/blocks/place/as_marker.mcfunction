@@ -1,9 +1,11 @@
 # do not place block if floor is destroyed
-execute if score ?floor.remain spleef.game matches 2.. if entity @s[tag=spleef.floor1] run return 0
-execute if score ?floor.remain spleef.game matches 3.. if entity @s[tag=spleef.floor2] run return 0
+#execute if score ?floor.remain spleef.game matches 2.. if entity @s[tag=spleef.floor1] run return 0
+#execute if score ?floor.remain spleef.game matches 3.. if entity @s[tag=spleef.floor2] run return 0
 # if the floor will be destroyed next round, mark with black
-execute if score ?floor.next spleef.game matches 2.. if entity @s[tag=spleef.floor1] run return run setblock ~ ~ ~ black_terracotta
-execute if score ?floor.next spleef.game matches 3.. if entity @s[tag=spleef.floor2] run return run setblock ~ ~ ~ black_terracotta
+#execute if score ?floor.next spleef.game matches 2.. if entity @s[tag=spleef.floor1] run return run setblock ~ ~ ~ black_terracotta
+#execute if score ?floor.next spleef.game matches 3.. if entity @s[tag=spleef.floor2] run return run setblock ~ ~ ~ black_terracotta
+
+execute if entity @s[tag=spleef.border] run return run setblock ~ ~ ~ black_terracotta
 
 execute if score ?colors spleef.game matches 3 store result score . spleef.temp run random value 1..3
 execute if score ?colors spleef.game matches 4 store result score . spleef.temp run random value 1..4

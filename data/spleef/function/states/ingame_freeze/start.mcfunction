@@ -22,3 +22,6 @@ title @a clear
 
 # DELETE THE BLOCKS
 function spleef:utility/game/blocks/destroy/run
+
+# pause music
+execute as @a at @s run function spleefmusic:badapple/pause

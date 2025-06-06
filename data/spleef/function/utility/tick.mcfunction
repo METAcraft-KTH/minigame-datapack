@@ -14,4 +14,4 @@ execute as @a[tag=!admin] if items entity @s weapon.offhand wind_charge run item
 effect give @a[tag=!admin] night_vision infinite 0 true
 effect give @a[tag=!admin] resistance infinite 4 true
 
-execute positioned 50032 10 32 as @e[type=arrow,distance=..100,nbt={inGround:1b}] run kill @s
+execute positioned 50032 10 32 as @e[type=arrow,distance=..100,nbt={inGround:1b}] at @s run function spleef:utility/as_arrow
