@@ -15,6 +15,8 @@ execute if score ?state koth.game = state.lobby koth.config run function koth:st
 ## !!!EDIT BELOW!!! gamestate-specific tick functions
 execute if score ?state koth.game = state.pregame koth.config run function koth:states/pregame/tick
 execute if score ?state koth.game = state.ingame koth.config run function koth:states/ingame/tick
+execute if score ?state koth.game = state.ingame_walldrop koth.config run function koth:states/ingame_walldrop/tick
+execute if score ?state koth.game = state.ingame_cp koth.config run function koth:states/ingame_cp/tick
 execute if score ?state koth.game = state.postgame koth.config run function koth:states/postgame/tick
 
 ## Make bossbar visible

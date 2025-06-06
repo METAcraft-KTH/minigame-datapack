@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes koth.game /= 60 GLOBAL
 scoreboard players operation #displayseconds koth.game = #remainingseconds koth.game
 scoreboard players operation #displayseconds koth.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds koth.game matches ..9 run bossbar set koth:timer name [{"score": {"name": "#displayminutes","objective": "koth.game"}},":0",{"score": {"name": "#displayseconds","objective": "koth.game"}}," until koth begins"]
-execute if score #displayseconds koth.game matches 10.. run bossbar set koth:timer name [{"score": {"name": "#displayminutes","objective": "koth.game"}},":",{"score": {"name": "#displayseconds","objective": "koth.game"}}," until koth begins"]
+execute if score #displayseconds koth.game matches ..9 run bossbar set koth:timer name [{"score": {"name": "#displayminutes","objective": "koth.game"}},":0",{"score": {"name": "#displayseconds","objective": "koth.game"}}," until King of Three Hills begins"]
+execute if score #displayseconds koth.game matches 10.. run bossbar set koth:timer name [{"score": {"name": "#displayminutes","objective": "koth.game"}},":",{"score": {"name": "#displayseconds","objective": "koth.game"}}," until King of Three Hills begins"]
 execute store result bossbar koth:timer value run scoreboard players get ?timer koth.game
 
 ## start game

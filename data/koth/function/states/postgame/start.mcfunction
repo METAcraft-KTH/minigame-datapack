@@ -1,5 +1,5 @@
 # This function is called when the playable part of the minigame ends.
-scoreboard players set ?state koth.game 3
+scoreboard players set ?state koth.game 5
 
 # initialize timer
 execute store result bossbar koth:timer max run scoreboard players get time.postgame koth.config
