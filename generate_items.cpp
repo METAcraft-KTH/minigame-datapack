@@ -153,7 +153,7 @@ void generateItemAdvancement(const Identifier& item) {
 	};
 	item_advancement["display"] = {
 		{"icon", {{"id", item.toString()}}},
-		{"announce_to_chat", false},
+		{"announce_to_chat", true},
 		{"show_toast", true},
 		{"title", {{"translate", getPrefix(item) + "." + item.ns + "." + item.path}}},
 		{"description", {{"text", ""}}}

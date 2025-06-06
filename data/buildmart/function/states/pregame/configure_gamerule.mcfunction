@@ -2,7 +2,7 @@
 
 ## Set gamerules
 gamerule allowFireTicksAwayFromPlayer false
-gamerule announceAdvancements false
+gamerule announceAdvancements true
 gamerule blockExplosionDropDecay false
 gamerule commandBlockOutput false
 gamerule commandModificationBlockLimit 32768
