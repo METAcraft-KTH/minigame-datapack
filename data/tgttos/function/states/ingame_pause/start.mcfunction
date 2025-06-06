@@ -20,8 +20,4 @@ execute as @a[tag=!admin] run function tgttos:states/ingame_pause/reset_player
 clear @a[tag=!admin]
 title @a clear
 
-# DELETE THE BLOCKS
-function tgttos:utility/game/blocks/destroy/run
-
-# pause music
-execute as @a at @s run function tgttosmusic:badapple/pause
+execute as @a[tag=!admin,gamemode=!spectator] run gamemode spectator

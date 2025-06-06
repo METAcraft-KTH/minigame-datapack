@@ -28,9 +28,9 @@ scoreboard players set state.postgame tgttos.config 3
 # how long each gamestate should last
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby tgttos.config 3600
-scoreboard players set time.pregame tgttos.config 400
-scoreboard players set time.ingame_run tgttos.config 100
-scoreboard players set time.ingame_pause tgttos.config 100
+scoreboard players set time.pregame tgttos.config 300
+scoreboard players set time.ingame_run tgttos.config 2000
+scoreboard players set time.ingame_pause tgttos.config 200
 scoreboard players set time.postgame tgttos.config 600
 
 # bossbar

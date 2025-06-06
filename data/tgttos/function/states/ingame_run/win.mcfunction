@@ -1,4 +1,4 @@
-tellraw @s [{"text":"✔ Round ","color":"green","bold":true},{score:{name:"?round.number",objective:"tgttos.game"}}," survived"]
+tellraw @a [{"text":"✔ Round ","color":"green","bold":true},{score:{name:"?round.number",objective:"tgttos.game"}}," survived"]
 function score:add_points {points:35}
 
 execute if score #playersleft tgttos.game matches 1 run tellraw @s {"text":"You were the LAST REMAINING player!! (Bonus points)","color":"gray"}

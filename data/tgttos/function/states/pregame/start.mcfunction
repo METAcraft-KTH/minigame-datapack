@@ -25,19 +25,8 @@ xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
 
-# generate map
-scoreboard players set ?colors tgttos.game 3
-function tgttos:utility/game/blocks/place/run
-
-item replace entity @a[tag=!admin] weapon.offhand with wind_charge
-
-# set round number
-scoreboard players set ?round.number tgttos.game 0
-
-execute as @a run function tgttosmusic:badapple/stop
-
-tellraw @a {"text":"\nGAME 5: HELA HAVET tgttosAR","color":"gold","bold":true}
-tellraw @a {"text":"- Don't fall into the void",color:"gray"}
-tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
-tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
-tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}
+#tellraw @a {"text":"\nGAME 2: TO GET TO THE OTHER SIDE","color":"gold","bold":true}
+#tellraw @a {"text":"- Don't fall into the void",color:"gray"}
+#tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
+#tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
+#tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}
