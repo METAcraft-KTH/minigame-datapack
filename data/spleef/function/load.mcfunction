@@ -42,6 +42,7 @@ bossbar set spleef:timer visible false
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE spleef:exit FUNCTION
 #team add ...
+scoreboard objectives add spleef.temp dummy
 scoreboard objectives add spleef.Y dummy
 scoreboard objectives add spleef.blockmined minecraft.used:golden_pickaxe
 

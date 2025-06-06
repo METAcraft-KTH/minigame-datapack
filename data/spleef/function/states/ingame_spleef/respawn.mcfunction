@@ -14,7 +14,7 @@ tellraw @s {"text":"☠ Slipped on a banan","color":"red","bold":true}
 execute store result score #playersleft spleef.game if entity @a[tag=!admin,gamemode=adventure]
 execute store result score #playersleft_plus1 spleef.game if entity @a[tag=!admin,gamemode=adventure]
 scoreboard players add #playersleft_plus1 spleef.game 1
-title @a actionbar [{score:{name:"#playersleft",objective:"spleef.game"},color:"gray"}," players remain."]
+title @a actionbar ["",{selector:"@s",color:"gold"}," just died, ", {score:{name:"#playersleft",objective:"spleef.game"},color:"gold"}," players remain."]
 #tellraw @s [{"text":"You ranked ","color":"gray"},{score:{name:"#playersleft_plus1",objective:"spleef.game"}},"/",{score:{name:"#allplayers",objective:"spleef.game"}}," this round"]
 execute if score #playersleft_plus1 spleef.game matches 11.. run tellraw @s [{"text":"You came ","color":"gray"},{score:{name:"#playersleft_plus1",objective:"spleef.game"}},"th this round"]
 execute if score #playersleft_plus1 spleef.game matches ..10 run tellraw @s [{"text":"You came ","color":"gray"},{score:{name:"#playersleft_plus1",objective:"spleef.game"}},"th this round (top 10 survivors: bonus points)"]

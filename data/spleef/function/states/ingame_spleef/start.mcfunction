@@ -51,26 +51,29 @@ execute if score ?round.number spleef.game matches 3 run title @a subtitle "Bomb
 execute if score ?round.number spleef.game matches 3 run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 5
 
 execute if score ?round.number spleef.game matches 4 run title @a subtitle "sumo tendencies"
-execute if score ?round.number spleef.game matches 4..7 run give @a[tag=!admin] bow[enchantments={infinity:1,punch:1},unbreakable={},item_name="This bow does not break blocks"]
+execute if score ?round.number spleef.game matches 4..7 run give @a[tag=!admin] bow[enchantments={infinity:1,punch:2},unbreakable={},item_name="This bow does not break blocks"]
 execute if score ?round.number spleef.game matches 4 run give @a[tag=!admin] stick[item_model="cod",item_name="Daskefisk",enchantments={knockback:1}] 1
 
+execute if score ?round.number spleef.game matches 5 run title @a subtitle "CHICKEN JOCKEY!!!"
 execute if score ?round.number spleef.game matches 5 run title @a subtitle "CHICKEN JOCKEY!!!"
 execute if score ?round.number spleef.game matches 5 as @a[tag=!admin,gamemode=adventure] at @s run summon chicken ~ 32 ~ {Invulnerable:1b,Passengers:[{id:"zombie",Invulnerable:1b,IsBaby:true,equipment:{mainhand:{id:"golden_pickaxe",components:{enchantments:{knockback:3}}}}}],IsChickenJockey:true,active_effects:[{id:"speed",amplifier:5,duration:-1,show_particles:false}]}
 
 execute if score ?round.number spleef.game matches 6 run title @a subtitle "baby man edition"
-execute if score ?round.number spleef.game matches 6 as @a[tag=!admin] run attribute @s scale modifier add spleef:babyman -0.5 add_multiplied_base
+execute if score ?round.number spleef.game matches 6 as @a[tag=!admin] run item replace entity @s armor.feet with leather_boots[attribute_modifiers=[{type:"scale",amount:-0.5,operation:"add_multiplied_base",id:"spleef:babyman"}],enchantments={binding_curse:1}]
 
 execute if score ?round.number spleef.game matches 7 run title @a subtitle "this might be tnt run"
 
 execute if score ?round.number spleef.game matches 8 run title @a subtitle "No pickaxe. Figure it out"
 execute if score ?round.number spleef.game matches 8 run clear @a[tag=!admin] golden_pickaxe
-execute if score ?round.number spleef.game matches 8.. run give @a[tag=!admin] bow[enchantments={infinity:1,punch:1},unbreakable={},item_name="This bow DOES break blocks"]
+execute if score ?round.number spleef.game matches 8.. run give @a[tag=!admin] bow[enchantments={infinity:1,punch:2},unbreakable={},item_name="This bow DOES break blocks"]
 execute if score ?round.number spleef.game matches 8.. run give @a[tag=!admin] experience_bottle[item_model="tnt",item_name="Throwable TNT"] 3
 execute if score ?round.number spleef.game matches 8 run item replace entity @a[tag=!admin] inventory.1 with golden_pickaxe[can_break={blocks:["red_terracotta","orange_terracotta","yellow_terracotta","black_terracotta","purple_terracotta","blue_terracotta","green_terracotta"]},unbreakable={},item_name="I can eat blocks, it does not hurt me",item_model="white_stained_glass_pane",enchantments={knockback:1,efficiency:3}]
 execute if score ?round.number spleef.game matches 8 run effect clear @a[tag=!admin] hunger
 
 execute if score ?round.number spleef.game matches 9 run title @a subtitle "BIG man edition"
-execute if score ?round.number spleef.game matches 9 as @a[tag=!admin] run attribute @s scale modifier add spleef:bigman 0.5 add_multiplied_base
+execute if score ?round.number spleef.game matches 9 run clear @a[tag=!admin] golden_pickaxe
+execute if score ?round.number spleef.game matches 9 run give @a[tag=!admin] golden_pickaxe[enchantments={efficiency:100},tooltip_display={hidden_components:["enchantments","can_break"]},can_break={blocks:["red_terracotta","orange_terracotta","yellow_terracotta","black_terracotta","purple_terracotta","blue_terracotta","green_terracotta"]},unbreakable={},item_name="Mine blocks to restore hunger",attribute_modifiers=[{amount:0.5,operation:"add_multiplied_base",type:"block_interaction_range",id:"spleef:reach"}]]
+execute if score ?round.number spleef.game matches 9 as @a[tag=!admin] run item replace entity @s armor.feet with leather_boots[attribute_modifiers=[{type:"scale",amount:0.5,operation:"add_multiplied_base",id:"spleef:bigman"}],enchantments={binding_curse:1}]
 
 execute if score ?round.number spleef.game matches 10 run title @a subtitle "oops! all darkness"
 
