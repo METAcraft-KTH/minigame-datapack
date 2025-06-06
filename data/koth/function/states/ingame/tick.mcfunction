@@ -22,3 +22,5 @@ execute store result bossbar koth:timer value run scoreboard players get ?timer 
 
 ## end game
 execute if score ?timer koth.game >= time.ingame koth.config run function koth:states/postgame/start
+
+execute as @e[tag=koth.cp] at @s rotated as @s run function koth:cp/tick

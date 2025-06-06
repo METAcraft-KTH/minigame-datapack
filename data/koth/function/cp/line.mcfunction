@@ -1,0 +1,6 @@
+$execute if block ~ ~-1 ~ bedrock run setblock ~ ~ ~ $(block)
+$execute if block ^ ^-1 ^1 bedrock run setblock ^ ^ ^1 $(block)
+$execute if block ^ ^-1 ^2 bedrock run setblock ^ ^ ^2 $(block)
+$execute if block ^ ^-1 ^3 bedrock run setblock ^ ^ ^3 $(block)
+$execute if block ^ ^-1 ^4 bedrock run setblock ^ ^ ^4 $(block)
+$execute if block ^ ^-1 ^5 bedrock run setblock ^ ^ ^5 $(block)

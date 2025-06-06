@@ -45,3 +45,6 @@ team modify koth.blue friendlyFire false
 team add koth.red
 team modify koth.red color red
 team modify koth.red friendlyFire false
+
+scoreboard objectives add koth.cp dummy
+scoreboard objectives add koth.cp.delta dummy

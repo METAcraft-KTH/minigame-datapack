@@ -19,3 +19,5 @@ tp @a[tag=!admin,team=koth.red] @n[tag=koth.tp.red]
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function koth:states/ingame/reset_player
+
+scoreboard players set @e[tag=koth.cp] koth.cp 0
