@@ -5,3 +5,5 @@ function buildmart:states/ingame/helper/prepare_array_iteration with storage bui
 tp @s @n[tag=buildmart.tp.arena]
 function buildmart:give/tools
 execute at @s run spawnpoint @s ~ ~ ~
+gamemode adventure @s
+clear @s

@@ -17,3 +17,11 @@ scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function buildmart:states/ingame/reset_player
 
+execute store result storage buildmart:startup_cache radius int 1 run scoreboard players get arena_chunk_radius buildmart.config
+execute as @e[tag=buildmart.tp.arena] at @a:
+	data modify storage buildmart:startup_cache block_entity set value "furnace"
+	function buildmart:states/ingame/helper/clear_block_entities with storage buildmart:startup_cache
+	data modify storage buildmart:startup_cache block_entity set value "blast_furnace"
+	function buildmart:states/ingame/helper/clear_block_entities with storage buildmart:startup_cache
+
+function #buildmart:map_init

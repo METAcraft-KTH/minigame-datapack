@@ -40,3 +40,4 @@ bossbar set buildmart:timer visible false
 #team add ...
 scoreboard players set count.items buildmart.config 12
 scoreboard objectives add buildmart.display_index dummy
+scoreboard players set arena_chunk_radius buildmart.config 20
