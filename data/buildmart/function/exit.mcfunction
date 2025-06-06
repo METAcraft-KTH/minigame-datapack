@@ -13,6 +13,7 @@ function buildmart:exit_gamerule
 
 # spawnpoints
 spawnpoint @a[tag=!admin] ~ ~ ~
+execute as @a[tag=!admin] run advancement revoke @s everything
 # inventories (+ ender chest if used)
 # tags
 # scoreboard values
