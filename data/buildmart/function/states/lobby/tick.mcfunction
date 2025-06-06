@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes buildmart.game /= 60 GLOBAL
 scoreboard players operation #displayseconds buildmart.game = #remainingseconds buildmart.game
 scoreboard players operation #displayseconds buildmart.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds buildmart.game matches ..9 run bossbar set buildmart:timer name [{"score": {"name": "#displayminutes","objective": "buildmart.game"}},":0",{"score": {"name": "#displayseconds","objective": "buildmart.game"}}," until buildmart begins"]
-execute if score #displayseconds buildmart.game matches 10.. run bossbar set buildmart:timer name [{"score": {"name": "#displayminutes","objective": "buildmart.game"}},":",{"score": {"name": "#displayseconds","objective": "buildmart.game"}}," until buildmart begins"]
+execute if score #displayseconds buildmart.game matches ..9 run bossbar set buildmart:timer name [{"score": {"name": "#displayminutes","objective": "buildmart.game"}},":0",{"score": {"name": "#displayseconds","objective": "buildmart.game"}}," until First we mine, then we craft begins"]
+execute if score #displayseconds buildmart.game matches 10.. run bossbar set buildmart:timer name [{"score": {"name": "#displayminutes","objective": "buildmart.game"}},":",{"score": {"name": "#displayseconds","objective": "buildmart.game"}}," until First we mine, then we craft begins"]
 execute store result bossbar buildmart:timer value run scoreboard players get ?timer buildmart.game
 
 ## start game
