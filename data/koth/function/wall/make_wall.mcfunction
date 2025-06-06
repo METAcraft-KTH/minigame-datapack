@@ -1,0 +1,1 @@
+execute as @e[tag=koth.wall] at @s run fill ~ -64 ~ ~ 319 ~ bedrock
