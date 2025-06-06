@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes spleef.game /= 60 GLOBAL
 scoreboard players operation #displayseconds spleef.game = #remainingseconds spleef.game
 scoreboard players operation #displayseconds spleef.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds spleef.game matches ..9 run bossbar set spleef:timer name [{"score": {"name": "#displayminutes","objective": "spleef.game"}},":0",{"score": {"name": "#displayseconds","objective": "spleef.game"}}," until Color Spleef begins"]
-execute if score #displayseconds spleef.game matches 10.. run bossbar set spleef:timer name [{"score": {"name": "#displayminutes","objective": "spleef.game"}},":",{"score": {"name": "#displayseconds","objective": "spleef.game"}}," until Color Spleef begins"]
+execute if score #displayseconds spleef.game matches ..9 run bossbar set spleef:timer name [{"score": {"name": "#displayminutes","objective": "spleef.game"}},":0",{"score": {"name": "#displayseconds","objective": "spleef.game"}}," until Hela Havet Spleefar begins"]
+execute if score #displayseconds spleef.game matches 10.. run bossbar set spleef:timer name [{"score": {"name": "#displayminutes","objective": "spleef.game"}},":",{"score": {"name": "#displayseconds","objective": "spleef.game"}}," until Hela Havet Spleefar begins"]
 execute store result bossbar spleef:timer value run scoreboard players get ?timer spleef.game
 
 ## start game
