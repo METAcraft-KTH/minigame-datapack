@@ -38,6 +38,5 @@ bossbar set buildmart:timer visible false
 # additional configs: creating teams etc
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE buildmart:exit FUNCTION
 #team add ...
-scoreboard players set count.items buildmart.config 5
-scoreboard objectives add buildmart.items_collected dummy
+scoreboard players set count.items buildmart.config 12
 scoreboard objectives add buildmart.display_index dummy

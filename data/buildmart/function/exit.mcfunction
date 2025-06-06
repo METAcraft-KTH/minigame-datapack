@@ -3,7 +3,6 @@
 
 # Remove scoreboards
 scoreboard players reset * buildmart.game
-scoreboard players reset * buildmart.items_collected
 # Remove bossbar
 bossbar remove buildmart:timer
 # reset gamerules
@@ -13,6 +12,7 @@ function buildmart:exit_gamerule
 ## !!!EDIT BELOW!!! CHECKLIST OF THINGS TO RESET:
 
 # spawnpoints
+spawnpoint @a[tag=!admin] ~ ~ ~
 # inventories (+ ender chest if used)
 # tags
 # scoreboard values
