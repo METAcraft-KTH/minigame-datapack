@@ -43,7 +43,7 @@ gamerule playersNetherPortalCreativeDelay 1
 gamerule playersNetherPortalDefaultDelay 80
 gamerule playersSleepingPercentage 100
 gamerule projectilesCanBreakBlocks true
-gamerule randomTickSpeed 0
+gamerule randomTickSpeed 3
 gamerule reducedDebugInfo false
 gamerule sendCommandFeedback true
 gamerule showDeathMessages true

@@ -2,5 +2,4 @@
 
 ## !!!ADD BELOW!!! do whatever you need, e.g. forcing them to spectate an entity while waiting to respawn.
 # remember that things like awarding kills is better done with advancements.
-execute if entity @s[team=koth.blue] run tp @s @n[tag=koth.tp.blue]
-execute if entity @s[team=koth.red] run tp @s @n[tag=koth.tp.red]
+

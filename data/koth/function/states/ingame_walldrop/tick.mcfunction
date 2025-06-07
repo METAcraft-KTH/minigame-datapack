@@ -21,7 +21,4 @@ execute if score #displayseconds koth.game matches 10.. run bossbar set koth:tim
 execute store result bossbar koth:timer value run scoreboard players get ?timer koth.game
 
 ## end game
-execute if score ?timer koth.game >= time.ingame_walldrop koth.config run function koth:states/ingame_walldrop/start
-
-# Control points are now enabled!
-execute as @e[tag=koth.cp] at @s rotated as @s run function koth:cp/tick
+execute if score ?timer koth.game >= time.ingame_walldrop koth.config run function koth:states/ingame_cp/start

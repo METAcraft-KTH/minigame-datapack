@@ -1,5 +1,5 @@
 # This function is called when the playable minigame actually begins.
-scoreboard players set ?state koth.game 3
+scoreboard players operation ?state koth.game = state.ingame_walldrop koth.config
 
 # various configs
 function koth:states/pregame/configure_gamerule

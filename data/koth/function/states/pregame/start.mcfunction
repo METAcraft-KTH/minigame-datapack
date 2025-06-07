@@ -1,5 +1,5 @@
 # This function is called after lobby time ends, and we want to TP everyone to the arena.
-scoreboard players set ?state koth.game 1
+scoreboard players operation ?state koth.game = state.pregame koth.config
 
 # various configs
 function koth:states/pregame/configure_gamerule

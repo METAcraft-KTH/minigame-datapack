@@ -1,5 +1,5 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
-scoreboard players set ?state koth.game 0
+scoreboard players operation ?state koth.game = state.lobby koth.config
 
 # initialize timer
 execute store result bossbar koth:timer max run scoreboard players get time.lobby koth.config

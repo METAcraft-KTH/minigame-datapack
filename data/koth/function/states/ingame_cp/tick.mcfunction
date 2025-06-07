@@ -26,10 +26,42 @@ execute if score ?timer koth.game >= time.ingame_cp koth.config run function kot
 # Control points are now enabled!
 execute as @e[tag=koth.cp] at @s rotated as @s run function koth:cp/tick
 
+# Prepare the display
+scoreboard players operation ne koth.cp = @e[tag=koth.cp.ne] koth.cp
+scoreboard players operation center koth.cp = @e[tag=koth.cp.center] koth.cp
+scoreboard players operation sw koth.cp = @e[tag=koth.cp.sw] koth.cp
+execute if score ne koth.cp matches ..-1 run scoreboard players operation ne koth.cp *= -1 GLOBAL
+execute if score center koth.cp matches ..-1 run scoreboard players operation center koth.cp *= -1 GLOBAL
+execute if score sw koth.cp matches ..-1 run scoreboard players operation sw koth.cp *= -1 GLOBAL
+scoreboard players operation #time_mod koth.game = ?timer koth.game
+scoreboard players operation #time_mod koth.game %= 20 GLOBAL
+scoreboard players operation #flash_mod koth.game = ?timer koth.game
+scoreboard players operation #flash_mod koth.game %= 4 GLOBAL
+
+execute if score #time_mod koth.game matches 0 as @e[tag=koth.cp] if score @s koth.cp matches 100 run scoreboard players add blue koth.game 1
+execute if score #time_mod koth.game matches 0 as @e[tag=koth.cp] if score @s koth.cp matches -100 run scoreboard players add red koth.game 1
+
 scoreboard players set line1 koth.display 1
-scoreboard players display name line1 koth.display [{"text": "Blue: "}, {"score": {"name": "blue", "objective": "koth.cp"}}]
-scoreboard players display name line2 koth.display [{"text": "Red: "}, {"score": {"name": "red", "objective": "koth.cp"}}]
+scoreboard players display name line1 koth.display [{"text": "Blue: "}, {"score": {"name": "blue", "objective": "koth.game"}}]
+scoreboard players display name line2 koth.display [{"text": "Red: "}, {"score": {"name": "red", "objective": "koth.game"}}]
 scoreboard players display name line3 koth.display [{"text":""}]
-scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "@e[tag=koth.cp.ne]", "objective": "koth.cp"}}]
-scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "@e[tag=koth.cp.center]", "objective": "koth.cp"}}]
-scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "@e[tag=koth.cp.sw]", "objective": "koth.cp"}}]
+
+execute if score @n[tag=koth.cp.ne] koth.cp matches 100 run scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "ne", "objective": "koth.cp"}, "color": "blue"}, {"text": "%", "color": "blue"}]
+execute if score @n[tag=koth.cp.ne] koth.cp matches -100 run scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "ne", "objective": "koth.cp"}, "color": "red"}, {"text": "%", "color": "red"}]
+execute if score @n[tag=koth.cp.ne] koth.cp matches -99..99 unless score @n[tag=koth.cp.ne] koth.cp matches -1..1 if score #flash_mod koth.game matches 0..1 run scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "ne", "objective": "koth.cp"}, "color": "yellow"}, {"text": "%", "color": "yellow"}]
+execute if score @n[tag=koth.cp.ne] koth.cp matches -99..99 unless score @n[tag=koth.cp.ne] koth.cp matches -1..1 if score #flash_mod koth.game matches 2..3 run scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "ne", "objective": "koth.cp"}, "color": "black"}, {"text": "%", "color": "black"}]
+execute if score @n[tag=koth.cp.ne] koth.cp matches -1..1 run scoreboard players display name line4 koth.display [{"text":"North-East: "}, {"score": {"name": "ne", "objective": "koth.cp"}, "color": "white"}, {"text": "%", "color": "white"}]
+
+execute if score @n[tag=koth.cp.center] koth.cp matches 100 run scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "center", "objective": "koth.cp"}, "color": "blue"}, {"text": "%", "color": "blue"}]
+execute if score @n[tag=koth.cp.center] koth.cp matches -100 run scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "center", "objective": "koth.cp"}, "color": "red"}, {"text": "%", "color": "red"}]
+execute if score @n[tag=koth.cp.center] koth.cp matches -99..99 unless score @n[tag=koth.cp.center] koth.cp matches -1..1 if score #flash_mod koth.game matches 0..1 run scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "center", "objective": "koth.cp"}, "color": "yellow"}, {"text": "%", "color": "yellow"}]
+execute if score @n[tag=koth.cp.center] koth.cp matches -99..99 unless score @n[tag=koth.cp.center] koth.cp matches -1..1 if score #flash_mod koth.game matches 2..3 run scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "center", "objective": "koth.cp"}, "color": "black"}, {"text": "%", "color": "black"}]
+execute if score @n[tag=koth.cp.center] koth.cp matches -1..1 run scoreboard players display name line5 koth.display [{"text":"Center: "}, {"score": {"name": "center", "objective": "koth.cp"}, "color": "white"}, {"text": "%", "color": "white"}]
+
+execute if score @n[tag=koth.cp.sw] koth.cp matches 100 run scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "sw", "objective": "koth.cp"}, "color": "blue"}, {"text": "%", "color": "blue"}]
+execute if score @n[tag=koth.cp.sw] koth.cp matches -100 run scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "sw", "objective": "koth.cp"}, "color": "red"}, {"text": "%", "color": "red"}]
+execute if score @n[tag=koth.cp.sw] koth.cp matches -99..99 unless score @n[tag=koth.cp.sw] koth.cp matches -1..1 if score #flash_mod koth.game matches 0..1 run scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "sw", "objective": "koth.cp"}, "color": "yellow"}, {"text": "%", "color": "yellow"}]
+execute if score @n[tag=koth.cp.sw] koth.cp matches -99..99 unless score @n[tag=koth.cp.sw] koth.cp matches -1..1 if score #flash_mod koth.game matches 2..3 run scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "sw", "objective": "koth.cp"}, "color": "black"}, {"text": "%", "color": "black"}]
+execute if score @n[tag=koth.cp.sw] koth.cp matches -1..1 run scoreboard players display name line6 koth.display [{"text":"South-West: "}, {"score": {"name": "sw", "objective": "koth.cp"}, "color": "white"}, {"text": "%", "color": "white"}]
+
+# Messages

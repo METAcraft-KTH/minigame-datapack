@@ -1,5 +1,5 @@
 # This function is called when the playable minigame actually begins.
-scoreboard players set ?state koth.game 2
+scoreboard players operation ?state koth.game = state.ingame koth.config
 
 # various configs
 function koth:states/pregame/configure_gamerule
@@ -14,6 +14,9 @@ pointsystem join-scoreboard-teams-balanced @a[tag=!admin] koth.blue koth.red
 # tp everyone to the arena
 tp @a[tag=!admin,team=koth.blue] @n[tag=koth.tp.blue]
 tp @a[tag=!admin,team=koth.red] @n[tag=koth.tp.red]
+gamemode survival @a[tag=!admin]
+execute at @n[tag=koth.tp.blue] run spawnpoint @s[team=koth.blue] ~ ~ ~ 0
+execute at @n[tag=koth.tp.red] run spawnpoint @s[team=koth.red] ~ ~ ~ 0
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
@@ -29,3 +32,5 @@ function koth:wall/make_wall
 scoreboard players reset * koth.display
 scoreboard players set line1 koth.display 1
 scoreboard players display name line1 koth.display {"text": "Gather gear!","color":"aqua","italic":true}
+
+scoreboard objectives setdisplay sidebar koth.display

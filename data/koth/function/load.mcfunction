@@ -14,6 +14,8 @@ scoreboard objectives add GLOBAL.player_left minecraft.custom:leave_game
 scoreboard objectives add GLOBAL.time_alive minecraft.custom:minecraft.time_since_death
 scoreboard players set 20 GLOBAL 20
 scoreboard players set 60 GLOBAL 60
+scoreboard players set -1 GLOBAL -1
+scoreboard players set 4 GLOBAL 4
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
