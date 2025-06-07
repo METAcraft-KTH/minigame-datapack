@@ -1,0 +1,26 @@
+{
+	"criteria": {
+		"traded": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"location": {
+						"position": {
+							"y": {
+								"min": 104
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"traded"
+		]
+	],
+	"rewards": {
+		"function": "exact:adv/12"
+	}
+}

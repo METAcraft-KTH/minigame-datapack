@@ -6,3 +6,4 @@ function exact:states/ingame_run/reset_player
 ## !!!ADD BELOW!!! do whatever you need, e.g. checking they're at the lobby/arena and tp them if not
 tp @s @n[tag=exact.tp.arena]
 gamemode adventure
+tag @s remove exact.done

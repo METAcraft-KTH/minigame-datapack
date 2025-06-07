@@ -5,3 +5,5 @@ scoreboard players set @s GLOBAL.player_in_state 1
 effect clear @s
 experience set @s 0 levels
 experience set @s 0 points
+clear @s
+tag @s remove exact.done

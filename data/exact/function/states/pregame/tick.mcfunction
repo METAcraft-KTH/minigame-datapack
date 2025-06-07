@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes exact.game /= 60 GLOBAL
 scoreboard players operation #displayseconds exact.game = #remainingseconds exact.game
 scoreboard players operation #displayseconds exact.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name ["Chaos begins in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
-execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name ["Chaos begins in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
+execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name ["Begin prompting in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
+execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name ["Begin prompting in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
 execute store result bossbar exact:timer value run scoreboard players get ?timer exact.game
 
 effect give @a[tag=!admin] saturation infinite 0 true
@@ -42,4 +42,5 @@ execute if score #remainingtime exact.game matches 40 as @a[tag=!admin] at @s ru
 execute if score #remainingtime exact.game matches 20 run title @a[tag=!admin] title {"text":"0?","color":"green"}
 execute if score #remainingtime exact.game matches 20 as @a[tag=!admin] at @s run playsound block.note_block.pling player @s ~ ~ ~
 
+execute if score ?timer exact.game >= time.pregame exact.config run scoreboard players set ?round.number exact.game 0
 execute if score ?timer exact.game >= time.pregame exact.config run function exact:states/ingame_run/start

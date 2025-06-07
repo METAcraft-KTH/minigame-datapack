@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes exact.game /= 60 GLOBAL
 scoreboard players operation #displayseconds exact.game = #remainingseconds exact.game
 scoreboard players operation #displayseconds exact.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
-execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
+execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name ["Do as told in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
+execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name ["Do as told in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
 execute store result bossbar exact:timer value run scoreboard players get ?timer exact.game
 
 # kill players who fall off / are on fire
@@ -28,12 +28,25 @@ execute if score ?round.number exact.game matches 3 as @a[tag=!admin] at @s if b
 effect give @a[tag=!admin] saturation infinite 0 true
 effect give @a[tag=!admin] resistance infinite 4 true
 
-# give wool
-function exact:states/pregame/give_me_wool
+title @a times 0 80 20
+title @a[tag=!exact.done] title ""
+execute if score ?round.number exact.game matches 1 run title @a[tag=!exact.done] subtitle "Enchant the pickaxe!!"
+execute if score ?round.number exact.game matches 2 run title @a[tag=!exact.done] subtitle "Shear a sheep!!"
+execute if score ?round.number exact.game matches 3 run title @a[tag=!exact.done] subtitle "Wear full diamond armor!!"
+execute if score ?round.number exact.game matches 4 run title @a[tag=!exact.done] subtitle "Power a beacon!!"
+execute if score ?round.number exact.game matches 5 run title @a[tag=!exact.done] subtitle "Shoot a chicken!!"
+execute if score ?round.number exact.game matches 6 run title @a[tag=!exact.done] subtitle "Drink milk!!"
+execute if score ?round.number exact.game matches 7 run title @a[tag=!exact.done] subtitle "Take fall damage!!"
+execute if score ?round.number exact.game matches 8 run title @a[tag=!exact.done] subtitle "Buy anything!!"
+execute if score ?round.number exact.game matches 9 run title @a[tag=!exact.done] subtitle "Ignite a creeper!!"
+execute if score ?round.number exact.game matches 10 run title @a[tag=!exact.done] subtitle "Craft bread!!"
+execute if score ?round.number exact.game matches 11 run title @a[tag=!exact.done] subtitle "Enter the void!!"
+execute if score ?round.number exact.game matches 12 run title @a[tag=!exact.done] subtitle "Tower up!!"
+execute if score ?round.number exact.game matches 13 run title @a[tag=!exact.done] subtitle "Get breeding!!"
+execute if score ?round.number exact.game matches 14 run title @a[tag=!exact.done] subtitle "Build an iron golem!!"
+execute if score ?round.number exact.game matches 15 run title @a[tag=!exact.done] subtitle "Kill someone!!"
 
-# reach portal
-execute as @a[tag=!admin,gamemode=adventure] at @s if block ~ ~ ~ nether_portal run function exact:states/ingame_run/advancement_portal
-
+execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:59}}}}} run tp @s @n[tag=exact.tp.arena]
 
 ## end game
 execute if score ?timer exact.game >= time.ingame_run exact.config run function exact:states/ingame_pause/start

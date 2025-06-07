@@ -12,3 +12,5 @@ scoreboard players set ?timer exact.game 0
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function exact:states/postgame/reset_player
+
+execute as @a[tag=!admin,gamemode=!spectator] run gamemode spectator

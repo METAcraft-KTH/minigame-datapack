@@ -20,5 +20,7 @@ execute if score #displayseconds exact.game matches ..9 run bossbar set exact:ti
 execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name ["Returning to lobby in ",{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}]
 execute store result bossbar exact:timer value run scoreboard players get ?timer exact.game
 
+execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:59}}}}} run tp @s @n[tag=exact.tp.arena]
+
 ## return to lobby
 execute if score ?timer exact.game >= time.postgame exact.config run function exact:exit

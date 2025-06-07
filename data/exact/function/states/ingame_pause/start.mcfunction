@@ -19,9 +19,16 @@ execute as @a[tag=!admin] run function exact:states/ingame_pause/reset_player
 # clear everyone's items!!
 clear @a[tag=!admin]
 title @a times 0 80 20
-title @a[tag=!admin,gamemode=!spectator] title {"text":"ROUND FAIL","color":"red","bold":true}
-title @a[tag=!admin,gamemode=!spectator] subtitle "You did not reach the portal"
-execute as @a[tag=!admin,gamemode=!spectator] run gamemode spectator
+title @a[tag=!exact.done,tag=!admin] title {"text":"FAILED","color":"red",bold:true}
+
+# kill mobs
+execute at @n[tag=exact.tp.arena,type=marker] as @e[type=!player,type=!marker,distance=..100] at @s run tp @s ~ ~-100 ~
+
+fill 10055 89 325 10068 89 312 iron_block
+execute if score ?round.number exact.game matches 1 run fill 10080 93 300 10043 89 337 white_concrete_powder replace lapis_ore
+execute if score ?round.number exact.game matches 3 run fill 10080 93 300 10043 89 337 white_concrete_powder replace diamond_ore
+execute if score ?round.number exact.game matches 10 run fill 10080 93 300 10043 89 337 white_concrete_powder replace crafting_table
+
 
 # if its the last round, just end game immediately
-execute if score ?round.number exact.game matches 6 run return run function exact:states/postgame/start
+execute if score ?round.number exact.game matches 15 run return run function exact:states/postgame/start

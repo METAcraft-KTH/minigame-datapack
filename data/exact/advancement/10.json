@@ -1,0 +1,22 @@
+{
+	"criteria": {
+		"traded": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "bread"
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"traded"
+		]
+	],
+	"rewards": {
+		"function": "exact:adv/10"
+	}
+}

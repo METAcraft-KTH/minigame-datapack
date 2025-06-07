@@ -16,9 +16,12 @@ scoreboard players operation #displayminutes exact.game /= 60 GLOBAL
 scoreboard players operation #displayseconds exact.game = #remainingseconds exact.game
 scoreboard players operation #displayseconds exact.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name [{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}," until exact begins"]
-execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name [{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}," until exact begins"]
+execute if score #displayseconds exact.game matches ..9 run bossbar set exact:timer name [{"score": {"name": "#displayminutes","objective": "exact.game"}},":0",{"score": {"name": "#displayseconds","objective": "exact.game"}}," until MINECRAFT HEXATHLON 3 begins"]
+execute if score #displayseconds exact.game matches 10.. run bossbar set exact:timer name [{"score": {"name": "#displayminutes","objective": "exact.game"}},":",{"score": {"name": "#displayseconds","objective": "exact.game"}}," until MINECRAFT HEXATHLON 3 begins"]
 execute store result bossbar exact:timer value run scoreboard players get ?timer exact.game
+
+effect give @a resistance infinite 5 true
+effect give @a saturation infinite 5 true
 
 ## start game
 execute if score ?timer exact.game >= time.lobby exact.config run scoreboard players set ?round.number exact.game 1

@@ -1,0 +1,23 @@
+{
+	"criteria": {
+		"traded": {
+			"trigger": "minecraft:player_interacted_with_entity",
+			"conditions": {
+				"item": {
+					"items": "minecraft:flint_and_steel"
+				},
+				"entity": {
+					"type": "minecraft:creeper"
+				}
+			}
+		}
+	},
+	"requirements": [
+		[
+			"traded"
+		]
+	],
+    "rewards": {
+        "function": "exact:adv/9"
+    }
+}

@@ -28,9 +28,9 @@ scoreboard players set state.postgame exact.config 3
 # how long each gamestate should last
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby exact.config 3600
-scoreboard players set time.pregame exact.config 300
-scoreboard players set time.ingame_run exact.config 2000
-scoreboard players set time.ingame_pause exact.config 200
+scoreboard players set time.pregame exact.config 400
+scoreboard players set time.ingame_run exact.config 400
+scoreboard players set time.ingame_pause exact.config 100
 scoreboard players set time.postgame exact.config 600
 
 # bossbar
@@ -43,8 +43,4 @@ bossbar set exact:timer visible false
 scoreboard objectives add exact.Y dummy
 scoreboard objectives add exact.color dummy
 
-execute unless entity @n[type=marker,tag=exact.tp.arena] run tellraw @a "debug: exact.tp.arena not found"
-execute unless entity @n[type=marker,tag=exact.tp.2] run tellraw @a "debug: exact.tp.2 not found"
-execute unless entity @n[type=marker,tag=exact.tp.3] run tellraw @a "debug: exact.tp.3 not found"
-execute unless entity @n[type=marker,tag=exact.tp.4] run tellraw @a "debug: exact.tp.4 not found"
-execute unless entity @n[type=marker,tag=exact.tp.5] run tellraw @a "debug: exact.tp.5 not found"
+team add exact.temp
