@@ -23,3 +23,5 @@ effect give @a[tag=!admin] instant_health 2 99 true
 xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
+
+function #buildmart:pregame_init

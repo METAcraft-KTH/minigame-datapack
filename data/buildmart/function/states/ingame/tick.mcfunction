@@ -31,3 +31,8 @@ execute as @e[scores={buildmart.display_index=-2147483648..2147483647}] at @s ro
 		itemTag = item.replace(":", ".")
 		execute if entity @s[tag=itemTag] positioned ^ ^ ^0.5 as @a[tag=itemTag,distance=..50] run particle minecraft:block_marker{block_state:barrier} ~ ~ ~ 0 0 0 1 1 force @s
 
+
+
+execute as @a[tag=!admin] at @s as @e[type=chicken,distance=..10]:
+	execute store result score #egglaytime buildmart.game run data get entity @s EggLayTime
+	execute if score #egglaytime buildmart.game > chicken_egg_time buildmart.config store result entity @s EggLayTime int 1 run scoreboard players get chicken_egg_time buildmart.config
