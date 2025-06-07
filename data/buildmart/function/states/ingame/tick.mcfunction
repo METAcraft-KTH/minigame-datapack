@@ -31,6 +31,8 @@ execute as @e[scores={buildmart.display_index=-2147483648..2147483647}] at @s ro
 		itemTag = item.replace(":", ".")
 		execute if entity @s[tag=itemTag] positioned ^ ^ ^0.5 as @a[tag=itemTag,distance=..50] run particle minecraft:block_marker{block_state:barrier} ~ ~ ~ 0 0 0 1 1 force @s
 
+effect give @a[tag=!admin] saturation 20 0 true
+effect give @a[tag=!admin] speed 20 0 true
 
 
 execute as @a[tag=!admin] at @s as @e[type=chicken,distance=..10]:

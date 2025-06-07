@@ -10,8 +10,6 @@ gamemode adventure @s
 
 recipe give @s *
 
-effect give @s speed infinite 0 true
-
 title @s clear
 title @s title {text:"First we mine, then we craft",color:aqua}
 title @s subtitle {text: "Has begun! Craft the items shown on the display!",color:green}
