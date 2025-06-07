@@ -8,6 +8,8 @@ function buildmart:give/tools
 execute at @s run spawnpoint @s ~ ~ ~ ~
 gamemode adventure @s
 
+recipe give @s *
+
 title @s clear
 title @s title {text:"First we mine, then we craft",color:aqua}
 title @s subtitle {text: "Has begun! Craft the items shown on the display!",color:green}
