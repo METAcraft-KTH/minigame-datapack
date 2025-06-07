@@ -3,6 +3,5 @@ scoreboard players set @s GLOBAL.player_in_state 1
 
 ## Reset logic
 effect clear @s
-clear @s
 experience set @s 0 levels
 experience set @s 0 points

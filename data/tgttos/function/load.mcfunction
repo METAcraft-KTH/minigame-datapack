@@ -41,6 +41,7 @@ bossbar set tgttos:timer visible false
 ## !!!EDIT BELOW!!! WHATEVER YOU ADD HERE, REMEMBER TO UNDO IN THE tgttos:exit FUNCTION
 #team add ...
 scoreboard objectives add tgttos.Y dummy
+scoreboard objectives add tgttos.color dummy
 
 execute unless entity @n[type=marker,tag=tgttos.tp.arena] run tellraw @a "debug: tgttos.tp.arena not found"
 execute unless entity @n[type=marker,tag=tgttos.tp.2] run tellraw @a "debug: tgttos.tp.2 not found"

@@ -1,4 +1,5 @@
 ## INGAME PHASE: The game has begun, and people are playing
+execute if score ?round.number tgttos.game matches 5 run return run function tgttos:states/postgame/start
 
 # manage rejoin etc
 execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function tgttos:states/ingame_pause/join
@@ -8,7 +9,7 @@ execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function tgttos:state
 # increment timer
 scoreboard players add ?timer tgttos.game 1
 # calculate remaining time
-scoreboard players operation #remainingseconds tgttos.game = time.postgame tgttos.config
+scoreboard players operation #remainingseconds tgttos.game = time.ingame_pause tgttos.config
 scoreboard players operation #remainingseconds tgttos.game -= ?timer tgttos.game
 scoreboard players operation #remainingseconds tgttos.game /= 20 GLOBAL
 scoreboard players operation #displayminutes tgttos.game = #remainingseconds tgttos.game

@@ -22,4 +22,5 @@ execute store result bossbar tgttos:timer value run scoreboard players get ?time
 
 ## start game
 execute if score ?timer tgttos.game >= time.lobby tgttos.config run scoreboard players set ?round.number tgttos.game 1
+execute if score ?timer tgttos.game >= time.lobby tgttos.config run tag @e[type=marker,tag=tgttos.tp.1] add tgttos.tp.arena
 execute if score ?timer tgttos.game >= time.lobby tgttos.config run function tgttos:states/pregame/start

@@ -4,8 +4,7 @@ execute positioned 50032 10 32 as @e[type=item,distance=..100] run data merge en
 
 execute at @n[tag=tgttos.tp.arena] as @e[type=ender_pearl,distance=..2000] at @s run function tgttos:utility/as_pearl
 
-execute as @a[tag=!admin] if items entity @s weapon.mainhand #wool run item modify entity @s weapon.mainhand tgttos:infinite_blocks
-execute as @a[tag=!admin] if items entity @s weapon.offhand #wool run item modify entity @s weapon.offhand tgttos:infinite_blocks
+execute as @a[tag=!admin] run item modify entity @s weapon.offhand tgttos:infinite_blocks
 
 execute as @a[tag=!admin] if items entity @s weapon.mainhand ender_pearl run item modify entity @s weapon.mainhand tgttos:infinite_pearls
 execute as @a[tag=!admin] if items entity @s weapon.offhand ender_pearl run item modify entity @s weapon.offhand tgttos:infinite_pearls
