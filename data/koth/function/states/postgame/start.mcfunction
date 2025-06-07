@@ -13,5 +13,4 @@ scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function koth:states/postgame/reset_player
 
-execute as @a at @s run playsound minecraft:entity.wither.spawn master @s ~ ~ ~ 5 1
 gamemode creative @a[tag=!admin]

@@ -20,3 +20,14 @@ execute if score @s koth.cp.delta matches ..-1 if score @s koth.cp matches ..0 r
 
 # 3.6 degrees per tick = 5 seconds per revolution
 execute unless score @s koth.cp.delta matches 0 run tp @s ~ ~ ~ ~3.6 ~
+
+# The point was captured by blue.
+execute if score @s koth.cp matches 100 if score @s koth.cp.delta matches 1.. run function koth:cp/capture {team: "blue", enemy: "red"}
+
+# The point was captured by red.
+execute if score @s koth.cp matches -100 if score @s koth.cp.delta matches ..-1 run function koth:cp/capture {team: "red", enemy: "blue"}
+
+# Give points to all players that are in the area when contesting. 1 points every 3 seconds.
+scoreboard players operation #time_mod_60 koth.game = ?timer koth.game
+scoreboard players operation #time_mod_60 koth.game %= 60 GLOBAL
+execute if score #time_mod_60 koth.game matches 0 if score @s koth.cp matches -99..99 as @a[distance=..5] run function score:add_points {points:1}

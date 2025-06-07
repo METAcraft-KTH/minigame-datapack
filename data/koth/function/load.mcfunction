@@ -40,6 +40,8 @@ scoreboard players set time.ingame_walldrop koth.config 1200
 scoreboard players set time.ingame_cp koth.config 10800
 scoreboard players set time.postgame koth.config 600
 
+scoreboard players set cp.target koth.config 1500
+
 # bossbar
 bossbar add koth:timer "King of Three Hills"
 bossbar set koth:timer visible false

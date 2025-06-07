@@ -20,7 +20,7 @@ execute if score ?state koth.game = state.ingame_cp koth.config run function kot
 execute if score ?state koth.game = state.postgame koth.config run function koth:states/postgame/tick
 
 ## Make bossbar visible
-bossbar set koth:timer visible true
+execute unless score ?state koth.game = state.ingame_cp koth.config run bossbar set koth:timer visible true
 bossbar set koth:timer players @a
 
 ## Utility
