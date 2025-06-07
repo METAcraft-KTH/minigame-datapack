@@ -2,6 +2,8 @@ execute if score #init_items.array_ptr buildmart.game < #init_items.array_top bu
 	execute store result storage buildmart:valid_items init_items_array_ptr int 1 run scoreboard players get #init_items.array_ptr buildmart.game
 	function buildmart:states/ingame/helper/tick_array_player_with_count with storage buildmart:valid_items
 	scoreboard players add #init_items.array_ptr buildmart.game 1
+
+	TODO: Use schedule and player-specific counters.
 	function buildmart:states/ingame/helper/tick_array_player
 
 execute if score #init_items.array_ptr buildmart.game >= #init_items.array_top buildmart.game:
