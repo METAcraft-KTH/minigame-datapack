@@ -1,6 +1,6 @@
 {
     "values": [
-        "tgttos:tick",
-        "tgttos:universal/tick"
+        "exact:tick",
+        "exact:universal/tick"
     ]
 }
