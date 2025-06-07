@@ -21,3 +21,4 @@ scoreboard players set game.id GLOBAL 6
 
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=spleef.tp.lobby]
+execute as @a[tag=!admin] run gamemode adventure
