@@ -2,7 +2,7 @@
 	"function": "minecraft:set_components",
 	"components": {
 		"minecraft:use_cooldown": {
-			"seconds": 2.5
+			"seconds": 4
 		},
 		"minecraft:use_remainder": {
 			"id": "minecraft:wind_charge"
