@@ -25,6 +25,11 @@ xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
 
+execute unless score ?round.number tgttos.game matches 2 unless score ?round.number tgttos.game matches 5 as @a[tag=!admin] run function tgttos:states/pregame/give_me_wool
+execute unless score ?round.number tgttos.game matches 2 unless score ?round.number tgttos.game matches 5 as @a[tag=!admin] run give @s shears[can_break={blocks:["red_wool","orange_wool","yellow_wool","green_wool","blue_wool","light_blue_wool","magenta_wool","purple_wool","lime_wool","cyan_wool","pink_wool"]}]
+execute unless score ?round.number tgttos.game matches 3 as @a[tag=!admin] run give @s ender_pearl
+execute unless score ?round.number tgttos.game matches 5 as @a[tag=!admin] run give @s horse_spawn_egg[item_name="Spawn a horse, get a saddle!",rarity="rare",entity_data={id:"minecraft:horse",Invulnerable:1b,Tame:1b,attributes:[{id:"minecraft:jump_strength",base:0.8},{id:"minecraft:movement_speed",base:0.3}]},use_remainder={id:"minecraft:saddle",count:1}] 1
+
 #tellraw @a {"text":"\nGAME 2: TO GET TO THE OTHER SIDE","color":"gold","bold":true}
 #tellraw @a {"text":"- Don't fall into the void",color:"gray"}
 #tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}

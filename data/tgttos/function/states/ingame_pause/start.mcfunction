@@ -18,6 +18,10 @@ execute as @a[tag=!admin] run function tgttos:states/ingame_pause/reset_player
 
 # clear everyone's items!!
 clear @a[tag=!admin]
-title @a clear
-
+title @a times 0 80 20
+title @a[tag=!admin,gamemode=!spectator] title {"text":"ROUND FAIL","color":"red","bold":true}
+title @a[tag=!admin,gamemode=!spectator] subtitle "You did not reach the portal"
 execute as @a[tag=!admin,gamemode=!spectator] run gamemode spectator
+
+# if its the last round, just end game immediately
+execute if score ?round.number tgttos.game matches 6 run return run function tgttos:states/postgame/start

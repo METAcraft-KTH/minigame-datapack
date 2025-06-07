@@ -21,3 +21,5 @@ scoreboard players set game.id GLOBAL 3
 
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=tgttos.tp.lobby]
+execute as @a[tag=!admin] run gamemode adventure
+effect clear @a[tag=!admin]

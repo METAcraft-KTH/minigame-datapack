@@ -24,12 +24,15 @@ execute store result bossbar tgttos:timer value run scoreboard players get ?time
 title @a times 0 10 0
 title @a title ""
 
-# kill players who fall off
-execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~
-execute as @a[tag=!admin,scores={tgttos.Y=..0}] run kill @s
+# kill players who fall off / are on fire
+execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
+execute as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:0}}}}}]} run kill @s
 
 effect give @a[tag=!admin] saturation infinite 0 true
 effect give @a[tag=!admin] resistance infinite 4 true
+
+# replenish blocks
+
 
 ## end game
 execute if score ?timer tgttos.game >= time.ingame_run tgttos.config run function tgttos:states/ingame_pause/start

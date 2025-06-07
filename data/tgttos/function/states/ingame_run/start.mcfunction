@@ -24,23 +24,5 @@ scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function tgttos:states/ingame_run/reset_player
 
-# keep color
-execute if score ?colors tgttos.game matches 3 store result score ?color.keep tgttos.game run random value 1..3
-execute if score ?colors tgttos.game matches 4 store result score ?color.keep tgttos.game run random value 1..4
-execute if score ?colors tgttos.game matches 5 store result score ?color.keep tgttos.game run random value 1..5
-execute if score ?colors tgttos.game matches 6 store result score ?color.keep tgttos.game run random value 1..6
-
-# replace hand with block!!
-clear @a[tag=!admin]
-execute if score ?color.keep tgttos.game matches 1 run item replace entity @a[tag=!admin] weapon.mainhand with red_terracotta[item_name="Stand on this block!!"]
-execute if score ?color.keep tgttos.game matches 2 run item replace entity @a[tag=!admin] weapon.mainhand with yellow_terracotta[item_name="Stand on this block!!"]
-execute if score ?color.keep tgttos.game matches 3 run item replace entity @a[tag=!admin] weapon.mainhand with orange_terracotta[item_name="Stand on this block!!"]
-execute if score ?color.keep tgttos.game matches 4 run item replace entity @a[tag=!admin] weapon.mainhand with purple_terracotta[item_name="Stand on this block!!"]
-execute if score ?color.keep tgttos.game matches 5 run item replace entity @a[tag=!admin] weapon.mainhand with green_terracotta[item_name="Stand on this block!!"]
-execute if score ?color.keep tgttos.game matches 6 run item replace entity @a[tag=!admin] weapon.mainhand with blue_terracotta[item_name="Stand on this block!!"]
-
-# clear everyone's HUNGER!!
-effect clear @a[tag=!admin] hunger
-
-# fill offhand w wind charges!!
-item replace entity @a[tag=!admin] weapon.offhand with wind_charge[use_remainder={id:"wind_charge"}]
+title @a title {"text":"GET TO THE PORTAL!","color":"gold"}
+execute at @n[tag=tgttos.tp.arena] run fill ~50 ~50 ~50 ~-50 ~-50 ~-50 air replace tinted_glass

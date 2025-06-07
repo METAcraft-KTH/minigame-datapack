@@ -20,10 +20,15 @@ execute if score #displayseconds tgttos.game matches ..9 run bossbar set tgttos:
 execute if score #displayseconds tgttos.game matches 10.. run bossbar set tgttos:timer name ["Chaos begins in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
 execute store result bossbar tgttos:timer value run scoreboard players get ?timer tgttos.game
 
+effect give @a[tag=!admin] saturation infinite 0 true
+effect give @a[tag=!admin] resistance infinite 4 true
+
+execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
+
 ## start game (for real)
 scoreboard players operation #remainingtime tgttos.game = time.pregame tgttos.config
 scoreboard players operation #remainingtime tgttos.game -= ?timer tgttos.game
-title @a[tag=!admin] times 0 25 20
+title @a[tag=!admin] times 0 40 20
 execute if score #remainingtime tgttos.game matches 120 run title @a[tag=!admin] title {"text":"5","color":"green"}
 execute if score #remainingtime tgttos.game matches 120 as @a[tag=!admin] at @s run playsound block.note_block.pling player @s ~ ~ ~
 execute if score #remainingtime tgttos.game matches 100 run title @a[tag=!admin] title {"text":"4","color":"green"}
@@ -37,6 +42,4 @@ execute if score #remainingtime tgttos.game matches 40 as @a[tag=!admin] at @s r
 execute if score #remainingtime tgttos.game matches 20 run title @a[tag=!admin] title {"text":"0?","color":"green"}
 execute if score #remainingtime tgttos.game matches 20 as @a[tag=!admin] at @s run playsound block.note_block.pling player @s ~ ~ ~
 
-execute if score ?timer tgttos.game >= time.pregame tgttos.config run title @a title {"text":"MOVE!","color":"gold"}
-execute if score ?timer tgttos.game >= time.pregame tgttos.config at @n[tag=tgttos.tp.arena] run fill ~ ~ ~
 execute if score ?timer tgttos.game >= time.pregame tgttos.config run function tgttos:states/ingame_run/start

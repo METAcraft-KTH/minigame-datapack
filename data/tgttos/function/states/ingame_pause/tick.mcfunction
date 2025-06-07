@@ -21,4 +21,4 @@ execute if score #displayseconds tgttos.game matches 10.. run bossbar set tgttos
 execute store result bossbar tgttos:timer value run scoreboard players get ?timer tgttos.game
 
 ## end game
-execute if score ?timer tgttos.game >= time.ingame_pause tgttos.config 
+execute if score ?timer tgttos.game >= time.ingame_pause tgttos.config run function tgttos:states/ingame_pause/end

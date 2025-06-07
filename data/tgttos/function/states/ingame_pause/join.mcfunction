@@ -6,4 +6,3 @@ function tgttos:states/ingame_run/reset_player
 ## !!!ADD BELOW!!! do whatever you need, e.g. checking they're at the lobby/arena and tp them if not
 tp @s @n[tag=tgttos.tp.arena]
 gamemode spectator
-tellraw @s {"text":"Welcome back! You joined in the middle of a round. Stick around to play in the next round."}

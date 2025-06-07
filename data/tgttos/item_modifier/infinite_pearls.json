@@ -2,10 +2,10 @@
 	"function": "minecraft:set_components",
 	"components": {
 		"minecraft:use_cooldown": {
-			"seconds": 2.5
+			"seconds": 1.0
 		},
 		"minecraft:use_remainder": {
-			"id": "minecraft:wind_charge"
+			"id": "minecraft:ender_pearl"
 		}
 	},
 	"conditions": []
