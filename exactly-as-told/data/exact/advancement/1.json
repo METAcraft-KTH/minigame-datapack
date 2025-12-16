@@ -1,0 +1,10 @@
+{
+	"criteria": {
+		"enchanted_item": {
+			"trigger": "minecraft:enchanted_item"
+		}
+	},
+	"rewards": {
+		"function": "exact:adv/1"
+	}
+}

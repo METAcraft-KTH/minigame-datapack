@@ -1,0 +1,18 @@
+{
+	"criteria": {
+		"i": {
+			"trigger": "minecraft:player_interacted_with_entity",
+			"conditions": {
+				"item": {
+					"items": "shears"
+				},
+				"entity": {
+					"type": "sheep"
+				}
+			}
+		}
+	},
+	"rewards": {
+		"function": "exact:adv/2"
+	}
+}

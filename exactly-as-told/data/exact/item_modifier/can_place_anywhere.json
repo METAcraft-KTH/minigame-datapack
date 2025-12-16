@@ -1,0 +1,16 @@
+[
+    {
+        "function": "minecraft:set_components",
+        "components": {
+            "minecraft:can_place_on": {
+                "blocks": "#exact:every_block"
+            },
+            "minecraft:tooltip_display": {
+                "hidden_components": [
+                    "can_place_on"
+                ]
+            }
+        },
+        "conditions": []
+    }
+]
