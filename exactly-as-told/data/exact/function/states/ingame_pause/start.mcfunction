@@ -24,10 +24,18 @@ title @a[tag=!exact.done,tag=!admin] title {"text":"FAILED","color":"red",bold:t
 # kill mobs
 execute at @n[tag=exact.tp.arena,type=marker] as @e[type=!player,type=!marker,distance=..100] at @s run tp @s ~ ~-100 ~
 
-fill 10055 89 325 10068 89 312 iron_block
-execute if score ?round.number exact.game matches 1 run fill 10080 93 300 10043 89 337 white_concrete_powder replace lapis_ore
-execute if score ?round.number exact.game matches 3 run fill 10080 93 300 10043 89 337 white_concrete_powder replace diamond_ore
-execute if score ?round.number exact.game matches 10 run fill 10080 93 300 10043 89 337 white_concrete_powder replace crafting_table
+fill 10054 89 326 10068 89 312 iron_block
+execute if score ?round.number exact.game matches 4 run fill 10054 90 326 10068 93 312 air replace
+execute if score ?round.number exact.game matches 5 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.arena]
+execute if score ?round.number exact.game matches 6 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.arena]
+execute if score ?round.number exact.game matches 7 at @n[type=marker,tag=exact.tp.arena] run fill ~2 ~18 ~2 ~-2 ~18 ~-2 air
+execute if score ?round.number exact.game matches 9 run time set noon
+execute if score ?round.number exact.game matches 9 at @n[type=marker,tag=exact.tp.arena] run fill ~30 ~3 ~30 ~-30 ~-2 ~-30 air replace #beds
+execute if score ?round.number exact.game matches 11 run team leave @a[team=exact.temp]
+execute if score ?round.number exact.game matches 14 at @n[type=marker,tag=exact.tp.arena] run tp @a[tag=!admin,distance=..100] ~ ~ ~
+#execute if score ?round.number exact.game matches 1 run fill 10080 93 300 10043 89 337 white_concrete_powder replace lapis_ore
+#execute if score ?round.number exact.game matches 3 run fill 10080 93 300 10043 89 337 white_concrete_powder replace diamond_ore
+#execute if score ?round.number exact.game matches 10 run fill 10080 93 300 10043 89 337 white_concrete_powder replace crafting_table
 
 
 # if its the last round, just end game immediately

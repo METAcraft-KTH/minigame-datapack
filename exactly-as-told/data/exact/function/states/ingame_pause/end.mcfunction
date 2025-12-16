@@ -1,3 +1,3 @@
-scoreboard players add ?round.number exact.game 1
+#scoreboard players add ?round.number exact.game 1
 
-function exact:states/pregame/start
+function exact:states/ingame_run/start

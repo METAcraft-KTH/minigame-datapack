@@ -1,7 +1,12 @@
 {
 	"criteria": {
-		"enchanted_item": {
-			"trigger": "minecraft:enchanted_item"
+		"_": {
+			"trigger": "minecraft:player_hurt_entity",
+			"conditions": {
+				"entity": {
+					"type": "player"
+				}
+			}
 		}
 	},
 	"rewards": {

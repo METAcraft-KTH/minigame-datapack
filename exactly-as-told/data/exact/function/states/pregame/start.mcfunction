@@ -25,10 +25,26 @@ xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
 clear @a[tag=!admin]
 
-tellraw @a {"text":"Welcome to MINECRAFT HEXATHLON 3!","color":"gold","bold":true}
+tellraw @a {"text":"Welcome to MINECRAFT HEXATHLON 4!","color":"gold","bold":true}
 
 #tellraw @a {"text":"\nGAME 2: TO GET TO THE OTHER SIDE","color":"gold","bold":true}
 #tellraw @a {"text":"- Don't fall into the void",color:"gray"}
 #tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
 #tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
 #tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}
+
+advancement revoke @a only exact:1
+advancement revoke @a only exact:2
+advancement revoke @a only exact:3
+advancement revoke @a only exact:4
+advancement revoke @a only exact:5
+advancement revoke @a only exact:6
+advancement revoke @a only exact:7
+advancement revoke @a only exact:8
+advancement revoke @a only exact:9
+advancement revoke @a only exact:10
+advancement revoke @a only exact:11
+advancement revoke @a only exact:12
+advancement revoke @a only exact:13
+advancement revoke @a only exact:14
+advancement revoke @a only exact:15

@@ -1,21 +1,14 @@
 {
 	"criteria": {
-		"traded": {
-			"trigger": "minecraft:inventory_changed",
+		"_": {
+			"trigger": "minecraft:player_killed_entity",
 			"conditions": {
-				"items": [
-					{
-						"items": "bread"
-					}
-				]
+				"entity": {
+					"type": "chicken"
+				}
 			}
 		}
 	},
-	"requirements": [
-		[
-			"traded"
-		]
-	],
 	"rewards": {
 		"function": "exact:adv/10"
 	}

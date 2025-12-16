@@ -14,7 +14,7 @@ scoreboard players set 60 GLOBAL 60
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
-scoreboard players set id exact.config 2
+scoreboard players set id exact.config 1
 
 # gamestate (DO NOT change init and lobby)
 scoreboard players set state.init exact.config -1
@@ -42,5 +42,7 @@ bossbar set exact:timer visible false
 #team add ...
 scoreboard objectives add exact.Y dummy
 scoreboard objectives add exact.color dummy
+scoreboard objectives add exact.is_sneaking dummy
+scoreboard objectives add exact.sneakcount dummy
 
 team add exact.temp

@@ -1,19 +1,14 @@
 {
 	"criteria": {
-		"bred": {
+		"_": {
 			"trigger": "minecraft:player_killed_entity",
 			"conditions": {
 				"entity": {
-					"type": "player"
+					"type": "vex"
 				}
 			}
 		}
 	},
-	"requirements": [
-		[
-			"bred"
-		]
-	],
 	"rewards": {
 		"function": "exact:adv/15"
 	}

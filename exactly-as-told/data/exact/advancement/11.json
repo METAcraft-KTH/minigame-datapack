@@ -1,25 +1,17 @@
 {
 	"criteria": {
-		"traded": {
-			"trigger": "minecraft:location",
+		"_": {
+			"trigger": "minecraft:player_interacted_with_entity",
 			"conditions": {
-				"player": {
-					"location": {
-						"position": {
-							"y": {
-								"max": 66
-							}
-						}
-					}
+				"entity": {
+					"type": "creeper"
+				},
+				"item": {
+					"items": ["flint_and_steel"]
 				}
 			}
 		}
 	},
-	"requirements": [
-		[
-			"traded"
-		]
-	],
 	"rewards": {
 		"function": "exact:adv/11"
 	}

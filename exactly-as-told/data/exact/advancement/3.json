@@ -1,25 +1,14 @@
 {
 	"criteria": {
-		"diamond_armor": {
-			"conditions": {
-				"items": [
-					{
-						"items": "minecraft:diamond_helmet"
-					},
-					{
-						"items": "minecraft:diamond_chestplate"
-					},
-					{
-						"items": "minecraft:diamond_leggings"
-					},
-					{
-						"items": "minecraft:diamond_boots"
-					}
-				]
-			},
-			"trigger": "minecraft:inventory_changed"
+		"bred": {
+			"trigger": "minecraft:bred_animals"
 		}
 	},
+	"requirements": [
+		[
+			"bred"
+		]
+	],
 	"rewards": {
 		"function": "exact:adv/3"
 	}

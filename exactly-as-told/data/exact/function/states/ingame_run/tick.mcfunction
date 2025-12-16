@@ -21,30 +21,40 @@ execute if score #displayseconds exact.game matches 10.. run bossbar set exact:t
 execute store result bossbar exact:timer value run scoreboard players get ?timer exact.game
 
 # kill players who fall off / are on fire
-execute at @n[type=marker,tag=exact.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
-execute if score ?round.number exact.game matches ..4 as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:5}}}}}]} run kill @s
-execute if score ?round.number exact.game matches 3 as @a[tag=!admin] at @s if block ~ ~-1 ~ end_stone run kill @s
+#execute if score ?round.number exact.game matches ..4 as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:5}}}}}]} run kill @s
+#execute if score ?round.number exact.game matches 3 as @a[tag=!admin] at @s if block ~ ~-1 ~ end_stone run kill @s
 
 effect give @a[tag=!admin] saturation infinite 0 true
-effect give @a[tag=!admin] resistance infinite 4 true
+# need to be able to die on game 5 to respawn
+execute unless score ?round.number exact.game matches 5 run effect give @a[tag=!admin] resistance 1 4 true
+
+# game 8 is controlled by predicates to count amount of sneaks
+execute if score ?round.number exact.game matches 8 as @a[tag=!exact.done] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players remove @s exact.sneakcount 1
+execute if score ?round.number exact.game matches 8 as @a[tag=!exact.done] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 1
+execute if score ?round.number exact.game matches 8 as @a[tag=!exact.done] if score @s exact.is_sneaking matches 1 unless predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 0
+execute if score ?round.number exact.game matches 8 as @a[tag=!exact.done] if score @s exact.sneakcount matches 0 run advancement grant @s only exact:8
+
+# game 9 needs people to place beds
+execute if score ?round.number exact.game matches 9 as @a[tag=!exact.done] if items entity @s weapon.mainhand #beds run item modify entity @s weapon.mainhand exact:can_place_anywhere
+execute if score ?round.number exact.game matches 9 as @a[tag=!exact.done] if items entity @s weapon.offhand #beds run item modify entity @s weapon.offhand exact:can_place_anywhere
 
 title @a times 0 80 20
 title @a[tag=!exact.done] title ""
-execute if score ?round.number exact.game matches 1 run title @a[tag=!exact.done] subtitle "Enchant the pickaxe!!"
-execute if score ?round.number exact.game matches 2 run title @a[tag=!exact.done] subtitle "Shear a sheep!!"
-execute if score ?round.number exact.game matches 3 run title @a[tag=!exact.done] subtitle "Wear full diamond armor!!"
-execute if score ?round.number exact.game matches 4 run title @a[tag=!exact.done] subtitle "Power a beacon!!"
-execute if score ?round.number exact.game matches 5 run title @a[tag=!exact.done] subtitle "Shoot a chicken!!"
-execute if score ?round.number exact.game matches 6 run title @a[tag=!exact.done] subtitle "Drink milk!!"
-execute if score ?round.number exact.game matches 7 run title @a[tag=!exact.done] subtitle "Take fall damage!!"
-execute if score ?round.number exact.game matches 8 run title @a[tag=!exact.done] subtitle "Buy anything!!"
-execute if score ?round.number exact.game matches 9 run title @a[tag=!exact.done] subtitle "Ignite a creeper!!"
-execute if score ?round.number exact.game matches 10 run title @a[tag=!exact.done] subtitle "Craft bread!!"
-execute if score ?round.number exact.game matches 11 run title @a[tag=!exact.done] subtitle "Enter the void!!"
-execute if score ?round.number exact.game matches 12 run title @a[tag=!exact.done] subtitle "Tower up!!"
-execute if score ?round.number exact.game matches 13 run title @a[tag=!exact.done] subtitle "Get breeding!!"
-execute if score ?round.number exact.game matches 14 run title @a[tag=!exact.done] subtitle "Build an iron golem!!"
-execute if score ?round.number exact.game matches 15 run title @a[tag=!exact.done] subtitle "Kill someone!!"
+execute if score ?round.number exact.game matches 1 run title @a[tag=!exact.done] subtitle "Stab someone!!"
+execute if score ?round.number exact.game matches 2 run title @a[tag=!exact.done] subtitle "Buy anything!!"
+execute if score ?round.number exact.game matches 3 run title @a[tag=!exact.done] subtitle "Make babies!!"
+execute if score ?round.number exact.game matches 4 run title @a[tag=!exact.done] subtitle "Craft orange dye!!"
+execute if score ?round.number exact.game matches 5 run title @a[tag=!exact.done] subtitle "Land in the water!!"
+execute if score ?round.number exact.game matches 6 run title @a[tag=!exact.done] subtitle "Parkour!!"
+execute if score ?round.number exact.game matches 7 run title @a[tag=!exact.done] subtitle "Pearl to the top!!"
+execute if score ?round.number exact.game matches 8 as @a run title @s subtitle ["Sneak ",{score:{objective:"exact.sneakcount",name:"@s"}}," times!!"]
+execute if score ?round.number exact.game matches 9 run title @a[tag=!exact.done] subtitle "Make your bed and lie in it!!"
+execute if score ?round.number exact.game matches 10 run title @a[tag=!exact.done] subtitle "Shoot a chicken (look up)!!"
+execute if score ?round.number exact.game matches 11 run title @a[tag=!exact.done] subtitle "Light a creeper!!"
+execute if score ?round.number exact.game matches 12 run title @a[tag=!exact.done] subtitle "Impale yourself??"
+execute if score ?round.number exact.game matches 13 run title @a[tag=!exact.done] subtitle "Make cake!!"
+execute if score ?round.number exact.game matches 14 run title @a[tag=!exact.done] subtitle "Dig straight down!!"
+execute if score ?round.number exact.game matches 15 run title @a[tag=!exact.done] subtitle "Kill a vex!!"
 
 execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:59}}}}} run tp @s @n[tag=exact.tp.arena]
 

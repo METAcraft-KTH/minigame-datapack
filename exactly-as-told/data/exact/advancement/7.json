@@ -1,26 +1,18 @@
 {
-	"criteria": {
-		"bred": {
-			"trigger": "minecraft:entity_hurt_player",
-			"conditions": {
-				"damage": {
-					"type": {
-						"tags": [
-							{
-								"id": "minecraft:is_fall",
-								"expected": true
-							}
-						]
-					}
-				}
-			}
-		}
-	},
-	"requirements": [
-		[
-			"bred"
-		]
-	],
+    "criteria": {
+        "_": {
+            "trigger": "location",
+            "conditions": {
+                "player": {
+                    "stepping_on": {
+						"block": {
+							"blocks": "target"
+						}
+                    }
+                }
+            }
+        }
+    },
     "rewards": {
         "function": "exact:adv/7"
     }

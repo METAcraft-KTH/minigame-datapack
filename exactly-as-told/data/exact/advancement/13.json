@@ -1,14 +1,16 @@
 {
 	"criteria": {
-		"bred": {
-			"trigger": "minecraft:bred_animals"
+		"_": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": "cake"
+					}
+				]
+			}
 		}
 	},
-	"requirements": [
-		[
-			"bred"
-		]
-	],
 	"rewards": {
 		"function": "exact:adv/13"
 	}

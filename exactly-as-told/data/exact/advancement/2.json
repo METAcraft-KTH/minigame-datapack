@@ -1,18 +1,10 @@
 {
 	"criteria": {
-		"i": {
-			"trigger": "minecraft:player_interacted_with_entity",
-			"conditions": {
-				"item": {
-					"items": "shears"
-				},
-				"entity": {
-					"type": "sheep"
-				}
-			}
+		"_": {
+			"trigger": "minecraft:villager_trade"
 		}
 	},
-	"rewards": {
-		"function": "exact:adv/2"
-	}
+    "rewards": {
+        "function": "exact:adv/2"
+    }
 }

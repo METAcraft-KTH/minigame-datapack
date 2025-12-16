@@ -1,21 +1,19 @@
 {
 	"criteria": {
-		"summoned_golem": {
+		"_": {
 			"conditions": {
-				"entity": [
-					{
-						"condition": "minecraft:entity_properties",
-						"entity": "this",
-						"predicate": {
-							"type": "minecraft:iron_golem"
+				"player": {
+					"location": {
+						"fluid": {
+							"fluids": ["lava","flowing_lava"]
 						}
 					}
-				]
+				}
 			},
-			"trigger": "minecraft:summoned_entity"
+			"trigger": "minecraft:location"
 		}
 	},
 	"rewards": {
-		"function": "exact:adv/5"
+		"function": "exact:adv/14"
 	}
 }

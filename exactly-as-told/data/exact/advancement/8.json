@@ -1,14 +1,9 @@
 {
 	"criteria": {
-		"traded": {
-			"trigger": "minecraft:villager_trade"
+		"_": {
+			"trigger": "minecraft:impossible"
 		}
 	},
-	"requirements": [
-		[
-			"traded"
-		]
-	],
     "rewards": {
         "function": "exact:adv/8"
     }

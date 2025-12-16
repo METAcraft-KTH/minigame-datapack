@@ -1,13 +1,12 @@
 {
-	"parent": "minecraft:nether/summon_wither",
 	"criteria": {
-		"beacon": {
+		"_": {
 			"conditions": {
-				"level": {
-					"min": 1
-				}
+				"items": [
+					{"items": "orange_dye"}
+				]
 			},
-			"trigger": "minecraft:construct_beacon"
+			"trigger": "minecraft:inventory_changed"
 		}
 	},
 	"rewards": {
