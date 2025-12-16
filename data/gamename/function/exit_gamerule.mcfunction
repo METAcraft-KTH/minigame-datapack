@@ -49,7 +49,7 @@ gamerule send_command_feedback true
 gamerule show_death_messages true
 gamerule max_snow_accumulation_height 1
 gamerule respawn_radius 0
-gamerule spectators_generate_chunks false
+gamerule spectators_generate_chunks true
 gamerule tnt_explodes true
 gamerule tnt_explosion_drop_decay false
 gamerule universal_anger false
