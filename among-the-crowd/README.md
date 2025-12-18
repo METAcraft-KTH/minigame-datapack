@@ -34,7 +34,9 @@ All occurrences of `atc` (both uppercase and lowercase) is to be replaced by a u
 
 These entities should be placed manually in the world.
 
-- `atc.tp.arena` marker in the game arena. Everyone gets TPed here on game start (`function atc:states/pregame/start`)
+- `atc.tp.seekerspawn` marker for the seeker spawn point. Uset to set the spawn point and the first seeker spawns here.
+- `atc.tp.hiderspawn` marker ifor the hider spawn point. All hiders get teleported here.
+- `atc.fake_player_spawn_center` marker which fake players will spawn around. Having more than one of these is supported, but then you probably want to turn down the spawn count since it will spawn that many players per marker.
 - `atc.tp.lobby` marker in the main lobby. Everyone gets TPed here on game end (`function atc:exit`)
 
 ## Game loop
