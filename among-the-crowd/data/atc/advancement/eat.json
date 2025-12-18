@@ -1,0 +1,15 @@
+{
+	"criteria": {
+		"_": {
+			"trigger": "minecraft:consume_item",
+			"conditions": {
+				"item": {
+					"items": "cooked_chicken"
+				}
+			}
+		}
+	},
+	"rewards": {
+		"function": "atc:adv/eat"
+	}
+}
