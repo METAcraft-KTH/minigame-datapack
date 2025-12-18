@@ -1,0 +1,7 @@
+{
+    "pack": {
+        "min_format": 94,
+        "max_format": 9999,
+        "description": "Just a small helper datapack to test what points players get"
+    }
+}
