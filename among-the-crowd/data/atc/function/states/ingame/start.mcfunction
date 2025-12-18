@@ -5,6 +5,7 @@ scoreboard players set ?state atc.game 2
 function atc:states/pregame/configure_gamerule
 
 # initialize timer
+bossbar set atc:timer color yellow
 execute store result bossbar atc:timer max run scoreboard players get time.ingame atc.config
 scoreboard players set ?timer atc.game 0
 

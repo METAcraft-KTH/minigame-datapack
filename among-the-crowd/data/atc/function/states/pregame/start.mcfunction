@@ -6,6 +6,7 @@ function atc:states/pregame/configure_gamerule
 
 # initialize timer
 execute store result bossbar atc:timer max run scoreboard players get time.pregame atc.config
+bossbar set atc:timer color red
 scoreboard players set ?timer atc.game 0
 
 function atc:states/pregame/choose_first_seeker

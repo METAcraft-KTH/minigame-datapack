@@ -4,6 +4,7 @@ function atc:states/postgame/gameover
 scoreboard players set ?state atc.game 3
 
 # initialize timer
+bossbar set atc:timer color white
 execute store result bossbar atc:timer max run scoreboard players get time.postgame atc.config
 scoreboard players set ?timer atc.game 0
 

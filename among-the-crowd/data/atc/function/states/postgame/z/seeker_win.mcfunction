@@ -1,2 +1,2 @@
-title @a title {"text": "Seekers win!"}
-tellraw @a {"text": "Seekers win!"}
+title @a title {"text": "Seekers win!", "color": "red"}
+tellraw @a {"text": "Seekers win!", "color": "red"}

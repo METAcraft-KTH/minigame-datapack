@@ -16,8 +16,8 @@ scoreboard players operation #displayminutes atc.game /= 60 GLOBAL
 scoreboard players operation #displayseconds atc.game = #remainingseconds atc.game
 scoreboard players operation #displayseconds atc.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds atc.game matches ..9 run bossbar set atc:timer name ["Seekers released in ",{"score": {"name": "#displayminutes","objective": "atc.game"}},":0",{"score": {"name": "#displayseconds","objective": "atc.game"}}]
-execute if score #displayseconds atc.game matches 10.. run bossbar set atc:timer name ["Seekers released in ",{"score": {"name": "#displayminutes","objective": "atc.game"}},":",{"score": {"name": "#displayseconds","objective": "atc.game"}}]
+execute if score #displayseconds atc.game matches ..9 run bossbar set atc:timer name {"text": "Seekers released in ", "color": "red","extra": [{"score": {"name": "#displayminutes","objective": "atc.game"}},":0",{"score": {"name": "#displayseconds","objective": "atc.game"}}]}
+execute if score #displayseconds atc.game matches 10.. run bossbar set atc:timer name {"text": "Seekers released in ", "color": "red", "extra": [{"score": {"name": "#displayminutes","objective": "atc.game"}},":",{"score": {"name": "#displayseconds","objective": "atc.game"}}]}
 execute store result bossbar atc:timer value run scoreboard players get ?timer atc.game
 
 ## start game (for real)
