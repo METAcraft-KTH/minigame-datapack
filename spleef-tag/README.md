@@ -39,6 +39,9 @@ These entities should be placed manually in the world.
 
 ## Game loop
 
+When a game starts, it will run the `#spleef:init` function tag.
+You probably want to hardcode coordinates to forceload in this tag in a separate datapack.
+
 The game loop starts with something like this:
 
 1. When the previous game ends, its datapack changes `game.id` to the next game's.
