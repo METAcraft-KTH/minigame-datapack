@@ -1,0 +1,22 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "equipment": {
+      "mainhand": {
+        "items": [
+          "minecraft:crossbow"
+        ],
+        "components": {},
+        "predicates": {
+          "minecraft:enchantments": [
+            {
+              "enchantments": "qq:rapid_fire"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

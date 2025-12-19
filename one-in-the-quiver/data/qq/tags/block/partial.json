@@ -1,0 +1,15 @@
+{
+  "values":[
+	"#minecraft:slabs",
+	"#minecraft:stairs",
+	"#minecraft:doors",
+	"#minecraft:trapdoors",
+	"#minecraft:beds",
+	"#minecraft:candle_cakes",
+	"minecraft:cake",
+	"minecraft:daylight_detector",
+	"minecraft:stonecutter",
+	"minecraft:sculk_sensor",
+	"minecraft:calibrated_sculk_sensor"
+  ]
+}

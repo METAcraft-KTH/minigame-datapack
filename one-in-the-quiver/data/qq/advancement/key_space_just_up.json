@@ -1,0 +1,20 @@
+{
+    "criteria": {
+        "": {
+            "trigger": "minecraft:tick",
+            "conditions": {
+                "player": {
+                    "type_specific": {
+                        "type": "minecraft:player",
+                        "input": {
+                            "jump": false
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "qq:utility/input/key_space_just_up"
+    }
+}

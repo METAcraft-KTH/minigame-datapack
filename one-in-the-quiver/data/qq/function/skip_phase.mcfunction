@@ -1,0 +1,1 @@
+scoreboard players set ?timer qq.game 100000

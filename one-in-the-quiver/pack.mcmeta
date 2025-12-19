@@ -1,0 +1,14 @@
+{
+    "pack": {
+        "pack_format": 71,
+        "description": "One in the Quiver by Raxo"
+    },
+    "filter": {
+        "block": [
+            {
+                "namespace": "minecraft",
+                "path": "advancement/.*"
+            }
+        ]
+    }
+}

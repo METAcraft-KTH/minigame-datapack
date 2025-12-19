@@ -1,0 +1,1 @@
+give @s shield[unbreakable={}, tooltip_display={hidden_components:[unbreakable]}]

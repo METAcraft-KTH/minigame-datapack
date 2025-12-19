@@ -1,0 +1,1 @@
+return run clear @s arrow 1
