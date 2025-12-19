@@ -54,3 +54,4 @@ gamerule tnt_explodes true
 gamerule tnt_explosion_drop_decay false
 gamerule universal_anger false
 gamerule water_source_conversion true
+gamerule locator_bar false
