@@ -1,4 +1,6 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
+function #tgttos:init
+
 scoreboard players set ?state tgttos.game 0
 
 # initialize timer

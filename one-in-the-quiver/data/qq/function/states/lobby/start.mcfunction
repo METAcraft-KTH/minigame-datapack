@@ -1,4 +1,6 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
+function #qq:init
+
 scoreboard players set ?state qq.game 0
 
 # new state, reset GLOBAL.player_in_state

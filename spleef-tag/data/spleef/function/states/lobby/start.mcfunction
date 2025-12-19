@@ -1,4 +1,6 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
+function #spleef:init
+
 scoreboard players set ?state spleef.game 0
 
 # initialize timer

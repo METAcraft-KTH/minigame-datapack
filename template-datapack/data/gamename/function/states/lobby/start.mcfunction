@@ -1,4 +1,6 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
+function #gamename:init
+
 scoreboard players set ?state GAMENAME.game 0
 
 # initialize timer
