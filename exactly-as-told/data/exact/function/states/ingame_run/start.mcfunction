@@ -86,6 +86,8 @@ execute if score ?round.number exact.game matches 11 run team join exact.temp @a
 execute if score ?round.number exact.game matches 11 as @a[tag=!admin] at @n[tag=exact.tp.arena] run summon creeper ~ ~ ~ {Team:"exact.temp",active_effects:[{id:"resistance",amplifier:5,duration:-1,show_particles:false}]}
 execute if score ?round.number exact.game matches 11 run give @a[tag=!admin] flint_and_steel
 
+# people are probably gonna struggle a lot on these last few games so i'll extend to 30s
+execute if score ?round.number exact.game matches 12 run scoreboard players add time.ingame_run exact.config 200
 execute if score ?round.number exact.game matches 12 run give @a[tag=!admin] trident
 
 execute if score ?round.number exact.game matches 13 run give @a[tag=!admin] iron_block

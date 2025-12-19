@@ -1,0 +1,20 @@
+{
+	"criteria": {
+		"i": {
+			"trigger": "minecraft:location",
+			"conditions": {
+				"player": {
+					"location": {
+						"block": {
+							"blocks": "minecraft:nether_portal"
+						}
+					}
+				}
+			}
+		}
+	},
+	"requirements": [],
+	"rewards": {
+		"function": "tgttos:states/ingame_run/advancement_portal"
+	}
+}

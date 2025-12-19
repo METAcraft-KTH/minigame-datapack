@@ -1,0 +1,39 @@
+## INGAME PHASE: The game has begun, and people are playing
+
+# manage rejoin etc
+execute as @a[scores={GLOBAL.player_left=1..},tag=!admin] run function tgttos:states/ingame_run/join
+execute as @a[scores={GLOBAL.time_alive=0},tag=!admin] run function tgttos:states/ingame_run/while_dead
+execute as @a[scores={GLOBAL.time_alive=1},tag=!admin] run function tgttos:states/ingame_run/respawn
+
+# increment timer
+scoreboard players add ?timer tgttos.game 1
+# calculate remaining time
+scoreboard players operation #remainingseconds tgttos.game = time.ingame_run tgttos.config
+scoreboard players operation #remainingseconds tgttos.game -= ?timer tgttos.game
+scoreboard players operation #remainingseconds tgttos.game /= 20 GLOBAL
+scoreboard players operation #displayminutes tgttos.game = #remainingseconds tgttos.game
+scoreboard players operation #displayminutes tgttos.game /= 60 GLOBAL
+scoreboard players operation #displayseconds tgttos.game = #remainingseconds tgttos.game
+scoreboard players operation #displayseconds tgttos.game %= 60 GLOBAL
+# display remaining time
+execute if score #displayseconds tgttos.game matches ..9 run bossbar set tgttos:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":0",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
+execute if score #displayseconds tgttos.game matches 10.. run bossbar set tgttos:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
+execute store result bossbar tgttos:timer value run scoreboard players get ?timer tgttos.game
+
+# kill players who fall off / are on fire
+execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
+execute if score ?round.number tgttos.game matches ..4 as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:5}}}}}]} run kill @s
+execute if score ?round.number tgttos.game matches 3 as @a[tag=!admin] at @s if block ~ ~-1 ~ end_stone run kill @s
+
+effect give @a[tag=!admin] saturation infinite 0 true
+effect give @a[tag=!admin] resistance infinite 4 true
+
+# give wool
+function tgttos:states/pregame/give_me_wool
+
+# reach portal
+execute as @a[tag=!admin,gamemode=adventure] at @s if block ~ ~ ~ nether_portal run function tgttos:states/ingame_run/advancement_portal
+
+
+## end game
+execute if score ?timer tgttos.game >= time.ingame_run tgttos.config run function tgttos:states/ingame_pause/start
