@@ -23,7 +23,7 @@ tag @e remove hit
 
 ## !!!EDIT BELOW!!! change to next game's id
 scoreboard objectives setdisplay sidebar
-scoreboard players set game.id GLOBAL 4
+scoreboard players set game.id GLOBAL 6
 
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=qq.tp.lobby]
