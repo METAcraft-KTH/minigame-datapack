@@ -2,6 +2,7 @@
 function #atc:init
 
 scoreboard players set ?state atc.game 0
+scoreboard players set #round atc.game 0
 
 # initialize timer
 execute store result bossbar atc:timer max run scoreboard players get time.lobby atc.config
