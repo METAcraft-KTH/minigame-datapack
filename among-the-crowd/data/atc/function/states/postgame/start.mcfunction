@@ -2,6 +2,7 @@
 function atc:states/postgame/gameover
 
 scoreboard players set ?state atc.game 3
+scoreboard players add #round atc.game 1
 
 # initialize timer
 bossbar set atc:timer color white
