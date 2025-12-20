@@ -23,3 +23,6 @@ scoreboard players set game.id GLOBAL 3
 tp @a[tag=!admin] @n[tag=exact.tp.lobby]
 execute as @a[tag=!admin] run gamemode adventure
 effect clear @a[tag=!admin]
+
+#Disable foreloading (run this last)
+forceload remove all

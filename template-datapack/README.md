@@ -41,6 +41,7 @@ These entities should be placed manually in the world.
 
 When a game starts, it will run the `#gamename:init` function tag.
 You probably want to hardcode coordinates to forceload in this tag in a separate datapack.
+This is important since all minigames will unforceload everything when they end.
 
 The game loop starts with something like this:
 

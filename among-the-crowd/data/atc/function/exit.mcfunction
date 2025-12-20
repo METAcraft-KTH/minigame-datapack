@@ -28,3 +28,6 @@ scoreboard players set game.id GLOBAL 3
 
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=atc.tp.lobby]
+
+#Disable foreloading (run this last)
+forceload remove all
