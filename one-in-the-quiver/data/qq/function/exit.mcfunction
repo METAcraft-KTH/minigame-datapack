@@ -28,5 +28,5 @@ scoreboard players set game.id GLOBAL 6
 # TP everyone back to lobby
 tp @a[tag=!admin] @n[tag=qq.tp.lobby]
 
-#Disable foreloading (run this last)
-forceload remove all
+#Run exit callback
+function #qq:exit

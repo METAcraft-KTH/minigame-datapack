@@ -23,5 +23,5 @@ scoreboard players set game.id GLOBAL 6
 tp @a[tag=!admin] @n[tag=spleef.tp.lobby]
 execute as @a[tag=!admin] run gamemode adventure
 
-#Disable foreloading (run this last)
-forceload remove all
+#Run exit callback
+function #spleef:exit

@@ -31,5 +31,5 @@ tp @a[tag=!admin] @n[tag=atc.tp.lobby]
 execute as @a[tag=!admin] run gamemode adventure
 effect clear @a[tag=!admin]
 
-#Disable foreloading (run this last)
-forceload remove all
+#Run exit callback
+function #atc:exit

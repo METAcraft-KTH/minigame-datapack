@@ -41,7 +41,7 @@ These entities should be placed manually in the world.
 
 When a game starts, it will run the `#tgttos:init` function tag.
 You probably want to hardcode coordinates to forceload in this tag in a separate datapack.
-This is important since all minigames will unforceload everything when they end.
+When a game ends, it will run the `#tgttos:exit` function tag, which is a perfect opportunity to unforceload chunks, enable the next datapack and disable this one.
 
 The game loop starts with something like this:
 
