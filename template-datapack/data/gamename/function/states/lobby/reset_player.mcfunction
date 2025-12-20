@@ -6,4 +6,5 @@ effect clear @s
 clear @s
 experience set @s 0 levels
 experience set @s 0 points
+gamemode adventure
 effect give @s saturation infinite 0 true

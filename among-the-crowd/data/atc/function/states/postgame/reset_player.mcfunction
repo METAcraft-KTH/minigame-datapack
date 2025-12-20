@@ -6,4 +6,5 @@ effect clear @s
 clear @s
 experience set @s 0 levels
 experience set @s 0 points
+gamemode adventure
 tag @s remove atc.initial_seeker
