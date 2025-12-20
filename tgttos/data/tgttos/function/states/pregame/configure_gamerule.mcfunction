@@ -50,7 +50,7 @@ gamerule show_death_messages true
 gamerule max_snow_accumulation_height 1
 gamerule respawn_radius 0
 gamerule spectators_generate_chunks true
-gamerule tnt_explodes true
+gamerule tnt_explodes false
 gamerule tnt_explosion_drop_decay false
 gamerule universal_anger false
 gamerule water_source_conversion true

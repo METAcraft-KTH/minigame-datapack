@@ -16,13 +16,13 @@ scoreboard players operation #displayminutes tgttos.game /= 60 GLOBAL
 scoreboard players operation #displayseconds tgttos.game = #remainingseconds tgttos.game
 scoreboard players operation #displayseconds tgttos.game %= 60 GLOBAL
 # display remaining time
-execute if score #displayseconds tgttos.game matches ..9 run bossbar set tgttos:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":0",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
-execute if score #displayseconds tgttos.game matches 10.. run bossbar set tgttos:timer name ["Round ends in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
+execute if score #displayseconds tgttos.game matches ..9 run bossbar set tgttos:timer name ["Get to the portal in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":0",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
+execute if score #displayseconds tgttos.game matches 10.. run bossbar set tgttos:timer name ["Get to the portal in ",{"score": {"name": "#displayminutes","objective": "tgttos.game"}},":",{"score": {"name": "#displayseconds","objective": "tgttos.game"}}]
 execute store result bossbar tgttos:timer value run scoreboard players get ?timer tgttos.game
 
 # kill players who fall off / are on fire
-execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
-execute if score ?round.number tgttos.game matches ..4 as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:5}}}}}]} run kill @s
+#execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
+execute if score ?round.number tgttos.game matches ..4 as @a[tag=!admin] if predicate {condition:"any_of",terms:[{condition:"entity_properties",entity:"this",predicate:{flags:{is_on_fire:true}}},{condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:-10}}}}}]} run kill @s
 execute if score ?round.number tgttos.game matches 3 as @a[tag=!admin] at @s if block ~ ~-1 ~ end_stone run kill @s
 
 effect give @a[tag=!admin] saturation infinite 0 true

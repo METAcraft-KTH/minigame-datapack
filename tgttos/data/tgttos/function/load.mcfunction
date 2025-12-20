@@ -21,6 +21,7 @@ scoreboard players set state.init tgttos.config -1
 scoreboard players set state.lobby tgttos.config 0
 ## !!!EDIT BELOW!!! add more states as needed for the game.
 scoreboard players set state.pregame tgttos.config 1
+scoreboard players set state.ingame_build tgttos.config 21
 scoreboard players set state.ingame_run tgttos.config 22
 scoreboard players set state.ingame_pause tgttos.config 23
 scoreboard players set state.postgame tgttos.config 3
@@ -28,7 +29,8 @@ scoreboard players set state.postgame tgttos.config 3
 # how long each gamestate should last
 ## !!!EDIT BELOW!!! numbers are in ticks
 scoreboard players set time.lobby tgttos.config 3600
-scoreboard players set time.pregame tgttos.config 300
+scoreboard players set time.pregame tgttos.config 200
+scoreboard players set time.ingame_build tgttos.config 800
 scoreboard players set time.ingame_run tgttos.config 2000
 scoreboard players set time.ingame_pause tgttos.config 200
 scoreboard players set time.postgame tgttos.config 600
@@ -43,8 +45,8 @@ bossbar set tgttos:timer visible false
 scoreboard objectives add tgttos.Y dummy
 scoreboard objectives add tgttos.color dummy
 
-execute unless entity @n[type=marker,tag=tgttos.tp.arena] run tellraw @a "debug: tgttos.tp.arena not found"
-execute unless entity @n[type=marker,tag=tgttos.tp.2] run tellraw @a "debug: tgttos.tp.2 not found"
-execute unless entity @n[type=marker,tag=tgttos.tp.3] run tellraw @a "debug: tgttos.tp.3 not found"
-execute unless entity @n[type=marker,tag=tgttos.tp.4] run tellraw @a "debug: tgttos.tp.4 not found"
-execute unless entity @n[type=marker,tag=tgttos.tp.5] run tellraw @a "debug: tgttos.tp.5 not found"
+#execute unless entity @n[type=marker,tag=tgttos.tp.arena] run tellraw @a "debug: tgttos.tp.arena not found"
+#execute unless entity @n[type=marker,tag=tgttos.tp.2] run tellraw @a "debug: tgttos.tp.2 not found"
+#execute unless entity @n[type=marker,tag=tgttos.tp.3] run tellraw @a "debug: tgttos.tp.3 not found"
+#execute unless entity @n[type=marker,tag=tgttos.tp.4] run tellraw @a "debug: tgttos.tp.4 not found"
+#execute unless entity @n[type=marker,tag=tgttos.tp.5] run tellraw @a "debug: tgttos.tp.5 not found"

@@ -1,5 +1,5 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
-function #tgttos:init
+#function #tgttos:init
 
 scoreboard players set ?state tgttos.game 0
 
@@ -20,3 +20,5 @@ effect give @a[tag=!admin] saturation 2 99 true
 effect give @a[tag=!admin] instant_health 2 99 true
 xp set @a[tag=!admin] 0 levels
 xp set @a[tag=!admin] 0 points
+
+scoreboard players set ?round.number tgttos.game 1

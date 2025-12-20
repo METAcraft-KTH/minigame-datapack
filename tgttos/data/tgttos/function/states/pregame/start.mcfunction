@@ -27,14 +27,14 @@ clear @a[tag=!admin]
 
 execute as @a[tag=!admin] store result score @s tgttos.color run random value 0..10
 
-execute unless score ?round.number tgttos.game matches 2 unless score ?round.number tgttos.game matches 5 as @a[tag=!admin] run function tgttos:states/pregame/give_me_wool
-execute unless score ?round.number tgttos.game matches 2 unless score ?round.number tgttos.game matches 5 as @a[tag=!admin] run give @s shears[can_break={blocks:["red_wool","orange_wool","yellow_wool","green_wool","blue_wool","light_blue_wool","magenta_wool","purple_wool","lime_wool","cyan_wool","pink_wool"]}]
-execute if score ?round.number tgttos.game matches 3 as @a[tag=!admin] run give @s ender_pearl
-execute if score ?round.number tgttos.game matches 5 as @a[tag=!admin] run give @s horse_spawn_egg[entity_data={id:"minecraft:horse",Invulnerable:1b,Tame:1b,attributes:[{id:"minecraft:jump_strength",base:0.8},{id:"minecraft:movement_speed",base:0.3}]},use_remainder={id:"minecraft:saddle",count:1}] 1
-execute if score ?round.number tgttos.game matches 5 as @a[tag=!admin] run give @s saddle 1
+gamemode spectator @a
+tp @a[tag=!admin] 30008 1 8
+execute if score ?round.number tgttos.game matches 2 run tp @a[tag=!admin] 29875 48 0
+execute if score ?round.number tgttos.game matches 3 run tp @a[tag=!admin] 29681 36 -17
 
-#tellraw @a {"text":"\nGAME 2: TO GET TO THE OTHER SIDE","color":"gold","bold":true}
-#tellraw @a {"text":"- Don't fall into the void",color:"gray"}
-#tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
-#tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
-#tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}
+#function tgttos:states/pregame/give_me_wool
+#give @s shears[can_break={blocks:["red_wool","orange_wool","yellow_wool","green_wool","blue_wool","light_blue_wool","magenta_wool","purple_wool","lime_wool","cyan_wool","pink_wool"]},enchantments={efficiency:5}]
+
+execute unless score ?round.number tgttos.game matches 2.. run tellraw @a {"text":"\nGAME 3: YOU FUCKIN' BUILD IT THEN IF YOURE SO GOD DAMN SMART","color":"gold","bold":true}
+execute unless score ?round.number tgttos.game matches 2.. run tellraw @a {"text":"- Build the obstacle course yourself",color:"gray"}
+execute unless score ?round.number tgttos.game matches 2.. run tellraw @a {"text":"- Get to the nether portal as fast as you can",color:"gray"}
