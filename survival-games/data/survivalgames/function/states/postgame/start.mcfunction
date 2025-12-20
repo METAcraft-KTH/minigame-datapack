@@ -6,7 +6,7 @@ execute store result bossbar survivalgames:timer max run scoreboard players get 
 scoreboard players set ?timer SURVIVALGAMES.game 0
 
 # tp everyone to the arena
-tp @a @n[tag=SURVIVALGAMES.tp.lobby]
+tp @a 11 0 60003
 execute at @n[tag=SURVIVALGAMES.tp.lobby] run spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players

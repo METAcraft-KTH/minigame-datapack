@@ -43,5 +43,5 @@ scoreboard objectives add SURVIVALGAMES.arena_id dummy
 scoreboard objectives add SURVIVALGAMES.lobby_sizes dummy
 scoreboard objectives add SURVIVALGAMES.player_round dummy
 
-scoreboard players set arena_radius SURVIVALGAMES.config 50
-scoreboard players set round_count SURVIVALGAMES.config 3
+scoreboard players set arena_radius SURVIVALGAMES.config 500
+scoreboard players set round_count SURVIVALGAMES.config 2

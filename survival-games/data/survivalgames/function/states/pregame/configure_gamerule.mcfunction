@@ -29,7 +29,7 @@ gamerule fire_damage true
 gamerule forgive_dead_players true
 gamerule freeze_damage true
 gamerule global_sound_events true
-gamerule keep_inventory true
+gamerule keep_inventory false
 gamerule lava_source_conversion false
 gamerule log_admin_commands true
 gamerule max_command_sequence_length 65536

@@ -9,7 +9,7 @@ execute store result bossbar survivalgames:timer max run scoreboard players get 
 scoreboard players set ?timer SURVIVALGAMES.game 0
 
 # tp everyone to the arena
-tp @a @n[tag=SURVIVALGAMES.tp.lobby]
+tp @a 11 0 60003
 spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
@@ -20,6 +20,8 @@ execute as @a[tag=!admin] run function survivalgames:states/pregame/reset_player
 
 scoreboard players reset * SURVIVALGAMES.lobby_sizes
 effect give @a[tag=!admin] slowness 10 255 true
+effect give @a[tag=!admin] instant_health 10 10 true
+effect give @a[tag=!admin] saturation 10 10 true
 function survivalgames:states/pregame/prepare_map
 
 
