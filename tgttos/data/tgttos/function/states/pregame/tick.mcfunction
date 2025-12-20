@@ -23,7 +23,7 @@ execute store result bossbar tgttos:timer value run scoreboard players get ?time
 effect give @a[tag=!admin] saturation infinite 0 true
 effect give @a[tag=!admin] resistance infinite 4 true
 
-execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
+#execute at @n[type=marker,tag=tgttos.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~
 
 ## start game (for real)
 scoreboard players operation #remainingtime tgttos.game = time.pregame tgttos.config
