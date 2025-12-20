@@ -32,9 +32,11 @@ scoreboard players set time.pregame atc.config 600
 scoreboard players set time.ingame atc.config 6000
 scoreboard players set time.postgame atc.config 600
 
-scoreboard players set fake_player_count atc.config 30
-scoreboard players set fake_player_radius atc.config 30
+scoreboard players set fake_player_count atc.config 300
+scoreboard players set fake_player_radius atc.config 60
 scoreboard players set round_count atc.config 2
+scoreboard players set fake_player_anger_time atc.config 100
+scoreboard players set fake_player_max_height atc.config 65
 
 # bossbar
 bossbar add atc:timer ""

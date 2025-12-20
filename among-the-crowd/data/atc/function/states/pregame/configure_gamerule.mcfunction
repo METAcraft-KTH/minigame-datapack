@@ -44,7 +44,7 @@ gamerule players_nether_portal_default_delay 80
 gamerule players_sleeping_percentage 100
 gamerule projectiles_can_break_blocks true
 gamerule random_tick_speed 0
-gamerule reduced_debug_info false
+gamerule reduced_debug_info true
 gamerule send_command_feedback true
 gamerule show_death_messages true
 gamerule max_snow_accumulation_height 1
