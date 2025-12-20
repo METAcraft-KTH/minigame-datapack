@@ -18,7 +18,7 @@ gamerule limited_crafting false
 gamerule mob_drops true
 gamerule spawn_mobs false
 gamerule spawn_patrols false
-gamerule block_drops true
+gamerule block_drops false
 gamerule spawn_wandering_traders false
 gamerule spread_vines false
 gamerule spawn_wardens false

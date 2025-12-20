@@ -19,6 +19,11 @@ scoreboard players set ?timer spleef.game 0
 # tp everyone to the arena
 #tp @a[tag=!admin] @n[tag=spleef.tp.arena]
 
+# blow up people who have tnt
+execute at @a[scores={spleef.hastnt=1..}] run summon tnt ~ ~ ~ {fuse:1}
+kill @a[scores={spleef.hastnt=1..}]
+tellraw @a[scores={spleef.hastnt=1..}] {"text":"You exploded because you didn't give away your TNT in time!","color":"red"}
+
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state
 scoreboard players set @a GLOBAL.player_in_state 1

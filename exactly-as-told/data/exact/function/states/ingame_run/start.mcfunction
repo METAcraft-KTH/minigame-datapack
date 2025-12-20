@@ -30,6 +30,7 @@ execute if score ?round.number exact.game matches 2 at @n[type=marker,tag=exact.
 execute if score ?round.number exact.game matches 2 at @n[type=marker,tag=exact.tp.arena] run summon wandering_trader ~ ~ ~
 execute if score ?round.number exact.game matches 2 at @n[type=marker,tag=exact.tp.arena] run summon wandering_trader ~ ~ ~
 execute if score ?round.number exact.game matches 2 run fill 10054 89 326 10068 89 312 emerald_ore
+execute if score ?round.number exact.game matches 2 run fill 10054 88 326 10068 88 312 bedrock
 execute if score ?round.number exact.game matches 2 run give @a[tag=!admin] diamond_pickaxe[can_break={blocks:["emerald_ore"]},enchantments={fortune:3}]
 
 execute if score ?round.number exact.game matches 3 run gamerule block_drops false
@@ -43,8 +44,10 @@ execute if score ?round.number exact.game matches 4 run fill 10054 89 326 10068 
 execute if score ?round.number exact.game matches 4 run item replace entity @a[tag=!admin] weapon.mainhand with golden_hoe[can_break={blocks:["poppy","dandelion","short_grass","tall_grass"]}]
 execute if score ?round.number exact.game matches 4 run item replace entity @a[tag=!admin] weapon.offhand with bone_meal[can_place_on={blocks:["grass_block"]}] 64
 
+execute if score ?round.number exact.game matches 5 run effect clear @a[tag=!admin] resistance
 execute if score ?round.number exact.game matches 5 run gamerule block_drops false
 execute if score ?round.number exact.game matches 5 run fill 10054 89 326 10068 89 312 air destroy
+execute if score ?round.number exact.game matches 5 run fill 10054 88 326 10068 88 312 air
 execute if score ?round.number exact.game matches 5 at @n[type=marker,tag=exact.tp.dropper] run spawnpoint @a[tag=!admin]
 
 execute if score ?round.number exact.game matches 6 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.parkour]
@@ -88,10 +91,11 @@ execute if score ?round.number exact.game matches 11 run team join exact.temp @a
 execute if score ?round.number exact.game matches 11 as @a[tag=!admin] at @n[tag=exact.tp.arena] run summon creeper ~ ~ ~ {Team:"exact.temp",active_effects:[{id:"resistance",amplifier:5,duration:-1,show_particles:false}]}
 execute if score ?round.number exact.game matches 11 run give @a[tag=!admin] flint_and_steel
 
-# people are probably gonna struggle a lot on these last few games so i'll extend to 30s
-execute if score ?round.number exact.game matches 12 run scoreboard players add time.ingame_run exact.config 200
-execute if score ?round.number exact.game matches 12 run give @a[tag=!admin] trident
+execute if score ?round.number exact.game matches 12 run give @a[tag=!admin] bow
+execute if score ?round.number exact.game matches 12 run give @a[tag=!admin] arrow 2
 
+# this one is 35s
+execute if score ?round.number exact.game matches 13 run scoreboard players add time.ingame_run exact.config 300
 execute if score ?round.number exact.game matches 13 run give @a[tag=!admin] iron_block
 execute if score ?round.number exact.game matches 13 run give @a[tag=!admin] hay_block
 execute if score ?round.number exact.game matches 13 run give @a[tag=!admin] sugar_cane 3
@@ -106,6 +110,7 @@ execute if score ?round.number exact.game matches 13 at @n[tag=exact.tp.arena] r
 execute if score ?round.number exact.game matches 13 at @n[tag=exact.tp.arena] run summon mooshroom ~ ~ ~ {Type:brown,active_effects:[{id:"resistance",amplifier:5,duration:-1,show_particles:false}]}
 execute if score ?round.number exact.game matches 13 run fill 10054 89 326 10068 89 312 crafting_table
 
+execute if score ?round.number exact.game matches 14 run scoreboard players remove time.ingame_run exact.config 300
 execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_pickaxe[can_break={blocks:["stone"]}]
 execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_shovel[can_break={blocks:["dirt","grass_block"]}]
 execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_axe[can_break={blocks:["oak_planks"]}]

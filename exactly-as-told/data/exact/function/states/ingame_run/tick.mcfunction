@@ -27,9 +27,10 @@ execute store result bossbar exact:timer value run scoreboard players get ?timer
 effect give @a[tag=!admin] saturation infinite 0 true
 # need to be able to die on game 5 to respawn
 execute unless score ?round.number exact.game matches 5 run effect give @a[tag=!admin] resistance 1 4 true
+execute if score ?round.number exact.game matches 5 run effect clear @a[tag=!admin] resistance
 
 # game 7 kills players if they land on redstone block
-execute if score ?round.number exact.game matches 7 as @a[tag=!exact.done,tag=!admin] at @s if block ~ ~-0.1 ~ redstone_block run kill @s
+execute if score ?round.number exact.game matches 6 as @a[tag=!exact.done,tag=!admin] at @s if block ~ ~-0.5 ~ redstone_block run kill @s
 
 # game 8 is controlled by predicates to count amount of sneaks
 execute if score ?round.number exact.game matches 8 as @a[tag=!exact.done] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players remove @s exact.sneakcount 1

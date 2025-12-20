@@ -21,6 +21,11 @@ execute as @a[scores={spleef.blockmined=3..}] run scoreboard players remove @s s
 execute at @n[type=marker,tag=spleef.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run kill @s
 
+# tnt tag
+execute as @a[tag=!admin] store result score @s spleef.hastnt run clear @s tnt 0
+title @a[scores={spleef.hastnt=1..}] actionbar {"text":"You are holding TNT! Punch someone to give it away!","color":"red"}
+title @a[scores={spleef.hastnt=0}] actionbar {"text":"Mine blocks to regain hunger!","color":"white"}
+
 # if tnt run mode
 execute positioned 50032 20 32 as @e[type=chicken,distance=..500] at @s run fill ~.5 ~-.1 ~.5 ~-.5 ~-.1 ~-.5 black_terracotta replace #terracotta
 execute if score ?round.number spleef.game matches 7 as @a[tag=!admin,gamemode=adventure] at @s run fill ~.5 ~-.1 ~.5 ~-.5 ~-.1 ~-.5 black_terracotta replace #terracotta

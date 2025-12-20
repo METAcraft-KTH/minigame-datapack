@@ -45,5 +45,6 @@ bossbar set spleef:timer visible false
 scoreboard objectives add spleef.temp dummy
 scoreboard objectives add spleef.Y dummy
 scoreboard objectives add spleef.blockmined minecraft.used:golden_pickaxe
+scoreboard objectives add spleef.hastnt dummy
 
 execute positioned 50023 32 23 unless entity @n[type=marker,tag=spleef.tp.arena,distance=..1] run summon marker ~ ~ ~ {Tags:["spleef.tp.arena"]}

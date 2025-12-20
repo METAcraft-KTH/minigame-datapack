@@ -14,3 +14,6 @@ scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function exact:states/postgame/reset_player
 
 execute as @a[tag=!admin,gamemode=!spectator] run gamemode spectator
+
+title @a title {"text":"GG!","color":"gold","bold":true,"italic":true}
+title @a subtitle ""
