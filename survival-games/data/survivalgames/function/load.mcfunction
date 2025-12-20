@@ -14,7 +14,7 @@ scoreboard players set 60 GLOBAL 60
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
-scoreboard players set id SURVIVALGAMES.config 7
+scoreboard players set id SURVIVALGAMES.config 6
 
 # gamestate (DO NOT change init and lobby)
 scoreboard players set state.init SURVIVALGAMES.config -1

@@ -19,6 +19,6 @@ execute as @e[tag=SURVIVALGAMES.middle] at @s run function survivalgames:run_wit
 gamemode adventure @a[tag=!admin]
 
 
-set-block-break-rules remove
+#set-block-break-rules remove
 
 

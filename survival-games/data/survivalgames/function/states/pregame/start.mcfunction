@@ -11,6 +11,7 @@ scoreboard players set ?timer SURVIVALGAMES.game 0
 # tp everyone to the arena
 tp @a 11 0 60003
 spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
+kill @e[type=item]
 
 # NEW STATE, reset GLOBAL.player_in_state and reset all players
 scoreboard players reset * GLOBAL.player_in_state

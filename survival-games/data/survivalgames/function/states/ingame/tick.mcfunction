@@ -24,5 +24,5 @@ execute as @e[tag=SURVIVALGAMES.middle] at @s run function survivalgames:run_wit
 
 ## end game
 execute if score ?timer SURVIVALGAMES.game >= time.ingame SURVIVALGAMES.config run function survivalgames:states/postgame/start
-execute store result score #playercount SURVIVALGAMES.tmp if entity @a[gamemode=survival]
+execute store result score #playercount SURVIVALGAMES.tmp if entity @a[gamemode=adventure]
 execute if score #playercount SURVIVALGAMES.tmp matches ..1 run function survivalgames:states/postgame/start
