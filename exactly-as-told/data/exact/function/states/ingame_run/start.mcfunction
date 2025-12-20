@@ -40,11 +40,11 @@ execute if score ?round.number exact.game matches 3 run give @a[tag=!admin] whea
 execute if score ?round.number exact.game matches 4 run gamerule block_drops true
 execute if score ?round.number exact.game matches 4 run fillbiome 10055 90 325 10068 90 312 forest
 execute if score ?round.number exact.game matches 4 run fill 10054 89 326 10068 89 312 grass_block
-execute if score ?round.number exact.game matches 4 run give @a[tag=!admin] golden_hoe[can_break={blocks:["poppy","dandelion","short_grass","tall_grass"]}]
-execute if score ?round.number exact.game matches 4 run give @a[tag=!admin] bone_meal[can_place_on={blocks:["grass_block"]}] 64
+execute if score ?round.number exact.game matches 4 run item replace entity @a[tag=!admin] weapon.mainhand with golden_hoe[can_break={blocks:["poppy","dandelion","short_grass","tall_grass"]}]
+execute if score ?round.number exact.game matches 4 run item replace entity @a[tag=!admin] weapon.offhand with bone_meal[can_place_on={blocks:["grass_block"]}] 64
 
 execute if score ?round.number exact.game matches 5 run gamerule block_drops false
-execute if score ?round.number exact.game matches 5 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.dropper]
+execute if score ?round.number exact.game matches 5 run fill 10054 89 326 10068 89 312 air destroy
 execute if score ?round.number exact.game matches 5 at @n[type=marker,tag=exact.tp.dropper] run spawnpoint @a[tag=!admin]
 
 execute if score ?round.number exact.game matches 6 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.parkour]
@@ -76,12 +76,14 @@ execute if score ?round.number exact.game matches 9 run item replace entity @a[t
 execute if score ?round.number exact.game matches 9 run item replace entity @a[tag=!admin] inventory.19 with blue_wool 1
 execute if score ?round.number exact.game matches 9 run item replace entity @a[tag=!admin] inventory.24 with light_gray_wool 1
 execute if score ?round.number exact.game matches 9 run item replace entity @a[tag=!admin] inventory.26 with blue_wool 1
+execute if score ?round.number exact.game matches 9 run recipe take @a[tag=!admin] *
 
 execute if score ?round.number exact.game matches 10 run gamerule mob_drops false
 execute if score ?round.number exact.game matches 10 run give @a[tag=!admin] bow
 execute if score ?round.number exact.game matches 10 run give @a[tag=!admin] arrow 10
 execute if score ?round.number exact.game matches 10 as @a[tag=!admin] at @s run summon chicken ~ ~30 ~
 
+execute if score ?round.number exact.game matches 11 run difficulty hard
 execute if score ?round.number exact.game matches 11 run team join exact.temp @a[tag=!admin]
 execute if score ?round.number exact.game matches 11 as @a[tag=!admin] at @n[tag=exact.tp.arena] run summon creeper ~ ~ ~ {Team:"exact.temp",active_effects:[{id:"resistance",amplifier:5,duration:-1,show_particles:false}]}
 execute if score ?round.number exact.game matches 11 run give @a[tag=!admin] flint_and_steel
@@ -105,9 +107,9 @@ execute if score ?round.number exact.game matches 13 at @n[tag=exact.tp.arena] r
 execute if score ?round.number exact.game matches 13 run fill 10054 89 326 10068 89 312 crafting_table
 
 execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_pickaxe[can_break={blocks:["stone"]}]
-execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_shovel[can_break={blocks:["dirt"]}]
+execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_shovel[can_break={blocks:["dirt","grass_block"]}]
 execute if score ?round.number exact.game matches 14 run give @a[tag=!admin] golden_axe[can_break={blocks:["oak_planks"]}]
-execute if score ?round.number exact.game matches 14 as @a[tag=!admin] at @s run tp @s ~200 ~ ~
+execute if score ?round.number exact.game matches 14 as @a[tag=!admin] at @s run tp @s ~54 ~ ~
 
 execute if score ?round.number exact.game matches 15 run give @a[tag=!admin] wooden_axe
 execute if score ?round.number exact.game matches 15 as @a[tag=!admin] at @n[tag=exact.tp.arena] run summon vex ~ ~5 ~
