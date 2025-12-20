@@ -59,7 +59,7 @@ execute if score ?round.number exact.game matches 13 run title @a[tag=!exact.don
 execute if score ?round.number exact.game matches 14 run title @a[tag=!exact.done] subtitle "Dig straight down!!"
 execute if score ?round.number exact.game matches 15 run title @a[tag=!exact.done] subtitle "Kill a vex!!"
 
-execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:59}}}}} run tp @s @n[tag=exact.tp.arena]
+execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:-5}}}}} run tp @s @n[tag=exact.tp.arena]
 
 ## end game
 execute if score ?timer exact.game >= time.ingame_run exact.config run function exact:states/ingame_pause/start
