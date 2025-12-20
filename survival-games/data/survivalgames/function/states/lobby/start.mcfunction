@@ -1,4 +1,6 @@
 # This function is called when the previous game has officially ended (game.id GLOBAL has switched to this game).
+function #survivalgames:init
+
 scoreboard players operation ?state SURVIVALGAMES.game = state.lobby SURVIVALGAMES.config
 
 # initialize timer

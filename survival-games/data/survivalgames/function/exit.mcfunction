@@ -34,3 +34,6 @@ tp @a[tag=!admin] @n[tag=SURVIVALGAMES.tp.lobby]
 spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
 
 set-block-break-rules remove
+
+#Run exit callback
+function #survivalgames:exit
