@@ -5,3 +5,4 @@ data merge entity @s {PersistenceRequired:1b}
 team join atc.hiders @s
 tag @s add atc.fake_player
 effect give @s resistance infinite 5 true
+attribute @s movement_speed base set 0.5
