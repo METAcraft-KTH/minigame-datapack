@@ -1,0 +1,35 @@
+{
+	"values": [
+		"gray_wool",
+        "gray_concrete_powder",
+        "smooth_basalt",
+        "light_gray_wool",
+        "light_gray_concrete",
+        "cobbled_deepslate",
+        "yellow_concrete",
+        "nether_brick_slab",
+        "nether_brick_fence",
+        "nether_brick_stairs",
+        "nether_brick_wall",
+        "nether_bricks",
+        "black_wool",
+        "coal_block",
+        "bamboo_planks",
+        "polished_andesite",
+        "andesite",
+        "polished_andesite_stairs",
+        "stone_slab",
+        "stone",
+        "polished_blackstone",
+        "polished_blackstone_stairs",
+        "calcite",
+
+        "red_wool",
+
+        "smooth_quartz",
+        "mushroom_stem",
+        "white_wool",
+        "white_concrete_powder",
+        "white_concrete"
+	]
+}
