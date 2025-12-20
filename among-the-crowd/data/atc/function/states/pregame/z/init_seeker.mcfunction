@@ -1,6 +1,7 @@
 tp @s @n[tag=atc.tp.seekerspawn]
 effect give @s blindness infinite 0 true
 effect give @s slowness infinite 255 true
+effect give @s resistance infinite 5 true
 title @s title {"text": "You are the first seeker!", "color": "dark_purple"}
 title @s subtitle {"text": "You will become a hider when you get your first kill!", "color": "green"}
 tellraw @s {"text": "You are the first seeker!", "color": "dark_purple"}

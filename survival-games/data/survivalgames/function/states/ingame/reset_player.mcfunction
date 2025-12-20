@@ -4,5 +4,6 @@ scoreboard players operation @s GLOBAL.player_in_state = id SURVIVALGAMES.config
 ## Reset logic
 effect clear @s
 clear @s
+give @s shears[can_break={blocks:"red_wool"}] 1
 experience set @s 0 levels
 experience set @s 0 points

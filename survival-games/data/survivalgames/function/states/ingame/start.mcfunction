@@ -18,6 +18,7 @@ execute as @a[tag=!admin] run function survivalgames:states/ingame/reset_player
 scoreboard players operation @a[tag=!admin] SURVIVALGAMES.player_round = round SURVIVALGAMES.game
 
 
-set-block-break-rules {blocks: [{blocks: ["fire", "soul_fire"]}], allow_mode: true}
+#set-block-break-rules {blocks: [{blocks: ["fire", "soul_fire"]}], allow_mode: true}
 
-gamemode survival @a[tag=!admin]
+gamemode adventure @a[tag=!admin]
+effect give @a resistance 30 255 true

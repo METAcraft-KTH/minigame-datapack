@@ -14,7 +14,7 @@ scoreboard players set 60 GLOBAL 60
 
 # unique game id
 ## !!!EDIT BELOW!!! MUST BE UNIQUE FROM ALL OTHER GAMES IN THE SAME TOURNAMENT!
-scoreboard players set id SURVIVALGAMES.config 7
+scoreboard players set id SURVIVALGAMES.config 6
 
 # gamestate (DO NOT change init and lobby)
 scoreboard players set state.init SURVIVALGAMES.config -1
@@ -43,5 +43,5 @@ scoreboard objectives add SURVIVALGAMES.arena_id dummy
 scoreboard objectives add SURVIVALGAMES.lobby_sizes dummy
 scoreboard objectives add SURVIVALGAMES.player_round dummy
 
-scoreboard players set arena_radius SURVIVALGAMES.config 50
-scoreboard players set round_count SURVIVALGAMES.config 3
+scoreboard players set arena_radius SURVIVALGAMES.config 500
+scoreboard players set round_count SURVIVALGAMES.config 2
