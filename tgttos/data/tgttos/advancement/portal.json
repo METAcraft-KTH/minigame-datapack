@@ -1,6 +1,6 @@
 {
 	"criteria": {
-		"i": {
+		"_": {
 			"trigger": "minecraft:location",
 			"conditions": {
 				"player": {
@@ -13,7 +13,6 @@
 			}
 		}
 	},
-	"requirements": [],
 	"rewards": {
 		"function": "tgttos:states/ingame_run/advancement_portal"
 	}

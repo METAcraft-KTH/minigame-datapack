@@ -46,4 +46,4 @@ execute if score #remainingtime tgttos.game matches 20 run title @a[tag=!admin] 
 execute if score #remainingtime tgttos.game matches 20 as @a[tag=!admin] at @s run playsound block.note_block.pling player @s ~ ~ ~
 
 ## end game
-execute if score ?timer tgttos.game >= time.ingame_build tgttos.config run function tgttos:states/ingame_pause/start
+execute if score ?timer tgttos.game >= time.ingame_build tgttos.config run function tgttos:states/ingame_run/start

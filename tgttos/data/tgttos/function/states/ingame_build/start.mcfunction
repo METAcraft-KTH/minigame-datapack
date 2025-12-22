@@ -14,9 +14,9 @@ scoreboard players set @a GLOBAL.player_in_state 1
 execute as @a[tag=!admin] run function tgttos:states/ingame_run/reset_player
 
 title @a title {"text":"BUILD THE ARENA!","color":"gold"}
+gamemode survival @a[tag=!admin]
 flight enable @a
 
-gamemode survival @a[tag=!admin]
 clear @a[tag=!admin]
 give @a[tag=!admin] oak_planks 64
 give @a[tag=!admin] oak_planks 64
