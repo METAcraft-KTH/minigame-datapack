@@ -1,0 +1,1 @@
+Functions in this folder are generally useful functions that can be called by anyone at any time!

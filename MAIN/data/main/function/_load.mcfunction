@@ -1,0 +1,70 @@
+# --- GLOBAL VARIABLES ---
+scoreboard objectives add main.const dummy "Constants, global configs"
+scoreboard objectives add main.state dummy "Variables, control global states"
+scoreboard objectives add main.time dummy "Timer-related variables"
+scoreboard objectives add main.id dummy "Unique IDs for every player"
+scoreboard objectives add main.iwashere dummy "Check if player has been online since phase start"
+scoreboard objectives add main.temp dummy "Any temporary calculations"
+
+# --- DEFAULT VARIABLE STATES ---
+#
+# ?state main.state       --- what state is the entire event in?
+#   0 = EVENT IDLE          waiting for people to join
+#   1 = INTERMISSION        hanging in the lobby while waiting for the next game
+#   2 = GAME OPENING        intro sequence
+#   3 = GAME INGAME         hand it off to the minigame datapack
+#   4 = GAME CLOSING        outro animations if applicable) (go back to 1 if not the final game
+#   5 = EVENT END
+#       Note that for the sake of giving games full control over itself, any round intermissions
+#       are managed by the game itself.
+# 
+# ?minigame_id main.state --- what game is ongoing? (for states 1-4 only)
+#   0   = NONE          (state 0 or 5, not that it matters lol)
+#   1-6 = corresponding game
+#
+execute unless score ?state main.state matches -2147483648..2147483647 run scoreboard players set ?state main.state 0
+execute unless score ?minigame_id main.state matches -2147483648..2147483647 run scoreboard players set ?minigame_id main.state 0
+# if this is the first time the datapack is run, set the first ID to 1 and increment it per player
+execute unless score ! main.id matches -2147483648..2147483647 run scoreboard players set ! main.id 1
+
+
+# --- GAME NAMES ---
+#   used to call each game's api functions, and to generate the title.
+#   first object is empty because i'm 1-indexing.
+#   ideally i'd like to do this so that every game registers its own name
+#   but its kind of whatever. set the game names here
+data merge storage main:game {display:[{}, \
+    {namespace:"race",gamename:"Race Around The World"}, \
+    {namespace:"uhc",gamename:"UHC Done Quick"}, \
+    {namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
+    {namespace:"kotm",gamename:"King of the Mingle"}, \
+    {namespace:"exact",gamename:"Exactly As Told"}, \
+    {namespace:"qq",gamename:"One in the Quiver"}, \
+]}
+
+# --- CONSTS (AND CONFIGS) ---
+#   how long intermissions should last, in ticks
+scoreboard players set ?intermission_length main.const 3600
+#   for all kinds of scoreboard players operations you might need
+scoreboard players set #-1 main.const -1
+scoreboard players set #0 main.const 0
+scoreboard players set #1 main.const 1
+scoreboard players set #2 main.const 2
+scoreboard players set #3 main.const 3
+scoreboard players set #4 main.const 4
+scoreboard players set #5 main.const 5
+scoreboard players set #10 main.const 10
+scoreboard players set #19 main.const 19
+scoreboard players set #20 main.const 20
+scoreboard players set #50 main.const 50
+scoreboard players set #60 main.const 60
+scoreboard players set #100 main.const 100
+scoreboard players set #120 main.const 120
+scoreboard players set #200 main.const 200
+
+# --- SCHEDULE _tick_per_second ---
+schedule function main:_tick_per_second 20t replace
+
+
+# --- PLAYER DISCONNECT DETECTION ---
+scoreboard objectives add main.disconnect minecraft.custom:leave_game

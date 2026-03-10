@@ -1,0 +1,1 @@
+Functions that call other minigame datapacks' API endpoints.
