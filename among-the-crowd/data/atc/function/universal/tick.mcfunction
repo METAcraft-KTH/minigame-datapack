@@ -1,1 +1,0 @@
-## this function will run every tick regardless of game.id

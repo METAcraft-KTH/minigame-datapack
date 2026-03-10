@@ -1,2 +1,0 @@
-execute positioned 50032 10 32 as @e[type=marker,distance=..100,tag=spleef.floor1] at @s run function spleef:utility/game/blocks/place/as_marker
-schedule function spleef:utility/game/blocks/place/run2 1t

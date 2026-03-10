@@ -1,2 +1,0 @@
-$$(command)
-kill @s

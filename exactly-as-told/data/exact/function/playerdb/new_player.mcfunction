@@ -1,7 +1,0 @@
-data modify storage exact:pdb temp set from entity @s UUID
-data modify storage exact:pdb args.UUID0 set from storage exact:pdb temp[0]
-data modify storage exact:pdb args.UUID1 set from storage exact:pdb temp[1]
-data modify storage exact:pdb args.UUID2 set from storage exact:pdb temp[2]
-data modify storage exact:pdb args.UUID3 set from storage exact:pdb temp[3]
-
-function exact:playerdb/zprivate/new_player with storage exact:pdb args

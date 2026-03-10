@@ -1,1 +1,0 @@
-give @s iron_sword[unbreakable={}, tooltip_display={hidden_components:[unbreakable]}]

@@ -1,1 +1,0 @@
-advancement revoke @s only qq:key_space_just_down
