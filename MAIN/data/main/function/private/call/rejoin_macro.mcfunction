@@ -1,1 +1,1 @@
-$function $(namespace):api/rejoin
+$function $(namespace):on/player/rejoin

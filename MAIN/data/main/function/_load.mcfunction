@@ -3,30 +3,29 @@ scoreboard objectives add main.const dummy "Constants, global configs"
 scoreboard objectives add main.state dummy "Variables, control global states"
 scoreboard objectives add main.time dummy "Timer-related variables"
 scoreboard objectives add main.id dummy "Unique IDs for every player"
-scoreboard objectives add main.iwashere dummy "Check if player has been online since phase start"
+scoreboard objectives add main.iwashere dummy "Check if player was online at game start"
 scoreboard objectives add main.temp dummy "Any temporary calculations"
 
 # --- DEFAULT VARIABLE STATES ---
 #
-# ?state main.state       --- what state is the entire event in?
-#   0 = EVENT IDLE          waiting for people to join
+# ?superstate main.state  --- what state is the entire event in?
+#   0 = KICKOFF             waiting for people to join
 #   1 = INTERMISSION        hanging in the lobby while waiting for the next game
 #   2 = GAME OPENING        intro sequence
 #   3 = GAME INGAME         hand it off to the minigame datapack
 #   4 = GAME CLOSING        outro animations if applicable) (go back to 1 if not the final game
 #   5 = EVENT END
-#       Note that for the sake of giving games full control over itself, any round intermissions
-#       are managed by the game itself.
+#       for the sake of giving games full control over itself, anything that happens during
+#       the actual gameplay part is inside superstate 3.
 # 
 # ?minigame_id main.state --- what game is ongoing? (for states 1-4 only)
 #   0   = NONE          (state 0 or 5, not that it matters lol)
 #   1-6 = corresponding game
 #
-execute unless score ?state main.state matches -2147483648..2147483647 run scoreboard players set ?state main.state 0
+execute unless score ?superstate main.state matches -2147483648..2147483647 run scoreboard players set ?superstate main.state 0
 execute unless score ?minigame_id main.state matches -2147483648..2147483647 run scoreboard players set ?minigame_id main.state 0
 # if this is the first time the datapack is run, set the first ID to 1 and increment it per player
 execute unless score ! main.id matches -2147483648..2147483647 run scoreboard players set ! main.id 1
-
 
 # --- GAME NAMES ---
 #   used to call each game's api functions, and to generate the title.
@@ -43,6 +42,8 @@ data merge storage main:game {display:[{}, \
 ]}
 
 # --- CONSTS (AND CONFIGS) ---
+#   how long the opening should last, in ticks
+scoreboard players set ?event_launch_length main.const 3600
 #   how long intermissions should last, in ticks
 scoreboard players set ?intermission_length main.const 3600
 #   for all kinds of scoreboard players operations you might need

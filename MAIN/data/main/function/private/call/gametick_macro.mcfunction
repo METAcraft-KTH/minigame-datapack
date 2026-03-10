@@ -1,1 +1,1 @@
-$function $(namespace):api/tick
+$function $(namespace):on/tick
