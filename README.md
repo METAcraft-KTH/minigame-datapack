@@ -18,3 +18,13 @@ To use this datapack, you'll have to run the a function file "tl:title" with a s
 - tick : this is the animation delay between every letter in ticks.
 - location : this field defines whether title is shown in actionbar/title
 - sound : this is the sound that is played.
+
+# How to use spleefmusic
+```
+function spleefmusic:sans/play
+function spleefmusic:sans/pause
+function spleefmusic:sans/stop
+
+execute as @a at @s run function spleefmusic:sans/play
+```
+MEGALOVANIA (Smash Ultimate Ver.) by TobyFox (cover by ShinkoNet)
