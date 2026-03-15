@@ -1,5 +1,5 @@
 # ============================================================
-# Called by: _tick
+# Called by: _tick (each tick, state 4)
 # Executor:  Server
 # 
 # Runs every tick when the current minigame is in its
@@ -12,4 +12,4 @@
 execute as @a[gamemode=!spectator] run gamemode spectator @s
 
 # --- DECREMENT TIMER ---
-scoreboard players remove ?superstate main.time 1
+scoreboard players remove ?supertimer main.time 1

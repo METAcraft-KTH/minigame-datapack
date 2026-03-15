@@ -11,4 +11,4 @@ execute as @a[gamemode=!spectator] run gamemode spectator @s
 execute as @a[gamemode=!spectator] run spectate @n[type=block_display,tag=]
 
 # --- DECREMENT TIMER ---
-scoreboard players remove ?superstate main.time 1
+scoreboard players remove ?supertimer main.time 1

@@ -1,0 +1,1 @@
+$function $(namespace):on/player/death

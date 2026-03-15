@@ -1,6 +1,12 @@
+# ============================================================
+# 
+# This function always runs on /reload.
+# 
+# ============================================================
+
 # --- GLOBAL VARIABLES ---
 scoreboard objectives add main.const dummy "Constants, global configs"
-scoreboard objectives add main.state dummy "Variables, control global states"
+scoreboard objectives add main.state dummy "Variables, global states"
 scoreboard objectives add main.time dummy "Timer-related variables"
 scoreboard objectives add main.id dummy "Unique IDs for every player"
 scoreboard objectives add main.iwashere dummy "Check if player was online at game start"
@@ -27,6 +33,7 @@ execute unless score ?minigame_id main.state matches -2147483648..2147483647 run
 # if this is the first time the datapack is run, set the first ID to 1 and increment it per player
 execute unless score ! main.id matches -2147483648..2147483647 run scoreboard players set ! main.id 1
 
+
 # --- GAME NAMES ---
 #   used to call each game's api functions, and to generate the title.
 #   first object is empty because i'm 1-indexing.
@@ -41,11 +48,20 @@ data merge storage main:game {display:[{}, \
     {namespace:"qq",gamename:"One in the Quiver"}, \
 ]}
 
-# --- CONSTS (AND CONFIGS) ---
-#   how long the opening should last, in ticks
-scoreboard players set ?event_launch_length main.const 3600
-#   how long intermissions should last, in ticks
-scoreboard players set ?intermission_length main.const 3600
+
+# --- BOSSBARS ---
+bossbar add main:timer ""
+
+
+# --- CONFIGS ---
+#   how many players to wait for, before we start counting down towards the first minigame
+scoreboard players set ?launch_wait_for_player_count main.const 15
+#   how long we should wait before the first minigame, in ticks, after the minimum player count is met
+scoreboard players set ?before_first_minigame_wait_time main.const 14400
+#   how long lobby intermissions between minigames should last, in ticks
+scoreboard players set ?intermission_length main.const 2400
+
+# --- CONSTS ---
 #   for all kinds of scoreboard players operations you might need
 scoreboard players set #-1 main.const -1
 scoreboard players set #0 main.const 0
@@ -67,5 +83,8 @@ scoreboard players set #200 main.const 200
 schedule function main:_tick_per_second 20t replace
 
 
-# --- PLAYER DISCONNECT DETECTION ---
+# --- EVENT DETECTION ---
+#   player disconnect
 scoreboard objectives add main.disconnect minecraft.custom:leave_game
+#   player death
+scoreboard objectives add main.death deathCount
