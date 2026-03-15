@@ -14,5 +14,3 @@ execute if score ?minigame_id main.state matches 3 run function main:private/cal
 execute if score ?minigame_id main.state matches 4 run function main:private/call/macro/rejoin with storage main:game display[4]
 execute if score ?minigame_id main.state matches 5 run function main:private/call/macro/rejoin with storage main:game display[5]
 execute if score ?minigame_id main.state matches 6 run function main:private/call/macro/rejoin with storage main:game display[6]
-
-scoreboard players reset @s main.disconnect

@@ -1,8 +1,9 @@
 # ============================================================
-# Called by: The minigame, when the
+# Called by: The minigame, when the game ends.
 #
-# Resets all gamerules to our "baseline".
-# Any custom gamerules should be set by the caller
-# after this is called.
+# Set everyone to spectator and set superstate to 4.
 # 
 # ============================================================
+
+# just in case someone calls this by accident
+execute unless score ?superstate main.state matches 3 run return 0

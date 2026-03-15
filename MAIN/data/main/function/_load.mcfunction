@@ -37,15 +37,15 @@ execute unless score ! main.id matches -2147483648..2147483647 run scoreboard pl
 # --- GAME NAMES ---
 #   used to call each game's api functions, and to generate the title.
 #   first object is empty because i'm 1-indexing.
-#   ideally i'd like to do this so that every game registers its own name
-#   but its kind of whatever. set the game names here
+#   i would've liked to have so that every game registers its own name,
+#   but it's more convenient to be able to reorder them whenever.
 data merge storage main:game {display:[{}, \
-    {namespace:"race",gamename:"Race Around The World"}, \
-    {namespace:"uhc",gamename:"UHC Done Quick"}, \
-    {namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
-    {namespace:"kotm",gamename:"King of the Mingle"}, \
-    {namespace:"exact",gamename:"Exactly As Told"}, \
-    {namespace:"qq",gamename:"One in the Quiver"}, \
+    {id:1,namespace:"race",gamename:"Race Around The World"}, \
+    {id:2,namespace:"uhc",gamename:"UHC Done Quick"}, \
+    {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
+    {id:4,namespace:"kotm",gamename:"King of the Mingle"}, \
+    {id:5,namespace:"exact",gamename:"Exactly As Told"}, \
+    {id:6,namespace:"qq",gamename:"One in the Quiver"}, \
 ]}
 
 

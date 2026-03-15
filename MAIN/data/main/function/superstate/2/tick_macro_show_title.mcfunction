@@ -1,0 +1,1 @@
+$execute if score ?supertimer main.time matches 110 as @a at @s run function tl:title {text:'"$(gamename)"',tick:3,location:"title",sound:"block.note_block.bit master @s ~ ~ ~ 1 0.9 1",args:{is_bold:true}}
