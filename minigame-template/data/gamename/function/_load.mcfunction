@@ -15,6 +15,10 @@ scoreboard objectives add gamename.state dummy "game-internal states"
 #       always look due south and move forward at 0.2 blocks per second.
 data modify storage main:intro gamename.camera_starting_coords set value "10000 100 50000"
 
+#   this dictates where to teleport all players after the intro ends.
+#   this is used by main:superstate/2/go_to_state_3.
+data modify storage main:intro gamename.camera_starting_coords set value "10000 64 50000"
+
 #   this sets the how-to-play messages to display in chat.
 #       these are displayed in 10 second intervals, because that's how long
 #       it takes for minecraft to fade out a message.
