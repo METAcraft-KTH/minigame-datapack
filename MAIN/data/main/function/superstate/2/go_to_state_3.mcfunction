@@ -7,6 +7,13 @@
 # 
 # ============================================================
 
+# --- STOP WATCHING CUTSCENE ---
+#   but admin get to stay in spectator mode tho
+kill @e[type=block_display,tag=main.camera]
+execute as @a[tag=!admin] run gamemode adventure
+tellraw @a {text:"Get ready to begin...",color:"yellow",italic:true}
+function main:superstate/2/macro_tp with storage main:temp
+
 # --- CALL GAMESTART ---
 function main:private/call/gamestart
 

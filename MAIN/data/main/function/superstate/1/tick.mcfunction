@@ -18,11 +18,11 @@ execute store result storage main:temp t int 1 run scoreboard players get ?super
 execute store result score #min main.temp run function main:util/time_format_minsec_min with storage main:temp
 execute store result score #sec main.temp run function main:util/time_format_minsec_sec with storage main:temp
 #   set bossbar name
-execute if score #sec main.temp matches ..9 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":0",{score:{name:"#sec",objective:"main.temp"}},{text:" until the next game begins",color:"white"}]
-execute if score #sec main.temp matches 10.. run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec",objective:"main.temp"}},{text:" until the next game begins",color:"white"}]
+execute if score #sec main.temp matches ..9 unless score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":0",{score:{name:"#sec",objective:"main.temp"}},{text:" until the next game begins",color:"white"}]
+execute if score #sec main.temp matches 10.. unless score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec",objective:"main.temp"}},{text:" until the next game begins",color:"white"}]
 #   special formatting if the game is 1
-execute if score #sec main.temp matches ..9 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":0",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
-execute if score #sec main.temp matches 10.. run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
+execute if score #sec main.temp matches ..9 if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":0",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
+execute if score #sec main.temp matches 10.. if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
 
 # --- SHOW FULLSCREEN TITLE TRANSITION ---
 execute if score ?supertimer main.time matches 20 run title @a times 20 20 20

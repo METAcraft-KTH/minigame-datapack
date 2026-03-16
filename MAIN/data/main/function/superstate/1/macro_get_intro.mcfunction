@@ -7,8 +7,9 @@
 # 
 # ============================================================
 
-$data modify storage main:temp gamename set from storage main:game $(namespace).gamename
-$data modify storage main:temp coords set from storage main:intro $(namespace).camera_starting_coords
+$data modify storage main:temp gamename set value "$(gamename)"
+$data modify storage main:temp camera_coords set from storage main:intro $(namespace).camera_starting_coords
+$data modify storage main:temp player_coords set from storage main:intro $(namespace).player_starting_coords
 $data modify storage main:temp howtoplay set from storage main:intro $(namespace).howtoplay
 
 function main:superstate/1/macro_summon_camera with storage main:temp

@@ -13,6 +13,12 @@ execute as @a run gamemode spectator
 # hide bossbar and stuff
 bossbar set main:timer visible false
 
+execute if score ?minigame_id main.state matches 1 run function main:superstate/1/macro_get_intro with storage main:game display[1]
+execute if score ?minigame_id main.state matches 2 run function main:superstate/1/macro_get_intro with storage main:game display[2]
+execute if score ?minigame_id main.state matches 3 run function main:superstate/1/macro_get_intro with storage main:game display[3]
+execute if score ?minigame_id main.state matches 4 run function main:superstate/1/macro_get_intro with storage main:game display[4]
+execute if score ?minigame_id main.state matches 5 run function main:superstate/1/macro_get_intro with storage main:game display[5]
+execute if score ?minigame_id main.state matches 6 run function main:superstate/1/macro_get_intro with storage main:game display[6]
 
 # --- SET STARTING TIME ---
 scoreboard players set ?supertimer main.time 0

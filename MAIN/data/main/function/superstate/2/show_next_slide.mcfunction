@@ -15,7 +15,7 @@ execute if score ?slidecount main.temp matches 0 run return run function main:su
 
 
 # --- SHOW SLIDE (queue) ---
-tellraw @a {text:"——————————————————————————————",color:"light_purple",strikethrough:true}
+tellraw @a {text:"——————————————————————————————",color:"#E83D84",strikethrough:true}
 tellraw @a ""
 tellraw @a {storage:"main:temp",nbt:"howtoplay[0][0]",interpret:true}
 tellraw @a {storage:"main:temp",nbt:"howtoplay[0][1]",interpret:true}
@@ -24,7 +24,7 @@ tellraw @a {storage:"main:temp",nbt:"howtoplay[0][3]",interpret:true}
 tellraw @a {storage:"main:temp",nbt:"howtoplay[0][4]",interpret:true}
 tellraw @a {storage:"main:temp",nbt:"howtoplay[0][5]",interpret:true}
 tellraw @a ""
-tellraw @a {text:"——————————————————————————————",color:"light_purple",strikethrough:true}
+tellraw @a {text:"——————————————————————————————",color:"#E83D84",strikethrough:true}
 
 # --- POP SLIDE AFTER DISPLAYING IT ---
 data remove storage main:temp howtoplay[0]
