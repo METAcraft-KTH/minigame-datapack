@@ -1,0 +1,34 @@
+name: Zip and Upload Datapacks
+
+env:
+    DATAPACKS: "MAIN titlewriter-*"
+
+on:
+    push:
+        branches:
+        - hexathlon5
+    workflow_dispatch: {}
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v3
+        - name: Zip Datapacks
+          run: |
+            mkdir -p zip-output
+            for dp in $DATAPACKS; do
+                zip -r "zip-output/github_$dp.zip" "$dp"
+            done
+        - name: Deploy to event server
+          uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          with:
+            server: mc.datasektionen.se
+            port: 2022
+            username: github-actions.032bfc9c
+            password: ${{ secrets.AUTODEPLOY_PASSWORD }}
+            local_path: zip-output/*
+            remote_path: world/datapacks/.
+            sftp_only: true
+
