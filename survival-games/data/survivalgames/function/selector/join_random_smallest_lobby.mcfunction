@@ -1,5 +1,5 @@
 function survivalgames:selector/add_to_lobby {id: 1}
-return
+return 0
 
 scoreboard players set #24 SURVIVALGAMES.tmp 24
 scoreboard players set #48 SURVIVALGAMES.tmp 48
