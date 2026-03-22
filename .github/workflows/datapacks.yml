@@ -1,7 +1,7 @@
 name: Zip and Upload Datapacks
 
 env:
-    DATAPACKS: "MAIN titlewriter-*"
+    DATAPACKS: "MAIN titlewriter-* spleefmusic_sans.zip"
 
 on:
     push:
@@ -19,7 +19,15 @@ jobs:
           run: |
             mkdir -p zip-output
             for dp in $DATAPACKS; do
-                zip -r "zip-output/github_$dp.zip" "$dp"
+                if [ -d "$dp" ]; then
+                    # A directory, zip it
+                    (cd "$dp" && zip -r "../zip-output/github_$dp.zip" .)
+                elif [ -f "$dp" ]; then
+                    # A file (probably a zip file)
+                    cp "$dp" "zip-output/github_$dp"
+                else
+                    echo "Warning: $dp not found, skipping."
+                fi
             done
         - name: Deploy to event server
           uses: wlixcc/SFTP-Deploy-Action@v1.2.4
