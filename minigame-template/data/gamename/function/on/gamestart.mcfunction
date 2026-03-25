@@ -1,5 +1,5 @@
 # ============================================================
-# Called by: main:private/call/gamestart
+# Called by: main:private/call/gamestart (once)
 # Executor:  Server
 # 
 # Runs ONCE: on the tick when superstate changes to 3,

@@ -31,9 +31,9 @@ scoreboard players operation ?event.start_showing_howtoplay main.time *= #2 main
 #   120 ticks before the title is shown, then 60 ticks after
 scoreboard players add ?event.start_showing_howtoplay main.time 180
 
-#   actual slides begin showing 3 seconds after that tellraw
+#   actual slides begin showing 4 seconds after that tellraw
 scoreboard players operation ?event.start_showing_howtoplay_slides main.time = ?event.start_showing_howtoplay main.time
-scoreboard players add ?event.start_showing_howtoplay_slides main.time 60
+scoreboard players add ?event.start_showing_howtoplay_slides main.time 80
 
 # --- BEGIN SUPERSTATE 2 ---
 scoreboard players set ?superstate main.state 2

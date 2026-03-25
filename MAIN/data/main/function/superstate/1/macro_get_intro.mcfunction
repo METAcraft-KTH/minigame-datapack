@@ -17,3 +17,7 @@ function main:superstate/1/macro_summon_camera with storage main:temp
 # calculate how many ticks we'll need to type out the game name
 # i.e. when can we start showing howtoplay
 execute store result score ?how_many_characters_are_in_the_gamename main.temp run data get storage main:temp gamename
+
+
+# --- CALL INTRO START ---
+$function $(namespace):on/introstart

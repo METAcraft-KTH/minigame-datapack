@@ -34,7 +34,10 @@ execute if score ?supertimer main.time matches 120 if score ?minigame_id main.st
 execute if score ?supertimer main.time matches 120 if score ?minigame_id main.state matches 6 run function main:superstate/2/tick_macro_show_title with storage main:game display[6]
 # (i got a little lazy sorry)
 
-# --- START SHOWING SLIDES ---
+# --- HOW TO PLAY (first msg) ---
 execute if score ?supertimer main.time = ?event.start_showing_howtoplay main.time run tellraw @a [{text:"\n",color:"yellow"},{storage:"main:temp",nbt:"gamename",color:"white",bold:1b}," — How to play ",{text:"(read chat)",color:"gray"}]
+execute if score ?supertimer main.time = ?event.start_showing_howtoplay main.time as @a at @s run playsound entity.item.pickup master @s ~ ~ ~ .6 1 1
+
+# --- SLIDES ---
 execute if score ?supertimer main.time = ?event.start_showing_howtoplay_slides main.time run scoreboard players set ?slidetimer main.time -1
 execute if score ?supertimer main.time >= ?event.start_showing_howtoplay_slides main.time run function main:superstate/2/tick_slide

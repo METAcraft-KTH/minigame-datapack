@@ -13,8 +13,8 @@ execute store result score ?slidecount main.temp run data get storage main:temp 
 execute if score ?slidecount main.temp matches 0 run return run function main:superstate/2/go_to_state_3
 #   if not, proceed
 
-
 # --- SHOW SLIDE (queue) ---
+execute as @a at @s run playsound entity.item.pickup master @s ~ ~ ~ .6 1 1
 tellraw @a {text:"——————————————————————————————",color:"#E83D84",strikethrough:true}
 tellraw @a ""
 tellraw @a {storage:"main:temp",nbt:"howtoplay[0][0]",interpret:true}
