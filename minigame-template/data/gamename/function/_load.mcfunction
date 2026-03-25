@@ -13,6 +13,7 @@ scoreboard objectives add gamename.state dummy "game-internal states"
 #   this dictates where to summon the camera entity that all players will spectate from.
 #       because i'm lazy, the entity is hardcoded to
 #       always look due south and move forward at 0.2 blocks per second.
+#   THIS CAN HAVE YAW/PITCH!
 data modify storage main:intro gamename.camera_starting_coords set value "10000 100 50000"
 
 #   this dictates where to teleport all players after the intro ends.
