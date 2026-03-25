@@ -1,1 +1,1 @@
-$function $(namespace):on/tick
+$function $(namespace):on/gametick
