@@ -1,7 +1,7 @@
 name: Zip and Upload Datapacks
 
 env:
-    DATAPACKS: "MAIN titlewriter-* spleefmusic_sans.zip"
+    DATAPACKS: "MAIN titlewriter-* spleefmusic_sans.zip uhc_done_quick"
 
 on:
     push:
