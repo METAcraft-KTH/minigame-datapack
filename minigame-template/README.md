@@ -1,0 +1,1 @@
+REPLACE ALL occurrences of `gamename` with your minigame's namespace!!
