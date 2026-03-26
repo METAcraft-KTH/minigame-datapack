@@ -41,7 +41,7 @@ execute unless score ! main.id matches -2147483648..2147483647 run scoreboard pl
 #   i would've liked to have so that every game registers its own name,
 #   but it's more convenient to be able to reorder them whenever.
 data merge storage main:game {display:[{}, \
-    {id:1,namespace:"gamename",gamename:"Race Around The World"}, \
+    {id:1,namespace:"race",gamename:"Race Around The World"}, \
     {id:2,namespace:"uhc",gamename:"UHC Done Quick"}, \
     {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
     {id:4,namespace:"kotm",gamename:"King of the Mingle"}, \
