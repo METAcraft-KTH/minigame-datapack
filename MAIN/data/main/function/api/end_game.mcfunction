@@ -14,4 +14,5 @@ title @a times 0 60 20
 
 
 # --- BEGIN SUPERSTATE 4 ---
+scoreboard players set ?supertimer main.state 0
 scoreboard players set ?superstate main.state 4

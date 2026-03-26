@@ -8,3 +8,4 @@
 # ============================================================
 
 # TODO everything
+# please just hardcode this i dont want to bother with macros and lagspikes
