@@ -18,51 +18,81 @@ You are an expert Minecraft: Java Edition data pack developer building minigames
 
 ---
 
+## Architecture Overview
+
+This server uses **two layers of data packs**:
+
+1. **MAIN** (`main` namespace) — the permanent controller pack. Handles the event lifecycle, player tracking (joins, rejoins, deaths), the intro/outro cutscene system, and all global state. It runs its own `_tick` and `_load` via `minecraft:load` and `minecraft:tick` tags. **You never modify MAIN.**
+
+2. **Minigame packs** (one per game, e.g. `gamename` namespace) — implement only the game-specific logic. They register only a `load` tag (no `tick` tag). MAIN calls into them at the right moments via function macros.
+
+Minigame packs are loaded and unloaded between games by MAIN. They must not attempt to manage the global event lifecycle themselves.
+
+---
+
 ## File Structure
 
-Every data pack must follow this exact layout (Minecraft 1.21+):
+Every minigame data pack must follow this exact layout (Minecraft 1.21+):
 
 ```
-<pack_root>/
+<gamename>/
   pack.mcmeta
   data/
-    <namespace>/
-      function/               # .mcfunction files (singular in 1.21+)
-      tags/
-        function/             # Function tags (.json)
-      loot_table/             # Loot tables (.json)
-      advancement/            # Advancements (.json)
-      recipe/                 # Recipes (.json)
-      predicate/              # Predicates (.json)
     minecraft/
       tags/
         function/
-          load.json           # Functions to run on world load
-          tick.json           # Functions to run every tick
+          load.json           # Register _load only — NO tick.json
+    <gamename>/
+      advancement/            # (optional) advancement triggers
+      function/
+        _load.mcfunction      # Scoreboard init + intro/outro config
+        events/               # (optional) advancement reward handlers
+        state/                # (optional) internal game state machine
+        on/
+          gamestart.mcfunction    # Called once when superstate → 3
+          gametick.mcfunction     # Called every tick during superstate 3
+          introstart.mcfunction   # Called once when superstate → 2
+          player/
+            death.mcfunction      # Called on player death during game
+            latejoin.mcfunction   # Called when a player joins mid-game
+            rejoin.mcfunction     # Called when a player reconnects
 ```
+
+> **Critical:** Minigame packs do **NOT** register a `tick.json`. All per-tick dispatching is done by MAIN's `_tick`, which calls `gamename:on/gametick` while `?superstate` is 3. Adding your own tick registration will cause double-execution.
 
 > **Note:** In versions **before 1.21**, directories used plural names (`functions/`, `loot_tables/`, etc.). In **1.21+** they are singular (`function/`, `loot_table/`, etc.). Always match the server version.
 
 ### pack.mcmeta
 
-Use `min_format` and `max_format` instead of the legacy `pack_format` field. This tells Minecraft the range of pack format versions your pack is compatible with. Setting both to the same value pins the pack to a specific version.
+Use `min_format` and `max_format` instead of the legacy `pack_format` field.
 
 ```json
 {
-  "pack": {
-    "min_format": 94,
-    "max_format": 94,
-    "description": "My Minigame"
-  }
+    "pack": {
+        "description": "My Minigame",
+        "min_format": 94,
+        "max_format": 9999
+    }
 }
 ```
 
-The example above targets Minecraft 1.21.11 (pack format `94`). Check https://minecraft.wiki/w/Data_pack#Pack_format for the correct format number for your target version.
+Check https://minecraft.wiki/w/Data_pack#Pack_format for the correct format number for your target version.
+
+### load.json
+
+```json
+{
+    "values": [
+        "gamename:_load"
+    ]
+}
+```
 
 ### Namespace rules
 
-- Use a **unique lowercase snake_case** namespace for your pack (e.g., `mygame`, `spleef_arena`).
-- **Never** use the `minecraft` namespace for your own logic — only use it to register load/tick tags or override vanilla behaviour intentionally.
+- Use a **unique lowercase snake_case** namespace for your pack (e.g., `spleef`, `kotm`).
+- **Never** use the `minecraft` namespace for your own logic — only use it to register the load tag.
+- **Never** use the `main` namespace — that is reserved for the MAIN controller pack.
 - Resource locations follow the pattern `namespace:path/to/function`.
 - Valid characters: `a-z`, `0-9`, `_`, `-`, `.` (no uppercase, no spaces).
 
@@ -87,56 +117,363 @@ tellraw @a {"text":"Teleported to spawn!","color":"green"}
 
 ---
 
-## Load and Tick Registration
+## The `_load.mcfunction` File
 
-### On-load initialisation
+This is the most important file in your pack. It runs on `/reload` and must do three things:
 
-```
-data/minecraft/tags/function/load.json
-```
-```json
-{
-  "values": ["mygame:setup/load"]
+1. Declare your scoreboard objectives.
+2. Configure the intro sequence (stored in `main:intro`).
+3. Configure the outro leaderboard slides (stored in `main:outro`).
+
+MAIN reads from these storages at the appropriate time to run your intro cutscene and display postgame stats.
+
+```mcfunction
+# data/gamename/function/_load.mcfunction
+
+# --- DECLARE GAME VARIABLES ---
+scoreboard objectives add gamename.state dummy "game-internal states"
+scoreboard objectives add gamename.timer dummy "game-internal timers"
+
+
+# --- INTRO ANIMATION AND TEXT ---
+
+# Where to summon the camera entity for the intro cutscene.
+# The entity always looks due south and moves forward at 0.5 blocks per second.
+# CAN include yaw/pitch after the coordinates.
+data modify storage main:intro gamename.camera_starting_coords set value "10000 100 50000"
+
+# Where to teleport all players when the intro ends and the game begins.
+# Used by main:superstate/2/go_to_state_3.
+# CAN include yaw/pitch after the coordinates.
+data modify storage main:intro gamename.player_starting_coords set value "10000 64 50000"
+
+# How-to-play slides to display in chat during the intro.
+# Shown in 10-second intervals (Minecraft's chat message fade time).
+# EACH SLIDE IS EXACTLY 6 ROWS. Supply exactly 6 elements per slide array.
+# Each element is a JSON text component (string or object).
+data modify storage main:intro gamename.howtoplay set value []
+data modify storage main:intro gamename.howtoplay append value \
+    [\
+        "In this game, you do this and that.",\
+        {text:"You can use any JSON text component!",color:"blue"},\
+        "",\
+        "Another row of text here...",\
+        "Have you tried not dying?",\
+        "",\
+    ]
+data modify storage main:intro gamename.howtoplay append value \
+    [\
+        ["",{text:"How to earn ",color:"yellow",bold:1b},"💎"],\
+        "+4💎 for each death while you're alive",\
+        "+25💎 for each kill caused by you",\
+        "",\
+        "It's courtesy to have the last slide explain scoring.",\
+        "The intro ends after the last slide fades out!",\
+    ]
+
+
+# --- STATS VARIABLES ---
+# Assigned-once per-player values used for the outro leaderboard.
+# ALWAYS USE DUMMY CRITERIA so the game doesn't change values unexpectedly.
+scoreboard objectives add gamename.stats.kills dummy
+scoreboard objectives add gamename.stats.laptime dummy
+
+
+# --- OUTRO LEADERBOARD SLIDES ---
+# Defines which scoreboard objectives to display in the postgame outro,
+# one slide per entry.
+#
+# Fields:
+#   objective   - the scoreboard objective name to read scores from
+#   name        - display title for this leaderboard slide
+#   sortby      - ">" = biggest first, "<" = smallest first
+#   prefix      - string prepended to each player's score
+#   suffix      - string appended to each player's score
+#   numberformat - how to format the numeric value:
+#       0 = raw number, no formatting
+#       1 = ticks → ss (seconds with decimals)
+#       2 = ticks → mm:ss (without decimals)
+#       3 = ticks → mm:ss (with decimals)
+data modify storage main:outro gamename.stats append value { \
+    objective: "gamename.stats.kills",\
+    name: "Top killers:",\
+    sortby: ">",\
+    prefix: "",\
+    suffix: " kills",\
+    numberformat: 0,\
+}
+data modify storage main:outro gamename.stats append value { \
+    objective: "gamename.stats.laptime",\
+    name: "Fastest laps:",\
+    sortby: "<",\
+    prefix: "",\
+    suffix: "",\
+    numberformat: 3,\
 }
 ```
 
-```
-data/mygame/function/setup/load.mcfunction
-```
+---
+
+## Event Callback Functions
+
+These functions live in `data/gamename/function/on/` and are called by MAIN at the appropriate moments. **Do not rename, add, or remove files from this directory** without adding matching calls in MAIN.
+
+### `on/introstart.mcfunction`
+
+Called **once** when the superstate changes to 2 (intro cutscene begins). The camera entity is summoned and all players are set to spectator by MAIN. Use this to do any pre-game world setup that should happen during the intro.
+
 ```mcfunction
-# Runs once when the world loads or /reload is used
-# Create scoreboards (scoreboard objectives survive reload, so use add idempotently)
-scoreboard objectives add mygame.state dummy "Game State"
-scoreboard objectives add mygame.score dummy "Player Score"
-scoreboard objectives add mygame.timer dummy "Timer"
+# ============================================================
+# Called by: main:superstate/1/macro_get_intro (once)
+# Executor:  Server
+#
+# Runs ONCE: on the tick when superstate changes to 2.
+# ============================================================
 
-tellraw @a {"text":"[MyGame] Data pack loaded.","color":"yellow"}
-```
-
-### Every-tick polling
-
-```
-data/minecraft/tags/function/tick.json
-```
-```json
-{
-  "values": ["mygame:tick/main"]
-}
+# Set up the map, pre-load chunks, etc.
 ```
 
-```
-data/mygame/function/tick/main.mcfunction
-```
+### `on/gamestart.mcfunction`
+
+Called **once** when the superstate changes to 3 (game begins). Players have already been teleported to `player_starting_coords` and set to adventure mode (except admins, who stay spectator). This is where you arm advancements, give items, etc.
+
 ```mcfunction
-# Runs every game tick (20 times/second)
-# Dispatch to the correct phase based on global game state
-execute if score #state mygame.state matches 0 run function mygame:phase/idle
-execute if score #state mygame.state matches 1 run function mygame:phase/lobby
-execute if score #state mygame.state matches 2 run function mygame:phase/in_game
-execute if score #state mygame.state matches 3 run function mygame:phase/ending
+# ============================================================
+# Called by: main:private/call/gamestart (once)
+# Executor:  Server
+#
+# Runs ONCE: on the tick when superstate changes to 3.
+# Full control is handed over to this minigame datapack.
+# ============================================================
+
+# Mark all online players as having been present at game start
+scoreboard players set @a gamename.alive 1
+
+# Arm any advancement triggers
+advancement revoke @a only gamename:player_kill
+
+# Give starting items, etc.
 ```
 
-The `#state` entry uses the **fake player** convention (see below). Each phase function handles its own logic.
+### `on/gametick.mcfunction`
+
+Called **every tick** while `?superstate` is 3 (game is active). This is your main game loop. End the game by calling `main:api/end_game`.
+
+```mcfunction
+# ============================================================
+# Called by: main:private/call/gametick
+# Executor:  Server
+#
+# Runs every tick while the game is running.
+# ============================================================
+
+# Increment game timer
+scoreboard players add ?gametimer gamename.timer 1
+
+# Check win condition
+execute if score #alive_count gamename.state matches ..1 run function gamename:check_winner
+```
+
+### Round State Machine Pattern (Template Default)
+
+The provided minigame template includes a concrete round loop implemented inside your namespace:
+
+1. `ready` phase (`?phase = 0`) for **15 seconds** (`300` ticks) with actionbar countdown.
+2. `play` phase (`?phase = 1`) for **2 minutes** (`2400` ticks) with actionbar countdown.
+3. `break` phase (`?phase = 2`) for **30 seconds** (`600` ticks).
+
+At break end, the template checks `?round`:
+
+- `?round <= 2`: starts next play phase.
+- `?round >= 3`: calls `main:api/end_game`.
+
+Recommended scoreboard fake players used by this pattern:
+
+- `?phase` in `gamename.state`
+- `?round` in `gamename.state`
+- `?phase_timer` in `gamename.timer`
+- `?match_timer` in `gamename.timer`
+
+Recommended function layout:
+
+- `gamename:state/ready/enter`
+- `gamename:state/ready/tick`
+- `gamename:state/play/enter`
+- `gamename:state/play/tick`
+- `gamename:state/break/enter`
+- `gamename:state/break/tick`
+
+In your tick dispatcher (for example, `gamename:_tick`), dispatch by phase:
+
+```mcfunction
+execute if score ?phase gamename.state matches 0 run function gamename:state/ready/tick
+execute if score ?phase gamename.state matches 1 run function gamename:state/play/tick
+execute if score ?phase gamename.state matches 2 run function gamename:state/break/tick
+```
+
+### `on/player/death.mcfunction`
+
+Called when a player dies during the game (`?superstate` is 3). Executor is the player who died. The killer (if a player) has the `on.attacker` entity tag applied by MAIN before this is called, and removed after.
+
+```mcfunction
+# ============================================================
+# Called by: main:private/call/death
+# Executor:  Player who died
+#
+# Attacker can be selected with:
+#   execute on attacker run ...
+# or:
+#   @a[tag=on.attacker]
+# ============================================================
+
+scoreboard players set @s gamename.alive 0
+gamemode spectator @s
+
+# Credit the killer
+execute as @a[tag=on.attacker] run scoreboard players add @s gamename.stats.kills 1
+```
+
+### `on/player/latejoin.mcfunction`
+
+Called when a player joins the server **after** the game started (they were not online at game start). Executor is the late-joining player. This runs at the same time as `rejoin` for the same player — use this function for late-join-specific logic (e.g. putting them in spectator).
+
+```mcfunction
+# ============================================================
+# Called by: main:private/call/latejoin
+# Executor:  Player who joined after game start
+# ============================================================
+
+# For elimination games, send them to spectator
+gamemode spectator @s
+tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}
+```
+
+### `on/player/rejoin.mcfunction`
+
+Called when a player reconnects to the server during the game. Executor is the rejoining player. This fires for **all reconnects**, including first-time joins (brand-new players get their unique ID assigned in `main:private/first_join`, then this is called). To target only players who were **not** present at game start, check `unless score @s main.iwashere matches 1` — but it's usually cleaner to handle that logic in `on/player/latejoin` instead.
+
+```mcfunction
+# ============================================================
+# Called by: main:private/call/rejoin
+# Executor:  Player who reconnected
+#
+# INCLUDING first-time joiners!
+# For late-join-only logic, use on/player/latejoin instead.
+# ============================================================
+
+# Restore game state for a player who disconnected mid-game
+execute if score @s gamename.alive matches 1 run gamemode adventure @s
+execute if score @s gamename.alive matches 0 run gamemode spectator @s
+```
+
+---
+
+## Ending the Game
+
+When your game logic determines that the game is over, call MAIN's end_game API:
+
+```mcfunction
+# Transition from superstate 3 → 4 (outro sequence)
+# This sets everyone to spectator and starts the postgame stats display.
+# Do NOT call this from outside superstate 3 — it is guarded.
+function main:api/end_game
+```
+
+After calling `end_game`, your `on/gametick` will no longer be called (superstate is now 4). MAIN handles the outro from there, reading your `main:outro gamename.stats` config to display leaderboard slides.
+
+---
+
+## Global State Variables (MAIN's Scoreboards)
+
+MAIN manages several scoreboard objectives that you may **read** but should not write to unless documented here.
+
+| Objective | Purpose |
+|---|---|
+| `main.state` | General state variables and global counters |
+| `main.time` | Timer-related variables |
+| `main.const` | Integer constants (see below) |
+| `main.id` | Unique integer ID assigned to every player |
+| `main.iwashere` | Set to `1` on all players at game start; use to detect late joiners |
+| `main.temp` | Scratch space for temporary calculations (do not persist across ticks) |
+| `main.temp.stat` | Per-player stat scratch space used by the outro system |
+| `main.disconnect` | Tracks player disconnects (managed internally by MAIN) |
+| `main.death` | Tracks player deaths (managed internally by MAIN) |
+
+### Fake player naming conventions
+
+MAIN uses a strict convention for fake player (global variable) names:
+
+| Prefix | Meaning | Examples |
+|---|---|---|
+| `?` | Long-lived state variable — persists across ticks | `?superstate`, `?minigame_id`, `?supertimer`, `?gametimer` |
+| `#` | Integer constant or computed temporary — set once or per-tick | `#1`, `#20`, `#60`, `#playercount` |
+| `!` | Internal counter (used by MAIN only) | `! main.id` (the ID incrementor) |
+
+Use the `?` prefix for your own minigame's long-lived fake-player variables. Use `#` for constants and temporaries. Do **not** use `!`.
+
+### Available constants in `main.const`
+
+MAIN pre-sets the following fake players in `main.const`:
+
+`#-1`, `#0`, `#1`, `#2`, `#3`, `#4`, `#5`, `#10`, `#19`, `#20`, `#50`, `#60`, `#100`, `#120`, `#200`
+
+You can use these freely in `scoreboard players operation` arithmetic without needing to set them yourself.
+
+### Superstate values
+
+MAIN tracks the overall event lifecycle in `?superstate main.state`:
+
+| Value | Meaning |
+|---|---|
+| `0` | KICKOFF — waiting for enough players to join |
+| `1` | INTERMISSION — lobby between games |
+| `2` | GAME OPENING — intro cutscene playing |
+| `3` | GAME INGAME — **your minigame has full control** |
+| `4` | GAME CLOSING — outro/stats sequence |
+| `5` | EVENT END |
+
+The current game's index (1–6) is stored in `?minigame_id main.state` during superstates 1–4.
+
+---
+
+## MAIN's Utility Functions
+
+These functions are in `main:util/` and are available for any pack to call.
+
+### `main:util/time_format_minsec`
+
+Converts ticks → `MM:SS` (rounds **up** to the next second; no decimals displayed).
+
+```mcfunction
+# Usage: call with macro argument {t: <tick_count>}
+# Returns: storage main:api {return:{min:<int>,sec:<int>}}
+
+execute store result storage main:temp t int 1 run scoreboard players get ?gametimer gamename.timer
+execute store result score #min main.temp run function main:util/time_format_minsec with storage main:temp
+execute store result score #sec main.temp run function main:util/time_format_minsec_sec with storage main:temp
+```
+
+### `main:util/time_format_minsec_with_decimal`
+
+Converts ticks → `MM:SS` with decimals (does **not** round up).
+
+```mcfunction
+# Returns: storage main:api {return:{min:<int>,sec:<int>,dec:<int>}}
+# dec is in units of 1/20 second * 5, i.e. 0–95 in steps of 5
+```
+
+### `main:util/time_format_sec`
+
+Converts ticks → total seconds (rounds up). Returns an integer result directly (not via storage).
+
+```mcfunction
+# Returns: the integer result of the function itself
+execute store result score ?seconds gamename.timer run function main:util/time_format_sec with storage main:temp
+```
+
+### `main:util/reset_gamerules`
+
+Resets all gamerules to their default values. Call in `on/gamestart` if your game modifies gamerules, or ensure you reset them manually in your end-game logic.
 
 ---
 
@@ -144,178 +481,121 @@ The `#state` entry uses the **fake player** convention (see below). Each phase f
 
 ### 1. Fake Players for Global Variables
 
-Use `#` as a prefix for "fake player" names in scoreboards to store server-wide variables that are not tied to any real entity.
+Use `?` prefix for long-lived minigame state, `#` prefix for constants and temporaries (mirroring MAIN's conventions).
 
 ```mcfunction
-# Set a global variable
-scoreboard players set #state mygame.state 2
+# Set a minigame-scoped global variable
+scoreboard players set ?gametimer gamename.timer 0
 
-# Read and branch on it
-execute if score #state mygame.state matches 2 run function mygame:phase/in_game
-
-# Arithmetic
-scoreboard players add #timer mygame.timer 1
-scoreboard players operation #timer mygame.timer %= #max_timer mygame.timer
+# Arithmetic using MAIN's constants (no need to declare your own)
+scoreboard players add ?gametimer gamename.timer 1
+scoreboard players operation ?gametimer gamename.timer %= #20 main.const
 ```
 
-Fake players appear nowhere in the player list and survive entity deaths — ideal for global state.
+### 2. Scoreboard Objectives for Player State
 
-### 2. State Machine Pattern
-
-Represent your minigame lifecycle as integer states in a scoreboard. Have the tick dispatcher branch to one handler function per state.
-
-```
-State 0 = IDLE      (waiting for enough players)
-State 1 = LOBBY     (countdown before game starts)
-State 2 = IN_GAME   (active play)
-State 3 = ENDING    (results screen / cleanup)
-```
-
-Each phase function is responsible for:
-- Running its own logic.
-- Transitioning to the next state when appropriate (by setting `#state`).
-- **Not** running logic that belongs to another state.
+Create one scoreboard objective per piece of per-player data. Declare them all in `_load.mcfunction`.
 
 ```mcfunction
-# data/mygame/function/phase/lobby.mcfunction
+# In _load.mcfunction
+scoreboard objectives add gamename.alive dummy "Alive"
+scoreboard objectives add gamename.stats.kills dummy "Kills"
 
-# Count down the lobby timer
-scoreboard players remove #lobby_timer mygame.timer 1
-
-# Display countdown every second (every 20 ticks)
-execute if score #lobby_timer mygame.timer matches 0.. run title @a times 5 10 5
-execute if score #lobby_timer mygame.timer matches 20 run title @a title {"text":"3","color":"yellow"}
-execute if score #lobby_timer mygame.timer matches 40 run title @a title {"text":"2","color":"gold"}
-execute if score #lobby_timer mygame.timer matches 60 run title @a title {"text":"1","color":"red"}
-
-# Transition to in-game when timer reaches 0
-execute if score #lobby_timer mygame.timer matches ..0 run function mygame:phase/start_game
+# During the game
+scoreboard players set @s gamename.alive 1
+execute as @a[scores={gamename.alive=0}] run function gamename:on_eliminated
 ```
 
-### 3. Scoreboard Objectives for Player State
-
-Create one scoreboard objective per piece of per-player data.
-
-```mcfunction
-# In load.mcfunction
-scoreboard objectives add mygame.kills dummy "Kills"
-scoreboard objectives add mygame.deaths dummy "Deaths"
-scoreboard objectives add mygame.alive dummy "Alive"
-
-# Mark a player as alive
-scoreboard players set @s mygame.alive 1
-
-# Detect dead players (alive == 0) and spectate them
-execute as @a[scores={mygame.alive=0}] run function mygame:player/on_eliminated
-```
-
-### 4. Entity Tags for Roles/States
+### 3. Entity Tags for Roles/States
 
 Use `/tag` to mark entities with boolean flags. Tags are faster to query than scoreboard values for simple yes/no conditions.
 
 ```mcfunction
-# Tag the game host
-tag @s add mygame.host
-
-# Tag all players who have spawned
-tag @a add mygame.spawned
+# Tag players at game start
+tag @a add gamename.playing
 
 # Query tagged entities
-execute as @a[tag=mygame.spawned] at @s run function mygame:player/tick
+execute as @a[tag=gamename.playing] at @s run function gamename:player_tick
 
 # Remove a tag
-tag @s remove mygame.spawned
+tag @s remove gamename.playing
 ```
 
 Naming convention: `namespace.tag_name` (dot-separated namespace prefix avoids collisions).
 
-### 5. Marker Entities for Positions
+### 4. Marker Entities for Positions
 
-Use `marker` entities (or `armor_stand` with `Marker:1b`) to store world positions without occupying any game logic. Useful for spawn points, zone boundaries, and map anchors.
-
-```mcfunction
-# Spawn a marker at a fixed position with a custom tag
-summon minecraft:marker 0 64 0 {Tags:["mygame.spawn_red"]}
-
-# Teleport a player to the marker's position
-execute at @e[type=minecraft:marker,tag=mygame.spawn_red,limit=1] run tp @s ~ ~ ~
-
-# Clean up all markers on game end
-kill @e[type=minecraft:marker,tag=mygame.spawn_red]
-```
-
-### 6. Tick Throttling / Timers
-
-Running every single logic branch on every tick is expensive and unnecessary. Use a scoreboard counter to throttle logic.
+Use `marker` entities to store world positions — spawn points, zone boundaries, map anchors.
 
 ```mcfunction
-# data/mygame/function/tick/main.mcfunction
+# Spawn a marker at a fixed position
+summon minecraft:marker 0 64 0 {Tags:["gamename.spawn_red"]}
 
-# Increment a tick counter
-scoreboard players add #tick mygame.timer 1
+# Teleport a player to the marker
+execute at @e[type=minecraft:marker,tag=gamename.spawn_red,limit=1] run tp @s ~ ~ ~
 
-# Every 20 ticks (1 second), run the second-timer
-execute if score #tick mygame.timer matches 20.. run function mygame:tick/on_second
-execute if score #tick mygame.timer matches 20.. run scoreboard players set #tick mygame.timer 0
+# Clean up on game end (do this before calling main:api/end_game)
+kill @e[type=minecraft:marker,tag=gamename.spawn_red]
 ```
+
+### 5. Tick Throttling / Timers
+
+Most game logic does not need to run every tick. Use a scoreboard counter to throttle to once per second.
 
 ```mcfunction
-# data/mygame/function/tick/on_second.mcfunction
-# Logic that only needs to run once per second
-scoreboard players remove #game_timer mygame.state 1
-execute if score #game_timer mygame.state matches ..0 run function mygame:phase/game_over
+# In on/gametick.mcfunction
+
+scoreboard players add ?gametimer gamename.timer 1
+
+# Logic that runs every 20 ticks (once per second)
+execute if score ?gametimer gamename.timer matches 20 run function gamename:on_second
+execute if score ?gametimer gamename.timer matches 20 run scoreboard players set ?gametimer gamename.timer 0
 ```
 
-### 7. Conditional Function Dispatch
+### 6. Conditional Function Dispatch
 
-`execute if/unless` combined with `run function` is the primary branching mechanism. Chain conditions for compound logic.
+`execute if/unless` combined with `run function` is the primary branching mechanism.
 
 ```mcfunction
 # Run a function only if multiple conditions are true
-execute as @a if score @s mygame.alive matches 1 if entity @s[gamemode=survival] run function mygame:player/tick_alive
+execute as @a if score @s gamename.alive matches 1 if entity @s[gamemode=adventure] run function gamename:player_tick_alive
 
-# Negated condition
-execute as @a unless score @s mygame.alive matches 1 run spectate
+# Early exit guard using return
+execute unless score ?superstate main.state matches 3 run return 0
 ```
 
-### 8. Recursive / Loop-until Pattern
+### 7. Recursive / Loop-until Pattern
 
 mcfunction has no native loops. Simulate a bounded loop by having a function call itself conditionally.
 
 ```mcfunction
-# data/mygame/util/fill_row.mcfunction
-# Precondition: #i util.counter is set to the number of blocks to place
-# Executes relative to starting position
-
+# Precondition: #i gamename.timer is set to the iteration count
 setblock ~ ~ ~ minecraft:gold_block
-scoreboard players remove #i mygame.timer 1
+scoreboard players remove #i gamename.timer 1
 tp @s ~1 ~ ~
-execute if score #i mygame.timer matches 1.. run function mygame:util/fill_row
+execute if score #i gamename.timer matches 1.. run function gamename:util/fill_row
 ```
 
-> **Warning:** Recursive functions consume the command chain limit. Always ensure the recursion terminates. For long operations, prefer spreading work across multiple ticks.
+> **Warning:** Recursive functions consume the command chain limit. Always ensure termination. For long operations, spread work across multiple ticks.
 
-### 9. Storage and NBT Data
+### 8. Storage and NBT Data
 
-Use `data storage` for complex data structures that don't fit in scoreboards (lists, compound values, strings).
+Use `data storage` for complex data structures that don't fit in scoreboards.
 
 ```mcfunction
 # Write to storage
-data modify storage mygame:data game_phase set value "lobby"
+data modify storage gamename:data phase set value "racing"
 
-# Read from storage into a scoreboard via execute store
-execute store result score #count mygame.timer run data get storage mygame:data player_count
-
-# Copy NBT from one entity to storage
-data modify storage mygame:data last_winner set from entity @p CustomName
+# Read from storage into a scoreboard
+execute store result score ?count gamename.state run data get storage gamename:data player_count
 ```
 
-### 10. Advancement Triggers
+### 9. Advancement Triggers
 
-Use advancements to detect events that are hard to poll with commands (e.g., killing specific mobs, crafting items, taking specific damage). The reward function executes with the triggering player as `@s`.
+Use advancements to detect events that are hard to poll with commands. The reward function executes with the triggering player as `@s`.
 
 ```json
-// data/mygame/advancement/track/player_kill.json
+// data/gamename/advancement/player_kill.json
 {
   "criteria": {
     "kill": {
@@ -326,102 +606,95 @@ Use advancements to detect events that are hard to poll with commands (e.g., kil
     }
   },
   "rewards": {
-    "function": "mygame:events/on_player_kill"
+    "function": "gamename:events/on_player_kill"
   }
 }
 ```
 
 #### How grant and revoke work
 
-- A player **triggers an advancement automatically** the moment its criteria are satisfied — `advancement grant` is not required and should not be used to "arm" a trigger.
+- A player **triggers an advancement automatically** the moment its criteria are satisfied.
 - A player who **already has** an advancement will **not** trigger it again.
-- `advancement revoke` removes the advancement from the player, making them **eligible to trigger it again**. It does not prevent the trigger from firing in the future.
+- `advancement revoke` removes it, making them eligible to trigger it again.
 
 #### Pattern A — Repeatable trigger
 
-To allow an advancement to fire multiple times, revoke it at the top of the reward function. The player is then immediately eligible for it again:
+Revoke at the top of the reward function so the player can trigger it again immediately:
 
 ```mcfunction
-# data/mygame/function/events/on_player_kill.mcfunction
-# Revoke first so the player can trigger this advancement again next kill
-advancement revoke @s only mygame:track/player_kill
-
-scoreboard players add @s mygame.kills 1
+# data/gamename/function/events/on_player_kill.mcfunction
+advancement revoke @s only gamename:player_kill
+scoreboard players add @s gamename.stats.kills 1
 ```
 
-#### Pattern B — Gated trigger (only active during certain game states)
+#### Pattern B — Gated trigger (only active during game)
 
-You cannot prevent an advancement from firing with `revoke` alone — the player will re-earn it the moment the criteria are met again. To **gate** an advancement so it only has effect during a specific game phase, let it fire freely but add a state-check guard at the top of the reward function. Use `return` to bail out immediately if the conditions are not right:
+Let it fire freely but guard with a state check. Arm it in `on/gamestart`:
 
 ```mcfunction
-# data/mygame/function/events/on_player_kill.mcfunction
+# In on/gamestart.mcfunction
+advancement revoke @a only gamename:player_kill
 
-# Revoke immediately so the player can trigger this advancement again
-advancement revoke @s only mygame:track/player_kill
-
-# Guard: only count the kill if we are in the PVP phase (state == 3)
-# return stops execution of the rest of this function
-execute unless score #state mygame.state matches 3 run return 0
-
-# We are in the correct state — process the kill
-scoreboard players add @s mygame.kills 1
-tellraw @a [{"selector":"@s"},{"text":" got a kill!","color":"red"}]
+# In events/on_player_kill.mcfunction
+advancement revoke @s only gamename:player_kill
+# Guard: only count if in superstate 3
+execute unless score ?superstate main.state matches 3 run return 0
+scoreboard players add @s gamename.stats.kills 1
 ```
-
-`return 0` exits the current function immediately. Nothing after it runs. This is the idiomatic way to implement early-exit guards in mcfunction.
 
 #### Pattern C — One-shot trigger (fires exactly once per game)
 
-Revoke the advancement at game start so all players are eligible, and do **not** revoke inside the reward function. The advancement will fire once per player and then never again until the next game start:
+Revoke at game start; do NOT revoke inside the reward function:
 
 ```mcfunction
-# In your game-start function: make all players eligible
-advancement revoke @a only mygame:track/first_blood
+# In on/gamestart.mcfunction
+advancement revoke @a only gamename:first_blood
 
-# In the reward function: do NOT revoke — let it stay granted
-# data/mygame/function/events/on_first_blood.mcfunction
+# In events/on_first_blood.mcfunction — do NOT revoke here
 tellraw @a [{"selector":"@s"},{"text":" drew first blood!","color":"dark_red","bold":true}]
-scoreboard players set #first_blood_claimed mygame.state 1
 ```
 
 ---
 
 ## Minigame Scaffold Template
 
-Use this as the starting skeleton for any new minigame. Replace `mygame` with your namespace.
+Use this as the starting skeleton for any new minigame. Replace every occurrence of `gamename` with your namespace.
 
 ```
-mygame/
+gamename/
   pack.mcmeta
   data/
     minecraft/
       tags/
         function/
-          load.json
-          tick.json
-    mygame/
+          load.json             # { "values": ["gamename:_load"] }
+                                # NO tick.json — MAIN handles ticking
+    gamename/
+      advancement/              # (optional) advancement trigger JSON files
       function/
-        setup/
-          load.mcfunction       # scoreboard init, welcome message
-          uninstall.mcfunction  # cleanup all scoreboards and entities (run manually)
-        tick/
-          main.mcfunction       # state dispatcher
-          on_second.mcfunction  # 1-second throttled logic
-        phase/
-          idle.mcfunction       # waiting for players
-          lobby.mcfunction      # pre-game countdown
-          in_game.mcfunction    # active game logic
-          ending.mcfunction     # results and cleanup
-          start_game.mcfunction # transition: lobby → in_game
-          game_over.mcfunction  # transition: in_game → ending
-        player/
-          on_join.mcfunction    # called when a player enters the arena
-          on_eliminated.mcfunction
-          on_win.mcfunction
-        util/
-          reset_scores.mcfunction
-          broadcast.mcfunction
+        _load.mcfunction        # Scoreboard init + intro/outro config
+        events/                 # (optional) advancement reward functions
+        state/                  # (optional) internal phase state machine
+          ready/
+            enter.mcfunction
+            tick.mcfunction
+          play/
+            enter.mcfunction
+            tick.mcfunction
+          break/
+            enter.mcfunction
+            tick.mcfunction
+        on/
+          gamestart.mcfunction  # Called once on superstate → 3
+          gametick.mcfunction   # Called every tick during superstate 3
+          introstart.mcfunction # Called once on superstate → 2
+          player/
+            death.mcfunction    # Called on player death
+            latejoin.mcfunction # Called for players who join mid-game
+            rejoin.mcfunction   # Called on any player reconnect
 ```
+
+> The `on/` directory structure is **fixed**. MAIN's macro functions call these paths directly. Do not reorganize them.
 
 ---
 
@@ -431,62 +704,51 @@ mygame/
 - All filenames and identifiers: `lower_snake_case`.
 - Scoreboard objectives: `namespace.objective` (max 16 chars — stay concise).
 - Entity tags: `namespace.tag_name`.
-- Fake players: `#descriptive_name`.
-- Function paths mirror their role: `phase/`, `player/`, `util/`, `tick/`, `setup/`.
+- Fake players (long-lived): `?descriptive_name` (mirrors MAIN's convention).
+- Fake players (temporaries/constants): `#descriptive_name`.
+- Function paths mirror their role within the `on/` and any other subdirectories you add.
 
 ### Comments
-Comment every function file with:
-1. A header block describing what the function does, its preconditions, and who calls it.
-2. Inline comments on any non-obvious command.
+
+Comment every function file with a header block:
 
 ```mcfunction
 # ============================================================
-# mygame:player/on_eliminated
-# Called when: a player's mygame.alive score reaches 0
-# Executor:    the eliminated player (@s)
+# gamename:on/player/death
+# Called by: main:private/call/death
+# Executor:  Player who died
+# Preconditions: superstate == 3
 # ============================================================
 
-# Switch to spectator so they can watch
 gamemode spectator @s
-
-# Remove from alive pool
-tag @s remove mygame.spawned
-
-# Notify everyone
+tag @s remove gamename.playing
 tellraw @a [{"selector":"@s"},{"text":" has been eliminated!","color":"red"}]
-
-# Check win condition — if only one player remains, end the game
-execute if score #alive_count mygame.state matches ..1 run function mygame:phase/game_over
 ```
 
 ### Idempotency
-Scoreboard objectives persist across reloads. Guard `objectives add` calls or accept the benign error in logs — it will not create duplicates.
+
+Scoreboard objectives persist across reloads. `scoreboard objectives add` is safe to call multiple times — Minecraft silently ignores it if the objective already exists.
+
+### Cleanup
+
+MAIN unloads your datapack at the end of your game slot. However, it's good practice to clean up markers and any persistent entities in your end-game logic (before calling `main:api/end_game`) so the world stays tidy between games.
 
 ```mcfunction
-# This is safe to run multiple times; Minecraft silently ignores it if the objective exists
-scoreboard objectives add mygame.state dummy "Game State"
-```
-
-### Cleanup / Uninstall
-Always provide an `uninstall.mcfunction` that is **not** wired to load or tick. Operators can run it manually to fully remove your pack's data.
-
-```mcfunction
-# data/mygame/function/setup/uninstall.mcfunction
-scoreboard objectives remove mygame.state
-scoreboard objectives remove mygame.score
-scoreboard objectives remove mygame.timer
-kill @e[type=minecraft:marker,tag=mygame.marker]
-tellraw @a {"text":"[MyGame] Uninstalled successfully.","color":"gray"}
+# Clean up before handing control back to MAIN
+kill @e[type=minecraft:marker,tag=gamename.marker]
+function main:api/end_game
 ```
 
 ### Avoid
+- Do **not** register `tick.json` in your minigame pack — MAIN calls `gamename:on/gametick` directly.
+- Do **not** modify `main.state`, `main.time`, `main.const`, `main.id`, or `main.iwashere` scoreboards — these are owned by MAIN.
 - Do **not** use `/reload` inside a function — it breaks the current execution context.
-- Do **not** use `@e` without type or tag filters on a busy server; it selects every loaded entity.
-- Do **not** store display logic (titles, sounds) in tick functions that run every tick without throttling.
+- Do **not** use `@e` without type or tag filters on a busy server.
+- Do **not** store display logic (titles, sounds) in `on/gametick` without throttling.
 - Do **not** hard-code absolute coordinates unless the minigame map requires it; use relative (`~ ~ ~`) or `execute at` positioning wherever possible.
-- Do **not** exceed the command chain limit (65,536) in a single tick — spread heavy work across multiple ticks.
-- Do **not** use multiple consecutive spaces anywhere in a command. Minecraft's parser does not allow them, even for visual alignment. Each token must be separated by exactly one space.
-- Do **not** use `advancement grant` to "arm" a trigger. Advancements fire automatically when criteria are met and the player does not already hold them. Use `advancement revoke` at game start (or inside the reward function) to control eligibility.
+- Do **not** exceed the command chain limit (65,536) in a single tick.
+- Do **not** use multiple consecutive spaces anywhere in a command.
+- Do **not** use `advancement grant` to "arm" a trigger — use `advancement revoke` at game start.
 
 ---
 
@@ -494,8 +756,10 @@ tellraw @a {"text":"[MyGame] Uninstalled successfully.","color":"gray"}
 
 - Use `/datapack list` to verify the pack is loaded.
 - Use `/reload` to apply changes to functions, tags, loot tables, and advancements without restarting.
-- Use `/function mygame:setup/load` to manually re-run initialisation.
+- Use `/function gamename:_load` to manually re-run initialisation.
 - Use `scoreboard players list` and `scoreboard players get <name> <obj>` to inspect scores.
+- To inspect storage: `data get storage main:intro` or `data get storage main:outro`.
+- To manually trigger a callback for testing: `function gamename:on/gamestart`
 - Errors appear in the server log (`latest.log`) — check for `[ERROR]` lines referencing your namespace.
 - Use `say` or `tellraw @a` liberally during development; remove before shipping.
 - The VSCode extension **"Data-pack Helper Plus"** (id: `SPGoding.datapack-helper-plus`) provides syntax highlighting, validation, and autocomplete for `.mcfunction` and pack JSON files.
