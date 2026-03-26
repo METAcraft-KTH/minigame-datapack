@@ -1,11 +1,11 @@
 # ============================================================
 # Macro argument: {t:999}
-# Returns result: A number in the format MMSS, where MM is
-#                 the minute count and SS is seconds.
-#                 Get MM by /= #100, get SS by %= #100.
+# Result:         Storage main:api {return:{min:99,sec:99}}
 #
 # A function for converting ticks into MM:SS,
 # mostly for displaying countdowns.
+# This function ROUNDS UP the second because it doesn't
+# show decimals!
 # 
 # ============================================================
 
@@ -23,8 +23,6 @@ scoreboard players operation ?api.min main.temp /= #60 main.const
 # find sec % 60
 scoreboard players operation ?api.sec main.temp %= #60 main.const
 
-# return value
-scoreboard players operation ?api.min main.temp *= #100 main.const
-scoreboard players operation ?api.sec main.temp += ?api.min main.temp
-
-return run scoreboard players get ?api.sec main.temp
+# return
+execute store result storage main:api return.min int 1 run scoreboard players get ?api.min main.temp
+execute store result storage main:api return.sec int 1 run scoreboard players get ?api.sec main.temp
