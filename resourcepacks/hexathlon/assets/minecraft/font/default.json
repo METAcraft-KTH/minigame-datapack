@@ -1,0 +1,13 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "hexathlon:font/hexathlon-gem.png",
+            "height": 9,
+            "ascent": 8,
+            "chars": [
+                "\ud83d\udc8e"
+            ]
+        }
+    ]
+}

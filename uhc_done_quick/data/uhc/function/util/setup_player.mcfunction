@@ -22,3 +22,4 @@ give @s wooden_shovel[enchantments={efficiency:5}]
 give @s firework_rocket 2
 
 tag @s add uhc.not_landed
+team join uhc.grace_period @s

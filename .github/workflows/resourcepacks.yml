@@ -1,0 +1,47 @@
+name: Zip and Upload Resourcepacks
+
+env:
+    RESOURCEPACKS: "resourcepacks/*"
+
+on:
+    push:
+        branches:
+        - hexathlon5
+        paths:
+        - 'resourcepacks/**'
+        - '.github/workflows/resourcepacks.yml'
+    workflow_dispatch: {}
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v3
+        - name: Zip Resourcepacks
+          run: |
+            mkdir -p zip-output
+            for rp in $RESOURCEPACKS; do
+                if [ -d "$rp" ]; then
+                    # A directory, zip it
+                    name=$(basename "$rp")
+                    (cd "$rp" && zip -r "../../zip-output/github_$name.zip" .)
+                elif [ -f "$rp" ]; then
+                    # A file (probably a zip file)
+                    name=$(basename "$rp")
+                    cp "$rp" "zip-output/github_$name"
+                else
+                    echo "Warning: $rp not found, skipping."
+                fi
+            done
+        - name: Deploy to event server
+          uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          with:
+            server: mc.datasektionen.se
+            port: 2022
+            username: github-actions.032bfc9c
+            password: ${{ secrets.AUTODEPLOY_PASSWORD }}
+            local_path: zip-output/*
+            remote_path: config/metacraft-resource-packs/resource-packs/update/.
+            sftp_only: true
+

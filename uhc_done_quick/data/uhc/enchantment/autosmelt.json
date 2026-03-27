@@ -1,0 +1,19 @@
+{
+    "description": "Autosmelt",
+    "max_level": 1,
+    "supported_items": "#minecraft:pickaxes",
+    "anvil_cost": 1,
+    "weight": 1,
+    "min_cost": {
+        "base": 1,
+        "per_level_above_first": 1
+    },
+    "max_cost": {
+        "base": 1,
+        "per_level_above_first": 1
+    },
+    "slots": [
+        "mainhand",
+        "offhand"
+    ]
+}

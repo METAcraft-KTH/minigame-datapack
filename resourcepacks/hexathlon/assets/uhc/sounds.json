@@ -1,0 +1,16 @@
+{
+    "fortnite_battle_bus_horn": {
+        "sounds": [
+            {
+                "name": "uhc:fortnite_battle_bus_horn"
+            }
+        ]
+    },
+    "fortnite_battle_bus_doppler": {
+        "sounds": [
+            {
+                "name": "uhc:fortnite_battle_bus_doppler"
+            }
+        ]
+    }
+}
