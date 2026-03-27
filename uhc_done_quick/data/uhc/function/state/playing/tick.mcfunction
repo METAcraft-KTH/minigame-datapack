@@ -3,6 +3,8 @@
 scoreboard players add ?timer uhc.time 1
 enchant @a[gamemode=survival] efficiency 5
 enchant @a[gamemode=survival] fortune 3
+# this doesn't do anything but it communicates to the players that autosmelt is active.
+enchant @a[gamemode=survival] uhc:autosmelt
 
 execute as @a[tag=uhc.not_landed] at @s unless block ~ ~-1 ~ air unless block ~ ~-2 ~ air run function uhc:state/playing/landed
 
