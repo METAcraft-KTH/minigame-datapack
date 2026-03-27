@@ -36,6 +36,9 @@ scoreboard players set ?wither_spawn_time uhc.time 12000
 scoreboard players set ?sound_stop_time uhc.time 800
 
 
+# --- Bossbar ---
+bossbar add uhc:bossbar ""
+bossbar set uhc:bossbar visible false
 
 # --- STATS VARIABLES ---
 #   these are (typically) assigned-once variables used to
