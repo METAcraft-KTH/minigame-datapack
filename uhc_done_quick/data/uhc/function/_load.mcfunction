@@ -2,6 +2,7 @@
 scoreboard objectives add uhc.state dummy "game-internal states"
 scoreboard objectives add uhc.time dummy "game-internal timer"
 scoreboard objectives add uhc.arena dummy
+scoreboard objectives add uhc.temp dummy
 scoreboard objectives add uhc.flying minecraft.custom:minecraft.aviate_one_cm
 # uhc.arena - used to assign marker entities to the correct arena.
 #
@@ -39,6 +40,10 @@ scoreboard players set ?sound_stop_time uhc.time 800
 # --- Bossbar ---
 bossbar add uhc:bossbar ""
 bossbar set uhc:bossbar visible false
+
+# --- Teams ---
+team add uhc.grace_period
+team modify uhc.grace_period friendlyFire false
 
 # --- STATS VARIABLES ---
 #   these are (typically) assigned-once variables used to

@@ -1,3 +1,2 @@
 tag @s add uhc.battlebus_sound_played
-playsound minecraft:entity.ender_dragon.growl master @s
-say weeeooo
+playsound uhc:fortnite_battle_bus_doppler master @s ~ ~ ~ 100

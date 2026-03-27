@@ -3,7 +3,7 @@ function main:util/reset_gamerules
 gamerule entity_drops true
 gamerule block_drops true
 gamerule mob_drops true
-gamerule natural_health_regeneration true
+gamerule natural_health_regeneration false
 gamerule advance_time true
 gamerule mob_griefing true
 gamerule keep_inventory false
