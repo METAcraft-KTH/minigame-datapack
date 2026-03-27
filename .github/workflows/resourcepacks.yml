@@ -9,6 +9,7 @@ on:
         - hexathlon5
         paths:
         - 'resourcepacks/**'
+        - '.github/workflows/resourcepacks.yml'
     workflow_dispatch: {}
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
                 if [ -d "$rp" ]; then
                     # A directory, zip it
                     name=$(basename "$rp")
-                    (cd "$rp" && zip -r "../zip-output/github_$name.zip" .)
+                    (cd "$rp" && zip -r "../../zip-output/github_$name.zip" .)
                 elif [ -f "$rp" ]; then
                     # A file (probably a zip file)
                     name=$(basename "$rp")
