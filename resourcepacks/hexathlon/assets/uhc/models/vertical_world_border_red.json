@@ -1,0 +1,6 @@
+{
+    "parent": "uhc:vertical_world_border_blue",
+    "textures": {
+        "0": "uhc:misc/worldborder_red_16"
+    }
+}

@@ -3,9 +3,10 @@ scoreboard players operation ?time_until_pvp uhc.time = ?grace_period_time uhc.t
 scoreboard players operation ?time_until_pvp uhc.time -= ?timer uhc.time
 
 # Bossbar
-bossbar set main:timer players @a
-bossbar set main:timer visible true
+bossbar set uhc:bossbar players @a
+bossbar set uhc:bossbar visible true
 execute store result bossbar uhc:bossbar value run scoreboard players get ?time_until_pvp uhc.time
+execute store result bossbar uhc:bossbar max run scoreboard players get ?grace_period_time uhc.time
 
 #   get formatted time string to display in bossbar
 execute store result storage uhc:temp t int 1 run scoreboard players get ?time_until_pvp uhc.time
