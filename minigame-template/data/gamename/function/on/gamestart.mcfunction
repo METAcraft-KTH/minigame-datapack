@@ -16,8 +16,9 @@ scoreboard players set ?round gamename.state 0
 scoreboard players set ?match_timer gamename.timer 0
 
 # Reset per-player stats
-scoreboard players set @a gamename.kills 0
-scoreboard players set @a gamename.trigs 0
+scoreboard players set @a gamename.stats.kills 0
+scoreboard players set @a gamename.stats.trigs 0
+scoreboard players set @a gamename.stats.laptime 0
 
 # Arm sample advancement triggers
 advancement revoke @a only gamename:player_kill
