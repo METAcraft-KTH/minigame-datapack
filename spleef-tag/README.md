@@ -49,7 +49,6 @@ Round flow:
 - Arena anchor marker tag: `spleef.tp.arena`
 - TNT pass mechanic uses advancement `spleef:punched`
 - Surviving a round increments `spleef.stats.rounds` for MAIN outro leaderboard
-- Legacy files (`spleef:load`, `spleef:tick`) remain as compatibility wrappers
 
 ## Migration Notes
 

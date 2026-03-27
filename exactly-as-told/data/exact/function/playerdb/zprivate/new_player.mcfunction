@@ -1,1 +1,0 @@
-$execute unless data storage exact:pdb players[{UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}] run data modify storage exact:pdb players append value {UUID:[I;$(UUID0),$(UUID1),$(UUID2),$(UUID3)]}
