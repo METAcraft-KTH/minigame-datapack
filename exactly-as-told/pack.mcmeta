@@ -1,0 +1,15 @@
+{
+    "pack": {
+        "min_format": 94,
+        "max_format": 9999,
+        "description": "Exactly as told"
+    },
+    "filter": {
+        "block": [
+            {
+                "namespace": "minecraft",
+                "path": "advancement/.*"
+            }
+        ]
+    }
+}

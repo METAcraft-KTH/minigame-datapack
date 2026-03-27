@@ -1,0 +1,3 @@
+$execute if score #playersdone exact.game matches ..9 run tellraw @a [{text:"00","color":"dark_gray"},{score:{name:"#playersdone",objective:"exact.game"},color:"gold"}," | ",{selector:"@s","color":"green"},{text:" $(verb)","color":"gray"}]
+$execute if score #playersdone exact.game matches 10..99 run tellraw @a [{text:"0","color":"dark_gray"},{score:{name:"#playersdone",objective:"exact.game"},color:"gold"}," | ",{selector:"@s","color":"green"},{text:" $(verb)","color":"gray"}]
+$execute if score #playersdone exact.game matches 100.. run tellraw @a [{text:"","color":"dark_gray"},{score:{name:"#playersdone",objective:"exact.game"},color:"gold"}," | ",{selector:"@s","color":"green"},{text:" $(verb)","color":"gray"}]

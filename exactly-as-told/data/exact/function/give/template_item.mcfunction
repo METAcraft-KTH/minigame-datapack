@@ -1,0 +1,1 @@
+give @s goat_horn[instrument={use_duration:1,range:256,sound_event:"entity.arrow.hit_player",description:"Ding"}] 1

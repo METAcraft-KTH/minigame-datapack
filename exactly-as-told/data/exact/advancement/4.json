@@ -1,0 +1,15 @@
+{
+	"criteria": {
+		"_": {
+			"conditions": {
+				"items": [
+					{"items": "orange_dye"}
+				]
+			},
+			"trigger": "minecraft:inventory_changed"
+		}
+	},
+	"rewards": {
+		"function": "exact:adv/4"
+	}
+}

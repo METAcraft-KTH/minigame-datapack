@@ -1,0 +1,19 @@
+{
+	"criteria": {
+		"_": {
+			"conditions": {
+				"player": {
+					"location": {
+						"fluid": {
+							"fluids": ["lava","flowing_lava"]
+						}
+					}
+				}
+			},
+			"trigger": "minecraft:location"
+		}
+	},
+	"rewards": {
+		"function": "exact:adv/14"
+	}
+}

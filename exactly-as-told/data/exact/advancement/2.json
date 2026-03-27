@@ -1,0 +1,10 @@
+{
+	"criteria": {
+		"_": {
+			"trigger": "minecraft:villager_trade"
+		}
+	},
+    "rewards": {
+        "function": "exact:adv/2"
+    }
+}

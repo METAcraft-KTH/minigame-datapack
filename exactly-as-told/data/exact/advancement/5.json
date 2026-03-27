@@ -1,0 +1,19 @@
+{
+    "criteria": {
+        "_": {
+            "trigger": "location",
+            "conditions": {
+                "player": {
+                    "location": {
+                        "fluid": {
+                            "fluids": ["water","flowing_water"]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "exact:adv/5"
+    }
+}
