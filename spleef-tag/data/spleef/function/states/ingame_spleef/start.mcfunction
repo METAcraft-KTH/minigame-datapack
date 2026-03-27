@@ -24,7 +24,7 @@ title @a subtitle ""
 # give everyone pickaxes!!
 give @a[tag=!admin] golden_pickaxe[enchantments={efficiency:100},tooltip_display={hidden_components:["enchantments","can_break"]},can_break={},unbreakable={},item_name="Mine blocks to restore hunger"]
 # fill offhand w wind charges!!
-item replace entity @a[tag=!admin] weapon.offhand with wind_charge 3
+item replace entity @a[tag=!admin] weapon.offhand with wind_charge 5
 
 # give everyone HUNGER!!
 effect give @a[tag=!admin] hunger infinite 60 true

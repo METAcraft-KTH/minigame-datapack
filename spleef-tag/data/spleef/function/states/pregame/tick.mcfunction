@@ -14,7 +14,7 @@ title @a[tag=!admin] actionbar ["Receiving pickaxe in ",{"score": {"name": "#dis
 
 # tp players back onto the platform
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run tellraw @s {"text":"Whoa, hey, you don't wanna do that.","color":"gray"}
-execute as @a[tag=!admin,scores={spleef.Y=..0}] at @s run tp @s @n[tag=spleef.tp.arena,type=marker,distance=..1000]
+execute as @a[tag=!admin,scores={spleef.Y=..0}] at @s run tp @s 30024 50 50024
 
 
 ## start game (for real)

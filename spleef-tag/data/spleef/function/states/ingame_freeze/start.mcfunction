@@ -8,8 +8,6 @@ scoreboard players set ?timer spleef.game 0
 clear @a[tag=!admin]
 title @a clear
 
-# DELETE THE BLOCKS
-function spleef:utility/game/blocks/destroy/run
 bossbar remove spleef:timer
 
 # pause music
