@@ -81,7 +81,7 @@ scoreboard players set #120 main.const 120
 scoreboard players set #200 main.const 200
 
 # --- SCHEDULE _tick_per_second ---
-schedule function main:_tick_per_second 20t replace
+#schedule function main:_tick_per_second 20t replace
 
 
 # --- EVENT DETECTION ---

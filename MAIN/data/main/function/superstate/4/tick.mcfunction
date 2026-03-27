@@ -16,15 +16,16 @@ scoreboard players add ?supertimer main.time 1
 
 
 # --- WAIT 10 SECONDS BEFORE SHOWING SLIDES ---
-execute if score ?supertimer main.time matches 120 run tellraw @a ["\n",{text:"Well played!",color:"#E83D84",bold:true}," Here are the top players...\n"]
-execute if score ?supertimer main.time matches 200 run function main:superstate/4/macro_get_outro
-execute if score ?supertimer main.time matches 200 run scoreboard players set ?supertimer main.time 401
+#execute if score ?supertimer main.time matches 100 run tellraw @a ["\n",{text:"Well played!",color:"#E83D84",bold:true}," Here are the top players...\n"]
+execute if score ?supertimer main.time matches 100 run function main:superstate/4/macro_get_outro
+execute if score ?supertimer main.time matches 100 run scoreboard players set ?supertimer main.time 401
 
 # --- SHOW SLIDES ---
-execute if score ?supertimer main.time matches 401 run function main:superstate/4/show_next_slide
+#   disabled for now bc we dont have time for this
+#execute if score ?supertimer main.time matches 401 run function main:superstate/4/show_next_slide
 # if there are slides to show, the timer will reset to 201.
 # if there are no more slides, the timer will continue ticking.
-execute if score ?supertimer main.time matches 402 run tellraw @a {text:"\nReturning to lobby in 10 seconds...\n",color:"gray",italic:true}
+execute if score ?supertimer main.time matches 402 run tellraw @a ["",{text:"\nWell played!",color:"#E83D84",bold:true},{text:"\nReturning to lobby in 10 seconds...\n",color:"gray",italic:true}]
 
 # --- DISPLAY SCREEN TRANSITION TITLE ---
 # these values are just temporary until i figure out postgame stats
