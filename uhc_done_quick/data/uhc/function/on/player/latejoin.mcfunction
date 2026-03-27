@@ -8,3 +8,6 @@
 # to spectator if it's an elimination-type game.
 # 
 # ============================================================
+say latejoin
+gamemode spectator @s
+# tp @s  # TODO

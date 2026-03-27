@@ -9,3 +9,5 @@
 # ============================================================
 
 say gamestart
+scoreboard players set ?round uhc.state 1
+function uhc:state/start_round

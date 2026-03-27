@@ -6,4 +6,5 @@
 # 
 # ============================================================
 
-say gametick
+execute if score ?state uhc.state matches 0 run function uhc:state/battlebus/tick
+execute if score ?state uhc.state matches 1 run function uhc:state/playing/tick
