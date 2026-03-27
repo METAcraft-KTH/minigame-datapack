@@ -13,3 +13,12 @@
 # if it is a late join.
 # 
 # ============================================================
+
+# Late joiners are handled in on/player/latejoin.
+execute unless score @s main.iwashere matches 1 run return 0
+
+# During active gameplay, bring non-admin players back into adventure.
+execute if score ?phase gamename.state matches 1 as @s[tag=!admin] run gamemode adventure
+
+# Outside gameplay rounds, keep players in spectator.
+execute unless score ?phase gamename.state matches 1 as @s[tag=!admin] run gamemode spectator

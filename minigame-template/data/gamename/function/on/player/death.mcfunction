@@ -7,3 +7,6 @@
 # or [tag=on.attacker]
 # 
 # ============================================================
+
+gamemode spectator @s
+tellraw @s {"text":"You died. You will respawn for the next round.","color":"red"}

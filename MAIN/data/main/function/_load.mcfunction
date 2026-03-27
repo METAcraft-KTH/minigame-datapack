@@ -11,6 +11,7 @@ scoreboard objectives add main.time dummy "Timer-related variables"
 scoreboard objectives add main.id dummy "Unique IDs for every player"
 scoreboard objectives add main.iwashere dummy "Check if player was online at game start"
 scoreboard objectives add main.temp dummy "Any temporary calculations"
+scoreboard objectives add main.temp.stat dummy "For holding per-player stats in outros"
 
 # --- DEFAULT VARIABLE STATES ---
 #
