@@ -2,6 +2,7 @@
 scoreboard objectives add uhc.state dummy "game-internal states"
 scoreboard objectives add uhc.time dummy "game-internal timer"
 scoreboard objectives add uhc.arena dummy
+scoreboard objectives add uhc.flying minecraft.custom:minecraft.aviate_one_cm
 # uhc.arena - used to assign marker entities to the correct arena.
 #
 # ?round uhc.state - The round number that determines the arena to use. In
@@ -30,6 +31,9 @@ scoreboard players set ?worldborder_horizontal_shrink_time uhc.time 3600
 scoreboard players set ?worldborder_vertical_shrink_time uhc.time 7200
 # ?wither_spawn_time uhc.time - Ticks to wait before spawning withers.
 scoreboard players set ?wither_spawn_time uhc.time 12000
+# ?sound_stop_time uhc.time - Ticks when the battle bus sound stops playing.
+#                             This is an optimization to avoid having to perform the sound check a lot.
+scoreboard players set ?sound_stop_time uhc.time 800
 
 
 
