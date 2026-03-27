@@ -23,10 +23,12 @@ jobs:
             for rp in $RESOURCEPACKS; do
                 if [ -d "$rp" ]; then
                     # A directory, zip it
-                    (cd "$rp" && zip -r "../zip-output/github_$rp.zip" .)
+                    name=$(basename "$rp")
+                    (cd "$rp" && zip -r "../zip-output/github_$name.zip" .)
                 elif [ -f "$rp" ]; then
                     # A file (probably a zip file)
-                    cp "$rp" "zip-output/github_$rp"
+                    name=$(basename "$rp")
+                    cp "$rp" "zip-output/github_$name"
                 else
                     echo "Warning: $rp not found, skipping."
                 fi
