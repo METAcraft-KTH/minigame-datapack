@@ -1,0 +1,42 @@
+{
+    "description": "One Hit",
+    "supported_items": [
+      "minecraft:bow",
+      "minecraft:crossbow",
+      "minecraft:trident"
+    ],
+    "weight": 1,
+    "max_level": 1,
+    "min_cost": {
+      "base": 0,
+      "per_level_above_first": 0
+    },
+    "max_cost": {
+      "base": 0,
+      "per_level_above_first": 0
+    },
+    "anvil_cost": 0,
+    "slots": [],
+    "effects": {
+      "minecraft:damage": [
+        {
+          "requirements": {
+            "condition": "minecraft:entity_properties",
+            "entity": "direct_attacker",
+            "predicate": {
+              "type": [
+                "minecraft:arrow",
+                "minecraft:spectral_arrow",
+                "minecraft:trident",
+                "minecraft:firework_rocket"
+              ]
+            }
+          },
+          "effect": {
+            "type": "minecraft:set",
+            "value": 100
+          }
+        }
+      ]
+    }
+  }

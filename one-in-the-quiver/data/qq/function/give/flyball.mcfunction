@@ -1,0 +1,1 @@
+give @s snowball[custom_data={flyball:1b}]

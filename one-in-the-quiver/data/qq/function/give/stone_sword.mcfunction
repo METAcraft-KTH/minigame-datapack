@@ -1,0 +1,1 @@
+give @s stone_sword[unbreakable={}, tooltip_display={hidden_components:[unbreakable]}]

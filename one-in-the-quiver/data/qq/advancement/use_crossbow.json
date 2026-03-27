@@ -1,0 +1,18 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:using_item",
+        "conditions": {
+          "item": {
+            "items": [
+              "minecraft:crossbow"
+            ]
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "qq:utility/misc/using_crossbow"
+    }
+  }
+  

@@ -1,0 +1,18 @@
+{
+    "criteria": {
+        "": {
+            "trigger": "minecraft:using_item",
+            "conditions": {
+                "item": {
+                    "items": "minecraft:blaze_rod",
+                    "predicates": {
+                        "minecraft:custom_data": "{SpawnpointPlacer:1b}"
+                    }
+                }
+            }
+        }
+    },
+    "rewards": {
+        "function": "qq:utility/spawnpoint/create_preview"
+    }
+}

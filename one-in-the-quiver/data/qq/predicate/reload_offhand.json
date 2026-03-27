@@ -1,0 +1,20 @@
+{
+  "condition": "minecraft:entity_properties",
+  "entity": "this",
+  "predicate": {
+    "type": "minecraft:player",
+    "equipment": {
+      "offhand": {
+        "items": [
+          "minecraft:crossbow"
+        ],
+        "components": {
+          "minecraft:charged_projectiles": []
+        },
+        "predicates": {
+          "minecraft:custom_data": "{reload:1b}"
+        }
+      }
+    }
+  }
+}

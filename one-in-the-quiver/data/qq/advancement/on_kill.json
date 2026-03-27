@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "": {
+            "trigger": "minecraft:player_killed_entity"
+        }
+    },
+    "rewards": {
+        "function": "qq:states/ingame/on_kill"
+    }
+}
