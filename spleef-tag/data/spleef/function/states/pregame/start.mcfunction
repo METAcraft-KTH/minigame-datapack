@@ -2,16 +2,17 @@
 scoreboard players set ?state spleef.game 1
 
 # various configs
-function spleef:states/pregame/configure_gamerule
+#function main:api/end_game
+function main:util/reset_gamerules
+gamerule fall_damage false
+gamerule max_block_modifications 77000
 
 # initialize timer
 scoreboard players set ?timer spleef.game 0
 
 # tp everyone to the arena
-tp @a[tag=!admin] @n[tag=spleef.tp.arena]
-gamemode adventure @a[tag=!admin]
-
-execute as @a[tag=!admin] run function spleef:states/pregame/reset_player
+tp @a 30024 50 50024
+execute as @a[tag=!admin] run gamemode adventure
 
 # reset all players' hunger, health, effects, xp, inventory
 effect clear @a[tag=!admin]
@@ -23,17 +24,11 @@ clear @a[tag=!admin]
 
 # generate map
 scoreboard players set ?colors spleef.game 3
-function spleef:utility/game/blocks/place/run
+function spleef:utility/map/place
 
 item replace entity @a[tag=!admin] weapon.offhand with wind_charge
 
 # set round number
 scoreboard players set ?round.number spleef.game 0
 
-execute as @a run function spleefmusic:badapple/stop
-
-tellraw @a {"text":"\nGAME 4: HELA HAVET SPLEEFAR (again)","color":"gold","bold":true}
-tellraw @a {"text":"- Don't fall into the void",color:"gray"}
-tellraw @a {"text":"- Earn points for each player that falls into the void before you",color:"gray"}
-tellraw @a {"text":"- Bonus points for surviving the whole round\n",color:"gray"}
-tellraw @a {"text":"- Extra points for staying till top 10 \n",color:"gray"}
+execute as @a run function spleefmusic:sans/stop

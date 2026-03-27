@@ -4,6 +4,11 @@
 # Executor:  Rejoining player
 # ============================================================
 
-tp @s @n[tag=spleef.tp.arena,type=marker]
+effect clear @s
+clear @s
+experience set @s 0 levels
+experience set @s 0 points
+
+tp @s 30024 50 50024
 gamemode spectator @s
-tellraw @s {"text":"Welcome back. You will rejoin in the next round.","color":"gray"}
+tellraw @s {"text":"Welcome! You joined in the middle of a game. Stick around to play in the next round.\n","color":"gray"}

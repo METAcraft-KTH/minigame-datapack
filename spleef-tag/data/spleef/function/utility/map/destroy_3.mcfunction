@@ -1,0 +1,1 @@
+execute unless score ?color.keep spleef.game matches 3 run return run fill 30000 10 50000 30047 42 50047 air replace emerald_block

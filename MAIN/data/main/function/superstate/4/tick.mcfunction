@@ -36,5 +36,7 @@ execute if score ?supertimer main.time matches 540 run title @a title {"text":"A
 execute if score ?supertimer main.time matches 601 run function main:superstate/4/change_datapack
 
 # --- RETURN TO LOBBY
+execute if score ?supertimer main.time matches 602 run tp @a 0 100 50000
+execute if score ?supertimer main.time matches 602 as @a[tag=!admin] run gamemode adventure
 execute if score ?supertimer main.time matches 602 unless score ?minigame_id main.state matches 6 run function main:superstate/4/go_to_state_1
 execute if score ?supertimer main.time matches 602 if score ?minigame_id main.state matches 6 run function main:superstate/4/go_to_state_5

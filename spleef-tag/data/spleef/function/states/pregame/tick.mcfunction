@@ -31,5 +31,5 @@ execute if score #remainingtime spleef.game matches 40 as @a[tag=!admin] at @s r
 execute if score #remainingtime spleef.game matches 20 run title @a[tag=!admin] title {"text":"0?","color":"green"}
 execute if score #remainingtime spleef.game matches 20 as @a[tag=!admin] at @s run playsound block.note_block.pling player @s ~ ~ ~
 
-execute if score ?timer spleef.game >= time.pregame spleef.config as @a run function spleefmusic:badapple/stop
+execute if score ?timer spleef.game >= time.pregame spleef.config as @a run function spleefmusic:sans/stop
 execute if score ?timer spleef.game >= time.pregame spleef.config run function spleef:states/ingame_spleef/start
