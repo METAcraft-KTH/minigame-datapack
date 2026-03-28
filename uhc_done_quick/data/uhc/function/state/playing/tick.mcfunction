@@ -5,6 +5,9 @@ scoreboard players add ?timer uhc.time 1
 scoreboard players operation ?second_timer uhc.time = ?timer uhc.time
 scoreboard players set #20 uhc.temp 20
 scoreboard players operation ?second_timer uhc.time %= #20 uhc.temp
+scoreboard players set #1200 uhc.temp 1200
+scoreboard players operation ?minute_timer uhc.time = ?timer uhc.time
+scoreboard players operation ?minute_timer uhc.time %= #1200 uhc.temp
 
 # Enchantments
 enchant @a[gamemode=survival] efficiency 5
@@ -37,4 +40,8 @@ scoreboard players set ?alive uhc.state 0
 execute as @a[gamemode=survival] run scoreboard players add ?alive uhc.state 1
 execute as @a[gamemode=adventure] run scoreboard players add ?alive uhc.state 1
 
+# Players alive
 execute unless score ?alive_prev uhc.state = ?alive uhc.state run function uhc:state/playing/players_alive_change
+
+execute if score ?minute_timer uhc.time matches 1000 as @a[gamemode=survival] run function score:add_points {points:10}
+execute if score ?minute_timer uhc.time matches 1000 run tellraw @a[gamemode=survival] ["",{"text":"+10💎 for being alive for another minute!"}]
