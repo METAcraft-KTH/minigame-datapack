@@ -22,12 +22,12 @@ Control points are marker entities with:
 - not tagged `mingle.cp.disabled`
 
 Players in range of any active control point get `mingle.in_cp`.
-Players in range of a control point whose local count equals the target group size get `mingle.correct`.
+Players in range of a control point whose local count equals the target group size get `mingle.player.correct`.
 
 At `ingame_wait` start:
 
-- players with `mingle.correct` become `mingle.winner`
-- players without `mingle.correct` become `mingle.loser`
+- players with `mingle.player.correct` become `mingle.winner`
+- players without `mingle.player.correct` become `mingle.loser`
 - all control points are tagged `mingle.cp.disabled`
 
 ## Required Map Setup

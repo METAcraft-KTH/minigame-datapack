@@ -18,7 +18,7 @@ scoreboard players set @a mingle.stats.streak 0
 scoreboard players set @a mingle.hud 0
 
 tag @a remove mingle.in_cp
-tag @a remove mingle.correct
+tag @a remove mingle.player.correct
 tag @a remove mingle.winner
 tag @a remove mingle.loser
 

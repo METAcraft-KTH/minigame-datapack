@@ -12,7 +12,7 @@ scoreboard players add ?round mingle.state 1
 execute store result score ?target_group mingle.state run random value 4..15
 
 tag @a remove mingle.in_cp
-tag @a remove mingle.correct
+tag @a remove mingle.player.correct
 tag @a remove mingle.winner
 tag @a remove mingle.loser
 
@@ -22,3 +22,8 @@ execute as @a[tag=!admin,gamemode=!spectator] run gamemode adventure
 
 title @a title [{"text":"Round ","color":"gold"},{"score":{"name":"?round","objective":"mingle.state"}},{"text":"/15","color":"gold"}]
 title @a subtitle [{"text":"Form groups of ","color":"aqua"},{"score":{"name":"?target_group","objective":"mingle.state"}}]
+
+effect give @a[tag=!admin] speed 2 1 true
+
+# give wools
+execute as @a[tag=!admin] run function mingle:state/ingame_run/get_wool
