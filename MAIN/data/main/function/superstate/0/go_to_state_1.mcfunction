@@ -17,4 +17,5 @@ scoreboard players operation ?supertimer main.time = ?before_first_minigame_wait
 execute store result bossbar main:timer max run scoreboard players get ?before_first_minigame_wait_time main.const
 
 # --- BEGIN SUPERSTATE 1 ---
+execute as @a run function main:private/stop_cutscene
 scoreboard players set ?superstate main.state 1
