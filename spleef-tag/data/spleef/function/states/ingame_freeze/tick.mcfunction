@@ -32,5 +32,4 @@ execute if score ?timer spleef.game matches 7 run function spleef:utility/map/de
 execute if score ?timer spleef.game >= time.ingame_freeze spleef.config store result score #playersleft spleef.game if entity @a[tag=!admin,gamemode=adventure]
 execute if score ?timer spleef.game >= time.ingame_freeze spleef.config as @a[tag=!admin,gamemode=!spectator] run function spleef:states/ingame_freeze/points_for_surviving
 execute if score ?timer spleef.game >= time.ingame_freeze spleef.config if score ?round.number spleef.game matches ..12 run function spleef:states/ingame_spleef/start
-execute if score ?timer spleef.game >= time.ingame_freeze spleef.config if score ?round.number spleef.game matches 13.. run function main:util/reset_gamerules
 execute if score ?timer spleef.game >= time.ingame_freeze spleef.config if score ?round.number spleef.game matches 13.. run function main:api/end_game

@@ -9,6 +9,7 @@
 scoreboard players set ?phase mingle.state 2
 scoreboard players set ?phase_timer mingle.timer 0
 
+# remove blocks and shears
 clear @a[tag=!admin]
 
 #tag @e[type=marker,tag=mingle.cp] add mingle.cp.disabled
@@ -43,10 +44,10 @@ execute if score ?flavor mingle.temp matches 7 run tellraw @a [{text:"",color:"g
 execute if score ?flavor mingle.temp matches 8 run tellraw @a [{text:"",color:"gray"},{score:{name:"?winners",objective:"mingle.temp"},color:"green"}," are having dinner together after this, ",{score:{name:"?losers",objective:"mingle.temp"},color:"red"}," are not."]
 execute if score ?flavor mingle.temp matches 9 run tellraw @a [{text:"",color:"gray"},{score:{name:"?winners",objective:"mingle.temp"},color:"green"}," just made a hustle post on LinkedIn, ",{score:{name:"?losers",objective:"mingle.temp"},color:"red"}," did not."]
 
-execute as @a[scores={mingle.streak=3}] run tellraw @a ["",{text:"⭐ ",color:"gold"},{selector:"@s"}," has mingled 3 rounds in a row!"]
-execute as @a[scores={mingle.streak=6}] run tellraw @a ["",{text:"⭐ ",color:"gold"},{selector:"@s"}," has mingled 6 rounds in a row!"]
-execute as @a[scores={mingle.streak=9}] run tellraw @a ["",{text:"⭐ ",color:"gold"},{selector:"@s"}," has mingled 9 rounds in a row!"]
-execute as @a[scores={mingle.streak=12}] run tellraw @a ["",{text:"⭐ ",color:"gold"},{selector:"@s"}," has mingled 12 rounds in a row!"]
+execute as @a[scores={mingle.streak=3}] run tellraw @a ["",{text:"⭐ ",color:"gold"},{selector:"@s",color:"green"}," has mingled 3 rounds in a row!"]
+execute as @a[scores={mingle.streak=6}] run tellraw @a ["",{text:"⭐⭐ ",color:"gold"},{selector:"@s",color:"green"}," has mingled 6 rounds in a row!!"]
+execute as @a[scores={mingle.streak=9}] run tellraw @a ["",{text:"⭐⭐⭐ ",color:"gold"},{selector:"@s",color:"green"}," has mingled 9 rounds in a row!!!"]
+execute as @a[scores={mingle.streak=12}] run tellraw @a ["",{text:"⭐⭐⭐⭐ ",color:"gold"},{selector:"@s",color:"green"}," has mingled 12 rounds in a row!!!!"]
 
 #title @a title {"text":"Round Locked","color":"aqua","bold":true}
 #title @a subtitle [{"text":"Target was ","color":"yellow"},{"score":{"name":"?target_group","objective":"mingle.state"}}]

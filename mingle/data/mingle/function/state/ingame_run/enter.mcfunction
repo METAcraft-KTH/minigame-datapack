@@ -20,9 +20,6 @@ tag @e[type=marker,tag=mingle.cp] remove mingle.cp.disabled
 
 execute as @a[tag=!admin,gamemode=!spectator] run gamemode adventure
 
-title @a title [{"text":"Round ","color":"gold"},{"score":{"name":"?round","objective":"mingle.state"}},{"text":"/15","color":"gold"}]
-title @a subtitle [{"text":"Form groups of ","color":"aqua"},{"score":{"name":"?target_group","objective":"mingle.state"}}]
-
 effect give @a[tag=!admin] speed 2 1 true
 
 # give wools
