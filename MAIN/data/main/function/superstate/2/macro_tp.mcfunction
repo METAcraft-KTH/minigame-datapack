@@ -8,3 +8,4 @@
 # ============================================================
 
 $tp @a $(player_coords)
+$spawnpoint @a $(player_coords)
