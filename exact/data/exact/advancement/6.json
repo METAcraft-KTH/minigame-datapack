@@ -1,0 +1,15 @@
+{
+  "display": {
+    "title": "Round 6",
+    "description": "Complete round 6",
+    "hidden": true
+  },
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "function": "exact:adv/6"
+  }
+}
