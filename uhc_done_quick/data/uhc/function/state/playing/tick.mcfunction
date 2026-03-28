@@ -2,6 +2,9 @@
 
 # Increment time
 scoreboard players add ?timer uhc.time 1
+scoreboard players operation ?second_timer uhc.time = ?timer uhc.time
+scoreboard players set #20 uhc.temp 20
+scoreboard players operation ?second_timer uhc.time %= #20 uhc.temp
 
 # Enchantments
 enchant @a[gamemode=survival] efficiency 5
@@ -26,3 +29,5 @@ execute if score ?timer uhc.time > ?grace_period_time uhc.time as @a[team=uhc.gr
 # Trigger world border shrink at the right time
 execute if score ?timer uhc.time = ?worldborder_horizontal_shrink_time uhc.time run function uhc:state/playing/world_border_horiztonal_start
 
+# Tick the vertical world border
+function uhc:border/border_tick
