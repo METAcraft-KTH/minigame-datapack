@@ -45,15 +45,17 @@ data modify storage main:intro spleef.howtoplay append value \
         "If you fall off, you'll only respawn next round.",\
         "There are 13 rounds in total.",\
         "",\
-        ["Some rounds will have ",{text:"powerups",color:"aqua"},"!"],\
-        "These are given to all players automatically.",\
+        "The rounds will have more and more colors,",\
+        "and less and less time for you to react!",\
+        "",\
     ]
 data modify storage main:intro spleef.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
         "+3💎 when someone dies before you",\
-        "+100~10💎 for the top 10 players in each round",\
+        "+30💎 for surviving a round",\
+        "Extra +100~10💎 for the top 10 players each round",\
         [" "," "," "," (if N players survive, they all share Nth place)"],\
         "",\
     ]
