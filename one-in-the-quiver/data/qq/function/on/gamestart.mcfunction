@@ -5,7 +5,7 @@
 # ============================================================
 
 # Optional external init hook
-function #qq:init
+#function #qq:init
 
 # Reset mode sequence at the start of this minigame
 scoreboard players set mode qq.config 0

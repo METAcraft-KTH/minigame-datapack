@@ -44,7 +44,7 @@ data merge storage main:game {display:[{}, \
     {id:1,namespace:"race",gamename:"Race Around The World"}, \
     {id:2,namespace:"uhc",gamename:"UHC Done Quick"}, \
     {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
-    {id:4,namespace:"kotm",gamename:"King of the Mingle"}, \
+    {id:4,namespace:"mingle",gamename:"King of the Mingle"}, \
     {id:5,namespace:"exact",gamename:"Exactly As Told"}, \
     {id:6,namespace:"qq",gamename:"One in the Quiver"}, \
 ]}
