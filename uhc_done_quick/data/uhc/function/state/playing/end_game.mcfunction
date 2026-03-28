@@ -1,1 +1,2 @@
-scoreboard players set ?superstate main.state 4
+function main:api/end_game
+bossbar set uhc:bossbar visible false

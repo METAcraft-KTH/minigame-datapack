@@ -85,8 +85,8 @@ data modify storage main:intro uhc.howtoplay append value \
 data modify storage main:intro uhc.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:1b},"💎"],                         \
-        "+XXX💎 for each kill",                                       \
-        "+XXX💎 for being in the top XXX",                                            \
+        "+30💎 for each kill",                                       \
+        "+10💎 for every minute you are alive",                                            \
         "",                                                                             \
         ["Kills also give you a ", {text:"Golden Head", color: "gold"}, " that"],                   \
         ["instantly gives you 4", {text:"B",font:"uhc:font"}, " and 6", {text:"A",font:"uhc:font"}, " over 30 seconds"],                               \

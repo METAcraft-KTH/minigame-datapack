@@ -1,3 +1,4 @@
+scoreboard players add ?timer uhc.time 1
 
 scoreboard players operation ?time_until_next_round uhc.time = ?round_delay_time uhc.time
 scoreboard players operation ?time_until_next_round uhc.time -= ?timer uhc.time
