@@ -6,6 +6,8 @@
 # 
 # ============================================================
 
+spawnpoint @a 0 100 50000
+
 # --- DECREMENT TIMER ---
 scoreboard players remove ?supertimer main.time 1
 

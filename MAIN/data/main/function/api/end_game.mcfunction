@@ -16,8 +16,6 @@ title @a title {text:"GAME!",color:"red",bold:true}
 title @a subtitle ""
 execute as @a at @s run playsound entity.ender_dragon.growl master @s ~ ~ ~ 1
 
-spawnpoint @a 0 100 50000
-
 # --- BEGIN SUPERSTATE 4 ---
 scoreboard players set ?supertimer main.time 0
 scoreboard players set ?superstate main.state 4
