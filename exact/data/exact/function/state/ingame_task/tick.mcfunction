@@ -30,11 +30,6 @@ execute if score ?round exact.state matches 8 as @a if score @s exact.quickmath 
 # Round 11: win when touching grass block
 execute if score ?round exact.state matches 11 as @a[tag=!exact.win,tag=!admin] at @s if block ~ ~-1 ~ grass_block run advancement grant @s only exact:11
 
-# Round 15: win when launched at least 11 blocks above round start height
-execute if score ?round exact.state matches 15 as @a[tag=!exact.win,tag=!admin] store result score @s exact.y_now run data get entity @s Pos[1] 1
-execute if score ?round exact.state matches 15 as @a[tag=!exact.win,tag=!admin] run scoreboard players operation @s exact.y_now -= @s exact.y_start
-execute if score ?round exact.state matches 15 as @a[tag=!exact.win,tag=!admin] if score @s exact.y_now matches 11.. run advancement grant @s only exact:15
-
 # Keep all players near the arena if they fall too low
 execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:-5}}}}} run tp @s @n[tag=exact.tp.arena]
 

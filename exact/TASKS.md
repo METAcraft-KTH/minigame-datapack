@@ -38,11 +38,11 @@
 
 8. Quick maths!! (get written book. Impossible advancement trigger, use scoreboard trigger)
 
-   *X can count better than Valve!*
+    *X can count better than Valve!*
 
-9. Mace MLG!! (teleport to a tall platform (30+ blocks high) with chickens on the ground)
+9. Give away diamond!! (get diamond in inventory, use advancement trigger "minecraft:thrown_item_picked_up_by_entity")
 
-   *X needs to go pro!*
+    *X is a Minecraft YouTuber!*
 
 10. Kill someone!!
 

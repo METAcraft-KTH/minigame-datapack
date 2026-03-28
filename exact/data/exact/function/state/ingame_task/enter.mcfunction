@@ -92,11 +92,16 @@ execute if score ?round exact.state matches 13 run give @a[tag=!admin] bowl
 execute if score ?round exact.state matches 13 run give @a[tag=!admin] red_mushroom
 
 # Round 14: Take damage!!
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:strong_turtle_master"}] 1
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:leaping"}] 1
 execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:strong_harming"}] 1
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:swiftness"}] 1
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:healing"}] 1
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] pufferfish
+execute if score ?round exact.state matches 14 run give @a[tag=!admin] splash_potion[potion_contents={potion:"minecraft:poison"}] 1
 
 # Round 15: Launch 11 blocks up!!
 execute if score ?round exact.state matches 15 run give @a[tag=!admin] wind_charge 64
-execute if score ?round exact.state matches 15 as @a[tag=!admin] store result score @s exact.y_start run data get entity @s Pos[1] 1
 
 # Round 16: BOSS GAME: Pig racing!!
 execute if score ?round exact.state matches 16 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.pig_race]
