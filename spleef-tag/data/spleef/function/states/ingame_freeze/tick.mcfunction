@@ -11,7 +11,7 @@ title @a title ""
 title @a subtitle ""
 
 # kill players who fall off
-execute at @n[type=marker,tag=spleef.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~
+spawnpoint @a[tag=!admin] 30024 50 50024
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run kill @s
 
 # clear everyone's HUNGER!! (and no punching)

@@ -17,7 +17,7 @@ tag @a remove exact.win
 tellraw @a [{"text":"ROUND ","color":"gold","bold":true},{"score":{"name":"?round","objective":"exact.state"}}]
 
 # Reset spawn point to arena marker when available
-execute at @n[type=marker,tag=exact.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~ ~ ~
+spawnpoint @a[tag=!admin] 50000 100 50000 ~ ~
 
 # Round 1: Enchant diamond pickaxe!!
 execute if score ?round exact.state matches 1 run give @a[tag=!admin] diamond_pickaxe

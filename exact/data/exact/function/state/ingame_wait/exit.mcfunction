@@ -9,8 +9,8 @@
 tag @a remove exact.win
 
 # Check if last round (16) has just completed
-execute if score ?round exact.state matches 16 run bossbar remove exact:timer
-execute if score ?round exact.state matches 16 run function main:api/end_game
+execute if score ?round exact.state matches 15 run bossbar remove exact:timer
+execute if score ?round exact.state matches 15 run function main:api/end_game
 
 # Otherwise, advance to next round and restart task phase
 execute unless score ?round exact.state matches 16 run scoreboard players add ?round exact.state 1

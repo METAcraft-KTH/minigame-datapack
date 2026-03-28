@@ -8,9 +8,6 @@
 clear @a[tag=!admin]
 effect clear @a[tag=!admin]
 
-# Clean up spawned mobs near arena marker
-execute at @n[tag=exact.tp.arena,type=marker] as @e[type=!player,type=!marker,distance=..100] at @s run tp @s ~ ~-100 ~
-
 # Round cleanup carried over from old exact
 fill 50007 99 50007 49993 99 49993 iron_block
 execute positioned 50000 100 50000 run tp @e[type=!player,distance=..100] 50000 -10 50050

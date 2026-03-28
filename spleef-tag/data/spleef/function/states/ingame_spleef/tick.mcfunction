@@ -11,7 +11,7 @@ execute as @a[scores={spleef.blockmined=3..}] run effect give @s saturation 1 0 
 execute as @a[scores={spleef.blockmined=3..}] run scoreboard players remove @s spleef.blockmined 3
 
 # kill players who fall off
-execute at @n[type=marker,tag=spleef.tp.arena] run spawnpoint @a[tag=!admin] ~ ~ ~
+spawnpoint @a[tag=!admin] 30024 50 50024
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run kill @s
 
 ## end game
