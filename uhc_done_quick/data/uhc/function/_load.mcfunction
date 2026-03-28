@@ -4,6 +4,8 @@ scoreboard objectives add uhc.time dummy "game-internal timer"
 scoreboard objectives add uhc.arena dummy
 scoreboard objectives add uhc.temp dummy
 scoreboard objectives add uhc.flying minecraft.custom:minecraft.aviate_one_cm
+scoreboard objectives add uhc.under_border dummy
+scoreboard objectives add uhc.recursion_depth dummy
 # uhc.arena - used to assign marker entities to the correct arena.
 #
 # ?round uhc.state - The round number that determines the arena to use. In

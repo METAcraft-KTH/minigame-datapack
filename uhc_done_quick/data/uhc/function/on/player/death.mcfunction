@@ -7,4 +7,4 @@
 # or [tag=on.attacker]
 # 
 # ============================================================
-say death
+gamemode spectator @s
