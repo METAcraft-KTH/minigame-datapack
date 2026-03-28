@@ -35,6 +35,10 @@ scoreboard players set ?wither_spawn_time uhc.time 12000
 # ?sound_stop_time uhc.time - Ticks when the battle bus sound stops playing.
 #                             This is an optimization to avoid having to perform the sound check a lot.
 scoreboard players set ?sound_stop_time uhc.time 800
+# ?num_rounds uhc.state - The total number of rounds to play before the game ends.
+scoreboard players set ?num_rounds uhc.state 2
+# ?round_delay_time uhc.time - The number of ticks to wait between rounds.
+scoreboard players set ?round_delay_time uhc.time 2400
 
 
 # --- Bossbar ---
