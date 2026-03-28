@@ -1,0 +1,98 @@
+{
+    "type": "minecraft:entity",
+    "pools": [
+        {
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "minecraft:item",
+                    "name": "minecraft:player_head",
+                    "functions": [
+                        {
+                            "function": "set_components",
+                            "components": {
+                                "minecraft:profile": {
+                                    "name": "UHC"
+                                },
+                                "minecraft:attribute_modifiers": [
+                                    {
+                                        "type": "minecraft:block_interaction_range",
+                                        "id": "minecraft:",
+                                        "amount": -99,
+                                        "operation": "add_value",
+                                        "slot": "offhand",
+                                        "display": {
+                                            "type": "hidden"
+                                        }
+                                    },
+                                    {
+                                        "type": "minecraft:block_interaction_range",
+                                        "id": "minecraft:",
+                                        "amount": -99,
+                                        "operation": "add_value",
+                                        "slot": "mainhand",
+                                        "display": {
+                                            "type": "hidden"
+                                        }
+                                    }
+                                ],
+                                "minecraft:consumable": {
+                                    "consume_seconds": 0,
+                                    "animation": "none",
+                                    "has_consume_particles": false,
+                                    "on_consume_effects": [
+                                        {
+                                            "type": "minecraft:apply_effects",
+                                            "effects": [
+                                                {
+                                                    "id": "minecraft:absorption",
+                                                    "amplifier": 1,
+                                                    "duration": 2400,
+                                                    "show_particles": true,
+                                                    "show_icon": true
+                                                },
+                                                {
+                                                    "id": "minecraft:regeneration",
+                                                    "amplifier": 0,
+                                                    "duration": 600,
+                                                    "show_particles": true,
+                                                    "show_icon": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                "minecraft:custom_name": {
+                                    "text": "Golden Head",
+                                    "color": "gold",
+                                    "italic": false
+                                },
+                                "minecraft:lore": [
+                                    {
+                                        "text": "Right click to consume!",
+                                        "color": "yellow",
+                                        "italic": false
+                                    }
+                                ],
+                                "minecraft:food": {
+                                    "nutrition": 6,
+                                    "saturation": 7,
+                                    "can_always_eat": true
+                                },
+                                "minecraft:use_cooldown": {
+                                    "seconds": 10,
+                                    "cooldown_group": "golden_head"
+                                }
+                            }
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "condition": "minecraft:killed_by_player"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
