@@ -5,8 +5,11 @@
 # (20 seconds = 400 ticks)
 # ============================================================
 
+title @a times 0 20 0
+title @a[tag=!exact.win] title ""
+
 # Update title for players who have won (show "SUCCESS")
-execute as @a[tag=exact.win] run title @s actionbar {"text":"SUCCESS","color":"green","bold":true}
+title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
 
 # Check if task duration (400 ticks) has passed
 execute if score ?phase_timer exact.timer matches 400.. run function exact:state/ingame_task/exit

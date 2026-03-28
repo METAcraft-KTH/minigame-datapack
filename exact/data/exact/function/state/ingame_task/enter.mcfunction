@@ -10,25 +10,22 @@ title @a clear
 
 # Set subtitle to task description (will be per-round)
 # This is a placeholder; update per round as needed
-execute if score ?round exact.state matches 1 run subtitle @a {"text":"Round 1: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 2 run subtitle @a {"text":"Round 2: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 3 run subtitle @a {"text":"Round 3: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 4 run subtitle @a {"text":"Round 4: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 5 run subtitle @a {"text":"Round 5: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 6 run subtitle @a {"text":"Round 6: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 7 run subtitle @a {"text":"Round 7: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 8 run subtitle @a {"text":"Round 8: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 9 run subtitle @a {"text":"Round 9: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 10 run subtitle @a {"text":"Round 10: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 11 run subtitle @a {"text":"Round 11: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 12 run subtitle @a {"text":"Round 12: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 13 run subtitle @a {"text":"Round 13: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 14 run subtitle @a {"text":"Round 14: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 15 run subtitle @a {"text":"Round 15: Complete your task!","color":"green"}
-execute if score ?round exact.state matches 16 run subtitle @a {"text":"Round 16: Complete your task!","color":"green"}
-
-# Initialize blank title (no text shown, but players who win will see "SUCCESS")
-title @a {"text":"","fallback":""}
+execute if score ?round exact.state matches 1 run title @a subtitle {"text":"Enchant diamond pickaxe!!","color":"green"}
+execute if score ?round exact.state matches 2 run title @a subtitle {"text":"Round 2: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 3 run title @a subtitle {"text":"Round 3: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 4 run title @a subtitle {"text":"Round 4: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 5 run title @a subtitle {"text":"Round 5: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 6 run title @a subtitle {"text":"Round 6: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 7 run title @a subtitle {"text":"Round 7: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 8 run title @a subtitle {"text":"Round 8: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 9 run title @a subtitle {"text":"Round 9: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 10 run title @a subtitle {"text":"Round 10: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 11 run title @a subtitle {"text":"Round 11: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 12 run title @a subtitle {"text":"Round 12: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 13 run title @a subtitle {"text":"Round 13: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 14 run title @a subtitle {"text":"Round 14: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 15 run title @a subtitle {"text":"Round 15: Complete your task!","color":"green"}
+execute if score ?round exact.state matches 16 run title @a subtitle {"text":"Round 16: Complete your task!","color":"green"}
 
 # Reset win tags from previous round
 tag @a remove exact.win

@@ -4,11 +4,9 @@
 # Show results and award points (10 seconds = 200 ticks)
 # ============================================================
 
-# Clear titles
-title @a clear
-
-# Show "FAILURE" to players WITHOUT the exact.win tag
-execute as @a[tag=!exact.win] run title @s {"text":"FAILURE","color":"red","bold":true}
+title @a times 0 60 40
+title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
+title @a[tag=!exact.win] title {"text":"FAILURE","color":"red","bold":true}
 
 # Players with exact.win tag see nothing (already showed SUCCESS)
 # Award points to winners

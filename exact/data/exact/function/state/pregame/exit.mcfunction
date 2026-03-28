@@ -4,7 +4,6 @@
 # ============================================================
 
 title @a clear
-subtitle @a {"text":""}
 
 scoreboard players set ?phase exact.state 1
 scoreboard players set ?phase_timer exact.timer 0

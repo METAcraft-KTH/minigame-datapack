@@ -1,9 +1,4 @@
 {
-  "display": {
-    "title": "Round 11",
-    "description": "Complete round 11",
-    "hidden": true
-  },
   "criteria": {
     "trigger": {
       "trigger": "minecraft:impossible"

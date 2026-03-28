@@ -10,39 +10,30 @@ scoreboard objectives add exact.timer dummy "Game timer"
 
 # --- INTRO ANIMATION AND TEXT ---
 # Camera position for intro cutscene
-data modify storage main:intro exact.camera_starting_coords set value "0 64 0"
+data modify storage main:intro exact.camera_starting_coords set value "50000 105 49960"
 
 # Player spawn position when intro ends
-data modify storage main:intro exact.player_starting_coords set value "0 64 0"
+data modify storage main:intro exact.player_starting_coords set value "50000 100 50000"
 
 # How-to-play slides (6 rows per slide, shown in 10-second intervals)
 data modify storage main:intro exact.howtoplay set value []
 data modify storage main:intro exact.howtoplay append value \
     [\
-        {text:"Welcome to EXACT!",color:"gold",bold:true},\
+        "In this game, you'll be given various tasks to follow.",\
         "",\
-        "Complete 16 different tasks in rapid succession.",\
-        "Read the subtitle for instructions in each round.",\
-        "You have 20 seconds per task!",\
+        "The faster you complete them, the more 💎 you earn!",\
         "",\
+        "All tasks also have a time limit.",\
+        "If you don't complete a task in time, you earn nothing.",\
     ]
 data modify storage main:intro exact.howtoplay append value \
     [\
-        "Each task is validated automatically.",\
-        "Complete it, and you'll see:",\
-        {text:"SUCCESS",color:"green",bold:true},\
+        ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
-        "Fail to complete it by the time limit?",\
-        {text:"FAILURE",color:"red"},\
-    ]
-data modify storage main:intro exact.howtoplay append value \
-    [\
-        "After 16 rounds, the game ends.",\
+        "When you finish a task, +2💎 for each person",\
+        "who still hasn't finished",\
         "",\
-        "Complete the task.",\
-        "Be quick.",\
-        "Be exact.",\
-        "",\
+        "Extra +150~10💎 for the fastest 20 players",\
     ]
 
 # --- STATS VARIABLES ---
@@ -54,6 +45,6 @@ data modify storage main:outro exact.stats append value { \
     name: "Rounds Completed:",\
     sortby: ">",\
     prefix: "",\
-    suffix: " / 16",\
+    suffix: " rounds",\
     numberformat: 0,\
 }
