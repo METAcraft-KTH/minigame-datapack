@@ -55,7 +55,7 @@ data modify storage main:intro qq.camera_starting_coords set value "59942 111 49
 data modify storage main:intro qq.player_starting_coords set value "59937 100 50024"
 data modify storage main:intro qq.howtoplay set value []
 data modify storage main:intro qq.howtoplay append value ["One in the Quiver","Hit players to score points.","","Get one arrow after each kill.","Respawn quickly and rejoin the fight.",""]
-data modify storage main:intro qq.howtoplay append value ["Modes rotate each round:","One in the Quiver -> Quake -> Trident Trick","","Win by getting the highest score.","Top players are shown in the outro.",""]
+data modify storage main:intro qq.howtoplay append value ["Modes rotate each round:","One in the Quiver -> Quake -> Trident Trick","","Aim for 20 kills in each game mode","for bonus 💎!",""]
 
 # Outro configuration consumed by MAIN
 data modify storage main:outro qq.stats set value []

@@ -27,50 +27,34 @@ data modify storage main:intro race.player_starting_coords set value "0 64 0"
 
 # How-to-play slides (6 rows each, shown in 10-second intervals)
 data modify storage main:intro race.howtoplay set value []
-
-# Slide 1: Game overview
 data modify storage main:intro race.howtoplay append value \
     [\
-        {text:"Welcome to ",color:"green",bold:true},\
-        {text:"RACE",color:"gold",bold:true},\
+        "The race course is 3 laps and have several",\
+        "checkpoints along the way.",\
         "",\
-        "Complete 3 laps of the obstacle course!",\
-        "Cross all checkpoints in order to progress.",\
-        "Fastest time wins!",\
+        "Checkpoints must be crossed in order,",\
+        "or you'll be teleported back to the",\
+        "previous checkpoint.",\
     ]
-
-# Slide 2: Checkpoints
 data modify storage main:intro race.howtoplay append value \
     [\
-        {text:"Checkpoints",color:"aqua",bold:true},\
-        "Follow the markers through the course.",\
-        "Skip a checkpoint? You'll be reset!",\
+        "Along the course are special items:",\
+        "- Elytra",\
+        "- Building blocks",\
+        "- Riptide Trident",\
         "",\
-        "Cross checkpoints in numerical order.",\
-        "3 laps total to finish.",\
-    ]
-
-# Slide 3: Utilities
-data modify storage main:intro race.howtoplay append value \
-    [\
-        {text:"Utilities",color:"yellow",bold:true},\
-        "Special markers grant items:",\
-        {text:"  • Elytra",color:"white"},\
-        {text:"  • Building blocks",color:"white"},\
-        {text:"  • Riptide Trident",color:"white"},\
         "Use them to navigate the course!",\
     ]
-
-# Slide 4: Scoring
 data modify storage main:intro race.howtoplay append value \
     [\
-        {text:"Scoring",color:"light_purple",bold:true},\
-        "Finish 3 laps to complete the race.",\
-        "Your time is tracked automatically.",\
+        ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
-        "The player with the fastest time wins!",\
-        "Get ready...",\
+        "+220💎 when you finish a lap",\
+        "(-3💎 for each person who finished the lap before you)",\
+        "",\
+        "+100💎 complete all 3 laps, regardless of order",\
     ]
+
 
 
 # --- OUTRO LEADERBOARD SLIDES ---

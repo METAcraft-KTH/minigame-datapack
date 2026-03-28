@@ -40,7 +40,8 @@ execute if score ?round exact.state matches 3 at @a[tag=!admin] run summon sheep
 execute if score ?round exact.state matches 3 run give @a[tag=!admin] poppy 1
 
 # Round 4: Make 10 emeralds!!
-execute if score ?round exact.state matches 4 at @a[tag=!admin] run summon villager ~ ~ ~ {VillagerData:{profession:"minecraft:fletcher",level:1,type:"minecraft:plains"},Invulnerable:1b}
+execute if score ?round exact.state matches 4 at @a[tag=!admin] run summon villager ~ ~ ~
+execute if score ?round exact.state matches 4 run fill 50007 99 50007 49993 99 49993 fletching_table
 execute if score ?round exact.state matches 4 run give @a[tag=!admin] oak_log 16
 execute if score ?round exact.state matches 4 run give @a[tag=!admin] birch_log 16
 execute if score ?round exact.state matches 4 run give @a[tag=!admin] spruce_log 16
