@@ -15,3 +15,7 @@ title @a title {"text":"ABA","font":"hexathlon:font","shadow_color":0}
 execute store result bossbar main:timer max run scoreboard players get ?intermission_length main.const
 scoreboard players operation ?supertimer main.time = ?intermission_length main.const
 scoreboard players set ?superstate main.state 1
+
+tp @a 0 65 50000
+function main:util/reset_gamerules
+gamerule fall_damage false

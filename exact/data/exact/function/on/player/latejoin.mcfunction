@@ -7,5 +7,5 @@
 # ============================================================
 
 # Send to spectator
-gamemode spectator @s
-tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}
+#gamemode spectator @s
+#tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}

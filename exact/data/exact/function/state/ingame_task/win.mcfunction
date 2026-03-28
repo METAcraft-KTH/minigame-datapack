@@ -11,6 +11,7 @@ execute if entity @s[tag=exact.win] run return 0
 # Mark this player as successful for the current round
 # Keep inventory/item state as-is for task continuity.
 tag @s add exact.win
+clear @s
 
 # Show winner feedback
 title @s times 0 60 20

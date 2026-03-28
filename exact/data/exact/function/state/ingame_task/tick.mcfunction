@@ -7,8 +7,7 @@
 
 # Keep players alive and apply task-side mechanics
 effect give @a[tag=!admin] saturation infinite 0 true
-execute unless score ?round exact.state matches 2 run effect give @a[tag=!admin] resistance 1 4 true
-execute if score ?round exact.state matches 2 run effect clear @a[tag=!admin] resistance
+execute unless score ?round exact.state matches 10 run effect give @a[tag=!admin] resistance 1 4 true
 
 # Round 5: count sneaks and complete via impossible advancement
 execute if score ?round exact.state matches 5 as @a[tag=!exact.win] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players remove @s exact.sneakcount 1
@@ -24,11 +23,14 @@ execute if score ?round exact.state matches 7 as @a[tag=!exact.win,tag=!admin] i
 
 # Round 8: scoreboard trigger based completion
 execute if score ?round exact.state matches 8 run scoreboard players enable @a exact.quickmath
-execute if score ?round exact.state matches 8 as @a[tag=!exact.win] if score @s exact.quickmath matches 1.. run advancement grant @s only exact:8
-execute if score ?round exact.state matches 8 as @a if score @s exact.quickmath matches 1.. run scoreboard players set @s exact.quickmath 0
+execute if score ?round exact.state matches 8 as @a[tag=!exact.win] if score @s exact.quickmath matches 1 run advancement grant @s only exact:8
+execute if score ?round exact.state matches 8 as @a if score @s exact.quickmath matches 1 run scoreboard players set @s exact.quickmath 0
 
 # Round 11: win when touching grass block
 execute if score ?round exact.state matches 11 as @a[tag=!exact.win,tag=!admin] at @s if block ~ ~-1 ~ grass_block run advancement grant @s only exact:11
+
+# Round 12: win when breaking a shovel (any type)
+execute if score ?round exact.state matches 12 run fill 50007 99 50007 49993 99 49993 snow_block
 
 # Keep all players near the arena if they fall too low
 execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:-5}}}}} run tp @s @n[tag=exact.tp.arena]
@@ -50,10 +52,17 @@ execute if score ?round exact.state matches 11 run title @a[tag=!exact.win] subt
 execute if score ?round exact.state matches 12 run title @a[tag=!exact.win] subtitle "Break the shovel!!"
 execute if score ?round exact.state matches 13 run title @a[tag=!exact.win] subtitle "Make rabbit stew!!"
 execute if score ?round exact.state matches 14 run title @a[tag=!exact.win] subtitle "Take damage!!"
-execute if score ?round exact.state matches 15 run title @a[tag=!exact.win] subtitle "Launch 11 blocks up!!"
+execute if score ?round exact.state matches 15 run title @a[tag=!exact.win] subtitle "Jump 8 blocks up!!"
 execute if score ?round exact.state matches 16 run title @a[tag=!exact.win] subtitle "BOSS GAME: Pig racing!!"
 
 title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
+
+# countdown
+bossbar set exact:timer players @a
+bossbar set exact:timer color blue
+bossbar set exact:timer name "Following instructions..."
+bossbar set exact:timer max 400
+execute store result bossbar exact:timer value run scoreboard players get ?phase_timer exact.timer
 
 # Check if task duration (400 ticks) has passed
 execute if score ?phase_timer exact.timer matches 400.. run function exact:state/ingame_task/exit
