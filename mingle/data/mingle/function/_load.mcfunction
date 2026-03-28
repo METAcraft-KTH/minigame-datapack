@@ -48,8 +48,8 @@ data modify storage main:intro mingle.howtoplay append value \
     ]
 data modify storage main:intro mingle.howtoplay append value \
     [\
-        ["To find capture points, look for ",{text:"beacon beams",color:"light_purple"}," and glowing players:"],\
-        "",\
+        ["To find capture points, look for ",{text:"beacon beams",color:"light_purple"}],\
+        "and glowing players:",\
         ["",{text:"Yellow",color:"yellow",bold:true}," = need more players"],\
         ["",{text:"Green",color:"green",bold:true}," = exactly the right group size"],\
         ["",{text:"Red",color:"red",bold:true}," = too many players"],\

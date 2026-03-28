@@ -43,6 +43,6 @@ effect give @a[tag=!admin,gamemode=!spectator,tag=!mingle.in_cp] glowing 2 0 tru
 execute as @e[type=minecraft:block_display,tag=mingle.cp] at @s run function mingle:state/ingame_run/cp_particles
 
 # see win streak
-execute as @a[tag=!admin] run title @s actionbar ["Round ",{"score":{"name":"?round","objective":"mingle.state"},color:"light_purple"}," | Form groups of ",{"score":{"name":"?round","objective":"mingle.state"},color:"aqua"}," | Current mingle streak: ",{score:{name:"@s",objective:"mingle.streak"},color:"gold"}]
+execute as @a[tag=!admin] run title @s actionbar ["Round ",{"score":{"name":"?round","objective":"mingle.state"},color:"light_purple"}," | Form groups of ",{"score":{"name":"?target_group","objective":"mingle.state"},color:"aqua"}," | Current mingle streak: ",{score:{name:"@s",objective:"mingle.streak"},color:"gold"}]
 
 execute if score ?phase_timer mingle.timer >= time.ingame_run mingle.temp run function mingle:state/ingame_wait/enter

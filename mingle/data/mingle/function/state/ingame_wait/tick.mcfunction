@@ -19,6 +19,8 @@ title @a actionbar [{"text":"Intermission: ","color":"aqua"},{"score":{"name":"#
 
 execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches 15.. run function main:api/end_game
 execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches ..14 run function mingle:state/ingame_run/enter
+execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches 15.. run function main:api/end_game
+execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches ..14 run function mingle:state/ingame_run/enter
 
 # see win streak
 execute as @a[tag=!admin] run title @s actionbar ["Current mingle streak: ",{score:{name:"@s",objective:"mingle.streak"},color:"gold"}]
