@@ -1,7 +1,17 @@
 {
   "criteria": {
-    "trigger": {
-      "trigger": "minecraft:impossible"
+    "_": {
+      "trigger": "minecraft:player_interacted_with_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:red_dye"
+          ]
+        },
+        "entity": {
+          "type": "minecraft:sheep"
+        }
+      }
     }
   },
   "rewards": {

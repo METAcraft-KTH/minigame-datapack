@@ -1,7 +1,15 @@
 {
   "criteria": {
-    "trigger": {
-      "trigger": "minecraft:impossible"
+    "_": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:golden_shovel"
+          ]
+        },
+        "durability": 0
+      }
     }
   },
   "rewards": {

@@ -7,6 +7,11 @@
 # --- DECLARE GAME VARIABLES ---
 scoreboard objectives add exact.state dummy "Game state tracking"
 scoreboard objectives add exact.timer dummy "Game timer"
+scoreboard objectives add exact.is_sneaking dummy "Round 8 sneak latch"
+scoreboard objectives add exact.sneakcount dummy "Round 8 remaining sneaks"
+scoreboard objectives add exact.quickmath trigger "Round 8 trigger"
+scoreboard objectives add exact.y_start dummy "Round 15 start Y"
+scoreboard objectives add exact.y_now dummy "Round 15 current Y"
 
 # --- INTRO ANIMATION AND TEXT ---
 # Camera position for intro cutscene
@@ -38,6 +43,9 @@ data modify storage main:intro exact.howtoplay append value \
 
 # --- STATS VARIABLES ---
 scoreboard objectives add exact.stats.wins dummy "Rounds won"
+
+# Team used by round 11 task entities
+team add exact.temp
 
 # --- OUTRO LEADERBOARD SLIDES ---
 data modify storage main:outro exact.stats append value { \

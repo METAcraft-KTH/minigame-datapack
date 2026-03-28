@@ -6,4 +6,4 @@
 # ============================================================
 
 # Check if wait duration (200 ticks) has passed
-execute if score ?phase_timer exact.timer matches 200.. run function exact:state/ingame_wait/exit
+execute if score ?phase_timer exact.timer matches 120.. run function exact:state/ingame_wait/exit

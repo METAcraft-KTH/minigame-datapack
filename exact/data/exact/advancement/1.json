@@ -1,7 +1,14 @@
 {
   "criteria": {
-    "trigger": {
-      "trigger": "minecraft:impossible"
+    "_": {
+      "trigger": "minecraft:enchanted_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:diamond_pickaxe"
+          ]
+        }
+      }
     }
   },
   "rewards": {

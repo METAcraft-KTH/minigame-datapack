@@ -1,7 +1,14 @@
 {
   "criteria": {
-    "trigger": {
-      "trigger": "minecraft:impossible"
+    "_": {
+      "trigger": "minecraft:thrown_item_picked_up_by_entity",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:diamond"
+          ]
+        }
+      }
     }
   },
   "rewards": {

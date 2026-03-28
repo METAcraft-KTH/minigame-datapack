@@ -1,8 +1,9 @@
 # ============================================================
 # exact:adv/1
-# Advancement handler for round 1
-# Check if round matches, then award win tag
+# Advancement reward handler for round 1
 # ============================================================
 
-advancement revoke @s only exact:1
-execute if score ?round exact.state matches 1 run tag @s add exact.win
+execute unless score ?phase exact.state matches 1 run return run advancement revoke @s only exact:1
+execute unless score ?round exact.state matches 1 run return run advancement revoke @s only exact:1
+
+function exact:state/ingame_task/win

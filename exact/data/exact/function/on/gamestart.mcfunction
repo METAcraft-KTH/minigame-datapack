@@ -14,6 +14,10 @@ scoreboard players set ?phase_timer exact.timer 0
 
 # Mark all online players as having been present at game start
 scoreboard players set @a exact.stats.wins 0
+scoreboard players set @a exact.is_sneaking 0
+scoreboard players set @a exact.sneakcount 0
+tag @a remove exact.win
+team leave @a[team=exact.temp]
 
 # Arm all advancement triggers for all 16 rounds
 advancement revoke @a only exact:1

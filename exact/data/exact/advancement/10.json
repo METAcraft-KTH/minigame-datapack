@@ -1,7 +1,12 @@
 {
   "criteria": {
-    "trigger": {
-      "trigger": "minecraft:impossible"
+    "_": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:player"
+        }
+      }
     }
   },
   "rewards": {
