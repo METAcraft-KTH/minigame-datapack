@@ -9,6 +9,9 @@
 # --- INCREMENT TIMER ---
 scoreboard players add ?supertimer main.time 1
 
+# --- call introtick 5 ticks after intro starts so the chunks can load ---
+execute if score ?supertimer main.time matches 5 run function main:superstate/2/macro_intro with storage main:temp
+
 
 # --- FORCE EVERYONE TO WATCH CUTSCENE ---
 execute as @a[gamemode=!spectator] run gamemode spectator @s

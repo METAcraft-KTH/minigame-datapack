@@ -48,4 +48,4 @@ execute if score ?color.keep spleef.game matches 6 run bossbar set spleef:timer 
 effect clear @a[tag=!admin] hunger
 
 # fill offhand w wind charges!!
-item replace entity @a[tag=!admin] weapon.offhand with wind_charge[use_remainder={id:"wind_charge"}]
+item replace entity @a[tag=!admin] weapon.offhand with wind_charge

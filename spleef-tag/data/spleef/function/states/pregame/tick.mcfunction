@@ -10,7 +10,7 @@ scoreboard players operation #displayminutes spleef.game = #remainingseconds spl
 scoreboard players operation #displayminutes spleef.game /= #60 main.const
 scoreboard players operation #displayseconds spleef.game = #remainingseconds spleef.game
 scoreboard players operation #displayseconds spleef.game %= #60 main.const
-title @a[tag=!admin] actionbar ["Receiving pickaxe in ",{"score": {"name": "#displayminutes","objective": "spleef.game"}},":",{"score": {"name": "#displayseconds","objective": "spleef.game"}}]
+title @a[tag=!admin] actionbar ["Receiving pickaxe in ",{"score": {"name": "#displayseconds","objective": "spleef.game"}}]
 
 # tp players back onto the platform
 execute as @a[tag=!admin,scores={spleef.Y=..0}] run tellraw @s {"text":"Whoa, hey, you don't wanna do that.","color":"gray"}

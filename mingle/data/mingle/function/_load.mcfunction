@@ -54,7 +54,7 @@ data modify storage main:intro mingle.howtoplay append value \
         ["",{text:"Green",color:"green",bold:true}," = exactly the right group size"],\
         ["",{text:"Red",color:"red",bold:true}," = too many players"],\
     ]
-data modify storage main:intro spleef.howtoplay append value \
+data modify storage main:intro mingle.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
