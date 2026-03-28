@@ -10,4 +10,7 @@
 # ============================================================
 say latejoin
 gamemode spectator @s
-# tp @s  # TODO
+tag @a[tag=uhc.latejoin] remove uhc.latejoin
+tag @s add uhc.latejoin
+execute as @e[tag=uhc.arena.battlebus] if score @s uhc.arena = ?round uhc.state run tp @a[tag=uhc.latejoin] @s
+tag @s remove uhc.latejoin
