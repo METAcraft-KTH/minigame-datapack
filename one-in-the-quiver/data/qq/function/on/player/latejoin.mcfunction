@@ -4,5 +4,7 @@
 # Executor: Late-joining player
 # ============================================================
 
-gamemode spectator @s
-tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}
+gamemode adventure @s
+tp @s 59937 100 50024
+#gamemode spectator @s
+#tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}
