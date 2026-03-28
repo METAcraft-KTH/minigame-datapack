@@ -33,7 +33,7 @@ scoreboard players set time.ingame_wait mingle.temp 200
 scoreboard players set cp.radius mingle.temp 4
 
 # --- INTRO ANIMATION AND TEXT ---
-data modify storage main:intro mingle.camera_starting_coords set value "40000 100 50000"
+data modify storage main:intro mingle.camera_starting_coords set value "40000 74 49970"
 data modify storage main:intro mingle.player_starting_coords set value "40000 64 50000"
 
 data modify storage main:intro mingle.howtoplay set value []

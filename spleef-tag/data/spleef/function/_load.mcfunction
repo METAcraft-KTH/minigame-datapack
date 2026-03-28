@@ -27,7 +27,7 @@ scoreboard players set time.ingame_run spleef.config 100
 scoreboard players set time.ingame_freeze spleef.config 100
 
 # --- INTRO ANIMATION AND TEXT ---
-data modify storage main:intro spleef.camera_starting_coords set value "30024 32 49950"
+data modify storage main:intro spleef.camera_starting_coords set value "30024 32 49960"
 data modify storage main:intro spleef.player_starting_coords set value "30024 50 50024"
 
 data modify storage main:intro spleef.howtoplay set value []

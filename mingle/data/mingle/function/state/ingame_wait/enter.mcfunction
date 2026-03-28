@@ -12,7 +12,7 @@ scoreboard players set ?phase_timer mingle.timer 0
 # remove blocks and shears
 clear @a[tag=!admin]
 
-#tag @e[type=marker,tag=mingle.cp] add mingle.cp.disabled
+#tag @e[type=block_display,tag=mingle.cp] add mingle.cp.disabled
 
 scoreboard players add @a[tag=mingle.player.correct] mingle.stats.wins 1
 scoreboard players add @a[tag=mingle.player.correct] mingle.streak 1

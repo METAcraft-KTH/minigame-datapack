@@ -16,7 +16,7 @@ tag @a remove mingle.player.correct
 tag @a remove mingle.winner
 tag @a remove mingle.loser
 
-tag @e[type=marker,tag=mingle.cp] remove mingle.cp.disabled
+tag @e[type=block_display,tag=mingle.cp] remove mingle.cp.disabled
 
 execute as @a[tag=!admin,gamemode=!spectator] run gamemode adventure
 

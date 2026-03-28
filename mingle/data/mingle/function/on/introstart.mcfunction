@@ -7,4 +7,4 @@
 # ============================================================
 
 # Keep control points enabled for round 1.
-tag @e[type=marker,tag=mingle.cp] remove mingle.cp.disabled
+tag @e[type=block_display,tag=mingle.cp] remove mingle.cp.disabled
