@@ -5,5 +5,5 @@
 # ============================================================
 # Give player an elytra.
 
-give @s minecraft:elytra{Unbreakable:1b,display:{Name:'{"text":"Race Elytra","italic":false,"color":"aqua"}'}}
+item replace entity @s armor.body with minecraft:elytra[unbreakable={}]
 playsound minecraft:item.armor.equip_elytra master @s ~ ~ ~ 1.0 1.0

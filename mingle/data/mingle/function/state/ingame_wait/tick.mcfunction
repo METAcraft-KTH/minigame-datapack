@@ -7,6 +7,9 @@
 # ============================================================
 
 scoreboard players add ?phase_timer mingle.timer 1
+team empty mingle.glow.green
+team empty mingle.glow.yellow
+team empty mingle.glow.red
 
 scoreboard players operation #remaining mingle.temp = time.ingame_wait mingle.temp
 scoreboard players operation #remaining mingle.temp -= ?phase_timer mingle.timer
@@ -17,8 +20,6 @@ execute if score #display mingle.temp matches ..0 run scoreboard players set #di
 
 title @a actionbar [{"text":"Intermission: ","color":"aqua"},{"score":{"name":"#display","objective":"mingle.temp"}},{"text":"s Next target soon","color":"aqua"}]
 
-execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches 15.. run function main:api/end_game
-execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches ..14 run function mingle:state/ingame_run/enter
 execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches 15.. run function main:api/end_game
 execute if score ?phase_timer mingle.timer >= time.ingame_wait mingle.temp if score ?round mingle.state matches ..14 run function mingle:state/ingame_run/enter
 

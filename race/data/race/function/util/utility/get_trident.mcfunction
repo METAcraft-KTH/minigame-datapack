@@ -5,5 +5,5 @@
 # ============================================================
 # Give player a Riptide trident.
 
-give @s minecraft:trident{Enchantments:[{id:"minecraft:riptide",lvl:1s}],Unbreakable:1b,display:{Name:'{"text":"Riptide Trident","italic":false,"color":"aqua"}'}}
+give @s minecraft:trident[enchantments={riptide:3}]
 playsound minecraft:item.trident.throw master @s ~ ~ ~ 1.0 1.0

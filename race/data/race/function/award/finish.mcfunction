@@ -12,3 +12,4 @@
 
 # For now, just ensure the player is in spectator mode
 gamemode spectator @s
+
