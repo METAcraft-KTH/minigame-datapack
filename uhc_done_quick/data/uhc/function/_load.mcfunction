@@ -35,6 +35,10 @@ scoreboard players set ?wither_spawn_time uhc.time 12000
 # ?sound_stop_time uhc.time - Ticks when the battle bus sound stops playing.
 #                             This is an optimization to avoid having to perform the sound check a lot.
 scoreboard players set ?sound_stop_time uhc.time 800
+# ?num_rounds uhc.state - The total number of rounds to play before the game ends.
+scoreboard players set ?num_rounds uhc.state 2
+# ?round_delay_time uhc.time - The number of ticks to wait between rounds.
+scoreboard players set ?round_delay_time uhc.time 2400
 
 
 # --- Bossbar ---
@@ -84,8 +88,8 @@ data modify storage main:intro uhc.howtoplay append value \
         "+XXX💎 for each kill",                                       \
         "+XXX💎 for being in the top XXX",                                            \
         "",                                                                             \
-        ["Kills also give you a ", {text:" Golden Head", color: "gold"}, "that"],                   \
-        ["instantly gives you 4", {text:"💛",color:"yellow"}, " and 6", {text:"❤️",color:"red"}, " over 30 seconds"],                               \
+        ["Kills also give you a ", {text:"Golden Head", color: "gold"}, " that"],                   \
+        ["instantly gives you 4", {text:"B",font:"uhc:font"}, " and 6", {text:"A",font:"uhc:font"}, " over 30 seconds"],                               \
     ]
 data modify storage main:intro uhc.howtoplay append value \
     [\

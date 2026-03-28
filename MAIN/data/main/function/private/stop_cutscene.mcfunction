@@ -1,0 +1,1 @@
+cutscene stop @s

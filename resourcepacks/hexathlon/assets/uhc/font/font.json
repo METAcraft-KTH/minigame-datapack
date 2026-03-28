@@ -1,0 +1,22 @@
+{
+    "providers": [
+        {
+            "type": "bitmap",
+            "file": "minecraft:gui/sprites/hud/heart/full.png",
+            "height": 9,
+            "ascent": 8,
+            "chars": [
+                "A"
+            ]
+        },
+        {
+            "type": "bitmap",
+            "file": "minecraft:gui/sprites/hud/heart/absorbing_full.png",
+            "height": 9,
+            "ascent": 8,
+            "chars": [
+                "B"
+            ]
+        }
+    ]
+}

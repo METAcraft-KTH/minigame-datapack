@@ -31,3 +31,10 @@ execute if score ?timer uhc.time = ?worldborder_horizontal_shrink_time uhc.time 
 
 # Tick the vertical world border
 function uhc:border/border_tick
+
+# Count number of players alive
+scoreboard players set ?alive uhc.state 0
+execute as @a[gamemode=survival] run scoreboard players add ?alive uhc.state 1
+execute as @a[gamemode=adventure] run scoreboard players add ?alive uhc.state 1
+
+execute unless score ?alive_prev uhc.state = ?alive uhc.state run function uhc:state/playing/players_alive_change
