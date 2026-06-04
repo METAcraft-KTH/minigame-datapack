@@ -20,5 +20,8 @@ execute if score ?round tnttag.state matches 5..9 run spawnpoint @a 19959 -2 599
 execute if score ?round tnttag.state matches 10..14 run spawnpoint @a 19986 8 59736
 execute if score ?round tnttag.state matches 15.. run spawnpoint @a 19986 -33 59577
 
+# if its an evacuation round, remove the tag once evacuated
+execute as @a[tag=tnttag.not_evacuated] at @s if entity @n[type=marker,tag=tnttag.escaped,distance=..2] run function tnttag:state/ingame_tag/escaped
+
 # Check if task duration (400 ticks) has passed
 execute if score ?phase_timer tnttag.timer >= ?tag_duration tnttag.state run function tnttag:state/ingame_tag/exit

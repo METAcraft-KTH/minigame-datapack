@@ -11,10 +11,8 @@ effect clear @a[tag=!admin]
 # EXPLODEEEEEE
 tag @a remove tnttag.died
 execute at @a[tag=!admin,team=tnttag.has_tnt] run summon creeper ~ ~1 ~ {Fuse:0}
-
-title @a times 0 60 40
-title @a[tag=tnttag.win] title {"text":"SUCCESS","color":"green","bold":true}
-title @a[tag=!tnttag.win] title {"text":"FAILURE","color":"red","bold":true}
+# also kill people who didnt evacuate
+execute at @a[tag=!admin,tag=tnttag.not_evacuated] run summon creeper ~ ~1 ~ {Fuse:0}
 
 # Reset phase timer
 scoreboard players set ?phase_timer tnttag.timer 0

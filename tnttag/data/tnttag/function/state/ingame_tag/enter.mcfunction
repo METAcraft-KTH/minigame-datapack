@@ -48,18 +48,9 @@ execute if score ?round tnttag.state matches 15 run setblock 19975 12 59727 red_
 execute if score ?round tnttag.state matches 15 run fill 19974 20 59731 19977 20 59726 air destroy
 execute if score ?round tnttag.state matches 16 run setblock 19975 12 59727 dark_oak_planks
 
-title @a times 0 60 20
-execute if score ?round tnttag.state matches 5 run title @a title {"text":"EVACUATE!","color":"red","bold":true}
-execute if score ?round tnttag.state matches 5 run title @a subtitle "Go to the red beacon!"
-execute if score ?round tnttag.state matches 5 run scoreboard players set ?tag_duration tnttag.state 1800
-
-execute if score ?round tnttag.state matches 10 run title @a title {"text":"EVACUATE!","color":"red","bold":true}
-execute if score ?round tnttag.state matches 10 run title @a subtitle "Go to the red beacon!"
-execute if score ?round tnttag.state matches 10 run scoreboard players set ?tag_duration tnttag.state 1800
-
-execute if score ?round tnttag.state matches 15 run title @a title {"text":"EVACUATE!","color":"red","bold":true}
-execute if score ?round tnttag.state matches 15 run title @a subtitle "Climb the beacon tower!"
-execute if score ?round tnttag.state matches 15 run scoreboard players set ?tag_duration tnttag.state 1800
+execute if score ?round tnttag.state matches 5 run function tnttag:state/ingame_tag/evacuation_round
+execute if score ?round tnttag.state matches 10 run function tnttag:state/ingame_tag/evacuation_round
+execute if score ?round tnttag.state matches 15 run function tnttag:state/ingame_tag/evacuation_round
 
 # bossbars
 bossbar set tnttag:white visible true

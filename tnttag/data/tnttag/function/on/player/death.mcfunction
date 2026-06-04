@@ -14,9 +14,11 @@ execute if entity @s[team=tnttag.has_tnt] run tag @s add tnttag.was_tnt
 execute if entity @s[team=tnttag.has_diamond] run tag @s add tnttag.was_diamond
 team leave @s
 
-execute if entity @s[tag=tnttag.was_tnt] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"red"}," failed to give away the TNT!"]
-execute if entity @s[tag=tnttag.was_diamond] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"aqua"}," had a diamond but died anyway!"]
-execute if entity @s[tag=!tnttag.was_tnt,tag=!tnttag.was_diamond] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"white"}," was an unfortunate collateral!"]
+execute if entity @s[tag=tnttag.not_evacuated] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"green"}," did not evacuate in time!"]
+
+execute if entity @s[tag=!tnttag.not_evacuated,tag=tnttag.was_tnt] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"red"}," failed to give away the TNT!"]
+execute if entity @s[tag=!tnttag.not_evacuated,tag=tnttag.was_diamond] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"aqua"}," had a diamond but died anyway!"]
+execute if entity @s[tag=!tnttag.not_evacuated,tag=!tnttag.was_tnt,tag=!tnttag.was_diamond] run tellraw @a [{text:"☠ ",color:"gray"},{selector:"@s",color:"white"}," was an unfortunate collateral!"]
 
 title @s times 0 60 20
 title @s title {text:"☠",color:"red"}
@@ -36,7 +38,7 @@ execute if score ? tnttag.temp matches 9 run title @s subtitle "Chat, don't clip
 execute if score ? tnttag.temp matches 10 run title @s subtitle "Nobody saw that, right?"
 
 tag @s add tnttag.died
-
+tag @s remove tnttag.not_evacuated
 
 #gamemode spectator @s
 #tellraw @s {"text":"You died. You will respawn for the next round.","color":"red"}
