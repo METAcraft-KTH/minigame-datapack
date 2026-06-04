@@ -42,7 +42,7 @@ execute unless score ! main.id matches -2147483648..2147483647 run scoreboard pl
 #   but it's more convenient to be able to reorder them whenever.
 data merge storage main:game {display:[{}, \
     {id:1,namespace:"exact",gamename:"Exactly As Told"}, \
-    {id:2,namespace:"uhc",gamename:"UHC Done Quick"}, \
+    {id:2,namespace:"tnttag",gamename:"TNT Tag"}, \
     {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
     {id:4,namespace:"mingle",gamename:"King of the Mingle"}, \
     {id:5,namespace:"race",gamename:"Race Around The World"}, \

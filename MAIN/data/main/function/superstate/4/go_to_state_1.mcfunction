@@ -16,6 +16,8 @@ execute store result bossbar main:timer max run scoreboard players get ?intermis
 scoreboard players operation ?supertimer main.time = ?intermission_length main.const
 scoreboard players set ?superstate main.state 1
 
+scoreboard players add ?minigame_id main.state 1
+
 tp @a 0 65 50000
 function main:util/reset_gamerules
 gamerule fall_damage false

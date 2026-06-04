@@ -1,13 +1,13 @@
 # ============================================================
-# gamename:state/break/enter
-# Called by: gamename:state/play/tick
+# tnttag:state/break/enter
+# Called by: tnttag:state/play/tick
 # Executor:  Server
 #
 # Starts the 30-second break between gameplay rounds.
 # ============================================================
 
-scoreboard players set ?phase gamename.state 2
-scoreboard players set ?phase_timer gamename.timer 0
+scoreboard players set ?phase tnttag.state 2
+scoreboard players set ?phase_timer tnttag.timer 0
 
 execute as @a[tag=!admin] run gamemode spectator
 
