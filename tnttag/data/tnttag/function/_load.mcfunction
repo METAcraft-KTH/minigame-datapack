@@ -67,9 +67,9 @@ data modify storage main:intro tnttag.howtoplay append value \
 data modify storage main:intro tnttag.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:1b},"💎"],\
-        "+25💎 per round survived",\
+        "+20💎 per round survived",\
         "+50💎 if you were holding a diamond block",\
-        "+25💎 per successful evacuation",\
+        "+30💎 per successful evacuation",\
         "",\
-        "For each new arena, +10💎 for above categories",\
+        "For each new arena, 1.5x for above categories",\
     ]
