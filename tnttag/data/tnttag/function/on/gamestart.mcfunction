@@ -13,15 +13,9 @@
 scoreboard players set ?phase tnttag.state 0
 scoreboard players set ?phase_timer tnttag.timer 0
 scoreboard players set ?round tnttag.state 0
-scoreboard players set ?match_timer tnttag.timer 0
 
-# Reset per-player stats
-scoreboard players set @a tnttag.stats.kills 0
-scoreboard players set @a tnttag.stats.trigs 0
-scoreboard players set @a tnttag.stats.laptime 0
-
-# Arm sample advancement triggers
-advancement revoke @a only tnttag:player_kill
+# reset advancements
+advancement revoke @a only tnttag:punch
 
 # Enter 15s pre-round ready state
-function tnttag:state/ready/enter
+function tnttag:state/pregame/enter

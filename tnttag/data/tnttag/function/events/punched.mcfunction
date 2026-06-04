@@ -13,6 +13,9 @@ execute on attacker run tag @s add tnttag.puncher
 
 # if the victim does NOT have diamond AND the attacker does NOT have tnt, do nothing
 execute if entity @s[team=!tnttag.has_diamond] if entity @p[tag=tnttag.puncher,team=!tnttag.has_tnt] run return 0
+# if both the victim and attacker have the same block, do nothing
+execute if entity @s[team=tnttag.has_diamond] if entity @p[tag=tnttag.puncher,team=tnttag.has_diamond] run return 0
+execute if entity @s[team=tnttag.has_tnt] if entity @p[tag=tnttag.puncher,team=tnttag.has_tnt] run return 0
 
 effect clear @s
 effect clear @p[tag=tnttag.puncher]

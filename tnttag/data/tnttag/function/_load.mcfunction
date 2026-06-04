@@ -1,6 +1,6 @@
 # --- DECLARE GAME VARIABLES ---
 scoreboard objectives add tnttag.state dummy "game-internal states"
-scoreboard objectives add tnttag.time dummy "game-internal timer"
+scoreboard objectives add tnttag.timer dummy "game-internal timer"
 scoreboard objectives add tnttag.temp dummy
 
 
@@ -8,8 +8,10 @@ scoreboard objectives add tnttag.temp dummy
 bossbar add tnttag:white ""
 bossbar set tnttag:white visible false
 bossbar add tnttag:red ""
+bossbar set tnttag:red color red
 bossbar set tnttag:red visible false
 bossbar add tnttag:blue ""
+bossbar set tnttag:blue color blue
 bossbar set tnttag:blue visible false
 
 # --- Teams ---
