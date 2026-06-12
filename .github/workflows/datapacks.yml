@@ -1,7 +1,7 @@
 name: Zip and Upload Datapacks
 
 env:
-    DATAPACKS: "MAIN titlewriter-* spleefmusic_sans.zip uhc_done_quick one-in-the-quiver race exact mingle spleef-tag"
+    DATAPACKS: "MAIN titlewriter-* spleefmusic_sans.zip uhc_done_quick one-in-the-quiver race exact mingle spleef-tag turfwars"
 
 on:
     push:
