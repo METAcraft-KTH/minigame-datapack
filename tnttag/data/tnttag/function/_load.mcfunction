@@ -20,7 +20,7 @@ team modify tnttag.has_tnt color red
 team modify tnttag.has_tnt prefix [{text:"[TNT] ",color:"white"}]
 team add tnttag.has_diamond
 team modify tnttag.has_diamond color aqua
-team modify tnttag.has_diamond prefix [{text:"[$$$] ",color:"white"}]
+team modify tnttag.has_diamond prefix [{text:"[$] ",color:"white"}]
 
 # --- STATS VARIABLES ---
 #   these are (typically) assigned-once variables used to

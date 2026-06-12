@@ -6,6 +6,7 @@
 # ============================================================
 
 # if that was the last round, end game
+execute if score ?round tnttag.state matches 20 run bossbar set tnttag:white visible false
 execute if score ?round tnttag.state matches 20 run return run function main:api/end_game
 
 # otherwise, advance to next round and go again

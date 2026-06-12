@@ -25,7 +25,9 @@ effect give @a saturation 3 2 true
 effect give @a speed 3 1 true
 effect give @a[team=tnttag.has_tnt] speed 3 3 true
 effect give @a[team=tnttag.has_tnt] jump_boost 3 1
+effect clear @a[team=tnttag.has_tnt] glowing
 effect give @a[team=tnttag.has_diamond] slowness 3 0
+effect give @a[team=tnttag.has_diamond] glowing 1 0
 
 execute at @a[team=tnttag.has_tnt] if predicate {condition:"random_chance",chance:0.3} run particle lava ~ ~1.6 ~ 0 0 0 0.1 1 normal
 execute at @a[team=tnttag.has_diamond] run particle wax_off ~ ~1 ~ .3 .3 .3 0.4 1 normal
@@ -33,7 +35,5 @@ execute at @a[team=tnttag.has_diamond] run particle wax_off ~ ~1 ~ .3 .3 .3 0.4 
 execute at @a run kill @e[type=item,distance=..4,nbt={Item:{id:"minecraft:tnt"}}]
 execute at @a run kill @e[type=item,distance=..4,nbt={Item:{id:"minecraft:diamond_block"}}]
 
-scoreboard players set $x player_motion.api.launch 0
-scoreboard players set $y player_motion.api.launch 200000
-scoreboard players set $z player_motion.api.launch 0
-execute positioned 19975 37 59730 at @e[type=marker,tag=tnttag.jumppad,distance=..3] as @p[tag=!admin,distance=..1] at @s run function player_motion:api/launch_xyz
+title @a[tag=tnttag.not_evacuated] actionbar {text:"Evacuate to the next arena before the round ends!",color:"red"}
+execute positioned 19975 37 59730 at @e[type=marker,tag=tnttag.jumppad,distance=..3] as @p[tag=!admin,distance=..1,tag=tnttag.not_evacuated] at @s run function tnttag:jumppad

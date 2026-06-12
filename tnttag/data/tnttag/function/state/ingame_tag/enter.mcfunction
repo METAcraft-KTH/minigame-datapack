@@ -32,6 +32,13 @@ execute if score ?round tnttag.state matches 11..20 store result score ?diamond_
 function tnttag:state/ingame_tag/assign_tnt/start
 execute if score ?diamond_count tnttag.temp matches 1.. run function tnttag:state/ingame_tag/assign_tnt/start
 
+team modify tnttag.has_tnt prefix ""
+team modify tnttag.has_diamond prefix ""
+tellraw @a ["TNT was given to ",{selector:"@a[team=tnttag.has_tnt]"},"."]
+execute if entity @p[team=tnttag.has_diamond] run tellraw @a ["A diamond block was given to",{selector:"@a[team=tnttag.has_diamond]"},"."]
+team modify tnttag.has_tnt prefix [{text:"[TNT] ",color:"white"}]
+team modify tnttag.has_diamond prefix [{text:"[$] ",color:"white"}]
+
 # round duration
 scoreboard players set ?tag_duration tnttag.state 700
 
@@ -42,7 +49,7 @@ execute if score ?round tnttag.state matches 6 run setblock 19958 23 60073 smoot
 
 execute if score ?round tnttag.state matches 10 run setblock 19968 -2 59866 red_stained_glass
 execute if score ?round tnttag.state matches 10 run fill 19966 1 59868 19969 -1 59869 air destroy
-execute if score ?round tnttag.state matches 11 run setblock 19958 23 60073 brown_terracotta
+execute if score ?round tnttag.state matches 11 run setblock 19968 -2 59866 brown_terracotta
 
 execute if score ?round tnttag.state matches 15 run setblock 19975 12 59727 red_stained_glass
 execute if score ?round tnttag.state matches 15 run fill 19974 20 59731 19977 20 59726 air destroy
