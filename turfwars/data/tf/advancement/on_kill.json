@@ -1,0 +1,10 @@
+{
+    "criteria": {
+        "": {
+            "trigger": "minecraft:player_killed_entity"
+        }
+    },
+    "rewards": {
+        "function": "tf:state/ingame_run/on_kill"
+    }
+}

@@ -18,4 +18,4 @@ scoreboard objectives remove main.temp.stat
 
 # wip
 
-function main:_load
+schedule function main:_load 1t

@@ -6,21 +6,15 @@
 # Starts a 30-second tf round and rolls target group size.
 # ============================================================
 
-scoreboard players set ?phase tf.state 1
+scoreboard players set ?phase tf.state 2
 scoreboard players set ?phase_timer tf.timer 0
-scoreboard players add ?round tf.state 1
-execute store result score ?target_group tf.state run random value 4..15
 
-tag @a remove tf.in_cp
-tag @a remove tf.player.correct
-tag @a remove tf.winner
-tag @a remove tf.loser
+tellraw @a [{"text":"PVP ROUND ",color:"gold",bold:true},{score:{name:"?round",objective:"tf.state"}}]
+tellraw @a ["Each kill advances turf by ",{score:{name:"?round",objective:"tf.state"}}," blocks."]
 
-tag @e[type=block_display,tag=tf.cp] remove tf.cp.disabled
+# change round duration
+execute if score ?round tf.state matches 1 run scoreboard players set time.ingame_run tf.temp 900
+execute if score ?round tf.state matches 2 run scoreboard players set time.ingame_run tf.temp 1200
+execute if score ?round tf.state matches 3.. run scoreboard players set time.ingame_run tf.temp 1500
 
-execute as @a[tag=!admin,gamemode=!spectator] run gamemode adventure
-
-effect give @a[tag=!admin] speed 2 1 true
-
-# give wools
-execute as @a[tag=!admin] run function tf:state/ingame_run/get_wool
+gamerule pvp true

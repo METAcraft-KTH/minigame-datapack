@@ -15,6 +15,10 @@ scoreboard players add #display tf.temp 19
 scoreboard players operation #display tf.temp /= #20 main.const
 execute if score #display tf.temp matches ..0 run scoreboard players set #display tf.temp 0
 
-title @a actionbar [{"text":"Pregame: ","color":"yellow"},{"score":{"name":"#display","objective":"tf.temp"}},{"text":"s","color":"yellow"}]
+# blu side, tp this way
+execute if score ! tf.x matches ..30999 run function tf:gainturf_blue
+execute if score ! tf.x matches 31001.. run function tf:gainturf_red
 
-execute if score ?phase_timer tf.timer >= time.pregame tf.temp run function tf:state/ingame_run/enter
+title @a actionbar [{"text":"Start building in: ","color":"yellow"},{"score":{"name":"#display","objective":"tf.temp"}},{"text":"s","color":"yellow"}]
+
+execute if score ?phase_timer tf.timer >= time.pregame tf.temp run function tf:state/ingame_wait/enter

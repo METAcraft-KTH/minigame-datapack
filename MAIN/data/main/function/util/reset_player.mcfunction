@@ -20,7 +20,6 @@ advancement revoke @s everything
 effect clear @s
 recipe take @s *
 
-attribute @s air_drag_modifier base reset
 attribute @s armor base reset
 attribute @s armor_toughness base reset
 attribute @s attack_damage base reset

@@ -10,7 +10,8 @@
 scoreboard objectives add tf.state dummy "game internal state"
 scoreboard objectives add tf.timer dummy "game internal timer"
 scoreboard objectives add tf.temp dummy "scratch values"
-scoreboard objectives add tf.hud dummy "hud values"
+scoreboard objectives add tf.x dummy "player's X coordinate"
+scoreboard objectives add tf.bounce_cd dummy "player's bounce cooldown"
 # teams
 team add tf.red "[Red]"
 team add tf.blue "[Blue]"
@@ -26,8 +27,8 @@ scoreboard players set phase.pregame tf.temp 0
 scoreboard players set phase.ingame_run tf.temp 1
 scoreboard players set phase.ingame_wait tf.temp 2
 scoreboard players set time.pregame tf.temp 400
-scoreboard players set time.ingame_run tf.temp 600
-scoreboard players set time.ingame_wait tf.temp 200
+scoreboard players set time.ingame_run tf.temp 900
+scoreboard players set time.ingame_wait tf.temp 600
 scoreboard players set cp.radius tf.temp 4
 
 # --- INTRO ANIMATION AND TEXT ---
@@ -57,8 +58,8 @@ data modify storage main:intro tf.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
-        "+12💎 per kill",\
-        "+2💎 for assist damage",\
-        "+100💎 if your team wins",\
+        "+15💎 per kill (by you)",\
+        "+3💎 per kill (by a teammate)",\
+        "+100💎 if your team wins the match",\
         {text:"2 matches are played. Teams shuffle after match 1.",color:"gray"},\
     ]
