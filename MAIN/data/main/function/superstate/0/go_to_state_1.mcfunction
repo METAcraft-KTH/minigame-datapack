@@ -19,3 +19,4 @@ execute store result bossbar main:timer max run scoreboard players get ?before_f
 # --- BEGIN SUPERSTATE 1 ---
 execute as @a run function main:private/stop_cutscene
 scoreboard players set ?superstate main.state 1
+setworldspawn 0 64 50000

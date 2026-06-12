@@ -21,3 +21,4 @@ scoreboard players add ?minigame_id main.state 1
 tp @a 0 65 50000
 function main:util/reset_gamerules
 gamerule fall_damage false
+setworldspawn 0 64 50000

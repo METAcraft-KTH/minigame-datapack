@@ -10,6 +10,7 @@
 title @a times 0 20 20
 title @a title {"text":"ABA","font":"hexathlon:font","shadow_color":0}
 
+setworldspawn 0 64 50000
 
 # --- BEGIN SUPERSTATE 5 ---
 scoreboard players set ?superstate main.state 5
