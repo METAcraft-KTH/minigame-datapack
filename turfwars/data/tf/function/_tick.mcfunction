@@ -27,3 +27,6 @@ gamerule natural_health_regeneration false
 # gain turf
 execute if score ?turf tf.state matches 1.. run function tf:gainturf_red
 execute if score ?turf tf.state matches ..-1 run function tf:gainturf_blue
+
+spawnpoint @a[team=tf.red] 31075 72 59995 90 0
+spawnpoint @a[team=tf.blue] 30924 72 59995 -90 0
