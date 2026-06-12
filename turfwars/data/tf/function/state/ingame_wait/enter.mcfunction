@@ -12,8 +12,8 @@ scoreboard players set ?phase_timer tf.timer 0
 scoreboard players add ?round tf.state 1
 
 # give items
-give @s[team=tf.red] red_wool[can_place_on={blocks:["red_wool","red_terracotta"]}] 60
-give @s[team=tf.blue] blue_wool[can_place_on={blocks:["blue_wool","blue_terracotta"]}] 60
+give @a[team=tf.red] red_wool[can_place_on={blocks:["red_wool","red_terracotta"]}] 60
+give @a[team=tf.blue] blue_wool[can_place_on={blocks:["blue_wool","blue_terracotta"]}] 60
 
 # change round duration
 execute if score ?round tf.state matches 1 run scoreboard players set time.ingame_wait tf.temp 600

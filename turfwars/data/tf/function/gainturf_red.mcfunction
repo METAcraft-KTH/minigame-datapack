@@ -22,6 +22,6 @@ execute at @n[tag=tf.border,type=marker] run fill ~ 88 60020 ~ 90 60020 packed_m
 execute at @n[tag=tf.border,type=marker] run fill ~ 91 60020 ~ 91 60020 mud_brick_wall replace stone_brick_wall
 execute at @n[tag=tf.border,type=marker] run fill ~ 92 60020 ~ 93 60020 waxed_copper_bars replace iron_bars
 
-scoreboard players add ?turf tf.state 1
-give @a[team=tf.red] red_wool 2
-give @a[team=tf.blue] blue_wool 2
+scoreboard players remove ?turf tf.state 1
+give @a[team=tf.red] red_wool[can_place_on={blocks:["red_wool","red_terracotta"]}] 2
+give @a[team=tf.blue] blue_wool[can_place_on={blocks:["blue_wool","blue_terracotta"]}] 2

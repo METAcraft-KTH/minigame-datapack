@@ -25,5 +25,5 @@ effect give @a[tag=!admin] saturation 3 1 true
 gamerule natural_health_regeneration false
 
 # gain turf
-execute if score ?turf tf.state matches 1.. run function tf:gainturf_blue
-execute if score ?turf tf.state matches ..-1 run function tf:gainturf_red
+execute if score ?turf tf.state matches 1.. run function tf:gainturf_red
+execute if score ?turf tf.state matches ..-1 run function tf:gainturf_blue
