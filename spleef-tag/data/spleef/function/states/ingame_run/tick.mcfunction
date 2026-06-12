@@ -15,7 +15,7 @@ execute if score ?color.keep spleef.game matches 1 run title @a subtitle [{"text
 execute if score ?color.keep spleef.game matches 2 run title @a subtitle [{"text":"Stand on "},{"text":"lapis","color":"blue"},"!!"]
 execute if score ?color.keep spleef.game matches 3 run title @a subtitle [{"text":"Stand on "},{"text":"emerald","color":"green"},"!!"]
 execute if score ?color.keep spleef.game matches 4 run title @a subtitle [{"text":"Stand on "},{"text":"quartz","color":"white"},"!!"]
-execute if score ?color.keep spleef.game matches 5 run title @a subtitle [{"text":"Stand on "},{"text":"amethyst","color":"light_purple"},"!!"]
+execute if score ?color.keep spleef.game matches 5 run title @a subtitle [{"text":"Stand on "},{"text":"copper","color":"gold"},"!!"]
 execute if score ?color.keep spleef.game matches 6 run title @a subtitle [{"text":"Stand on "},{"text":"redstone","color":"red"},"!!"]
 
 # kill players who fall off

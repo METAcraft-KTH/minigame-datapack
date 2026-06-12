@@ -23,7 +23,7 @@ execute if score ?color.keep spleef.game matches 1 run item replace entity @a[ta
 execute if score ?color.keep spleef.game matches 2 run item replace entity @a[tag=!admin] weapon.mainhand with lapis_block[item_name="Stand on this block!!"]
 execute if score ?color.keep spleef.game matches 3 run item replace entity @a[tag=!admin] weapon.mainhand with emerald_block[item_name="Stand on this block!!"]
 execute if score ?color.keep spleef.game matches 4 run item replace entity @a[tag=!admin] weapon.mainhand with quartz_block[item_name="Stand on this block!!"]
-execute if score ?color.keep spleef.game matches 5 run item replace entity @a[tag=!admin] weapon.mainhand with amethyst_block[item_name="Stand on this block!!"]
+execute if score ?color.keep spleef.game matches 5 run item replace entity @a[tag=!admin] weapon.mainhand with copper_block[item_name="Stand on this block!!"]
 execute if score ?color.keep spleef.game matches 6 run item replace entity @a[tag=!admin] weapon.mainhand with redstone_block[item_name="Stand on this block!!"]
 
 # bossbar!!
@@ -42,7 +42,7 @@ execute if score ?color.keep spleef.game matches 1 run bossbar set spleef:timer 
 execute if score ?color.keep spleef.game matches 2 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"lapis","color":"blue"},"!!"]
 execute if score ?color.keep spleef.game matches 3 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"emerald","color":"green"},"!!"]
 execute if score ?color.keep spleef.game matches 4 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"quartz","color":"white"},"!!"]
-execute if score ?color.keep spleef.game matches 5 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"amethyst","color":"light_purple"},"!!"]
+execute if score ?color.keep spleef.game matches 5 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"copper","color":"gold"},"!!"]
 execute if score ?color.keep spleef.game matches 6 run bossbar set spleef:timer name [{"text":"Stand on "},{"text":"redstone","color":"red"},"!!"]
 # clear everyone's HUNGER!!
 effect clear @a[tag=!admin] hunger
