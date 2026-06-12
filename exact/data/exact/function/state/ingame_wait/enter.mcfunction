@@ -14,7 +14,7 @@ execute positioned 50000 100 50000 run tp @e[type=!player,distance=..100] 50000 
 #execute if score ?round exact.state matches 5 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.arena]
 #execute if score ?round exact.state matches 6 run tp @a[tag=!admin] @n[type=marker,tag=exact.tp.arena]
 execute if score ?round exact.state matches 7 run fill 49984 126 49984 50016 99 50016 air replace stone_bricks
-execute if score ?round exact.state matches 11 run fill 49984 126 49984 50016 99 50016 air replace stone_bricks
+execute if score ?round exact.state matches 11 run fill 49984 126 49984 50016 99 50016 air replace grass_block
 #execute if score ?round exact.state matches 9 run time set noon
 #execute if score ?round exact.state matches 9 at @n[type=marker,tag=exact.tp.arena] run fill ~30 ~3 ~30 ~-30 ~-2 ~-30 air replace #beds
 #execute if score ?round exact.state matches 11 run team leave @a[team=exact.temp]

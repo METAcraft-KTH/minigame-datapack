@@ -7,4 +7,4 @@
 # ============================================================
 
 # Switch to spectator mode
-gamemode spectator @s
+#gamemode spectator @s

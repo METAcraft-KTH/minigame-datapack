@@ -9,3 +9,5 @@
 # Send to spectator
 #gamemode spectator @s
 #tellraw @s {"text":"The game is already in progress. You are now spectating.","color":"yellow"}
+gamemode adventure @s
+tp @s 50000 100 50000
