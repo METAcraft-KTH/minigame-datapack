@@ -5,3 +5,4 @@
 # ============================================================
 
 function qq:_tick
+function qq:universal/tick
