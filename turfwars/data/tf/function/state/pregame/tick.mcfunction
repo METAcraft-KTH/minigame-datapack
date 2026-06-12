@@ -18,6 +18,7 @@ execute if score #display tf.temp matches ..0 run scoreboard players set #displa
 # blu side, tp this way
 execute if score ! tf.x matches ..30999 run function tf:gainturf_blue
 execute if score ! tf.x matches 31001.. run function tf:gainturf_red
+scoreboard players set ?turf tf.state 0
 
 title @a actionbar [{"text":"Start building in: ","color":"yellow"},{"score":{"name":"#display","objective":"tf.temp"}},{"text":"s","color":"yellow"}]
 
