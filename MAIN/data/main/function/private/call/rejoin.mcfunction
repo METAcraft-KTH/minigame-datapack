@@ -8,7 +8,7 @@
 # 
 # ============================================================
 
-execute unless score ?minigame_id main.state matches 3 run 
+execute unless score ?minigame_id main.state matches 3 run function spleefmusic:sans/stop
 
 execute if score ?minigame_id main.state matches 1 run function main:private/call/macro/rejoin with storage main:game display[1]
 execute if score ?minigame_id main.state matches 2 run function main:private/call/macro/rejoin with storage main:game display[2]
