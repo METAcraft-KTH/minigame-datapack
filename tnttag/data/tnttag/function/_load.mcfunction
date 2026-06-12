@@ -34,12 +34,12 @@ team modify tnttag.has_diamond prefix [{text:"[$] ",color:"white"}]
 #   this dictates where to summon the camera entity that all players will spectate from.
 #       because i'm lazy, the entity is hardcoded to
 #       always look due south and move forward at 0.2 blocks per second.
-data modify storage main:intro tnttag.camera_starting_coords set value "19958 24 60073"
+data modify storage main:intro tnttag.camera_starting_coords set value "19958 26 60073"
 
 #   this dictates where to teleport all players after the intro ends.
 #   this is used by main:superstate/2/go_to_state_3.
 #   THIS CAN HAVE YAW/PITCH!
-data modify storage main:intro tnttag.player_starting_coords set value "19958 24 60073"
+data modify storage main:intro tnttag.player_starting_coords set value "19958 26 60073"
 
 #   this sets the how-to-play messages to display in chat.
 #       these are displayed in 10 second intervals, because that's how long

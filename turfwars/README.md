@@ -1,25 +1,41 @@
-REPLACE ALL occurrences of `tf` with your minigame's namespace.
+# Turf Wars Minigame Datapack
 
-This template now includes a complete 3-round state machine:
+This minigame follows the MAIN callback architecture and registers only a load tag.
 
-1. Ready phase (15 seconds, actionbar countdown)
-2. Gameplay phase (2 minutes, actionbar countdown)
-3. Break phase (30 seconds, actionbar countdown)
+## Round Flow
 
-At break end:
+1. `pregame` for 20 seconds.
+2. `ingame_run` for 30 seconds.
+3. `ingame_wait` for 10 seconds.
 
-- If round is 1 or 2, it starts the next gameplay round.
-- If round is 3, it calls `main:api/end_game`.
+The game loops `ingame_run -> ingame_wait` until round 15 resolves, then calls `main:api/end_game`.
 
-Included examples:
+## Core Mechanic
 
-- Sample advancement triggers in `data/tf/advancement/`
-- Reward handlers in `data/tf/function/events/`
-- Phase logic in `data/tf/function/state/{ready,play,break}/`
+At the start of each `ingame_run` round, the game rolls a target group size from 4 to 15.
+Players must stand near active control points with exact group size.
 
-Primary scoreboard fake players used by the state machine:
+Control points are marker entities with:
 
-- `?phase` in `tf.state`
-- `?round` in `tf.state`
-- `?phase_timer` in `tf.timer`
-- `?match_timer` in `tf.timer`
+- `type=marker`
+- `tag=tf.cp`
+- not tagged `tf.cp.disabled`
+
+Players in range of any active control point get `tf.in_cp`.
+Players in range of a control point whose local count equals the target group size get `tf.player.correct`.
+
+At `ingame_wait` start:
+
+- players with `tf.player.correct` become `tf.winner`
+- players without `tf.player.correct` become `tf.loser`
+- all control points are tagged `tf.cp.disabled`
+
+## Required Map Setup
+
+Place control-point markers in the arena before game start:
+
+```mcfunction
+summon marker <x> <y> <z> {Tags:["tf.cp"]}
+```
+
+The implementation currently checks players within 4 blocks of each control point.
