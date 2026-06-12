@@ -1,4 +1,4 @@
-execute as @n[tag=tf.border,type=marker] at @s run tp ~1 ~ ~
+execute as @n[tag=tf.border,type=marker] at @s run tp ~-1 ~ ~
 
 execute at @n[tag=tf.border,type=marker] run fill ~ 64 60019 ~ 64 59970 red_terracotta replace blue_terracotta
 execute at @n[tag=tf.border,type=marker] run fill ~ 87 60019 ~ 65 59970 red_wool replace blue_wool
