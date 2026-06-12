@@ -45,7 +45,7 @@ data merge storage main:game {display:[{}, \
     {id:2,namespace:"tnttag",gamename:"TNT Tag"}, \
     {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
     {id:4,namespace:"mingle",gamename:"King of the Mingle"}, \
-    {id:5,namespace:"race",gamename:"Race Around The World"}, \
+    {id:5,namespace:"tf",gamename:"Turf Wars"}, \
     {id:6,namespace:"qq",gamename:"One in the Quiver"}, \
 ]}
 

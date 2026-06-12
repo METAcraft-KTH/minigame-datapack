@@ -8,6 +8,8 @@
 # 
 # ============================================================
 
+execute unless score ?minigame_id main.state matches 3 run 
+
 execute if score ?minigame_id main.state matches 1 run function main:private/call/macro/rejoin with storage main:game display[1]
 execute if score ?minigame_id main.state matches 2 run function main:private/call/macro/rejoin with storage main:game display[2]
 execute if score ?minigame_id main.state matches 3 run function main:private/call/macro/rejoin with storage main:game display[3]

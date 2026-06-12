@@ -7,6 +7,7 @@
 # ============================================================
 
 spawnpoint @a 0 100 50000
+setworldspawn 0 100 50000
 
 # --- DECREMENT TIMER ---
 scoreboard players remove ?supertimer main.time 1
@@ -25,6 +26,16 @@ execute if score #sec main.temp matches 10.. unless score ?minigame_id main.stat
 #   special formatting if the game is 1
 execute if score #sec main.temp matches ..9 if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":0",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
 execute if score #sec main.temp matches 10.. if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
+
+# --- DONT LET PLAYERS DIE ---
+#   tp players who fell off
+execute as @a[tag=!admin] if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:0}}}}} run tp @s 0 64 50000
+#   tp players who are too far away from spawn
+execute positioned 0 0 50000 run tp @a[tag=!admin,distance=5000..] 0 64 50000
+#   regen
+effect give @a saturation 3 1 true
+effect give @a instant_health 3 1 true
+effect give @a resistance 3 4 true
 
 # --- SHOW FULLSCREEN TITLE TRANSITION ---
 execute if score ?supertimer main.time matches 20 run title @a times 20 20 20
