@@ -9,7 +9,7 @@
 scoreboard players set ?phase mingle.state 1
 scoreboard players set ?phase_timer mingle.timer 0
 scoreboard players add ?round mingle.state 1
-execute store result score ?target_group mingle.state run random value 4..15
+execute store result score ?target_group mingle.state run random value 2..6
 
 tag @a remove mingle.in_cp
 tag @a remove mingle.player.correct
