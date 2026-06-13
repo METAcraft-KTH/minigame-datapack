@@ -1,1 +1,1 @@
-execute unless score ?color.keep spleef.game matches 5 run return run fill 30000 10 50000 30047 42 50047 air replace copper_block
+execute unless score ?color.keep spleef.game matches 5 run return run fill 30000 10 50000 30047 42 50047 air replace waxed_copper_block

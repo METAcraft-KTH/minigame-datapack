@@ -11,6 +11,11 @@ execute unless score ?superstate main.state matches 3 run return 0
 function main:util/reset_gamerules
 gamerule fall_damage false
 
+team leave @a[tag=!admin]
+clear @a[tag=!admin]
+spawnpoint @a[tag=!admin] 0 64 50000
+setworldspawn 0 64 50000
+
 title @a times 0 60 40
 title @a title {text:"GAME!",color:"red",bold:true}
 title @a subtitle ""
