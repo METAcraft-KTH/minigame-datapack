@@ -694,17 +694,17 @@ Section numbers point to the change(s) each file needs.
 - [x] `data/exact/function/state/ingame_task/tick.mcfunction` lines 22, 36 — §7
 
 ### uhc_done_quick
-- [ ] `data/minecraft/loot_table/blocks/ancient_debris.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/coal_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/copper_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/deepslate_coal_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/deepslate_copper_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/deepslate_gold_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/deepslate_iron_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/gold_ore.json` — §2, §3
-- [ ] `data/minecraft/loot_table/blocks/iron_ore.json` — §2, §3
-- [ ] `data/uhc/loot_table/entities/player.json` — §2, §3
-- [ ] `data/uhc/advancement/kill.json` — §6
+- [x] `data/minecraft/loot_table/blocks/ancient_debris.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/coal_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/copper_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/deepslate_coal_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/deepslate_copper_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/deepslate_gold_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/deepslate_iron_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/gold_ore.json` — §2, §3
+- [x] `data/minecraft/loot_table/blocks/iron_ore.json` — §2, §3
+- [x] `data/uhc/loot_table/entities/player.json` — §2, §3
+- [x] `data/uhc/advancement/kill.json` — §6
 
 ### tnttag
 - [x] `data/tnttag/function/_tick.mcfunction` lines 15, 19, 32 — §7
