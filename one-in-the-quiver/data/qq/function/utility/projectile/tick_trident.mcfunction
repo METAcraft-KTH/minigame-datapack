@@ -5,8 +5,10 @@ execute on origin if score @s qq.time_alive matches 0 run tag @n[tag=thisTrident
 ## hit ground
 execute if predicate qq:in_ground run kill @s[tag=killWhenLand]
 execute if predicate qq:in_ground run data merge entity @s {Glowing:1b}
-execute if predicate qq:in_ground unless data entity @s {inBlockState:{Name:"minecraft:target"}} run tag @s add missed
-execute if predicate qq:in_ground if data entity @s {inBlockState:{Name:"minecraft:target"}} run data merge entity @s {DealtDamage:1b}
+execute if predicate qq:in_ground if data entity @s {inBlockState:"minecraft:target"} run tag @s add on_target
+execute if predicate qq:in_ground if data entity @s {inBlockState:{id:"minecraft:target"}} run tag @s add on_target
+execute if predicate qq:in_ground unless entity @s[tag=on_target] run tag @s add missed
+execute if predicate qq:in_ground if entity @s[tag=on_target] run data merge entity @s {DealtDamage:1b}
 
 # make it start returning if too far away
 execute at @s on origin if entity @s[distance=100..] run data merge entity @n[tag=thisTrident] {DealtDamage:1b, Glowing:1b}

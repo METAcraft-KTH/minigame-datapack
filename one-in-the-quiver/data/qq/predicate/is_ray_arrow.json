@@ -1,8 +1,8 @@
 {
-  "condition": "minecraft:entity_properties",
+  "type": "minecraft:entity_properties",
   "entity": "this",
   "predicate": {
-      "type": "minecraft:arrow",
-      "nbt": "{weapon:{components:{\"minecraft:custom_data\": {raycast:1b}}}}"
+    "minecraft:entity_type": "minecraft:arrow",
+    "minecraft:nbt": "{weapon:{components:{\"minecraft:custom_data\": {raycast:1b}}}}"
   }
 }

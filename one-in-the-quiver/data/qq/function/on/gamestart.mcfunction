@@ -16,5 +16,8 @@ scoreboard players set @a[tag=!admin] qq.time_alive 200
 scoreboard players set @a[tag=!admin] qq.in_state 0
 tag @a remove qq.dead
 
+# Arm the kill trigger so a leftover grant can't block a player's kills
+advancement revoke @a only qq:on_kill
+
 # Start gameplay loop at pregame phase
 function qq:states/pregame/start

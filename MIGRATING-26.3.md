@@ -661,28 +661,28 @@ Section numbers point to the change(s) each file needs.
 - [x] `data/gamename/advancement/player_kill.json` — §6
 
 ### one-in-the-quiver
-- [ ] `data/qq/advancement/key_space_just_down.json` — §6
-- [ ] `data/qq/advancement/key_space_just_up.json` — §6
-- [ ] `data/qq/enchantment/infinity.json` — §2
-- [ ] `data/qq/enchantment/one_hit.json` — §2, §5
-- [ ] `data/qq/enchantment/restore.json` — §2, §5
-- [ ] `data/qq/item_modifier/charge.json` — §2, §4
-- [ ] `data/qq/predicate/boat_has_rider.json` — §2, §5 (`type`, `passenger`)
-- [ ] `data/qq/predicate/dealt_damage.json` — §2, §5 (`nbt`)
-- [ ] `data/qq/predicate/holding_spawnpoint_placer.json` — §2, §5 (`equipment`)
-- [ ] `data/qq/predicate/in_ground.json` — §2, §5 (`nbt`)
-- [ ] `data/qq/predicate/is_flyball.json` — §2, §5 (`nbt`)
-- [ ] `data/qq/predicate/is_infinity_arrow.json` — §2, §4, §5 (`type`, `nbt`)
-- [ ] `data/qq/predicate/is_invisible.json` — §2, §5 (`effects`)
-- [ ] `data/qq/predicate/is_ray_arrow.json` — §2, §5 (`type`, `nbt`)
-- [ ] `data/qq/predicate/is_sneaking.json` — §2, §5 (`flags`)
-- [ ] `data/qq/predicate/jump.json` — §2, §5 (`type_specific/player`)
-- [ ] `data/qq/predicate/on_ground.json` — §2, §5 (`flags`)
-- [ ] `data/qq/predicate/rapid_fire_mainhand.json` — §2, §5 (`type`, `equipment`)
-- [ ] `data/qq/predicate/rapid_fire_offhand.json` — §2, §5 (`type`, `equipment`)
-- [ ] `data/qq/predicate/reload_mainhand.json` — §2, §5 (`type`, `equipment`)
-- [ ] `data/qq/predicate/reload_offhand.json` — §2, §5 (`type`, `equipment`)
-- [ ] `data/qq/function/utility/projectile/tick_trident.mcfunction` lines 8–9 — §8
+- [x] `data/qq/advancement/key_space_just_down.json` — §6
+- [x] `data/qq/advancement/key_space_just_up.json` — §6
+- [x] `data/qq/enchantment/infinity.json` — §2
+- [x] `data/qq/enchantment/one_hit.json` — §2, §5
+- [x] `data/qq/enchantment/restore.json` — §2, §5
+- [x] `data/qq/item_modifier/charge.json` — §2, §4
+- [x] `data/qq/predicate/boat_has_rider.json` — §2, §5 (`type`, `passenger`)
+- [x] `data/qq/predicate/dealt_damage.json` — §2, §5 (`nbt`)
+- [x] `data/qq/predicate/holding_spawnpoint_placer.json` — §2, §5 (`equipment`)
+- [x] `data/qq/predicate/in_ground.json` — §2, §5 (`nbt`)
+- [x] `data/qq/predicate/is_flyball.json` — §2, §5 (`nbt`)
+- [x] `data/qq/predicate/is_infinity_arrow.json` — §2, §4, §5 (`type`, `nbt`)
+- [x] `data/qq/predicate/is_invisible.json` — §2, §5 (`effects`)
+- [x] `data/qq/predicate/is_ray_arrow.json` — §2, §5 (`type`, `nbt`)
+- [x] `data/qq/predicate/is_sneaking.json` — §2, §5 (`flags`)
+- [x] `data/qq/predicate/jump.json` — §2, §5 (`type_specific/player`)
+- [x] `data/qq/predicate/on_ground.json` — §2, §5 (`flags`)
+- [x] `data/qq/predicate/rapid_fire_mainhand.json` — §2, §5 (`type`, `equipment`)
+- [x] `data/qq/predicate/rapid_fire_offhand.json` — §2, §5 (`type`, `equipment`)
+- [x] `data/qq/predicate/reload_mainhand.json` — §2, §5 (`type`, `equipment`)
+- [x] `data/qq/predicate/reload_offhand.json` — §2, §5 (`type`, `equipment`)
+- [x] `data/qq/function/utility/projectile/tick_trident.mcfunction` lines 8–9 — §8
 
 ### exact
 - [x] `data/exact/advancement/3.json` — §6
