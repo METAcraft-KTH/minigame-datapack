@@ -10,11 +10,11 @@ execute store result bossbar uhc:bossbar value run scoreboard players get ?time_
 execute store result bossbar uhc:bossbar max run scoreboard players get ?grace_period_time uhc.time
 
 #   get formatted time string to display in bossbar
-execute store result storage uhc:temp t int 1 run scoreboard players get ?time_until_next_round uhc.time
-execute store result score #min uhc.temp run function main:util/time_format_minsec_min with storage uhc:temp
-execute store result score #sec uhc.temp run function main:util/time_format_minsec_sec with storage uhc:temp
+scoreboard players operation #ticks main.temp = ?time_until_next_round uhc.time
+execute store result score #min uhc.temp run compute default integer main:time/min
+execute store result score #sec_tens uhc.temp run compute default integer main:time/sec_tens
+execute store result score #sec_ones uhc.temp run compute default integer main:time/sec_ones
 #   set bossbar name
-execute if score #sec uhc.temp matches ..9 unless score ?minigame_id uhc.state matches 1 run bossbar set uhc:bossbar name [{score:{name:"#min",objective:"uhc.temp"},color:"green"},":0",{score:{name:"#sec",objective:"uhc.temp"}},{text:" until next round",color:"white"}]
-execute if score #sec uhc.temp matches 10.. unless score ?minigame_id uhc.state matches 1 run bossbar set uhc:bossbar name [{score:{name:"#min",objective:"uhc.temp"},color:"green"},":",{score:{name:"#sec",objective:"uhc.temp"}},{text:" until next round",color:"white"}]
+bossbar set uhc:bossbar name [{score:{name:"#min",objective:"uhc.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"uhc.temp"}},{score:{name:"#sec_ones",objective:"uhc.temp"}},{text:" until next round",color:"white"}]
 
 execute if score ?time_until_next_round uhc.time matches 0 run function uhc:state/start_round

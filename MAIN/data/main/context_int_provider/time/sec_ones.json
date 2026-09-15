@@ -1,0 +1,5 @@
+{
+    "type": "floor_mod",
+    "left": "main:time/sec",
+    "right": 10
+}

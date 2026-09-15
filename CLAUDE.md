@@ -440,40 +440,43 @@ The current game's index (1–6) is stored in `?minigame_id main.state` during s
 
 These functions are in `main:util/` and are available for any pack to call.
 
-### `main:util/time_format_minsec`
-
-Converts ticks → `MM:SS` (rounds **up** to the next second; no decimals displayed).
-
-```mcfunction
-# Usage: call with macro argument {t: <tick_count>}
-# Returns: storage main:api {return:{min:<int>,sec:<int>}}
-
-execute store result storage main:temp t int 1 run scoreboard players get ?gametimer gamename.timer
-execute store result score #min main.temp run function main:util/time_format_minsec with storage main:temp
-execute store result score #sec main.temp run function main:util/time_format_minsec_sec with storage main:temp
-```
-
-### `main:util/time_format_minsec_with_decimal`
-
-Converts ticks → `MM:SS` with decimals (does **not** round up).
-
-```mcfunction
-# Returns: storage main:api {return:{min:<int>,sec:<int>,dec:<int>}}
-# dec is in units of 1/20 second * 5, i.e. 0–95 in steps of 5
-```
-
-### `main:util/time_format_sec`
-
-Converts ticks → total seconds (rounds up). Returns an integer result directly (not via storage).
-
-```mcfunction
-# Returns: the integer result of the function itself
-execute store result score ?seconds gamename.timer run function main:util/time_format_sec with storage main:temp
-```
-
 ### `main:util/reset_gamerules`
 
 Resets all gamerules to their default values. Call in `on/gamestart` if your game modifies gamerules, or ensure you reset them manually in your end-game logic.
+
+---
+
+## MAIN's Number Providers
+
+MAIN registers integer number providers in `data/main/context_int_provider/` for formatting tick counts. Evaluate them with `/compute`.
+
+**Input:** put the tick count in `#ticks main.temp`, then compute whichever parts you need in the same tick.
+
+| Provider | Result | Rounding |
+|---|---|---|
+| `main:time/total_sec` | total seconds (no modulo 60) | rounds **up**, for countdowns |
+| `main:time/min` | `MM` part | rounds **up** |
+| `main:time/sec` | `SS` part (0–59) | rounds **up** |
+| `main:time/sec_tens` | tens digit of `SS` (0–5) | rounds **up** |
+| `main:time/sec_ones` | ones digit of `SS` (0–9) | rounds **up** |
+| `main:time/exact/total_sec` | total seconds (no modulo 60) | rounds **down**, for stopwatches/lap times |
+| `main:time/exact/min` | `MM` part | rounds **down** |
+| `main:time/exact/sec` | `SS` part (0–59) | rounds **down** |
+| `main:time/exact/sec_tens` | tens digit of `SS` (0–5) | rounds **down** |
+| `main:time/exact/sec_ones` | ones digit of `SS` (0–9) | rounds **down** |
+| `main:time/exact/hundredths` | fraction of a second in hundredths (0–95, steps of 5) | exact |
+
+Displaying the tens and ones digits as two separate score components gives a zero-padded `MM:SS` without branching on `matches ..9`:
+
+```mcfunction
+scoreboard players operation #ticks main.temp = ?gametimer gamename.timer
+execute store result score #min gamename.temp run compute default integer main:time/min
+execute store result score #sec_tens gamename.temp run compute default integer main:time/sec_tens
+execute store result score #sec_ones gamename.temp run compute default integer main:time/sec_ones
+bossbar set gamename:timer name [{score:{name:"#min",objective:"gamename.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"gamename.temp"}},{score:{name:"#sec_ones",objective:"gamename.temp"}}]
+```
+
+> `hundredths` is **not** zero-padded (5 means `.05`). Branch on `matches ..9` if you display it.
 
 ---
 

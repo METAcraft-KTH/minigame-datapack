@@ -1,0 +1,12 @@
+{
+    "type": "floor_div",
+    "left": {
+        "type": "score",
+        "target": {
+            "type": "fixed",
+            "name": "#ticks"
+        },
+        "score": "main.temp"
+    },
+    "right": 20
+}

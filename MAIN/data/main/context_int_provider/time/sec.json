@@ -1,0 +1,5 @@
+{
+    "type": "floor_mod",
+    "left": "main:time/total_sec",
+    "right": 60
+}

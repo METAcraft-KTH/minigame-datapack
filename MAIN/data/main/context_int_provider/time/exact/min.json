@@ -1,0 +1,5 @@
+{
+    "type": "floor_div",
+    "left": "main:time/exact/total_sec",
+    "right": 60
+}
