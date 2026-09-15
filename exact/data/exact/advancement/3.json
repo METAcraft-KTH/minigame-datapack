@@ -9,7 +9,11 @@
           ]
         },
         "entity": {
-          "type": "minecraft:sheep"
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:sheep"
+          }
         }
       }
     }

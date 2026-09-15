@@ -601,7 +601,11 @@ Use advancements to detect events that are hard to poll with commands. The rewar
     "kill": {
       "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "entity": { "type": "minecraft:player" }
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": { "minecraft:entity_type": "minecraft:player" }
+        }
       }
     }
   },

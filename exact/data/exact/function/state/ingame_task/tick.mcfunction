@@ -19,7 +19,7 @@ execute if score ?round exact.state matches 5 as @a[tag=!exact.win] if score @s 
 execute if score ?round exact.state matches 2 as @a[tag=!exact.win,tag=!admin,nbt={Health:20.0f}] run advancement grant @s only exact:2
 
 # Round 7: win when player reaches Y > 122
-execute if score ?round exact.state matches 7 as @a[tag=!exact.win,tag=!admin] if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{min:123}}}}} run advancement grant @s only exact:7
+execute if score ?round exact.state matches 7 as @a[tag=!exact.win,tag=!admin] if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{min:123}}}}} run advancement grant @s only exact:7
 
 # Round 8: scoreboard trigger based completion
 execute if score ?round exact.state matches 8 run scoreboard players enable @a exact.quickmath
@@ -33,7 +33,7 @@ execute if score ?round exact.state matches 11 as @a[tag=!exact.win,tag=!admin] 
 execute if score ?round exact.state matches 12 run fill 50007 99 50007 49993 99 49993 snow_block
 
 # Keep all players near the arena if they fall too low
-execute as @a if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:-5}}}}} run tp @s @n[tag=exact.tp.arena]
+execute as @a if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:-5}}}}} run tp @s @n[tag=exact.tp.arena]
 
 # Persistent subtitle prompts and success title
 title @a times 0 80 20

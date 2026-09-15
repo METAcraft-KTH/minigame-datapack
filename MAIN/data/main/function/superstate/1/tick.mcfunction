@@ -29,7 +29,7 @@ execute if score #sec main.temp matches 10.. if score ?minigame_id main.state ma
 
 # --- DONT LET PLAYERS DIE ---
 #   tp players who fell off
-execute as @a[tag=!admin] if predicate {condition:"entity_properties",entity:"this",predicate:{location:{position:{y:{max:0}}}}} run tp @s 0 64 50000
+execute as @a[tag=!admin] if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:0}}}}} run tp @s 0 64 50000
 #   tp players who are too far away from spawn
 execute positioned 0 0 50000 run tp @a[tag=!admin,distance=5000..] 0 64 50000
 #   regen

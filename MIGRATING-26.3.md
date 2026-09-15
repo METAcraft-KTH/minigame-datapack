@@ -654,11 +654,11 @@ These were checked against the 26.3-rc3 registries and command tree:
 Section numbers point to the change(s) each file needs.
 
 ### MAIN
-- [ ] `data/main/function/superstate/0/tick.mcfunction` line 15 — §7
-- [ ] `data/main/function/superstate/1/tick.mcfunction` line 32 — §7
+- [x] `data/main/function/superstate/0/tick.mcfunction` line 15 — §7
+- [x] `data/main/function/superstate/1/tick.mcfunction` line 32 — §7
 
 ### minigame-template
-- [ ] `data/gamename/advancement/player_kill.json` — §6
+- [x] `data/gamename/advancement/player_kill.json` — §6
 
 ### one-in-the-quiver
 - [ ] `data/qq/advancement/key_space_just_down.json` — §6
@@ -685,13 +685,13 @@ Section numbers point to the change(s) each file needs.
 - [ ] `data/qq/function/utility/projectile/tick_trident.mcfunction` lines 8–9 — §8
 
 ### exact
-- [ ] `data/exact/advancement/3.json` — §6
-- [ ] `data/exact/advancement/6.json` — §6
-- [ ] `data/exact/advancement/10.json` — §6
-- [ ] `data/exact/advancement/15.json` — §6
-- [ ] `data/exact/item_modifier/can_place_anywhere.json` — §2, §4
-- [ ] `data/exact/predicate/is_sneaking.json` — §2, §5 (`flags`)
-- [ ] `data/exact/function/state/ingame_task/tick.mcfunction` lines 22, 36 — §7
+- [x] `data/exact/advancement/3.json` — §6
+- [x] `data/exact/advancement/6.json` — §6
+- [x] `data/exact/advancement/10.json` — §6
+- [x] `data/exact/advancement/15.json` — §6
+- [x] `data/exact/item_modifier/can_place_anywhere.json` — §2, §4
+- [x] `data/exact/predicate/is_sneaking.json` — §2, §5 (`flags`)
+- [x] `data/exact/function/state/ingame_task/tick.mcfunction` lines 22, 36 — §7
 
 ### uhc_done_quick
 - [ ] `data/minecraft/loot_table/blocks/ancient_debris.json` — §2, §3
@@ -707,21 +707,21 @@ Section numbers point to the change(s) each file needs.
 - [ ] `data/uhc/advancement/kill.json` — §6
 
 ### tnttag
-- [ ] `data/tnttag/function/_tick.mcfunction` lines 15, 19, 32 — §7
-- [ ] `data/tnttag/advancement/punch.json` — §6 (optional namespacing)
+- [x] `data/tnttag/function/_tick.mcfunction` lines 15, 19, 32 — §7
+- [x] `data/tnttag/advancement/punch.json` — §6 (optional namespacing)
 
 ### mingle
-- [ ] `data/mingle/item_modifier/refill.json` — §2
+- [x] `data/mingle/item_modifier/refill.json` — §2
 
 ### turfwars
-- [ ] `data/tf/item_modifier/refill.json` — §2
+- [x] `data/tf/item_modifier/refill.json` — §2
 
 ### titlewriter-1.2
-- [ ] `pack.mcmeta` — §9
-- [ ] `data/tl/function/title_private/username.mcfunction` line 3 — §7
+- [x] `pack.mcmeta` — §9
+- [x] `data/tl/function/title_private/username.mcfunction` line 3 — §7
 
 ### Docs
-- [ ] `CLAUDE.md` advancement example — §10
+- [x] `CLAUDE.md` advancement example — §10
 
 ---
 

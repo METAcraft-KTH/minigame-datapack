@@ -1,4 +1,4 @@
 {
-    "function": "set_count",
+    "type": "set_count",
     "count": 64
 }
