@@ -181,7 +181,10 @@ scoreboard objectives add gamename.stats.laptime dummy
 
 # --- OUTRO LEADERBOARD SLIDES ---
 # Defines which scoreboard objectives to display in the postgame outro,
-# one slide per entry.
+# one slide per entry, shown in 10-second intervals like the howtoplay slides.
+# Each slide shows the name, the top 5 online players, and each player's own score.
+# Tied players get their own rows but share the same place (1, 1, 3, ...).
+# Players without a score in the objective are left out.
 #
 # Fields:
 #   objective   - the scoreboard objective name to read scores from
@@ -191,9 +194,11 @@ scoreboard objectives add gamename.stats.laptime dummy
 #   suffix      - string appended to each player's score
 #   numberformat - how to format the numeric value:
 #       0 = raw number, no formatting
-#       1 = ticks → ss (seconds with decimals)
-#       2 = ticks → mm:ss (without decimals)
-#       3 = ticks → mm:ss (with decimals)
+#       1 = ticks → ss.dd (seconds with decimals)
+#       2 = ticks → mm:ss (without decimals, rounded down)
+#       3 = ticks → mm:ss.dd (with decimals)
+# Clear the list first, so /reload doesn't add duplicate slides.
+data modify storage main:outro gamename.stats set value []
 data modify storage main:outro gamename.stats append value { \
     objective: "gamename.stats.kills",\
     name: "Top killers:",\
@@ -396,6 +401,7 @@ MAIN manages several scoreboard objectives that you may **read** but should not 
 | `main.iwashere` | Set to `1` on all players at game start; use to detect late joiners |
 | `main.temp` | Scratch space for temporary calculations (do not persist across ticks) |
 | `main.temp.stat` | Per-player stat scratch space used by the outro system |
+| `main.temp.rank` | Per-player leaderboard row used by the outro system |
 | `main.disconnect` | Tracks player disconnects (managed internally by MAIN) |
 | `main.death` | Tracks player deaths (managed internally by MAIN) |
 
@@ -465,6 +471,8 @@ MAIN registers integer number providers in `data/main/context_int_provider/` for
 | `main:time/exact/sec_tens` | tens digit of `SS` (0–5) | rounds **down** |
 | `main:time/exact/sec_ones` | ones digit of `SS` (0–9) | rounds **down** |
 | `main:time/exact/hundredths` | fraction of a second in hundredths (0–95, steps of 5) | exact |
+| `main:time/exact/hundredths_tens` | tens digit of `hundredths` (0–9) | exact |
+| `main:time/exact/hundredths_ones` | ones digit of `hundredths` (0 or 5) | exact |
 
 Displaying the tens and ones digits as two separate score components gives a zero-padded `MM:SS` without branching on `matches ..9`:
 
@@ -476,7 +484,7 @@ execute store result score #sec_ones gamename.temp run compute default integer m
 bossbar set gamename:timer name [{score:{name:"#min",objective:"gamename.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"gamename.temp"}},{score:{name:"#sec_ones",objective:"gamename.temp"}}]
 ```
 
-> `hundredths` is **not** zero-padded (5 means `.05`). Branch on `matches ..9` if you display it.
+> `hundredths` itself is **not** zero-padded (5 means `.05`). Display `hundredths_tens` and `hundredths_ones` instead.
 
 ---
 

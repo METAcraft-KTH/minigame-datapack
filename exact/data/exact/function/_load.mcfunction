@@ -42,12 +42,13 @@ data modify storage main:intro exact.howtoplay append value \
     ]
 
 # --- STATS VARIABLES ---
-scoreboard objectives add exact.stats.wins dummy "Rounds won"
+scoreboard objectives add exact.stats.wins dummy
 
 # Team used by round 11 task entities
 team add exact.temp
 
 # --- OUTRO LEADERBOARD SLIDES ---
+data modify storage main:outro exact.stats set value []
 data modify storage main:outro exact.stats append value { \
     objective: "exact.stats.wins",\
     name: "Rounds Completed:",\

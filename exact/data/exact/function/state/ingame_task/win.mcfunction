@@ -37,6 +37,9 @@ execute if score ?round exact.state matches 14 run function exact:state/ingame_t
 execute if score ?round exact.state matches 15 run function exact:state/ingame_task/win_tellraw {verb:"paid respects to Rick May!"}
 execute if score ?round exact.state matches 16 run function exact:state/ingame_task/win_tellraw {verb:"cranked their hog!"}
 
+# add to outro stats
+scoreboard players add @s exact.stats.wins 1
+
 # check how many players have not finished yet, and give points based on that
 execute store result storage exact.temp points int 2 if entity @a[tag=!admin,tag=!exact.win]
 function score:add_points with storage exact.temp

@@ -17,13 +17,17 @@ scoreboard players add ?supertimer main.time 1
 
 # --- WAIT 10 SECONDS BEFORE SHOWING SLIDES ---
 #execute if score ?supertimer main.time matches 100 run tellraw @a ["\n",{text:"Well played!",color:"#E83D84",bold:true}," Here are the top players...\n"]
-execute if score ?supertimer main.time matches 100 run function main:superstate/4/macro_get_outro
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 1 run function main:superstate/4/macro_get_outro with storage main:game display[1]
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 2 run function main:superstate/4/macro_get_outro with storage main:game display[2]
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 3 run function main:superstate/4/macro_get_outro with storage main:game display[3]
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 4 run function main:superstate/4/macro_get_outro with storage main:game display[4]
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 5 run function main:superstate/4/macro_get_outro with storage main:game display[5]
+execute if score ?supertimer main.time matches 100 if score ?minigame_id main.state matches 6 run function main:superstate/4/macro_get_outro with storage main:game display[6]
 execute if score ?supertimer main.time matches 100 run scoreboard players set ?supertimer main.time 401
 
 # --- SHOW SLIDES ---
-#   disabled for now bc we dont have time for this
-#execute if score ?supertimer main.time matches 401 run function main:superstate/4/show_next_slide
-# if there are slides to show, the timer will reset to 201.
+execute if score ?supertimer main.time matches 401 run function main:superstate/4/show_next_slide
+# if there are slides to show, the timer will be dialed back to 201.
 # if there are no more slides, the timer will continue ticking.
 execute if score ?supertimer main.time matches 402 run tellraw @a ["",{text:"\nWell played!",color:"#E83D84",bold:true},{text:"\nReturning to lobby in 10 seconds...\n",color:"gray",italic:true}]
 

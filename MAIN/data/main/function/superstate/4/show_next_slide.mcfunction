@@ -1,9 +1,10 @@
 # ============================================================
-# Called by: main:superstate/4/tick_slide (once per 10 seconds (aka per slide))
+# Called by: main:superstate/4/tick (once per 10 seconds (aka per slide))
 # Executor:  Server
 # 
 # Displays the next game leaderboard.
-# UNFINISHED ATM
+# Same layout as the howtoplay slides in superstate 2:
+#   separator, name, blank, top 5 players, your own score, separator
 # 
 # ============================================================
 
@@ -13,21 +14,22 @@ execute store result score ?slidecount main.temp run data get storage main:temp 
 execute if score ?slidecount main.temp matches 0 run return 0
 #   if not, proceed
 
-# --- GET SCORES ---
-function main:superstate/4/slide/calc with storage main:temp stats[0]
+# --- RANK PLAYERS AND BUILD THE TOP 5 ROWS ---
+function main:superstate/4/slide/rank with storage main:temp stats[0]
 
-# --- SHOW SLIDE (queue) ---
+# --- SHOW SLIDE ---
 execute as @a at @s run playsound entity.item.pickup master @s ~ ~ ~ .6 1 1
-tellraw @a [{text:"\n—————— ",color:"#E83D84"},{storage:"main:temp",nbt:"stats[0]",strikethrough:false,color:"yellow"}," ——————"]
-tellraw @a ["1. ",{storage:"main:temp",nbt:"players[0].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[0].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["2. ",{storage:"main:temp",nbt:"players[1].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[1].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["3. ",{storage:"main:temp",nbt:"players[2].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[2].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["4. ",{storage:"main:temp",nbt:"players[3].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[3].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["5. ",{storage:"main:temp",nbt:"players[4].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[4].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["6. ",{storage:"main:temp",nbt:"players[5].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[5].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-tellraw @a ["7. ",{storage:"main:temp",nbt:"players[6].name",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix"},{storage:"main:temp",nbt:"players[6].score",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
-#tellraw @a ""
-#execute as @a run tellraw @s ["YOU: ",{storage:"main:temp",nbt:"stats[0].prefix"},{score:{name:"@s",objective:"main.temp.stat"},color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix"}]
+tellraw @a {text:"——————————————————————————————",color:"#E83D84",strikethrough:true}
+tellraw @a {storage:"main:temp",nbt:"stats[0].name",interpret:true,color:"yellow",bold:true}
+tellraw @a ""
+#   missing rows (less than 5 players with a score) show up as blank lines
+tellraw @a {storage:"main:temp",nbt:"rows[0]",interpret:true}
+tellraw @a {storage:"main:temp",nbt:"rows[1]",interpret:true}
+tellraw @a {storage:"main:temp",nbt:"rows[2]",interpret:true}
+tellraw @a {storage:"main:temp",nbt:"rows[3]",interpret:true}
+tellraw @a {storage:"main:temp",nbt:"rows[4]",interpret:true}
+execute as @a run function main:superstate/4/slide/show_own_score
+tellraw @a {text:"——————————————————————————————",color:"#E83D84",strikethrough:true}
 
 # --- POP SLIDE AFTER DISPLAYING IT ---
 data remove storage main:temp stats[0]

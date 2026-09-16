@@ -38,7 +38,7 @@ execute if score ?supertimer main.time matches 120 if score ?minigame_id main.st
 # (i got a little lazy sorry)
 
 # --- HOW TO PLAY (first msg) ---
-execute if score ?supertimer main.time = ?event.start_showing_howtoplay main.time run tellraw @a [{text:"\n",color:"yellow"},{storage:"main:temp",nbt:"gamename",color:"white",bold:1b}," — How to play ",{text:"(read chat)",color:"gray"}]
+execute if score ?supertimer main.time = ?event.start_showing_howtoplay main.time run tellraw @a [{text:"\n",color:"yellow"},{storage:"main:temp",nbt:"gamename",interpret:true,color:"white",bold:1b}," — How to play ",{text:"(read chat)",color:"gray"}]
 execute if score ?supertimer main.time = ?event.start_showing_howtoplay main.time as @a at @s run playsound entity.item.pickup master @s ~ ~ ~ .6 1 1
 
 # --- SLIDES ---
