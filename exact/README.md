@@ -30,6 +30,12 @@ Task setup/cleanup is keyed on `?task exact.state` (which task is active). `?rou
 
 Edit advancement JSON files in `data/exact/advancement/` to use custom triggers for each task (replacing the `minecraft:impossible` placeholder with meaningful criteria like `minecraft:player_killed_entity`, `minecraft:consume_item`, etc.).
 
+## Early Cutoff
+
+`?cutoff exact.state` is the percentage of players allowed to finish a task before the round is cut short to 3 seconds remaining. It is set once per round by `exact:util/set_cutoff` and ramps down (90 → 50) as rounds go on, so later rounds punish slow players harder. Edit that one file to retune the ramp.
+
+The check runs in `exact:state/ingame_task/check_cutoff`, called from `win.mcfunction` each time somebody finishes. It only ever shortens a round — if fewer than 3 seconds are left already, the timer is untouched.
+
 ## Scoring
 
 - Players earn 1 point for each round they complete successfully

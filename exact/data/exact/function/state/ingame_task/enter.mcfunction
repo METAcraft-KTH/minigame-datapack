@@ -16,6 +16,9 @@ tag @a remove exact.win
 # Pick this round's task (random, never repeats within a game)
 function exact:util/draw_task
 
+# How many players may finish before the round is cut short
+function exact:util/set_cutoff
+
 # Round banner
 tellraw @a [{"text":"ROUND ","color":"gold","bold":true},{"score":{"name":"?round","objective":"exact.state"}}]
 

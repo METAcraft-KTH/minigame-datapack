@@ -39,6 +39,9 @@ execute if score ?task exact.state matches 15 run function exact:state/ingame_ta
 # add to outro stats
 scoreboard players add @s exact.stats.wins 1
 
+# Cut the round short once enough players have finished
+function exact:state/ingame_task/check_cutoff
+
 # check how many players have not finished yet, and give points based on that
 execute store result storage exact.temp points int 2 if entity @a[tag=!admin,tag=!exact.win]
 function score:add_points with storage exact.temp
