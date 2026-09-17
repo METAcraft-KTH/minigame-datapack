@@ -9,6 +9,7 @@
 
 # Initialize round counter and phase
 scoreboard players set ?round exact.state 1
+scoreboard players set ?task exact.state 0
 scoreboard players set ?phase exact.state 0
 scoreboard players set ?phase_timer exact.timer 0
 
@@ -19,7 +20,12 @@ scoreboard players set @a exact.sneakcount 0
 tag @a remove exact.win
 team leave @a[team=exact.temp]
 
-# Arm all advancement triggers for all 16 rounds
+# Fill the pool of tasks still to be played. exact:util/draw_task pops a
+# random entry out of this each round, so the 15 tasks run in a random
+# order with no repeats.
+data modify storage exact:tasks pool set value [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+# Arm all advancement triggers for all 15 tasks
 advancement revoke @a only exact:1
 advancement revoke @a only exact:2
 advancement revoke @a only exact:3
@@ -35,7 +41,6 @@ advancement revoke @a only exact:12
 advancement revoke @a only exact:13
 advancement revoke @a only exact:14
 advancement revoke @a only exact:15
-advancement revoke @a only exact:16
 
 # Start with pregame phase
 function exact:state/pregame/enter

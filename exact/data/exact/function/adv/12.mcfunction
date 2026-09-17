@@ -1,9 +1,9 @@
 # ============================================================
 # exact:adv/12
-# Advancement reward handler for round 12
+# Advancement reward handler for task 12
 # ============================================================
 
 execute unless score ?phase exact.state matches 1 run return run advancement revoke @s only exact:12
-execute unless score ?round exact.state matches 12 run return run advancement revoke @s only exact:12
+execute unless score ?task exact.state matches 12 run return run advancement revoke @s only exact:12
 
 function exact:state/ingame_task/win

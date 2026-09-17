@@ -68,6 +68,3 @@
 
     *X paid respects to Rick May!*
 
-16. BOSS GAME: Pig racing!! (teleported to a pig race course)
-
-    *X cranked their hog!*
