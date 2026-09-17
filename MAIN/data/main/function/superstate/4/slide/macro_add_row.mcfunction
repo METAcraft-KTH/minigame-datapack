@@ -9,4 +9,4 @@
 # 
 # ============================================================
 
-$data modify storage main:temp rows append value ["$(place). ",{selector:"@a[scores={main.temp.rank=$(row)}]",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix",interpret:true},{text:$(value),color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix",interpret:true}]
+$data modify storage main:temp rows append value ["$(place). ",{selector:"@a[scores={main.temp.rank=$(row)}]",color:"yellow"}," - ",{storage:"main:temp",nbt:"stats[0].prefix",interpret:true},{text:"$(value)",color:"aqua"},{storage:"main:temp",nbt:"stats[0].suffix",interpret:true}]

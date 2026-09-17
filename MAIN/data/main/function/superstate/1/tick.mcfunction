@@ -26,6 +26,9 @@ execute unless score ?minigame_id main.state matches 1 run bossbar set main:time
 #   special formatting if the game is 1
 execute if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"main.temp"}},{score:{name:"#sec_ones",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
 
+# --- TEAM SELECTION ---
+function main:team/tick
+
 # --- DONT LET PLAYERS DIE ---
 #   tp players who fell off
 execute as @a[tag=!admin] if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:0}}}}} run tp @s 0 64 50000

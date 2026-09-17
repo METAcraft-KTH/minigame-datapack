@@ -7,6 +7,9 @@
 # 
 # ============================================================
 
+# lock in everyone's team
+function main:team/lock
+
 # iirc this doesnt show the "your gamemode has been changed" popup
 execute as @a run gamemode spectator
 

@@ -404,6 +404,9 @@ MAIN manages several scoreboard objectives that you may **read** but should not 
 | `main.temp.rank` | Per-player leaderboard row used by the outro system |
 | `main.disconnect` | Tracks player disconnects (managed internally by MAIN) |
 | `main.death` | Tracks player deaths (managed internally by MAIN) |
+| `main.team` | Each player's event team: `1` = Data (team `main.data`), `2` = IT (team `main.it`). Locked in once a player is online when superstate 2 starts |
+| `main.team_pick` | Trigger used by the lobby team selection dialog (managed internally by MAIN) |
+| `main.used_cos` | Carrot on a stick right-clicks, reset every tick (managed internally by MAIN) |
 
 ### Fake player naming conventions
 

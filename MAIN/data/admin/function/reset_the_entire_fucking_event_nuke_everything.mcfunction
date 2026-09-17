@@ -15,6 +15,12 @@ scoreboard objectives remove main.iwashere
 scoreboard objectives remove main.state
 scoreboard objectives remove main.temp
 scoreboard objectives remove main.temp.stat
+scoreboard objectives remove main.used_cos
+scoreboard objectives remove main.team
+scoreboard objectives remove main.team_pick
+team remove main.data
+team remove main.it
+tag @a remove main.team_locked
 
 # wip
 

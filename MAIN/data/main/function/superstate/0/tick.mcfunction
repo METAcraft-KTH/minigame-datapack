@@ -10,6 +10,9 @@
 # 
 # ============================================================
 
+# --- TEAM SELECTION ---
+function main:team/tick
+
 # --- DONT LET PLAYERS DIE ---
 #   tp players who fell off
 execute as @a[tag=!admin] if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:0}}}}} run tp @s 0 64 50000

@@ -32,3 +32,6 @@ execute if score ?superstate main.state matches 3 run function main:private/call
 execute if score ?superstate main.state matches 4 run function main:superstate/4/tick
 #   should something happen in superstate 5?
 
+# reset right-clicks after the lobby had a chance to read them
+scoreboard players reset @a[scores={main.used_cos=1..}] main.used_cos
+

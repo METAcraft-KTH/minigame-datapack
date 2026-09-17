@@ -90,3 +90,20 @@ scoreboard players set #200 main.const 200
 scoreboard objectives add main.disconnect minecraft.custom:leave_game
 #   player death
 scoreboard objectives add main.death deathCount
+#   right-clicking the team selector
+scoreboard objectives add main.used_cos minecraft.used:minecraft.carrot_on_a_stick
+
+
+# --- TEAMS ---
+#   main.team is each player's saved team, and survives minigames clearing teams
+#     1 = Data, 2 = IT, 3 = Random (only until the next superstate 2 starts)
+#   main.team_pick is the trigger that the team selection dialog uses
+#   players tagged main.team_locked can no longer change teams
+scoreboard objectives add main.team dummy "Saved team"
+scoreboard objectives add main.team_pick trigger "Team selection"
+team add main.data "Data"
+team modify main.data color red
+team modify main.data prefix {text:"D ",color:"#e83d84",bold:true}
+team add main.it "IT"
+team modify main.it color light_purple
+team modify main.it prefix {text:"IT ",color:"#cc99ff",bold:true}
