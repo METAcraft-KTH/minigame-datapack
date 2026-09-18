@@ -1,0 +1,1 @@
+summon minecraft:marker ~ ~ ~ {Tags:["fireball.arena_center"],data:{name:"Arena Center"}}

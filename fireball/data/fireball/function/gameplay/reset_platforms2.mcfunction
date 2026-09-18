@@ -1,0 +1,2 @@
+$execute in $(arena_dimension) positioned $(red_spawn_x) $(red_spawn_y) $(red_spawn_z) positioned ~ ~-1 ~ run function fireball:gameplay/place_platform_red
+$execute in $(arena_dimension) positioned $(black_spawn_x) $(black_spawn_y) $(black_spawn_z) positioned ~ ~-1 ~ run function fireball:gameplay/place_platform_black

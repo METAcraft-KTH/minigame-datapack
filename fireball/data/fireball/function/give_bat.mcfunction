@@ -1,0 +1,1 @@
+give @s blaze_rod[attack_range={min_reach:0.0,max_reach:5.0,min_creative_reach:0.0,max_creative_reach:5.0,hitbox_margin:1},custom_name={"bold":true,"color":"gold","text":"Fireball Bat"}] 1
