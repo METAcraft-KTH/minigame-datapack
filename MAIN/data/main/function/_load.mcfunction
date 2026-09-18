@@ -42,12 +42,11 @@ execute unless score ! main.id matches -2147483648..2147483647 run scoreboard pl
 #   i would've liked to have so that every game registers its own name,
 #   but it's more convenient to be able to reorder them whenever.
 data merge storage main:game {display:[{}, \
-    {id:1,namespace:"exact",gamename:"Exactly As Told"}, \
-    {id:2,namespace:"tnttag",gamename:"TNT Tag"}, \
-    {id:3,namespace:"spleef",gamename:"Hela Havet Spleefar"}, \
-    {id:4,namespace:"mingle",gamename:"King of the Mingle"}, \
-    {id:5,namespace:"tf",gamename:"Turf Wars"}, \
-    {id:6,namespace:"qq",gamename:"One in the Quiver"}, \
+    {id:1,namespace:"splat",gamename:"Paint the Campus"}, \
+    {id:2,namespace:"walls",gamename:"Mini Mega Walls"}, \
+    {id:3,namespace:"exact",gamename:"Do or Die"}, \
+    {id:4,namespace:"tgttos",gamename:"WCTBWWGT"}, \
+    {id:5,namespace:"rl",gamename:"Not Rocket League"}, \
 ]}
 
 
