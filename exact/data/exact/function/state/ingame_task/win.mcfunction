@@ -20,6 +20,14 @@ title @s title {"text":"COMPLETE","color":"green","bold":true}
 # Rank-based broadcast and points
 execute store result score #playersdone exact.state if entity @a[tag=!admin,tag=exact.win]
 
+# Whoever got there first heals a heart back. Regeneration II ticks every
+# 25 ticks, so 3 seconds is worth two half-hearts, and it cannot overshoot
+# the 5-heart cap from exact:util/init_player. Finishing in the last 3
+# seconds of a round is the one case where ingame_wait/enter's effect clear
+# cuts the heal short -- the cutoff timer keeps that rare.
+execute if score #playersdone exact.state matches 1 run effect give @s minecraft:regeneration 3 1 true
+execute if score #playersdone exact.state matches 1 run title @s subtitle {"text":"First! +1 heart","color":"green"}
+
 execute if score ?task exact.state matches 1 run function exact:state/ingame_task/win_tellraw {verb:"was good, son, maybe even the best!"}
 execute if score ?task exact.state matches 2 run function exact:state/ingame_task/win_tellraw {verb:"shovels well!"}
 execute if score ?task exact.state matches 3 run function exact:state/ingame_task/win_tellraw {verb:"watched the movie, too!"}
@@ -57,8 +65,9 @@ scoreboard players add @s exact.stats.wins 1
 # Cut the round short once enough players have finished
 function exact:state/ingame_task/check_cutoff
 
-# check how many players have not finished yet, and give points based on that
-execute store result storage exact.temp points int 2 if entity @a[tag=!admin,tag=!exact.win]
+# check how many players are still in it and have not finished yet,
+# and give points based on that
+execute store result storage exact.temp points int 2 if entity @a[tag=!admin,tag=!exact.dead,tag=!exact.win]
 function score:add_points with storage exact.temp
 
 # check top 20 spots

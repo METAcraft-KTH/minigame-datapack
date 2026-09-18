@@ -18,11 +18,27 @@ scoreboard players set @a exact.stats.wins 0
 scoreboard players set @a exact.is_sneaking 0
 scoreboard players set @a exact.sneakcount 0
 tag @a remove exact.win
+tag @a remove exact.dead
 team leave @a[team=exact.temp]
 
+# --- ELIMINATION SETUP ---
+# Hearts ARE the life counter: everyone gets 5 of them, loses one for every
+# task they fail, and is eliminated the moment they run out. Wipe the whole
+# objective first so players who sit this game out can't bring a stale value
+# into it if they connect halfway through.
+scoreboard players reset * exact.lastround
+scoreboard players set @a exact.lastround 0
+execute as @a[tag=!admin] run function exact:util/init_player
+
+# Which teams actually turned up. The "one team left standing" end condition
+# only makes sense for a team that had players to begin with.
+execute store result score ?had_data exact.state if entity @a[tag=!admin,scores={main.team=1}]
+execute store result score ?had_it exact.state if entity @a[tag=!admin,scores={main.team=2}]
+
 # Fill the pool of tasks still to be played. exact:util/draw_task pops a
-# random entry out of this each round. There are 30 tasks but only 15
-# rounds, so each game plays a different random half of them.
+# random entry out of this each round, so no task repeats until the pool
+# runs dry -- at which point exact:util/refill_pool reshuffles all 30 back
+# in. The game runs for as many rounds as the elimination takes.
 data modify storage exact:tasks pool set value [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 
 # Arm all advancement triggers for all 30 tasks

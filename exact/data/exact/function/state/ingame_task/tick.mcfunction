@@ -7,19 +7,19 @@
 # "impossible" advancement that is granted from here instead.
 # ============================================================
 
-# Keep players fed, and shielded from each other's chaos. Task 7 is the
-# one task where players are meant to hurt each other, so no resistance.
-effect give @a[tag=!admin] saturation infinite 0 true
-execute unless score ?task exact.state matches 7 run effect give @a[tag=!admin] resistance 1 4 true
+# Saturation and resistance are handed out by exact:on/gametick now -- every
+# task including 7 keeps resistance, because hearts are the life counter and
+# nothing but exact's own /damage is allowed to move them. The advancement
+# triggers those tasks win on still fire with the damage reduced to nothing.
 
 # Task 2: keep the snow field topped up so nobody runs out of blocks to dig
 execute if score ?task exact.state matches 2 run fill 50007 99 50007 49993 99 49993 snow_block
 
 # Task 5: count sneaks, win at zero
-execute if score ?task exact.state matches 5 as @a[tag=!exact.win] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players remove @s exact.sneakcount 1
-execute if score ?task exact.state matches 5 as @a[tag=!exact.win] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 1
-execute if score ?task exact.state matches 5 as @a[tag=!exact.win] if score @s exact.is_sneaking matches 1 unless predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 0
-execute if score ?task exact.state matches 5 as @a[tag=!exact.win] if score @s exact.sneakcount matches 0 run advancement grant @s only exact:5
+execute if score ?task exact.state matches 5 as @a[tag=!exact.win,tag=!exact.dead] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players remove @s exact.sneakcount 1
+execute if score ?task exact.state matches 5 as @a[tag=!exact.win,tag=!exact.dead] unless score @s exact.is_sneaking matches 1 if predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 1
+execute if score ?task exact.state matches 5 as @a[tag=!exact.win,tag=!exact.dead] if score @s exact.is_sneaking matches 1 unless predicate exact:is_sneaking run scoreboard players set @s exact.is_sneaking 0
+execute if score ?task exact.state matches 5 as @a[tag=!exact.win,tag=!exact.dead] if score @s exact.sneakcount matches 0 run advancement grant @s only exact:5
 
 # Task 9: kill primed TNT before it can detonate, so a lit block simply
 # vanishes and the arena is left standing
@@ -42,7 +42,7 @@ execute if score ?task exact.state matches 18 as @a[tag=!exact.win,tag=!admin] i
 
 # Task 19: answered through a scoreboard trigger in the book
 execute if score ?task exact.state matches 19 run scoreboard players enable @a exact.quickmath
-execute if score ?task exact.state matches 19 as @a[tag=!exact.win] if score @s exact.quickmath matches 1 run advancement grant @s only exact:19
+execute if score ?task exact.state matches 19 as @a[tag=!exact.win,tag=!exact.dead] if score @s exact.quickmath matches 1 run advancement grant @s only exact:19
 execute if score ?task exact.state matches 19 as @a if score @s exact.quickmath matches 1 run scoreboard players set @s exact.quickmath 0
 
 # Task 20: win while sat on a pig (any pig -- saddles are the bottleneck)
@@ -57,42 +57,46 @@ execute if score ?task exact.state matches 24 as @a[tag=!exact.win,tag=!admin] a
 # still lost -- players have to replant that tile)
 execute if score ?task exact.state matches 25 run fill 50007 99 50007 49993 99 49993 farmland[moisture=7] replace dirt
 
-# Keep all players near the arena if they fall too low
-execute as @a if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:55}}}}} run tp @s @n[tag=exact.tp.arena]
+# Keep all players near the arena if they fall too low. This is not just
+# tidiness any more: the void deals out_of_world damage, which bypasses
+# resistance, so a player left falling would lose their remaining hearts
+# and be eliminated by the scenery. Task 24 plays away from the arena, so
+# it is exempt -- catch its players on the course itself if it needs it.
+execute unless score ?task exact.state matches 24 as @a if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:55}}}}} run tp @s 50000 100 50000
 
 # Persistent subtitle prompts and success title
 title @a times 0 80 20
-title @a[tag=!exact.win] title ""
-execute if score ?task exact.state matches 5 as @a[tag=!exact.win] run title @s subtitle ["Sneak ",{"score":{"objective":"exact.sneakcount","name":"@s"}}," times!!"]
-execute if score ?task exact.state matches 1 run title @a[tag=!exact.win] subtitle "Jump 9 blocks high!!"
-execute if score ?task exact.state matches 2 run title @a[tag=!exact.win] subtitle "Break the shovel!!"
-execute if score ?task exact.state matches 3 run title @a[tag=!exact.win] subtitle "Avenge Jack Black!!"
-execute if score ?task exact.state matches 4 run title @a[tag=!exact.win] subtitle "Drink milk!!"
-execute if score ?task exact.state matches 6 run title @a[tag=!exact.win] subtitle "Enchant pickaxe!!"
-execute if score ?task exact.state matches 7 run title @a[tag=!exact.win] subtitle "Poke someone!!"
-execute if score ?task exact.state matches 8 run title @a[tag=!exact.win] subtitle "Arson!!"
-execute if score ?task exact.state matches 9 run title @a[tag=!exact.win] subtitle "Light a TNT block!!"
-execute if score ?task exact.state matches 10 run title @a[tag=!exact.win] subtitle "Take damage!!"
-execute if score ?task exact.state matches 11 run title @a[tag=!exact.win] subtitle "Blind yourself!!"
-execute if score ?task exact.state matches 12 run title @a[tag=!exact.win] subtitle "Get hit by arrow!!"
-execute if score ?task exact.state matches 13 run title @a[tag=!exact.win] subtitle "Get breeding!!"
-execute if score ?task exact.state matches 14 run title @a[tag=!exact.win] subtitle "Fuck bees!!"
-execute if score ?task exact.state matches 15 run title @a[tag=!exact.win] subtitle "Buy anything!!"
-execute if score ?task exact.state matches 16 run title @a[tag=!exact.win] subtitle "Diamond armor, full set!!"
-execute if score ?task exact.state matches 17 run title @a[tag=!exact.win] subtitle "Sit down!!"
-execute if score ?task exact.state matches 18 run title @a[tag=!exact.win] subtitle "Jump into the void!!"
-execute if score ?task exact.state matches 19 run title @a[tag=!exact.win] subtitle "Quick maths!!"
-execute if score ?task exact.state matches 20 run title @a[tag=!exact.win] subtitle "Hog rider!!"
-execute if score ?task exact.state matches 21 run title @a[tag=!exact.win] subtitle "Wololo!!"
-execute if score ?task exact.state matches 22 run title @a[tag=!exact.win] subtitle "Drink water!!"
-execute if score ?task exact.state matches 23 run title @a[tag=!exact.win] subtitle "Touch grass!!"
-execute if score ?task exact.state matches 24 run title @a[tag=!exact.win] subtitle "Touch grass!!"
-execute if score ?task exact.state matches 25 run title @a[tag=!exact.win] subtitle "Make bread!!"
-execute if score ?task exact.state matches 26 run title @a[tag=!exact.win] subtitle "Craft blast furnace!!"
-execute if score ?task exact.state matches 27 run title @a[tag=!exact.win] subtitle "Craft crossbow!!"
-execute if score ?task exact.state matches 28 run title @a[tag=!exact.win] subtitle "Craft end crystal!!"
-execute if score ?task exact.state matches 29 run title @a[tag=!exact.win] subtitle "Craft rabbit stew!!"
-execute if score ?task exact.state matches 30 run title @a[tag=!exact.win] subtitle "Craft white harness!!"
+title @a[tag=!exact.win,tag=!exact.dead] title ""
+execute if score ?task exact.state matches 5 as @a[tag=!exact.win,tag=!exact.dead] run title @s subtitle ["Sneak ",{"score":{"objective":"exact.sneakcount","name":"@s"}}," times!!"]
+execute if score ?task exact.state matches 1 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Jump 9 blocks high!!"
+execute if score ?task exact.state matches 2 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Break the shovel!!"
+execute if score ?task exact.state matches 3 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Avenge Jack Black!!"
+execute if score ?task exact.state matches 4 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Drink milk!!"
+execute if score ?task exact.state matches 6 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Enchant pickaxe!!"
+execute if score ?task exact.state matches 7 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Poke someone!!"
+execute if score ?task exact.state matches 8 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Arson!!"
+execute if score ?task exact.state matches 9 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Light a TNT block!!"
+execute if score ?task exact.state matches 10 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Take damage!!"
+execute if score ?task exact.state matches 11 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Blind yourself!!"
+execute if score ?task exact.state matches 12 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Get hit by arrow!!"
+execute if score ?task exact.state matches 13 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Get breeding!!"
+execute if score ?task exact.state matches 14 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Fuck bees!!"
+execute if score ?task exact.state matches 15 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Buy anything!!"
+execute if score ?task exact.state matches 16 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Diamond armor, full set!!"
+execute if score ?task exact.state matches 17 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Sit down!!"
+execute if score ?task exact.state matches 18 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Jump into the void!!"
+execute if score ?task exact.state matches 19 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Quick maths!!"
+execute if score ?task exact.state matches 20 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Hog rider!!"
+execute if score ?task exact.state matches 21 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Wololo!!"
+execute if score ?task exact.state matches 22 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Drink water!!"
+execute if score ?task exact.state matches 23 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Touch grass!!"
+execute if score ?task exact.state matches 24 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Touch grass!!"
+execute if score ?task exact.state matches 25 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Make bread!!"
+execute if score ?task exact.state matches 26 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Craft blast furnace!!"
+execute if score ?task exact.state matches 27 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Craft crossbow!!"
+execute if score ?task exact.state matches 28 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Craft end crystal!!"
+execute if score ?task exact.state matches 29 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Craft rabbit stew!!"
+execute if score ?task exact.state matches 30 run title @a[tag=!exact.win,tag=!exact.dead] subtitle "Craft white harness!!"
 
 title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
 

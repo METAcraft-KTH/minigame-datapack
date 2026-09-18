@@ -7,6 +7,19 @@
 # iron platform. Keyed on ?task -- the task that just ran.
 # ============================================================
 
+# --- SETTLE THE ROUND ---
+# Everybody still in the game who did not finish the task loses a heart.
+# out_of_world is the damage type in #bypasses_resistance, so the resistance 5
+# from exact:on/gametick does not soak it up. Running out of hearts kills the
+# player, and MAIN reports that to exact:on/player/death, which eliminates
+# them -- that lands next tick, so the end-of-game check waits until the wait
+# phase is over (exact:state/ingame_wait/exit).
+execute as @a[tag=!admin,tag=!exact.dead,tag=!exact.win] run damage @s 2 minecraft:out_of_world
+
+# Mark the round as settled for everyone who was here for it, so players who
+# disconnect now get charged for it on their way back in (exact:util/catchup).
+execute as @a[tag=!admin,tag=!exact.dead] run scoreboard players operation @s exact.lastround = ?round exact.state
+
 # Clear inventories between rounds
 clear @a[tag=!admin]
 effect clear @a[tag=!admin]
@@ -42,7 +55,8 @@ execute if score ?task exact.state matches 25 run fill 49981 98 49981 50019 98 5
 
 title @a times 0 60 40
 title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
-title @a[tag=!exact.win] title {"text":"FAILURE","color":"red","bold":true}
+title @a[tag=!exact.win,tag=!exact.dead] title {"text":"FAILURE","color":"red","bold":true}
+title @a[tag=!exact.win,tag=!exact.dead] subtitle {"text":"-1 heart","color":"red"}
 
 # Reset phase timer
 scoreboard players set ?phase_timer exact.timer 0

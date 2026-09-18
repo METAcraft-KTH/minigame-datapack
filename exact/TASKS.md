@@ -3,7 +3,9 @@
 Source list: `../exactly_as_told.md`. Subtitles and win messages live in
 `function/state/ingame_task/tick.mcfunction` and `.../win.mcfunction`.
 
-30 tasks, 15 rounds: each game draws a different random half.
+30 tasks, drawn one per round in a random order. The game runs until
+the elimination is settled, so the pool is reshuffled whenever all 30
+have been played.
 
 | # | Subtitle | How it is won |
 | --- | --- | --- |
@@ -13,10 +15,10 @@ Source list: `../exactly_as_told.md`. Subtitles and win messages live in
 | 4 | Drink milk!! | `consume_item`, milk bucket |
 | 5 | Sneak 67 times!! | polled in `tick` via `exact:is_sneaking` |
 | 6 | Enchant pickaxe!! | `enchanted_item`, diamond pickaxe |
-| 7 | Poke someone!! | `player_hurt_entity`, player — **only task without resistance** |
+| 7 | Poke someone!! | `spear_mobs` — everybody keeps resistance 5, hearts are the life counter |
 | 8 | Arson!! | `item_used_on_block`, flint & steel on hay |
 | 9 | Light a TNT block!! | `item_used_on_block`, flint & steel on TNT |
-| 10 | Take damage!! | `entity_hurt_player` — **only task with fall damage on** |
+| 10 | Take damage!! | `entity_hurt_player` — fires even with the damage fully resisted |
 | 11 | Blind yourself!! | `effects_changed`, blindness (suspicious stew + azure bluet) |
 | 12 | Get hit by arrow!! | `entity_hurt_player`, damage type tag `is_projectile` — fall damage forced off |
 | 13 | Get breeding!! | `bred_animals` |

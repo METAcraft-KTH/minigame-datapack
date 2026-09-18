@@ -1,16 +1,19 @@
 # ============================================================
 # exact:state/ingame_wait/exit
 # Transition from ingame_wait to next phase
-# Check if the last round (15) has completed; if yes, end game
-# Otherwise, increment round and return to ingame_task
+#
+# There is no fixed number of rounds any more: the game runs
+# until the elimination leaves one team (or one player) standing.
+# Every elimination from this round has been processed by now --
+# the hearts came off at the start of the wait phase, and MAIN
+# reported the resulting deaths on the tick after that.
 # ============================================================
 
 # Remove win tags from all players before next round
 tag @a remove exact.win
 
-# Check if the last round (15) has just completed
-execute if score ?round exact.state matches 15.. run bossbar remove exact:timer
-execute if score ?round exact.state matches 15.. run return run function main:api/end_game
+# Ends the game and returns 1 when only one side is left standing
+execute if function exact:state/end/check run return 0
 
 # Otherwise, advance to next round and restart task phase
 scoreboard players add ?round exact.state 1

@@ -13,6 +13,10 @@ scoreboard objectives add exact.quickmath trigger "Round 8 trigger"
 scoreboard objectives add exact.y_start dummy "Round 15 start Y"
 scoreboard objectives add exact.y_now dummy "Round 15 current Y"
 
+# Last round whose result was settled for this player (see exact:util/catchup).
+# Players who were offline while rounds were settled pay for them on rejoin.
+scoreboard objectives add exact.lastround dummy "Last round played"
+
 # --- INTRO ANIMATION AND TEXT ---
 # Camera position for intro cutscene
 data modify storage main:intro exact.camera_starting_coords set value "50000 105 49960"
@@ -26,10 +30,10 @@ data modify storage main:intro exact.howtoplay append value \
     [\
         "In this game, you'll be given various tasks to follow.",\
         "",\
-        "The faster you complete them, the more 💎 you earn!",\
-        "",\
-        "All tasks also have a time limit.",\
-        "If you don't complete a task in time, you earn nothing.",\
+        "All tasks have a time limit. You start with 5 ❤,",\
+        "and every task you fail costs you one of them.",\
+        "The first player to finish a task heals one back.",\
+        "Run out and you're eliminated - last team standing wins!",\
     ]
 data modify storage main:intro exact.howtoplay append value \
     [\

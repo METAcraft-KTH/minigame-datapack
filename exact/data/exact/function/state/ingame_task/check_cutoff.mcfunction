@@ -10,8 +10,10 @@
 
 # Compare done/total against ?cutoff/100 without dividing:
 #   done * 100 >= total * cutoff
+# Eliminated players are out of the count -- they can never finish, so
+# leaving them in would stop the cutoff from ever being reached.
 execute store result score #cut_done exact.state if entity @a[tag=!admin,tag=exact.win]
-execute store result score #cut_need exact.state if entity @a[tag=!admin]
+execute store result score #cut_need exact.state if entity @a[tag=!admin,tag=!exact.dead]
 
 # Nobody has finished: bail out before 0 >= 0 fires on an empty server
 execute if score #cut_done exact.state matches ..0 run return 0

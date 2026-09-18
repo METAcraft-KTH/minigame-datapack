@@ -15,7 +15,9 @@
 # Clear titles
 title @a clear
 
-# Reset players for the new round
+# Reset players for the new round. Eliminated players keep spectating: the
+# round setup below skips them wherever it would otherwise spawn mobs on top
+# of a spectator or hand them a kit they cannot use.
 effect clear @a[tag=!admin]
 clear @a[tag=!admin]
 tag @a remove exact.win
@@ -41,7 +43,7 @@ execute if score ?task exact.state matches 2 run give @a[tag=!admin] golden_shov
 
 # Task 3: Avenge Jack Black!! (kill the chicken jockey)
 execute if score ?task exact.state matches 3 run difficulty hard
-execute if score ?task exact.state matches 3 at @a[tag=!admin] run summon chicken ~ ~ ~ {IsChickenJockey:1b,Passengers:[{id:"minecraft:zombie",IsBaby:1b,equipment:{head:{id:"oak_button"}}}]}
+execute if score ?task exact.state matches 3 at @a[tag=!admin,tag=!exact.dead] run summon chicken ~ ~ ~ {IsChickenJockey:1b,Passengers:[{id:"minecraft:zombie",IsBaby:1b,equipment:{head:{id:"oak_button"}}}]}
 execute if score ?task exact.state matches 3 run give @a[tag=!admin] wooden_sword
 
 # Task 4: Drink milk!!
@@ -58,8 +60,9 @@ execute if score ?task exact.state matches 6 run give @a[tag=!admin] diamond_pic
 execute if score ?task exact.state matches 6 run give @a[tag=!admin] lapis_lazuli 32
 execute if score ?task exact.state matches 6 run give @a[tag=!admin] experience_bottle 32
 
-# Task 7: Poke someone!! (the only task where players may hurt each other,
-# so ingame_task/tick withholds resistance for this one)
+# Task 7: Poke someone!! Everyone keeps resistance 5 here like in every other
+# task -- hearts are the elimination counter, so players must not be able to
+# take them off each other. The spear still registers the hit.
 execute if score ?task exact.state matches 7 run give @a[tag=!admin] diamond_spear
 
 # Task 8: Arson!! (3x3x3 hay cube floating 2 blocks above head height)
@@ -104,8 +107,8 @@ execute if score ?task exact.state matches 12 run give @a[tag=!admin] arrow 10
 
 # Task 13: Get breeding!! (2 wheat feeds 2 animals -- players have to share
 # the herd, since one cow and one sheep spawn per player)
-execute if score ?task exact.state matches 13 at @a[tag=!admin] run summon cow ~ ~ ~
-execute if score ?task exact.state matches 13 at @a[tag=!admin] run summon sheep ~ ~ ~
+execute if score ?task exact.state matches 13 at @a[tag=!admin,tag=!exact.dead] run summon cow ~ ~ ~
+execute if score ?task exact.state matches 13 at @a[tag=!admin,tag=!exact.dead] run summon sheep ~ ~ ~
 execute if score ?task exact.state matches 13 run give @a[tag=!admin] wheat 2
 
 # Task 14: Fuck bees!! (nests fill the layer players stand in, so they get
@@ -116,10 +119,10 @@ execute if score ?task exact.state matches 14 run give @a[tag=!admin] golden_axe
 # Task 15: Buy anything!! (mine emeralds, then trade them)
 execute if score ?task exact.state matches 15 run fill 50007 99 50007 49993 99 49993 emerald_ore
 execute if score ?task exact.state matches 15 run give @a[tag=!admin] iron_pickaxe[can_break={blocks:"emerald_ore"}]
-execute if score ?task exact.state matches 15 at @a[tag=!admin] run summon wandering_trader ~ ~ ~
+execute if score ?task exact.state matches 15 at @a[tag=!admin,tag=!exact.dead] run summon wandering_trader ~ ~ ~
 
 # Task 16: Diamond armor, full set!!
-execute if score ?task exact.state matches 16 at @a[tag=!admin] run summon armor_stand ~ ~ ~ {equipment:{head:{id:"minecraft:diamond_helmet"},chest:{id:"minecraft:diamond_chestplate"},legs:{id:"minecraft:diamond_leggings"},feet:{id:"minecraft:diamond_boots"}}}
+execute if score ?task exact.state matches 16 at @a[tag=!admin,tag=!exact.dead] run summon armor_stand ~ ~ ~ {equipment:{head:{id:"minecraft:diamond_helmet"},chest:{id:"minecraft:diamond_chestplate"},legs:{id:"minecraft:diamond_leggings"},feet:{id:"minecraft:diamond_boots"}}}
 
 # Task 17: Sit down!! (64 string -> wool -> wool slabs -> cushion)
 execute if score ?task exact.state matches 17 run fill 50007 99 50007 49993 99 49993 crafting_table
@@ -128,18 +131,18 @@ execute if score ?task exact.state matches 17 run give @a[tag=!admin] string 64
 # Task 18: Jump into the void!! (nothing to set up -- walk off the platform)
 
 # Task 19: Quick maths!!
-execute if score ?task exact.state matches 19 as @a[tag=!admin] run function exact:state/ingame_task/task_19_book
+execute if score ?task exact.state matches 19 as @a[tag=!admin,tag=!exact.dead] run function exact:state/ingame_task/task_19_book
 execute if score ?task exact.state matches 19 run scoreboard players enable @a exact.quickmath
 execute if score ?task exact.state matches 19 run scoreboard players set @a exact.quickmath 0
 
 # Task 20: Hog rider!! (craft a saddle, then mount a pig)
 execute if score ?task exact.state matches 20 run fill 50007 99 50007 49993 99 49993 crafting_table
-execute if score ?task exact.state matches 20 as @a[tag=!admin] run summon pig 50000 100 50000
+execute if score ?task exact.state matches 20 as @a[tag=!admin,tag=!exact.dead] run summon pig 50000 100 50000
 execute if score ?task exact.state matches 20 run give @a[tag=!admin] leather 3
 execute if score ?task exact.state matches 20 run give @a[tag=!admin] iron_nugget 9
 
 # Task 21: Wololo!! (poppy -> red dye in the 2x2 grid, then dye the sheep)
-execute if score ?task exact.state matches 21 at @a[tag=!admin] run summon sheep ~ ~ ~ {Color:11b}
+execute if score ?task exact.state matches 21 at @a[tag=!admin,tag=!exact.dead] run summon sheep ~ ~ ~ {Color:11b}
 execute if score ?task exact.state matches 21 run give @a[tag=!admin] poppy 1
 
 # Task 22: Drink water!!
@@ -169,7 +172,7 @@ execute if score ?task exact.state matches 25 run give @a[tag=!admin] bone_meal[
 # Tasks 26-30: crafting tasks. Same crafting-table platform and the same
 # 64-of-everything kit, dealt into the backpack so the hotbar stays clear.
 execute if score ?task exact.state matches 26..30 run fill 50007 99 50007 49993 99 49993 crafting_table
-execute if score ?task exact.state matches 26..30 as @a[tag=!admin] run function exact:state/ingame_task/craft_kit
+execute if score ?task exact.state matches 26..30 as @a[tag=!admin,tag=!exact.dead] run function exact:state/ingame_task/craft_kit
 
 # Reset phase timer
 scoreboard players set ?phase_timer exact.timer 0
