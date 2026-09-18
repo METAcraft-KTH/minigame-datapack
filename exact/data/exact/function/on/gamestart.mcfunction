@@ -21,11 +21,11 @@ tag @a remove exact.win
 team leave @a[team=exact.temp]
 
 # Fill the pool of tasks still to be played. exact:util/draw_task pops a
-# random entry out of this each round, so the 15 tasks run in a random
-# order with no repeats.
-data modify storage exact:tasks pool set value [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+# random entry out of this each round. There are 30 tasks but only 15
+# rounds, so each game plays a different random half of them.
+data modify storage exact:tasks pool set value [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]
 
-# Arm all advancement triggers for all 15 tasks
+# Arm all advancement triggers for all 30 tasks
 advancement revoke @a only exact:1
 advancement revoke @a only exact:2
 advancement revoke @a only exact:3
@@ -41,6 +41,21 @@ advancement revoke @a only exact:12
 advancement revoke @a only exact:13
 advancement revoke @a only exact:14
 advancement revoke @a only exact:15
+advancement revoke @a only exact:16
+advancement revoke @a only exact:17
+advancement revoke @a only exact:18
+advancement revoke @a only exact:19
+advancement revoke @a only exact:20
+advancement revoke @a only exact:21
+advancement revoke @a only exact:22
+advancement revoke @a only exact:23
+advancement revoke @a only exact:24
+advancement revoke @a only exact:25
+advancement revoke @a only exact:26
+advancement revoke @a only exact:27
+advancement revoke @a only exact:28
+advancement revoke @a only exact:29
+advancement revoke @a only exact:30
 
 # Start with pregame phase
 function exact:state/pregame/enter

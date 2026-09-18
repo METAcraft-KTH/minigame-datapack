@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:bread"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "exact:adv/25"
+  }
+}

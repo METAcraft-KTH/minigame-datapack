@@ -1,14 +1,12 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:player_killed_entity",
+      "trigger": "minecraft:enchanted_item",
       "conditions": {
-        "entity": {
-          "type": "minecraft:entity_properties",
-          "entity": "this",
-          "predicate": {
-            "minecraft:entity_type": "minecraft:zombie"
-          }
+        "item": {
+          "items": [
+            "minecraft:diamond_pickaxe"
+          ]
         }
       }
     }

@@ -1,70 +1,42 @@
-1. Enchant diamond pickaxe!!
+# exact - task reference
 
-   *X has played these games before!*
+Source list: `../exactly_as_told.md`. Subtitles and win messages live in
+`function/state/ingame_task/tick.mcfunction` and `.../win.mcfunction`.
 
-2. Heal to full health!! (/damage 19, get random healing and regen potions in inventory)
+30 tasks, 15 rounds: each game draws a different random half.
 
-   *X regained their medical license!*
+| # | Subtitle | How it is won |
+| --- | --- | --- |
+| 1 | Jump 9 blocks high!! | `fall_after_explosion`, wind charge, y ≥ 9 |
+| 2 | Break the shovel!! | `item_durability_changed`, golden shovel at 0 |
+| 3 | Avenge Jack Black!! | `player_killed_entity`, zombie |
+| 4 | Drink milk!! | `consume_item`, milk bucket |
+| 5 | Sneak 67 times!! | polled in `tick` via `exact:is_sneaking` |
+| 6 | Enchant pickaxe!! | `enchanted_item`, diamond pickaxe |
+| 7 | Poke someone!! | `player_hurt_entity`, player — **only task without resistance** |
+| 8 | Arson!! | `item_used_on_block`, flint & steel on hay |
+| 9 | Light a TNT block!! | `item_used_on_block`, flint & steel on TNT |
+| 10 | Take damage!! | `entity_hurt_player` — **only task with fall damage on** |
+| 11 | Blind yourself!! | `effects_changed`, blindness (suspicious stew + azure bluet) |
+| 12 | Get hit by arrow!! | `entity_hurt_player`, damage type tag `is_projectile` — fall damage forced off |
+| 13 | Get breeding!! | `bred_animals` |
+| 14 | Fuck bees!! | `bee_nest_destroyed`, bee nest |
+| 15 | Buy anything!! | `villager_trade` |
+| 16 | Diamond armor, full set!! | polled: `if items entity @s armor.*` |
+| 17 | Sit down!! | polled: riding a `minecraft:cushion` entity |
+| 18 | Jump into the void!! | polled: y ≤ 49 |
+| 19 | Quick maths!! | `exact.quickmath` trigger from the book |
+| 20 | Hog rider!! | polled: riding a `minecraft:pig` |
+| 21 | Wololo!! | `player_interacted_with_entity`, red dye + sheep |
+| 22 | Drink water!! | `consume_item`, potion |
+| 23 | Touch grass!! (riptide) | polled in `tick`: standing on grass |
+| 24 | Touch grass!! (speed II) | polled in `tick`: standing on grass — **placeholder coords** |
+| 25 | Make bread!! | `inventory_changed`, bread |
+| 26 | Craft blast furnace!! | `recipe_crafted`, `minecraft:blast_furnace` |
+| 27 | Craft crossbow!! | `recipe_crafted`, `minecraft:crossbow` |
+| 28 | Craft end crystal!! | `recipe_crafted`, `minecraft:end_crystal` |
+| 29 | Craft rabbit stew!! | `inventory_changed`, rabbit stew (recipe has several ids) |
+| 30 | Craft white harness!! | `recipe_crafted`, `minecraft:white_harness` |
 
-3. Wololo!! (Goal is to turn blue sheep red) (get poppy)
-
-   *X understood the reference!*
-
-4. Make 10 emeralds!! (spawn NoAI fletchers, give 16 of each log type: oak, birch, spruce, jungle, acacia)
-
-   *X took lessons from Be$o$!*
-
-5. Sneak 50 times!!
-
-   *X should see a doctor!*
-
-6. Defeat chicken jockey!!
-
-   *X has avenged Jack Black!*
-
-7. Tower up!! (get 64 stone bricks, goal is to reach Y\>122)
-
-	(randomly pick one of the following messages to show)  
-    *X te monte yon dezyèm tou!*  
-    *X ਨੇ ਦੂਜਾ ਟਾਵਰ ਖੜਾ ਕੀਤਾ!*  
-    *X 가 두 번째 탑을 세웠다!*  
-    *X пабудаваў другую вежу!*  
-    *X இரண்டாவது கோபுரத்தை எழுப்பினார்!*  
-    *X reisti annan turna!*  
-    *X သည် ဒုတိယတိုင်တစ်ခုကို တည်ဆောက်ခဲ့သည်။*  
-    *X-მა მეორე კოშკი ააშენა!*  
-    *X đã xây dựng một tháp thứ hai!*  
-    *X 豎咗第二座塔！*
-
-8. Quick maths!! (get written book. Impossible advancement trigger, use scoreboard trigger)
-
-    *X can count better than Valve!*
-
-9. Give away diamond!! (get diamond in inventory, use advancement trigger "minecraft:thrown_item_picked_up_by_entity")
-
-    *X is a Minecraft YouTuber!*
-
-10. Kill someone!!
-
-    *X acted in self defense!*
-
-11. Touch grass!! (teleport to parkour course, win condition is standing on grass block)
-
-    *X can touch grass, apparently!*
-
-12. Break the shovel!! (infinite snow on ground and golden shovel)
-
-    *X shovels well!*
-
-13. Make rabbit stew!!
-
-    *X doesn’t need a recipe book!*
-
-14. Take damage!! (fall damage or harming potion in inventory)
-
-    *X should be locked up!*
-
-15. Launch 11 blocks up!! (get 64 wind charges)
-
-    *X paid respects to Rick May!*
-
+Tasks 26-30 share the crafting-table platform and the kit in
+`function/state/ingame_task/craft_kit.mcfunction`.

@@ -1,11 +1,21 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:thrown_item_picked_up_by_entity",
+      "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "item": {
-          "items": [
-            "minecraft:diamond"
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:flint_and_steel"
+              }
+            },
+            {
+              "type": "minecraft:match_block",
+              "blocks": "minecraft:tnt"
+            }
           ]
         }
       }

@@ -1,16 +1,7 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:inventory_changed",
-      "conditions": {
-        "items": [
-          {
-            "items": [
-              "minecraft:rabbit_stew"
-            ]
-          }
-        ]
-      }
+      "trigger": "minecraft:bred_animals"
     }
   },
   "rewards": {

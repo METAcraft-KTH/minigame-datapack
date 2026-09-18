@@ -1,7 +1,10 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:impossible"
+      "trigger": "minecraft:spear_mobs",
+      "conditions": {
+        "count": 1
+      }
     }
   },
   "rewards": {

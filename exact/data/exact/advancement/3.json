@@ -1,18 +1,13 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:player_interacted_with_entity",
+      "trigger": "minecraft:player_killed_entity",
       "conditions": {
-        "item": {
-          "items": [
-            "minecraft:red_dye"
-          ]
-        },
         "entity": {
           "type": "minecraft:entity_properties",
           "entity": "this",
           "predicate": {
-            "minecraft:entity_type": "minecraft:sheep"
+            "minecraft:entity_type": "minecraft:zombie"
           }
         }
       }

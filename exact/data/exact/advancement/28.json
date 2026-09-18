@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:recipe_crafted",
+      "conditions": {
+        "recipes": "minecraft:end_crystal"
+      }
+    }
+  },
+  "rewards": {
+    "function": "exact:adv/28"
+  }
+}

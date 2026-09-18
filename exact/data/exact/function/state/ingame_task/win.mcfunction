@@ -20,21 +20,36 @@ title @s title {"text":"COMPLETE","color":"green","bold":true}
 # Rank-based broadcast and points
 execute store result score #playersdone exact.state if entity @a[tag=!admin,tag=exact.win]
 
-execute if score ?task exact.state matches 1 run function exact:state/ingame_task/win_tellraw {verb:"has played these games before!"}
-execute if score ?task exact.state matches 2 run function exact:state/ingame_task/win_tellraw {verb:"regained their medical license!"}
-execute if score ?task exact.state matches 3 run function exact:state/ingame_task/win_tellraw {verb:"understood the reference!"}
-execute if score ?task exact.state matches 4 run function exact:state/ingame_task/win_tellraw {verb:"took lessons from Be$o$!"}
-execute if score ?task exact.state matches 5 run function exact:state/ingame_task/win_tellraw {verb:"should see a doctor!"}
-execute if score ?task exact.state matches 6 run function exact:state/ingame_task/win_tellraw {verb:"has avenged Jack Black!"}
-execute if score ?task exact.state matches 7 run function exact:state/ingame_task/win_round7_random
-execute if score ?task exact.state matches 8 run function exact:state/ingame_task/win_tellraw {verb:"can count better than Valve!"}
-execute if score ?task exact.state matches 9 run function exact:state/ingame_task/win_tellraw {verb:"is a Minecraft YouTuber!"}
-execute if score ?task exact.state matches 10 run function exact:state/ingame_task/win_tellraw {verb:"acted in self defense!"}
-execute if score ?task exact.state matches 11 run function exact:state/ingame_task/win_tellraw {verb:"can touch grass, apparently!"}
-execute if score ?task exact.state matches 12 run function exact:state/ingame_task/win_tellraw {verb:"shovels well!"}
-execute if score ?task exact.state matches 13 run function exact:state/ingame_task/win_tellraw {verb:"doesn't need a recipe book!"}
-execute if score ?task exact.state matches 14 run function exact:state/ingame_task/win_tellraw {verb:"should be locked up!"}
-execute if score ?task exact.state matches 15 run function exact:state/ingame_task/win_tellraw {verb:"paid respects to Rick May!"}
+execute if score ?task exact.state matches 1 run function exact:state/ingame_task/win_tellraw {verb:"was good, son, maybe even the best!"}
+execute if score ?task exact.state matches 2 run function exact:state/ingame_task/win_tellraw {verb:"shovels well!"}
+execute if score ?task exact.state matches 3 run function exact:state/ingame_task/win_tellraw {verb:"watched the movie, too!"}
+execute if score ?task exact.state matches 4 run function exact:state/ingame_task/win_tellraw {verb:"has strong bones!"}
+execute if score ?task exact.state matches 5 run function exact:state/ingame_task/win_tellraw {verb:"needs a wrist protector!"}
+execute if score ?task exact.state matches 6 run function exact:state/ingame_task/win_tellraw {verb:"is gonna mine those diamonds!"}
+execute if score ?task exact.state matches 7 run function exact:state/ingame_task/win_tellraw {verb:"is a Londoner!"}
+execute if score ?task exact.state matches 8 run function exact:state/ingame_task/win_tellraw {verb:"is wanted in Gävle!"}
+execute if score ?task exact.state matches 9 run function exact:state/ingame_task/win_tellraw {verb:"is lit fam!"}
+execute if score ?task exact.state matches 10 run function exact:state/ingame_task/win_tellraw {verb:"lives and dies by the ball!"}
+execute if score ?task exact.state matches 11 run function exact:state/ingame_task/win_tellraw {verb:"is biting hair!"}
+execute if score ?task exact.state matches 12 run function exact:state/ingame_task/win_tellraw {verb:"should have their bow license removed!"}
+execute if score ?task exact.state matches 13 run function exact:state/ingame_task/win_tellraw {verb:"is going to save the planet!"}
+execute if score ?task exact.state matches 14 run function exact:state/ingame_task/win_tellraw {verb:"did unspeakable things to bees!"}
+execute if score ?task exact.state matches 15 run function exact:state/ingame_task/win_tellraw {verb:"took lessons from Be$o$!"}
+execute if score ?task exact.state matches 16 run function exact:state/ingame_task/win_tellraw {verb:"is mining and crafting!"}
+execute if score ?task exact.state matches 17 run function exact:state/ingame_task/win_tellraw {verb:"has your full attention!"}
+execute if score ?task exact.state matches 18 run function exact:state/ingame_task/win_tellraw {verb:"rejects their humanity!"}
+execute if score ?task exact.state matches 19 run function exact:state/ingame_task/win_tellraw {verb:"can count better than Valve!"}
+execute if score ?task exact.state matches 20 run function exact:state/ingame_task/win_tellraw {verb:"costs 4 elixir!"}
+execute if score ?task exact.state matches 21 run function exact:state/ingame_task/win_tellraw {verb:"understood the reference!"}
+execute if score ?task exact.state matches 22 run function exact:state/ingame_task/win_tellraw {verb:"is not going to systemet tonight!"}
+execute if score ?task exact.state matches 23 run function exact:state/ingame_task/win_tellraw {verb:"touched grass AND water!"}
+execute if score ?task exact.state matches 24 run function exact:state/ingame_task/win_tellraw {verb:"REALLY wanted to touch grass!"}
+execute if score ?task exact.state matches 25 run function exact:state/ingame_task/win_tellraw {verb:"is eating good tonight!"}
+execute if score ?task exact.state matches 26 run function exact:state/ingame_task/win_tellraw {verb:"works for Kiruna!"}
+execute if score ?task exact.state matches 27 run function exact:state/ingame_task/win_tellraw {verb:"works for SAAB!"}
+execute if score ?task exact.state matches 28 run function exact:state/ingame_task/win_tellraw {verb:"works for Oppenheimer!"}
+execute if score ?task exact.state matches 29 run function exact:state/ingame_task/win_tellraw {verb:"works for Gordon Ramsay!"}
+execute if score ?task exact.state matches 30 run function exact:state/ingame_task/win_tellraw {verb:"works for Boeing!"}
 
 # add to outro stats
 scoreboard players add @s exact.stats.wins 1

@@ -1,14 +1,15 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:item_durability_changed",
+      "trigger": "minecraft:entity_hurt_player",
       "conditions": {
-        "item": {
-          "items": [
-            "minecraft:golden_shovel"
-          ]
-        },
-        "durability": 0
+        "damage": {
+          "type": {
+            "direct_entity": {
+              "minecraft:entity_type": "#minecraft:arrows"
+            }
+          }
+        }
       }
     }
   },

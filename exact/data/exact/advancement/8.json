@@ -1,7 +1,24 @@
 {
   "criteria": {
     "_": {
-      "trigger": "minecraft:impossible"
+      "trigger": "minecraft:item_used_on_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:all_of",
+          "terms": [
+            {
+              "type": "minecraft:match_tool",
+              "predicate": {
+                "items": "minecraft:flint_and_steel"
+              }
+            },
+            {
+              "type": "minecraft:match_block",
+              "blocks": "minecraft:hay_block"
+            }
+          ]
+        }
+      }
     }
   },
   "rewards": {

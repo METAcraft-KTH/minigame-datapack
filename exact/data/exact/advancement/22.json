@@ -1,0 +1,17 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "minecraft:potion"
+          ]
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "exact:adv/22"
+  }
+}

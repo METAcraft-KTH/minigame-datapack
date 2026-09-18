@@ -1,8 +1,8 @@
 # exact - 15-Round Task Completion Minigame
 
-A minigame where players have 20 seconds to complete a series of 15 different tasks. Each task is validated via an advancement trigger.
+A minigame where players have 20 seconds to complete a task. There are 30 tasks and 15 rounds, so every game plays a different random half of them. See `TASKS.md` for the full list and how each one is won.
 
-The task order is **shuffled every game**: `exact:on/gamestart` fills `storage exact:tasks pool` with `[1..15]`, and `exact:util/draw_task` pops one random entry out of it at the start of each round into `?task exact.state`. Because the entry is removed, every task runs exactly once.
+The task order is **shuffled every game**: `exact:on/gamestart` fills `storage exact:tasks pool` with `[1..30]`, and `exact:util/draw_task` pops one random entry out of it at the start of each round into `?task exact.state`. Because the entry is removed, no task repeats within a game.
 
 ## Gameplay Flow
 
@@ -14,8 +14,8 @@ The task order is **shuffled every game**: `exact:on/gamestart` fills `storage e
 
 ## Structure
 
-- **Advancements**: 15 triggers named `exact:1` through `exact:15`, one per task
-- **Advancement Handlers**: Functions in `data/exact/function/adv/` named `1.mcfunction` through `15.mcfunction`
+- **Advancements**: 30 triggers named `exact:1` through `exact:30`, one per task. Tasks with no suitable vanilla trigger use `minecraft:impossible` and are granted from `ingame_task/tick.mcfunction`
+- **Advancement Handlers**: Functions in `data/exact/function/adv/` named `1.mcfunction` through `30.mcfunction`
   - Each handler checks if the active task (`?task`, *not* the round number) matches its task number
   - If yes, awards the `exact.win` tag to the player
   - If no, does nothing (triggered at wrong time)

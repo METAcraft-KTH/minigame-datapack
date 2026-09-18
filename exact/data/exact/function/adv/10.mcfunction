@@ -1,6 +1,10 @@
 # ============================================================
 # exact:adv/10
-# Advancement reward handler for task 10
+# Reward handler for task 10: Take damage
+# Trigger: minecraft:entity_hurt_player
+#
+# Guards: the trigger is armed all game, so ignore it unless
+# this exact task is the one currently running.
 # ============================================================
 
 execute unless score ?phase exact.state matches 1 run return run advancement revoke @s only exact:10

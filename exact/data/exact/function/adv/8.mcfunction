@@ -1,6 +1,10 @@
 # ============================================================
 # exact:adv/8
-# Advancement reward handler for task 8
+# Reward handler for task 8: Arson
+# Trigger: minecraft:item_used_on_block
+#
+# Guards: the trigger is armed all game, so ignore it unless
+# this exact task is the one currently running.
 # ============================================================
 
 execute unless score ?phase exact.state matches 1 run return run advancement revoke @s only exact:8

@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:rabbit_stew"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "function": "exact:adv/29"
+  }
+}
