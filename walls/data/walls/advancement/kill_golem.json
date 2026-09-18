@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "minecraft:entity_properties",
+          "entity": "this",
+          "predicate": {
+            "minecraft:entity_type": "minecraft:iron_golem"
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "walls:events/on_kill_golem"
+  }
+}
