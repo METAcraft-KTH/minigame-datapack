@@ -19,12 +19,12 @@ scoreboard players set ?sudden_death walls.state 0
 scoreboard players set ?evoker_state walls.state 0
 scoreboard players set ?evoker_claimed walls.state 0
 scoreboard players set ?next_evoker walls.timer 12000
-#   how many defenders each side still has, for the "golem fell"
-#   callout. Read from the world rather than assumed, so a golem that
+#   how many defenders each side still has, for the "ravager fell"
+#   callout. Read from the world rather than assumed, so a ravager that
 #   failed to summon does not read as one that just died.
-execute store result score ?it_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.it]
-execute store result score ?data_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.data]
-scoreboard players set ?golem_melee walls.timer 30
+execute store result score ?it_towers walls.state if entity @e[type=ravager,tag=walls.tower.it]
+execute store result score ?data_towers walls.state if entity @e[type=ravager,tag=walls.tower.data]
+scoreboard players set ?tower_melee walls.timer 30
 scoreboard players reset @a walls.respawn
 
 # --- STATS ---
@@ -57,9 +57,9 @@ bossbar set walls:timer players @a
 bossbar set walls:timer visible true
 
 # --- SANITY CHECK ---
-#   an empty golem selector reads as "that team lost", so the win check
+#   an empty ravager selector reads as "that team lost", so the win check
 #   only arms if walls:on/introstart really did place all four of them
 scoreboard players set ?ready walls.state 0
-execute store result score #n walls.temp if entity @e[type=iron_golem,tag=walls.golem]
+execute store result score #n walls.temp if entity @e[type=ravager,tag=walls.tower]
 execute if score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 1
-execute unless score #n walls.temp matches 4 run tellraw @a[tag=admin] {text:"[walls] expected 4 golems and did not find them — the win check is off, the match will run to the 30 minute backstop.",color:"red"}
+execute unless score #n walls.temp matches 4 run tellraw @a[tag=admin] {text:"[walls] expected 4 ravagers and did not find them — the win check is off, the match will run to the 30 minute backstop.",color:"red"}

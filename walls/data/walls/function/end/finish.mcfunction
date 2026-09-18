@@ -16,13 +16,14 @@ team modify main.it friendlyFire true
 team modify main.data friendlyFire true
 
 # --- CLEAN UP ---
-kill @e[type=iron_golem,tag=walls.golem]
-kill @e[type=armor_stand,tag=walls.golem_anchor]
+kill @e[type=ravager,tag=walls.tower]
+kill @e[type=armor_stand,tag=walls.tower_anchor]
 kill @e[type=evoker,tag=walls.evoker]
 kill @e[type=villager,tag=walls.shop]
 #   the evoker's own summons, and anything a team built
 execute positioned 30000 64 60000 run kill @e[type=vex,distance=..400]
 execute positioned 30000 64 60000 run kill @e[type=evoker_fangs,distance=..400]
+execute positioned 30000 64 60000 run kill @e[type=ravager,distance=..400]
 execute positioned 30000 64 60000 run kill @e[type=iron_golem,distance=..400]
 kill @e[type=zombie,tag=walls.mob]
 kill @e[type=skeleton,tag=walls.mob]

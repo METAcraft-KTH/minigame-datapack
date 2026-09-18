@@ -3,8 +3,8 @@
 # Called by: walls:debug/check
 # Executor:  Anyone
 #
-# Is each golem's corner actually loaded? "NOT LOADED" on its own
-# explains missing golems, a part-full bossbar and a wall that
+# Is each ravager's corner actually loaded? "NOT LOADED" on its own
+# explains missing ravagers, a part-full bossbar and a wall that
 # never drops.
 # ============================================================
 

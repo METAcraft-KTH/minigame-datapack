@@ -22,10 +22,14 @@ execute if entity @e[type=evoker,tag=walls.evoker] run return 0
 summon evoker 30000 64 60000 {Tags:["walls.evoker","walls.tmp_evoker"],PersistenceRequired:1b,Glowing:1b,CustomName:{text:"Evoker",color:"gold"},CustomNameVisible:1b}
 
 # ### TUNING ### 100 HP and double size. Applied by command, not in the
-# summon NBT, for the reason spelled out in walls:map/summon_golem.
+# summon NBT, for the reason spelled out in walls:map/summon_tower.
 attribute @n[type=evoker,tag=walls.tmp_evoker] max_health base set 100
 attribute @n[type=evoker,tag=walls.tmp_evoker] scale base set 2
-effect give @n[type=evoker,tag=walls.tmp_evoker] instant_health 1 30 true
+#   raising max_health leaves current health alone, so fill it up after
+#   (an evoker's base is 24). See walls:map/summon_tower for why this is
+#   a data merge and not just an instant_health effect.
+data merge entity @n[type=evoker,tag=walls.tmp_evoker] {Health:100f}
+effect give @n[type=evoker,tag=walls.tmp_evoker] instant_health 1 7 true
 tag @n[type=evoker,tag=walls.tmp_evoker] remove walls.tmp_evoker
 
 scoreboard players set ?evoker_state walls.state 1

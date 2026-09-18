@@ -15,16 +15,16 @@ tellraw @a {text:"--- walls debug ---",color:"gold",bold:true}
 #   of the report
 function walls:debug/chunks
 
-# --- DEFENDING GOLEMS ---
-execute store result score #dbg walls.temp if entity @e[type=iron_golem,tag=walls.golem]
-tellraw @a [{text:"defending golems found (want 4): ",color:"gray"},{score:{name:"#dbg",objective:"walls.temp"},color:"white"}]
-execute store result score #dbg walls.temp if entity @e[type=iron_golem,tag=walls.golem.it]
+# --- TOWERS ---
+execute store result score #dbg walls.temp if entity @e[type=ravager,tag=walls.tower]
+tellraw @a [{text:"towers found (want 4): ",color:"gray"},{score:{name:"#dbg",objective:"walls.temp"},color:"white"}]
+execute store result score #dbg walls.temp if entity @e[type=ravager,tag=walls.tower.it]
 tellraw @a [{text:" IT (want 2): ",color:"gray"},{score:{name:"#dbg",objective:"walls.temp"},color:"white"}]
-execute store result score #dbg walls.temp if entity @e[type=iron_golem,tag=walls.golem.data]
+execute store result score #dbg walls.temp if entity @e[type=ravager,tag=walls.tower.data]
 tellraw @a [{text:" Data (want 2): ",color:"gray"},{score:{name:"#dbg",objective:"walls.temp"},color:"white"}]
-execute store result score #dbg walls.temp if entity @e[type=armor_stand,tag=walls.golem_anchor]
+execute store result score #dbg walls.temp if entity @e[type=armor_stand,tag=walls.tower_anchor]
 tellraw @a [{text:" anchor markers (want 4): ",color:"gray"},{score:{name:"#dbg",objective:"walls.temp"},color:"white"}]
-execute as @e[type=iron_golem,tag=walls.golem] run function walls:debug/golem
+execute as @e[type=ravager,tag=walls.tower] run function walls:debug/tower
 tellraw @a [{text:"bossbar values (want 600 / 600): ",color:"gray"},{score:{name:"#it_hp",objective:"walls.state"},color:"white"},{text:" / ",color:"gray"},{score:{name:"#data_hp",objective:"walls.state"},color:"white"}]
 
 # --- SHOPS ---

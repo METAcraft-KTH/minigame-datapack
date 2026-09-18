@@ -20,13 +20,13 @@
 scoreboard players set ?build_step walls.state 0
 function walls:map/build_wall
 
-# --- DEFENDING GOLEMS ---
-#   two per team, one in each corner of that team's half.
+# --- TOWERS ---
+#   one ravager per corner of each team's own half.
 #   yaw points each one in towards the middle of the map
-execute positioned 29880 64 59880 run function walls:map/summon_golem {side:"it",team:"main.it",name:"IT Golem",color:"#cc99ff",yaw:-45}
-execute positioned 29880 64 60120 run function walls:map/summon_golem {side:"it",team:"main.it",name:"IT Golem",color:"#cc99ff",yaw:-135}
-execute positioned 30120 64 59880 run function walls:map/summon_golem {side:"data",team:"main.data",name:"Data Golem",color:"#e83d84",yaw:45}
-execute positioned 30120 64 60120 run function walls:map/summon_golem {side:"data",team:"main.data",name:"Data Golem",color:"#e83d84",yaw:135}
+execute positioned 29880 64 59880 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-45}
+execute positioned 29880 64 60120 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-135}
+execute positioned 30120 64 59880 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:45}
+execute positioned 30120 64 60120 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:135}
 
 # --- SHOPS ---
 #   IT, just inside the west spawn
@@ -41,9 +41,9 @@ execute positioned 30116 64 60004 run function walls:map/shop/trickster
 # --- BOOKKEEPING ---
 #   derived here rather than assumed, so this function is safe to run
 #   again mid-game (walls:debug/rebuild_map does exactly that) without
-#   the missing golems reading as ones that just died
-execute store result score ?it_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.it]
-execute store result score ?data_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.data]
-execute store result score #n walls.temp if entity @e[type=iron_golem,tag=walls.golem]
+#   the missing ravagers reading as ones that just died
+execute store result score ?it_towers walls.state if entity @e[type=ravager,tag=walls.tower.it]
+execute store result score ?data_towers walls.state if entity @e[type=ravager,tag=walls.tower.data]
+execute store result score #n walls.temp if entity @e[type=ravager,tag=walls.tower]
 execute if score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 1
 execute unless score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 0

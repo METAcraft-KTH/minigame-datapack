@@ -15,6 +15,6 @@ execute if score ?phase walls.state matches 2 run function walls:state/fight/tic
 
 # --- ALWAYS-ON SYSTEMS ---
 function walls:player/tick
-function walls:golem/tick
+function walls:tower/tick
 function walls:evoker/tick
 function walls:trident/tick

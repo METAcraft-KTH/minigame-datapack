@@ -26,13 +26,13 @@ team add walls.shop "Shop"
 team modify walls.shop collisionRule never
 
 # --- BOSSBARS ---
-#   each team's two golems share one 600 HP bar (300 HP each)
-bossbar add walls:it "IT Golems"
+#   each team's two ravagers share one 600 HP bar (300 HP each)
+bossbar add walls:it "IT Ravagers"
 bossbar set walls:it color purple
 bossbar set walls:it style notched_6
 bossbar set walls:it max 600
 bossbar set walls:it visible false
-bossbar add walls:data "Data Golems"
+bossbar add walls:data "Data Ravagers"
 bossbar set walls:data color pink
 bossbar set walls:data style notched_6
 bossbar set walls:data max 600
@@ -61,7 +61,7 @@ data modify storage main:intro walls.howtoplay append value \
         "Two teams, one map, split down the middle by a bedrock wall.",\
         ["",{text:"IT",color:"#cc99ff"}," spawns on the west edge, ",{text:"Data",color:"#e83d84"}," on the east edge."],\
         "",\
-        "Each team is guarded by 2 giant iron golems, one per corner.",\
+        "Each team is guarded by 2 giant ravagers, one per corner.",\
         "They cannot move, but they hit very hard.",\
         "Their shared health is shown in the bar above your hotbar.",\
     ]
@@ -81,7 +81,7 @@ data modify storage main:intro walls.howtoplay append value \
         "+5💎 for every enemy you kill",\
         "+25💎 for landing the final hit on the evoker",\
         "+150💎 for everyone on the winning team",\
-        "Kill both enemy iron golems to win!",\
+        "Kill both enemy ravagers to win!",\
     ]
 
 

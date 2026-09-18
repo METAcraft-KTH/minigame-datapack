@@ -9,7 +9,7 @@
             "block": {
               "blocks": "minecraft:spawner",
               "components": {
-                "minecraft:custom_data": "{walls_spawner:'cow'}"
+                "minecraft:custom_data": "{walls_spawner:'zombie'}"
               }
             }
           }

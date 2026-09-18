@@ -1,9 +1,9 @@
 # ============================================================
-# walls:golem/add_health
-# Called by: walls:golem/tick
-# Executor:  One golem
+# walls:tower/add_health
+# Called by: walls:tower/tick
+# Executor:  One ravager
 #
-# Adds this golem's health onto #sum walls.temp.
+# Adds this ravager's health onto #sum walls.temp.
 # ============================================================
 
 execute store result score #hp walls.temp run data get entity @s Health

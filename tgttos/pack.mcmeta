@@ -1,0 +1,7 @@
+{
+    "pack": {
+        "description": "WCTBWWGT - bridge out, hold both points",
+        "min_format": 94,
+        "max_format": 9999
+    }
+}

@@ -1,6 +1,6 @@
 # Walls Minigame Datapack
 
-Two teams, one bedrock wall, four giant iron golems. Follows the MAIN callback
+Two teams, one bedrock wall, four giant ravagers. Follows the MAIN callback
 architecture and registers only a load tag — no `tick.json`.
 
 Namespace: `walls`.
@@ -9,14 +9,14 @@ Namespace: `walls`.
 
 | Match time | What happens |
 |---|---|
-| intro | The pack raises the bedrock wall and places the golems and shops |
-| 0:00 | Phase 0 (`prep`). Wall is up, golems are invulnerable. Mine, craft, fortify. |
+| intro | The pack raises the bedrock wall and places the towers and shops |
+| 0:00 | Phase 0 (`prep`). Wall is up, towers are invulnerable. Mine, craft, fortify. |
 | 8:00 / 9:00 / 9:30 / 9:50 / 9:55 | Countdown shouts |
-| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 8 ticks, one slice each. Golems become vulnerable. First evoker spawns. |
+| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 8 ticks, one slice each. Towers become vulnerable. First evoker spawns. |
 | 10:00+ | Phase 2 (`fight`). A new evoker every 3 minutes. |
-| 20:00 | Sudden death — every defending golem gets Poison II forever |
-| 30:00 | Backstop: the side with healthier golems wins (see below) |
-| — | Game ends the moment either side loses both golems |
+| 20:00 | Sudden death — every tower gets Poison II forever |
+| 30:00 | Backstop: the side with healthier towers wins (see below) |
+| — | Game ends the moment either side loses both towers |
 
 ## Map config
 
@@ -27,7 +27,7 @@ split by a bedrock wall on the X=30000 line, IT west and Data east.
 
 | File | Holds |
 |---|---|
-| `walls:map/setup`, `walls:golem/watchdog` | the 4 golem posts, 6 shop villagers |
+| `walls:map/setup`, `walls:tower/watchdog` | the 4 tower posts, 6 shop villagers |
 | `walls:player/send_to_spawn`, `walls:player/set_spawnpoints` | the two team spawns |
 | `walls:map/build_wall`, `walls:state/drop/tick` | the wall volume, raised and then taken down |
 | `walls:evoker/spawn` | where the mid evoker lands |
@@ -69,69 +69,80 @@ command, and `29872 59872 30128 60128` is one block too wide — that is 17×17 
 
 This matters more than it looks. Without the forceload, the wall fill fails
 silently, and every selector in the pack misses entities in whatever corner has
-nobody standing in it: golems vanish from the bossbar totals, and an empty
-golem selector reads as "that team lost".
+nobody standing in it: towers vanish from the bossbar totals, and an empty
+tower selector reads as "that team lost".
 
-## The defending golems
+## The towers
 
-Two per team, one per corner of their own half, glowing in their team's colour,
-300 HP each and scaled to **2.0** so they read as the map's centrepieces from a
-distance. Both of a team's golems share one 600 HP bossbar, `notched_6`.
+Each team defends two **ravagers**, one per corner of their own half, glowing in
+their team's colour, 300 HP each and scaled to **2.0**. Both of a team's towers
+share one 600 HP bossbar, `notched_6`. Internally they are `walls.tower*`
+everywhere, so the entity type is named only in the selectors — this is the
+third mob to hold the job.
 
-These replaced a pair of wardens, which fought us at every turn: a
-command-summoned warden has no dig cooldown so it tunnels out on its first
-tick, naming it only prevents the *other* despawn, riding a Marker armor stand
-to stop the digging did not stick, and its targeting needs ~80 anger points
-built from vibrations before it swings at anybody.
+Wardens came first and fought us at every turn: a command-summoned warden has no
+dig cooldown so it tunnels out on its first tick, naming it only prevents the
+*other* despawn, riding a Marker armor stand to stop the digging did not stick,
+and its targeting needs ~80 anger points of vibrations before it swings at
+anybody. Iron golems replaced them and turned out to have a worse problem:
+**an iron ingot heals an iron golem 25 HP on right-click**, vanilla, not
+switchable off, and the Miner sells iron — so a team could nurse its objectives
+back up faster than the other side could chew through them. Nothing heals a
+ravager off an item, which is why they hold the job now.
 
-- **Their AI is off (`NoAI`) and this pack does the attacking.** An iron
-  golem's own brain is no better suited to the job than the warden's was: it
-  wanders off its post, and it only ever targets hostile mobs plus whoever hit
-  it last, so an enemy player can walk straight past one untouched.
-- `walls:golem/melee` swings every 30 ticks for 15 damage to everything on the
-  opposing team within 4.5 blocks. The radius is wide because a scale-2.0 golem
-  is nearly 3 blocks across on its own. Both numbers are marked `### TUNING ###`
-  in `walls:golem/melee_hit`. Targeting is by team tag, so there is no anger, no
+- **Their AI is off (`NoAI`) and this pack does the attacking.** A ravager's own
+  brain charges off its post after whatever it noticed last, is hostile to both
+  teams indiscriminately, and gets stunned for 40 ticks by a raised shield.
+  None of that suits a fixed objective.
+- `walls:tower/melee` swings every 30 ticks for 15 damage to everything on the
+  opposing team within 5 blocks. The radius is wide because a scale-2.0 ravager
+  is nearly 4 blocks across on its own. Both numbers are marked `### TUNING ###`
+  in `walls:tower/melee_hit`. Targeting is by team tag, so there is no anger, no
   line of sight and no warm-up. Players in creative or spectator are skipped on
   purpose, so admins can stand next to one — **which means attacks look broken
   if you test them in creative.**
-- There is **no ranged attack**. The wardens had a driven sonic boom; a golem
-  has nothing to replace it with, so a player with a bow can chip one down from
-  outside its reach. If that turns out to be too easy, the knobs are the melee
-  numbers above, `max_health` in `walls:map/summon_golem`, or re-adding a driven
-  ranged hit modelled on `walls:golem/melee`.
-- Kills they land are credited to the golem, so under MAIN's rules nobody is
+- The damage goes through `minecraft:mob_attack`, so armour reduces it and a
+  raised shield blocks it, exactly as a real ravager's swing would be.
+- There is **no ranged attack**. The wardens had a driven sonic boom; a ravager
+  has nothing to replace it with, so a player with a bow can chip a tower down
+  from outside its reach. If that turns out to be too easy, the knobs are the
+  melee numbers above, `max_health` in `walls:map/summon_tower`, or a driven
+  ranged hit modelled on `walls:tower/melee`.
+- Kills they land are credited to the ravager, so under MAIN's rules nobody is
   the killer and the victim's 5 crystals drop on the ground where they fell.
-- **They still cannot be moved.** `NoGravity` keeps them standing when TNT takes
-  the ground out from under them, and `walls:golem/tick` puts any golem that
-  drifted more than 0.3 blocks off its anchor marker back on it — a mob with no
-  AI can still be shoved by a player walking into it. The anchors are invisible
-  Marker armor stands, position markers rather than vehicles. `yaw` per post
-  points each one in towards the middle of the map.
-- `walls:golem/watchdog` re-summons any golem that is missing, once a second,
+- **They cannot be moved.** `NoGravity` keeps them standing when TNT takes the
+  ground out from under them, and `walls:tower/tick` puts any tower that drifted
+  more than 0.3 blocks off its anchor marker back on it — a mob with no AI can
+  still be shoved by a player walking into it. The anchors are invisible Marker
+  armor stands, position markers rather than vehicles. `yaw` per post points
+  each one in towards the middle of the map.
+- `walls:tower/watchdog` re-summons any tower that is missing, once a second,
   **during phases 0 and 1 only**. They are invulnerable until the wall drops, so
-  one that is gone before then cannot have died — after the drop a dead golem
+  one that is gone before then cannot have died — after the drop a dead tower
   has to stay dead. It tells `@a[tag=admin]` when it fires.
 - **The summon NBT is kept to the fields the shop villagers already prove work
   on this version**, and everything else (`max_health`, `scale`, the knockback
   resistances, `NoGravity`, `Glowing`) is applied afterwards by command. Entity
   NBT is validated as one unit: one field this version does not recognise makes
-  the whole `summon` fail and you get no golem, with nothing in chat to say so.
-  `Health` and an inline `attributes` list did exactly that.
-- They are `Invulnerable` until the wall drops, so nobody can sabotage their
-  own golems during the build phase.
-- **Iron ingots heal iron golems** — right-clicking one with an ingot is 25 HP,
-  and it is vanilla behaviour that cannot be switched off. Since the Miner sells
-  iron, treat it as a repair mechanic: a team can spend crystals to nurse its
-  defenders back up, and the bossbar shows it happening. If you would rather
-  they could not be healed at all, the shortest route is to stop selling iron.
+  the whole `summon` fail and you get no tower, with nothing in chat to say so.
+  An inline `attributes` list did exactly that.
+- **`max_health` does not raise current health.** Raising the attribute to 300
+  leaves the ravager on its base 100, which is what made the bossbars start a
+  third full. `walls:map/summon_tower` therefore sets `Health:300f` with a
+  `data merge` straight after the attribute, and backs it up with
+  `instant_health` at **amplifier 7** (512 HP). The original line used amplifier
+  30, and levels 30–32 of Instant Health heal *nothing at all* when applied with
+  `/effect` — so it silently did nothing. Never use a huge amplifier as a
+  "top it up" trick; pick one that covers the max you actually want.
+- They are `Invulnerable` until the wall drops, so nobody can sabotage their own
+  towers during the build phase.
 - A bought zombie or skeleton spawner is stamped with its buyer's team, and
-  friendly fire is off, so those mobs cannot chew on their own side's golems but
+  friendly fire is off, so those mobs cannot chew on their own side's towers but
   will happily attack the enemy's. That is a legitimate siege route.
 - Poison can never land a killing blow, so sudden death only leaves them on
   1 HP — it does not end the game by itself. That is what the 30 minute
   backstop in `walls:state/fight/tick` is for; delete those two lines for a
-  pure "last golems standing" game. (Iron golems are not undead, so poison does
+  pure "last towers standing" game. (Ravagers are not undead, so poison does
   tick them down.)
 
 ## The mid evoker
@@ -214,14 +225,14 @@ Three of the trades need explaining:
 
 | Command | Does |
 |---|---|
-| `/function walls:debug/check` | prints chunk load state per corner, golem count and per-golem health, shop villager count and trade count each, whether the wall is still there, and the phase/timer/superstate |
+| `/function walls:debug/check` | prints chunk load state per corner, tower count and per-tower health, shop villager count and trade count each, whether the wall is still there, and the phase/timer/superstate |
 | `/function walls:debug/skip_to_drop` | moves the match clock to 9:55 so the drop and the endgame can be tested without sitting out the build phase |
-| `/function walls:debug/rebuild_map` | force-loads the arena and replaces the golems and shops, without running an intro |
+| `/function walls:debug/rebuild_map` | force-loads the arena and replaces the towers and shops, without running an intro |
 
-If the golems are missing, the win check is **deliberately** disabled: an empty
-golem selector would otherwise read as "that team lost", so `walls:map/setup`
+If the towers are missing, the win check is **deliberately** disabled: an empty
+tower selector would otherwise read as "that team lost", so `walls:map/setup`
 and `walls:on/gamestart` only arm it when all four are present, and warn
-`@a[tag=admin]` when they are not. A game with no golems runs to the 30 minute
+`@a[tag=admin]` when they are not. A game with no towers runs to the 30 minute
 backstop rather than ending instantly. That is the guard, not broken win logic.
 
 Errors inside a function go to `latest.log` only, never to chat. To see why a
@@ -229,8 +240,9 @@ command in this pack failed, paste that command into chat by hand.
 
 `walls:debug/check` is the first thing to run when something did not appear.
 "NOT LOADED" on any corner means the forceload did not take, and that alone
-explains missing golems, a bossbar that starts part-full, and a wall that
-never drops.
+explains missing towers, a bossbar that starts part-full, and a wall that
+never drops. A bossbar that starts *exactly* a third full is the other bug —
+see the `max_health` note under The towers.
 
 ## Before this can run
 
@@ -279,8 +291,8 @@ Phases live in `?phase walls.state`: 0 prep, 1 dropping, 2 fight, 3 over.
 | `?wall_step` | `walls.state` | which wall slice is next |
 | `?evoker_state` | `walls.state` | 0 none, 1 alive, 2 just died |
 | `?evoker_claimed` | `walls.state` | a player has been paid for this evoker |
-| `?golem_melee` | `walls.timer` | ticks until the defenders swing again |
-| `?it_golems` / `?data_golems` | `walls.state` | defending golems still standing |
+| `?tower_melee` | `walls.timer` | ticks until the towers swing again |
+| `?it_towers` / `?data_towers` | `walls.state` | towers still standing |
 | `?ready` | `walls.state` | the win check is allowed to fire |
 | `?sudden_death` | `walls.state` | poison has been applied |
 

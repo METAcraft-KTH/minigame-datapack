@@ -10,8 +10,8 @@
 
 # The whole 256x256 arena stays loaded for the entire game. Without
 # this, the wall fill fails and every selector silently misses the
-# golems, villagers and mobs in whatever corner has nobody standing
-# in it — and an empty golem selector reads as "that team lost".
+# ravagers, villagers and mobs in whatever corner has nobody standing
+# in it — and an empty ravager selector reads as "that team lost".
 #
 # forceload add is capped at 256 chunks per command, and the arena is
 # exactly 16x16 chunks, so this goes in as four 8x8 quadrants. Asking
@@ -24,8 +24,11 @@ forceload add 30000 59872 30127 59999
 forceload add 30000 60000 30127 60127
 
 # wipe anything left behind by a previous run / reload
+kill @e[type=ravager,tag=walls.tower]
+kill @e[type=armor_stand,tag=walls.tower_anchor]
+#   leftovers from the warden and iron golem versions of this pack
+kill @e[type=warden,tag=walls.warden]
 kill @e[type=iron_golem,tag=walls.golem]
-kill @e[type=armor_stand,tag=walls.golem_anchor]
 kill @e[type=villager,tag=walls.shop]
 kill @e[type=evoker,tag=walls.evoker]
 execute positioned 30000 64 60000 run kill @e[type=vex,distance=..400]
