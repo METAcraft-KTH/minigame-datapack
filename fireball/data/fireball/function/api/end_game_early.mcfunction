@@ -1,0 +1,1 @@
+scoreboard players reset #game_time fireball

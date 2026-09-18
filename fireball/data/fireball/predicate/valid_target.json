@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:all_of",
+	"terms": {
+		"type": "minecraft:entity_properties",
+		"entity": "this",
+		"predicate": {
+			"minecraft:type_specific/player": {
+				"gamemode": [
+					"adventure",
+					"survival"
+				]
+			},
+			"minecraft:entity_tags": {
+				"none_of": [
+					"admin"
+				]
+			}
+		}
+	}
+}

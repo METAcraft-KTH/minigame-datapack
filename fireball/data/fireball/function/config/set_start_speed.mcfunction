@@ -1,0 +1,1 @@
+$data modify storage fireball:config start_speed set value $(speed)

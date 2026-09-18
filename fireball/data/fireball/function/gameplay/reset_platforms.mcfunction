@@ -1,0 +1,1 @@
+function fireball:gameplay/reset_platforms2 with storage fireball:config

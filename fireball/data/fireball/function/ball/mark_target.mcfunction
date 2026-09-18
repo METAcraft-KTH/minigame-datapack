@@ -1,0 +1,1 @@
+$tag $(target_uuid_string) add fireball.target
