@@ -1,0 +1,5 @@
+{
+    "_comment": "walls: the mid evoker is a bounty mob, so it drops nothing. Overriding the vanilla table is the only way to stop the totem of undying, which is a guaranteed drop and would otherwise hand out a free extra life. Evokers appear in no other game on this server, so a global override is safe.",
+    "type": "minecraft:entity",
+    "pools": []
+}

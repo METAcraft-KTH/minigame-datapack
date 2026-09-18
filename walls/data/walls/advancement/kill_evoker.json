@@ -7,13 +7,13 @@
           "type": "minecraft:entity_properties",
           "entity": "this",
           "predicate": {
-            "minecraft:entity_type": "minecraft:iron_golem"
+            "minecraft:entity_type": "minecraft:evoker"
           }
         }
       }
     }
   },
   "rewards": {
-    "function": "walls:events/on_kill_golem"
+    "function": "walls:events/on_kill_evoker"
   }
 }

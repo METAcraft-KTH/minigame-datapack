@@ -4,18 +4,33 @@
 # Executor:  Server
 #
 # Runs ONCE: on the tick when superstate changes to 2.
-# Builds the map's entities while everybody is watching the
-# intro cutscene.
+# Loads the arena, then builds the map's entities while everybody
+# is watching the intro cutscene.
 # ============================================================
 
-# The whole 256x256 arena stays loaded for the entire game.
-# Without this, the wall fill and the warden lookups silently
-# fail whenever a corner has nobody standing in it.
-forceload add 29872 59872 30128 60128
+# The whole 256x256 arena stays loaded for the entire game. Without
+# this, the wall fill fails and every selector silently misses the
+# golems, villagers and mobs in whatever corner has nobody standing
+# in it — and an empty golem selector reads as "that team lost".
+#
+# forceload add is capped at 256 chunks per command, and the arena is
+# exactly 16x16 chunks, so this goes in as four 8x8 quadrants. Asking
+# for the whole thing in one command is right on the cap, and asking
+# for 29872..30128 (one block too far, 17x17 = 289 chunks) fails
+# outright and force-loads nothing at all.
+forceload add 29872 59872 29999 59999
+forceload add 29872 60000 29999 60127
+forceload add 30000 59872 30127 59999
+forceload add 30000 60000 30127 60127
 
 # wipe anything left behind by a previous run / reload
-kill @e[type=warden,tag=walls.warden]
-kill @e[type=villager,tag=walls.shop]
 kill @e[type=iron_golem,tag=walls.golem]
+kill @e[type=armor_stand,tag=walls.golem_anchor]
+kill @e[type=villager,tag=walls.shop]
+kill @e[type=evoker,tag=walls.evoker]
+execute positioned 30000 64 60000 run kill @e[type=vex,distance=..400]
 
-function walls:map/setup
+# Chunks from a forceload finish loading over the next few ticks, and
+# the shop villagers need to be selectable the tick after they are
+# summoned, so give the arena a second to come up first.
+schedule function walls:map/setup 20t replace

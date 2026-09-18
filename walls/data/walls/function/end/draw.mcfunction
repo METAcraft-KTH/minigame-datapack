@@ -3,7 +3,7 @@
 # Called by: walls:end/timeout
 # Executor:  Server
 #
-# Both sides on identical warden health at the time limit.
+# Both sides on identical golem health at the time limit.
 # ============================================================
 
 title @a times 5 70 20

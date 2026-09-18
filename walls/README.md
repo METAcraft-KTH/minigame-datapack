@@ -1,6 +1,6 @@
 # Walls Minigame Datapack
 
-Two teams, one bedrock wall, four wardens. Follows the MAIN callback
+Two teams, one bedrock wall, four giant iron golems. Follows the MAIN callback
 architecture and registers only a load tag — no `tick.json`.
 
 Namespace: `walls`.
@@ -9,13 +9,14 @@ Namespace: `walls`.
 
 | Match time | What happens |
 |---|---|
-| 0:00 | Phase 0 (`prep`). Wall is up, wardens are invulnerable. Mine, craft, fortify. |
+| intro | The pack raises the bedrock wall and places the golems and shops |
+| 0:00 | Phase 0 (`prep`). Wall is up, golems are invulnerable. Mine, craft, fortify. |
 | 8:00 / 9:00 / 9:30 / 9:50 / 9:55 | Countdown shouts |
-| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 5 ticks, one slice each. Wardens become vulnerable. First iron golem spawns. |
-| 10:00+ | Phase 2 (`fight`). Golem respawns every 3 minutes. |
-| 20:00 | Sudden death — every warden gets Poison II forever |
-| 30:00 | Backstop: the side with healthier wardens wins (see below) |
-| — | Game ends the moment either side loses both wardens |
+| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 8 ticks, one slice each. Golems become vulnerable. First evoker spawns. |
+| 10:00+ | Phase 2 (`fight`). A new evoker every 3 minutes. |
+| 20:00 | Sudden death — every defending golem gets Poison II forever |
+| 30:00 | Backstop: the side with healthier golems wins (see below) |
+| — | Game ends the moment either side loses both golems |
 
 ## Map config
 
@@ -26,42 +27,136 @@ split by a bedrock wall on the X=30000 line, IT west and Data east.
 
 | File | Holds |
 |---|---|
-| `walls:map/setup` | 4 warden posts, 6 shop villagers |
+| `walls:map/setup`, `walls:golem/watchdog` | the 4 golem posts, 6 shop villagers |
 | `walls:player/send_to_spawn`, `walls:player/set_spawnpoints` | the two team spawns |
-| `walls:state/drop/tick` | the wall volume that gets deleted |
-| `walls:golem/spawn` | where the iron golem lands |
+| `walls:map/build_wall`, `walls:state/drop/tick` | the wall volume, raised and then taken down |
+| `walls:evoker/spawn` | where the mid evoker lands |
 | `walls:on/introstart`, `walls:end/finish` | the forceload region |
 
-The wall fill is `air replace bedrock` over X=30000, Z 59872..60128, Y −59..200,
-in five slices of ~13.5k blocks so each stays under the 32768 block command
-limit and the whole thing does not land as one lag spike. It starts at Y=−59 so
-the world's own bedrock floor is left intact. Only bedrock is touched, so
-terrain and player builds that touch the wall survive.
+### The wall
 
-The arena is force-loaded for the whole game (`forceload add`, released in
-`walls:end/finish`). Without it, the wall fill and the warden lookups quietly
-fail whenever a corner has nobody standing in it — and an empty warden selector
-reads as "that team lost".
+The pack builds the wall itself rather than expecting it in the map, so the
+removal is guaranteed to match what was placed. It is the X=30000 column,
+Z 59872..60127, from Y=−59 (just above the world's own bedrock floor) up to the
+Y=319 build limit — tall enough that nobody pillars over it or pearls through
+it, and deep enough that nobody tunnels under it.
 
-## Wardens
+Raising it replaces everything in that column, terrain included. Taking it down
+therefore does **not** just clear the column, which would leave a 1-block wide,
+380-deep trench splitting the map. Each slice gets two fills:
+
+- Y 64..319 → `air replace bedrock`, opening the crossing
+- Y −59..63 → `stone replace bedrock`, a flush seam at ground level that also
+  closes off the tunnel the wall's footprint would otherwise leave
+
+That assumes ground level is Y=63 with players standing at 64. Terrain along the
+wall line that is not flat gets sliced level at 63.
+
+Both directions run one 32-block slice per tick, 8 slices: each fill stays well
+under the 32768 block command limit, and ~97k block changes do not land as a
+single lag spike. The build runs during the intro cutscene, chained with
+`schedule`, because MAIN does not tick this pack until the game starts.
+
+If a game is force-ended before 10 minutes, the wall is left standing —
+`walls:end/finish` does not tear it down, since a normally finished match has
+already removed it.
+
+The arena is force-loaded for the whole game, as **four 8×8-chunk quadrants**
+(released in `walls:end/finish`). `forceload add` is capped at 256 chunks per
+command, and `29872 59872 30128 60128` is one block too wide — that is 17×17 =
+289 chunks, so the command fails and force-loads *nothing*. The arena proper is
+29872..30127, exactly 16×16 chunks.
+
+This matters more than it looks. Without the forceload, the wall fill fails
+silently, and every selector in the pack misses entities in whatever corner has
+nobody standing in it: golems vanish from the bossbar totals, and an empty
+golem selector reads as "that team lost".
+
+## The defending golems
 
 Two per team, one per corner of their own half, glowing in their team's colour,
-300 HP each. Both of a team's wardens share one 600 HP bossbar, `notched_6`.
+300 HP each and scaled to **2.0** so they read as the map's centrepieces from a
+distance. Both of a team's golems share one 600 HP bossbar, `notched_6`.
 
-- They are immobile via a `movement_speed` of 0 rather than a vehicle or
-  `NoAI`, which keeps both the melee and the sonic boom working. A warden that
-  can never reach its target just shoots it instead.
-- They are named, because an unnamed warden digs itself back into the ground
-  and despawns after 60 seconds without a target.
+These replaced a pair of wardens, which fought us at every turn: a
+command-summoned warden has no dig cooldown so it tunnels out on its first
+tick, naming it only prevents the *other* despawn, riding a Marker armor stand
+to stop the digging did not stick, and its targeting needs ~80 anger points
+built from vibrations before it swings at anybody.
+
+- **Their AI is off (`NoAI`) and this pack does the attacking.** An iron
+  golem's own brain is no better suited to the job than the warden's was: it
+  wanders off its post, and it only ever targets hostile mobs plus whoever hit
+  it last, so an enemy player can walk straight past one untouched.
+- `walls:golem/melee` swings every 30 ticks for 15 damage to everything on the
+  opposing team within 4.5 blocks. The radius is wide because a scale-2.0 golem
+  is nearly 3 blocks across on its own. Both numbers are marked `### TUNING ###`
+  in `walls:golem/melee_hit`. Targeting is by team tag, so there is no anger, no
+  line of sight and no warm-up. Players in creative or spectator are skipped on
+  purpose, so admins can stand next to one — **which means attacks look broken
+  if you test them in creative.**
+- There is **no ranged attack**. The wardens had a driven sonic boom; a golem
+  has nothing to replace it with, so a player with a bow can chip one down from
+  outside its reach. If that turns out to be too easy, the knobs are the melee
+  numbers above, `max_health` in `walls:map/summon_golem`, or re-adding a driven
+  ranged hit modelled on `walls:golem/melee`.
+- Kills they land are credited to the golem, so under MAIN's rules nobody is
+  the killer and the victim's 5 crystals drop on the ground where they fell.
+- **They still cannot be moved.** `NoGravity` keeps them standing when TNT takes
+  the ground out from under them, and `walls:golem/tick` puts any golem that
+  drifted more than 0.3 blocks off its anchor marker back on it — a mob with no
+  AI can still be shoved by a player walking into it. The anchors are invisible
+  Marker armor stands, position markers rather than vehicles. `yaw` per post
+  points each one in towards the middle of the map.
+- `walls:golem/watchdog` re-summons any golem that is missing, once a second,
+  **during phases 0 and 1 only**. They are invulnerable until the wall drops, so
+  one that is gone before then cannot have died — after the drop a dead golem
+  has to stay dead. It tells `@a[tag=admin]` when it fires.
+- **The summon NBT is kept to the fields the shop villagers already prove work
+  on this version**, and everything else (`max_health`, `scale`, the knockback
+  resistances, `NoGravity`, `Glowing`) is applied afterwards by command. Entity
+  NBT is validated as one unit: one field this version does not recognise makes
+  the whole `summon` fail and you get no golem, with nothing in chat to say so.
+  `Health` and an inline `attributes` list did exactly that.
 - They are `Invulnerable` until the wall drops, so nobody can sabotage their
-  own wardens during the build phase.
+  own golems during the build phase.
+- **Iron ingots heal iron golems** — right-clicking one with an ingot is 25 HP,
+  and it is vanilla behaviour that cannot be switched off. Since the Miner sells
+  iron, treat it as a repair mechanic: a team can spend crystals to nurse its
+  defenders back up, and the bossbar shows it happening. If you would rather
+  they could not be healed at all, the shortest route is to stop selling iron.
+- A bought zombie or skeleton spawner is stamped with its buyer's team, and
+  friendly fire is off, so those mobs cannot chew on their own side's golems but
+  will happily attack the enemy's. That is a legitimate siege route.
 - Poison can never land a killing blow, so sudden death only leaves them on
   1 HP — it does not end the game by itself. That is what the 30 minute
   backstop in `walls:state/fight/tick` is for; delete those two lines for a
-  pure "last wardens standing" game.
-- An angry warden blinds everyone within 20 blocks, which makes the endgame
-  unplayable, so `walls:player/tick` clears Darkness every tick. Delete that
-  line to get it back.
+  pure "last golems standing" game. (Iron golems are not undead, so poison does
+  tick them down.)
+
+## The mid evoker
+
+Every 3 minutes from the moment the wall drops, one evoker spawns at
+30000 64 60000 — 100 HP, also scaled to 2.0, glowing, worth 15 💠 and 25 💎 to
+whoever lands the kill. One at a time: if the last one is still alive, the slot
+is skipped.
+
+Unlike the defenders it **keeps its AI**. It picks its own targets, throws
+armour-piercing fangs, summons vexes and is hostile to both teams, which is the
+point of putting a bounty in no-man's land. `walls:evoker/track` follows it so
+`walls:evoker/resolve` knows where to drop the 15 crystals if it dies to
+something that is not a player.
+
+**It drops nothing.** `data/minecraft/loot_table/entities/evoker.json` overrides
+the vanilla table with an empty pool list, because an evoker's totem of undying
+is a guaranteed drop and would hand out free extra lives. Overriding a vanilla
+loot table is safe here only because evokers appear in no other game on this
+server — that override is global. XP still drops, since experience does not come
+from the loot table. If a totem ever does appear, add
+`DeathLootTable:"minecraft:empty"` to the summon in `walls:evoker/spawn`.
+
+Its vexes and fangs are swept up by `walls:end/finish` along with everything
+else this pack put in the world.
 
 ## Economy
 
@@ -72,8 +167,8 @@ ever re-issued on respawn (`keep_inventory` is on).
 |---|---|
 | Kill with a credited killer | killer +5, victim +1 |
 | Kill with no credited killer | 5 dropped where the victim died |
-| Iron golem, credited | killer +15, each of their teammates +2 |
-| Iron golem, no killer | 15 dropped where it fell |
+| Evoker, credited | killer +15, each of their teammates +2 |
+| Evoker, no killer | 15 dropped where it fell |
 
 "Credited" means MAIN's `execute on attacker` resolved to a player other than
 the victim. A mob kill, a fall, or your own TNT all count as uncredited.
@@ -93,7 +188,14 @@ line in `walls:map/shop/*`, so they are easy to retune.
 - **Trickster** — ender pearls, spawners, the Volatile Trident, a Knockback III
   gold sword, the Insta-Respawn Coupon
 
-Three of those need explaining:
+Each villager's recipes are assembled in the `walls:shop offers` storage and
+handed over with a single `data modify entity ... Offers.Recipes set from`.
+Appending onto the villager directly does not work: **a villager with no trades
+writes no `Offers` field at all**, so `Offers.Recipes` is not yet a path, and
+every `append` fails leaving a shopkeeper with an empty trade window. `set`
+creates the path, `append` needs it to exist already.
+
+Three of the trades need explaining:
 
 - **XP.** A villager cannot sell experience, so the Miner sells a marked
   experience bottle and `walls:econ/redeem_xp` swaps it for 16 XP on the tick
@@ -108,6 +210,28 @@ Three of those need explaining:
   replaced with a `fuse:0` TNT. The shop is the only source of tridents in the
   game, so this needs no per-item check.
 
+## Debugging
+
+| Command | Does |
+|---|---|
+| `/function walls:debug/check` | prints chunk load state per corner, golem count and per-golem health, shop villager count and trade count each, whether the wall is still there, and the phase/timer/superstate |
+| `/function walls:debug/skip_to_drop` | moves the match clock to 9:55 so the drop and the endgame can be tested without sitting out the build phase |
+| `/function walls:debug/rebuild_map` | force-loads the arena and replaces the golems and shops, without running an intro |
+
+If the golems are missing, the win check is **deliberately** disabled: an empty
+golem selector would otherwise read as "that team lost", so `walls:map/setup`
+and `walls:on/gamestart` only arm it when all four are present, and warn
+`@a[tag=admin]` when they are not. A game with no golems runs to the 30 minute
+backstop rather than ending instantly. That is the guard, not broken win logic.
+
+Errors inside a function go to `latest.log` only, never to chat. To see why a
+command in this pack failed, paste that command into chat by hand.
+
+`walls:debug/check` is the first thing to run when something did not appear.
+"NOT LOADED" on any corner means the forceload did not take, and that alone
+explains missing golems, a bossbar that starts part-full, and a wall that
+never drops.
+
 ## Before this can run
 
 1. **Register the pack with MAIN.** MAIN dispatches by namespace from the
@@ -115,17 +239,18 @@ Three of those need explaining:
    Swap one of the six entries for
    `{id:N,namespace:"walls",gamename:"Walls"}`. Nothing else in this pack
    touches MAIN.
-2. **Set the Y coordinates** in the files listed under Map config.
-3. Confirm the arena's outer edge is sealed — this pack sets no world border,
-   because one left behind by a crashed game would damage everyone standing in
-   the lobby at 0/50000.
+2. **Check the Y coordinates** in the files listed under Map config. They assume
+   the top solid block is Y=63 and entities stand at Y=64.
+3. Confirm the arena's **outer** edge is sealed — this pack builds the middle
+   wall but sets no world border, because one left behind by a crashed game
+   would damage everyone standing in the lobby at 0/50000.
 
 ## Gamerules
 
 `walls:util/gamerules` starts from `main:util/reset_gamerules` and turns the
 survival half back on: block/entity/mob drops, random ticks, natural
 regeneration, working spawner blocks, `difficulty normal` (on peaceful the
-wardens would vanish). Natural mob spawning stays off — every mob in this game
+bought spawners do nothing). Natural mob spawning stays off — every mob in this game
 is bought. If placed spawners turn out to be dead on the server, that flag is
 the first thing to try.
 
@@ -150,11 +275,12 @@ Phases live in `?phase walls.state`: 0 prep, 1 dropping, 2 fight, 3 over.
 | Fake player | Objective | Meaning |
 |---|---|---|
 | `?match_timer` | `walls.timer` | ticks since game start |
-| `?next_golem` | `walls.timer` | match time the next golem is due |
+| `?next_evoker` | `walls.timer` | match time the next mid evoker is due |
 | `?wall_step` | `walls.state` | which wall slice is next |
-| `?golem_state` | `walls.state` | 0 none, 1 alive, 2 just died |
-| `?golem_claimed` | `walls.state` | a player has been paid for this golem |
-| `?it_wardens` / `?data_wardens` | `walls.state` | wardens still standing |
+| `?evoker_state` | `walls.state` | 0 none, 1 alive, 2 just died |
+| `?evoker_claimed` | `walls.state` | a player has been paid for this evoker |
+| `?golem_melee` | `walls.timer` | ticks until the defenders swing again |
+| `?it_golems` / `?data_golems` | `walls.state` | defending golems still standing |
 | `?ready` | `walls.state` | the win check is allowed to fire |
 | `?sudden_death` | `walls.state` | poison has been applied |
 

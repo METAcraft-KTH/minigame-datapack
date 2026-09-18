@@ -3,10 +3,10 @@
 # Called by: walls:state/drop/tick (once)
 # Executor:  Server
 #
-# Phase 2: open map. Runs until one team has lost both wardens.
+# Phase 2: open map. Runs until one team has lost both golems.
 # ============================================================
 
 scoreboard players set ?phase walls.state 2
 
-# first iron golem lands the moment the wall does, then every 3 minutes
-function walls:golem/spawn
+# first evoker lands the moment the wall does, then every 3 minutes
+function walls:evoker/spawn

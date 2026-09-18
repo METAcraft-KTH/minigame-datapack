@@ -15,23 +15,35 @@
 # Y=64 is a placeholder — set it to the actual ground level.
 # ============================================================
 
-# --- WARDENS ---
-#   two per team, one in each corner of that team's half
-execute positioned 29880 64 59880 run function walls:map/summon_warden {side:"it",team:"main.it",name:"IT Warden",color:"#cc99ff"}
-execute positioned 29880 64 60120 run function walls:map/summon_warden {side:"it",team:"main.it",name:"IT Warden",color:"#cc99ff"}
-execute positioned 30120 64 59880 run function walls:map/summon_warden {side:"data",team:"main.data",name:"Data Warden",color:"#e83d84"}
-execute positioned 30120 64 60120 run function walls:map/summon_warden {side:"data",team:"main.data",name:"Data Warden",color:"#e83d84"}
+# --- THE WALL ---
+#   raised here rather than built into the map, one slice per tick
+scoreboard players set ?build_step walls.state 0
+function walls:map/build_wall
 
-#   summoning with a max_health attribute does not lower the warden's
-#   current health, so top every one of them up to their new 300 cap
-effect give @e[type=warden,tag=walls.warden] instant_health 1 30 true
+# --- DEFENDING GOLEMS ---
+#   two per team, one in each corner of that team's half.
+#   yaw points each one in towards the middle of the map
+execute positioned 29880 64 59880 run function walls:map/summon_golem {side:"it",team:"main.it",name:"IT Golem",color:"#cc99ff",yaw:-45}
+execute positioned 29880 64 60120 run function walls:map/summon_golem {side:"it",team:"main.it",name:"IT Golem",color:"#cc99ff",yaw:-135}
+execute positioned 30120 64 59880 run function walls:map/summon_golem {side:"data",team:"main.data",name:"Data Golem",color:"#e83d84",yaw:45}
+execute positioned 30120 64 60120 run function walls:map/summon_golem {side:"data",team:"main.data",name:"Data Golem",color:"#e83d84",yaw:135}
 
 # --- SHOPS ---
 #   IT, just inside the west spawn
 execute positioned 29884 64 59996 run function walls:map/shop/miner
 execute positioned 29884 64 60000 run function walls:map/shop/trapper
-execute positioned 29884 64 60004 run function walls:map/shop/trickster {team:"main.it"}
+execute positioned 29884 64 60004 run function walls:map/shop/trickster
 #   Data, just inside the east spawn
 execute positioned 30116 64 59996 run function walls:map/shop/miner
 execute positioned 30116 64 60000 run function walls:map/shop/trapper
-execute positioned 30116 64 60004 run function walls:map/shop/trickster {team:"main.data"}
+execute positioned 30116 64 60004 run function walls:map/shop/trickster
+
+# --- BOOKKEEPING ---
+#   derived here rather than assumed, so this function is safe to run
+#   again mid-game (walls:debug/rebuild_map does exactly that) without
+#   the missing golems reading as ones that just died
+execute store result score ?it_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.it]
+execute store result score ?data_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.data]
+execute store result score #n walls.temp if entity @e[type=iron_golem,tag=walls.golem]
+execute if score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 1
+execute unless score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 0

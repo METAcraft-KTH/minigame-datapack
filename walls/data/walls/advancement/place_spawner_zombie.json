@@ -1,0 +1,23 @@
+{
+  "criteria": {
+    "_": {
+      "trigger": "minecraft:placed_block",
+      "conditions": {
+        "location": {
+          "type": "minecraft:location_check",
+          "predicate": {
+            "block": {
+              "blocks": "minecraft:spawner",
+              "components": {
+                "minecraft:custom_data": "{walls_spawner:'cow'}"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "rewards": {
+    "function": "walls:events/on_place_spawner_zombie"
+  }
+}

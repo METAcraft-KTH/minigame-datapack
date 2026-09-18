@@ -26,13 +26,13 @@ team add walls.shop "Shop"
 team modify walls.shop collisionRule never
 
 # --- BOSSBARS ---
-#   each team's two wardens share one 600 HP bar (300 HP each)
-bossbar add walls:it "IT Wardens"
+#   each team's two golems share one 600 HP bar (300 HP each)
+bossbar add walls:it "IT Golems"
 bossbar set walls:it color purple
 bossbar set walls:it style notched_6
 bossbar set walls:it max 600
 bossbar set walls:it visible false
-bossbar add walls:data "Data Wardens"
+bossbar add walls:data "Data Golems"
 bossbar set walls:data color pink
 bossbar set walls:data style notched_6
 bossbar set walls:data max 600
@@ -61,7 +61,7 @@ data modify storage main:intro walls.howtoplay append value \
         "Two teams, one map, split down the middle by a bedrock wall.",\
         ["",{text:"IT",color:"#cc99ff"}," spawns on the west edge, ",{text:"Data",color:"#e83d84"}," on the east edge."],\
         "",\
-        "Each team is guarded by 2 glowing wardens, one per corner.",\
+        "Each team is guarded by 2 giant iron golems, one per corner.",\
         "They cannot move, but they hit very hard.",\
         "Their shared health is shown in the bar above your hotbar.",\
     ]
@@ -72,16 +72,16 @@ data modify storage main:intro walls.howtoplay append value \
         "",\
         "Three villagers at your spawn trade for prismarine crystals.",\
         "You start with 8. Every kill you get is worth 5 more.",\
-        "The iron golem in the middle is worth 15 to whoever lands the kill.",\
+        "A giant evoker lands in the middle every 3 minutes, worth 15.",\
     ]
 data modify storage main:intro walls.howtoplay append value \
     [\
         ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
         "",\
         "+5💎 for every enemy you kill",\
-        "+25💎 for landing the final hit on the iron golem",\
+        "+25💎 for landing the final hit on the evoker",\
         "+150💎 for everyone on the winning team",\
-        "Kill both enemy wardens to win!",\
+        "Kill both enemy iron golems to win!",\
     ]
 
 

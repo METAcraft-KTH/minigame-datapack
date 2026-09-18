@@ -15,15 +15,16 @@ scoreboard players set ?phase walls.state 0
 scoreboard players set ?match_timer walls.timer 0
 scoreboard players set ?wall_step walls.state 0
 scoreboard players set ?sudden_death walls.state 0
-#   golem bookkeeping: 0 = none, 1 = alive, 2 = just died
-scoreboard players set ?golem_state walls.state 0
-scoreboard players set ?golem_claimed walls.state 0
-scoreboard players set ?next_golem walls.timer 12000
-#   how many wardens each side still has, for the "warden fell" callout.
-#   read from the world rather than assumed, so a warden that failed to
-#   summon does not read as one that just died.
-execute store result score ?it_wardens walls.state if entity @e[type=warden,tag=walls.warden.it]
-execute store result score ?data_wardens walls.state if entity @e[type=warden,tag=walls.warden.data]
+#   mid evoker bookkeeping: 0 = none, 1 = alive, 2 = just died
+scoreboard players set ?evoker_state walls.state 0
+scoreboard players set ?evoker_claimed walls.state 0
+scoreboard players set ?next_evoker walls.timer 12000
+#   how many defenders each side still has, for the "golem fell"
+#   callout. Read from the world rather than assumed, so a golem that
+#   failed to summon does not read as one that just died.
+execute store result score ?it_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.it]
+execute store result score ?data_golems walls.state if entity @e[type=iron_golem,tag=walls.golem.data]
+scoreboard players set ?golem_melee walls.timer 30
 scoreboard players reset @a walls.respawn
 
 # --- STATS ---
@@ -33,7 +34,10 @@ scoreboard players set @a[tag=!admin] walls.st.kills 0
 scoreboard players set @a[tag=!admin] walls.st.cryst 0
 
 # --- ARM TRIGGERS ---
-advancement revoke @a only walls:kill_golem
+advancement revoke @a only walls:kill_evoker
+advancement revoke @a only walls:place_spawner_cow
+advancement revoke @a only walls:place_spawner_zombie
+advancement revoke @a only walls:place_spawner_skeleton
 
 # --- TEAMS ---
 #   no teamkilling for crystals. walls:end/finish puts these back.
@@ -53,9 +57,9 @@ bossbar set walls:timer players @a
 bossbar set walls:timer visible true
 
 # --- SANITY CHECK ---
-#   an empty warden selector reads as "that team lost", so the win check
+#   an empty golem selector reads as "that team lost", so the win check
 #   only arms if walls:on/introstart really did place all four of them
 scoreboard players set ?ready walls.state 0
-execute store result score #n walls.temp if entity @e[type=warden,tag=walls.warden]
+execute store result score #n walls.temp if entity @e[type=iron_golem,tag=walls.golem]
 execute if score #n walls.temp matches 4 run scoreboard players set ?ready walls.state 1
-execute unless score #n walls.temp matches 4 run tellraw @a[tag=admin] {text:"[walls] expected 4 wardens and did not find them — the win check is off, the match will run to the 30 minute backstop.",color:"red"}
+execute unless score #n walls.temp matches 4 run tellraw @a[tag=admin] {text:"[walls] expected 4 golems and did not find them — the win check is off, the match will run to the 30 minute backstop.",color:"red"}

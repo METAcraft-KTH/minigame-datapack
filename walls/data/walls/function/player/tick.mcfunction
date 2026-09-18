@@ -17,8 +17,3 @@ execute as @a[scores={walls.respawn=1..}] run function walls:player/tick_dead
 
 # --- XP TOKENS ---
 execute as @a[tag=!admin] if items entity @s container.* experience_bottle[custom_data~{walls_xp:1b}] run function walls:econ/redeem_xp
-
-# --- DARKNESS ---
-#   an angry warden blinds everyone within 20 blocks, which makes the
-#   whole endgame unplayable. delete this line if you want it back.
-effect clear @a[tag=!admin] darkness

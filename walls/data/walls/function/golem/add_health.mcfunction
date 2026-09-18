@@ -1,9 +1,9 @@
 # ============================================================
-# walls:wardens/add_health
-# Called by: walls:wardens/tick
-# Executor:  One warden
+# walls:golem/add_health
+# Called by: walls:golem/tick
+# Executor:  One golem
 #
-# Adds this warden's health onto #sum walls.temp.
+# Adds this golem's health onto #sum walls.temp.
 # ============================================================
 
 execute store result score #hp walls.temp run data get entity @s Health

@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "Walls - two teams, one bedrock wall, four wardens",
+        "description": "Walls - two teams, one bedrock wall, four iron golems",
         "min_format": 94,
         "max_format": 9999
     }

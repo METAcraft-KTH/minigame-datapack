@@ -23,12 +23,13 @@ gamerule pvp true
 #   we print our own kill feed in walls:on/player/death
 gamerule show_death_messages false
 
-# the Trickster sells spawners, so the blocks have to work
+# the Trickster sells spawners, so the blocks have to work.
+#   this is not what arms them: minecraft:spawner is an operator block,
+#   so the shop item cannot carry its own block entity data. The mob is
+#   written in by walls:spawner/place after the block goes down.
 gamerule spawner_blocks_work true
-#   natural spawning stays off — every mob in this game is bought.
-#   if placed spawners turn out to be dead, this is the first thing
-#   to try flipping.
+#   natural spawning stays off — every mob in this game is bought
 gamerule spawn_mobs false
 
-# on peaceful the wardens would vanish and the spawners would do nothing
+# on peaceful the bought spawners would do nothing and mobs would vanish
 difficulty normal
