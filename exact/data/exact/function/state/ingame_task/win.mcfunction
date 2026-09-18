@@ -51,7 +51,7 @@ execute if score ?task exact.state matches 20 run function exact:state/ingame_ta
 execute if score ?task exact.state matches 21 run function exact:state/ingame_task/win_tellraw {verb:"understood the reference!"}
 execute if score ?task exact.state matches 22 run function exact:state/ingame_task/win_tellraw {verb:"is not going to systemet tonight!"}
 execute if score ?task exact.state matches 23 run function exact:state/ingame_task/win_tellraw {verb:"touched grass AND water!"}
-execute if score ?task exact.state matches 24 run function exact:state/ingame_task/win_tellraw {verb:"REALLY wanted to touch grass!"}
+execute if score ?task exact.state matches 24 run function exact:state/ingame_task/win_tellraw {verb:"beelined for the grass!"}
 execute if score ?task exact.state matches 25 run function exact:state/ingame_task/win_tellraw {verb:"is eating good tonight!"}
 execute if score ?task exact.state matches 26 run function exact:state/ingame_task/win_tellraw {verb:"works for Kiruna!"}
 execute if score ?task exact.state matches 27 run function exact:state/ingame_task/win_tellraw {verb:"works for SAAB!"}

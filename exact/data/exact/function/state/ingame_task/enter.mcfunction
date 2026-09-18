@@ -82,10 +82,11 @@ execute if score ?task exact.state matches 9 run give @a[tag=!admin] flint_and_s
 # Task 10: Take damage!! No items -- a sulfur cube holding a magma block is
 # "hot", so touching it burns. The absorbed block lives in equipment.body, and
 # holding one immobilises the cube but makes it take knockback instead of
-# damage, so players punch it around the arena. Fall damage is on for this
+# damage, so players punch it around the arena. Size:1 is the large cube --
+# small ones (Size:0) cannot hold a block at all. Fall damage is on for this
 # task only, so dropping off the edge counts as well.
 execute if score ?task exact.state matches 10 run gamerule fall_damage true
-execute if score ?task exact.state matches 10 run summon sulfur_cube 50000 115 50000 {equipment:{body:{id:"minecraft:magma_block"}},Glowing:1b}
+execute if score ?task exact.state matches 10 run summon sulfur_cube 50000 115 50000 {Size:2,equipment:{body:{id:"minecraft:magma_block"}},Glowing:1b}
 
 # Task 11: Blind yourself!! (suspicious stew with an azure bluet)
 execute if score ?task exact.state matches 11 run fill 50007 99 50007 49993 99 49993 crafting_table
@@ -117,6 +118,9 @@ execute if score ?task exact.state matches 14 run fill 50007 100 50007 49993 100
 execute if score ?task exact.state matches 14 run give @a[tag=!admin] golden_axe[can_break={blocks:"bee_nest"}]
 
 # Task 15: Buy anything!! (mine emeralds, then trade them)
+# MAIN's reset_gamerules turns block_drops off, so the ore has to be allowed to
+# drop for this task or there is nothing to trade with.
+execute if score ?task exact.state matches 15 run gamerule block_drops true
 execute if score ?task exact.state matches 15 run fill 50007 99 50007 49993 99 49993 emerald_ore
 execute if score ?task exact.state matches 15 run give @a[tag=!admin] iron_pickaxe[can_break={blocks:"emerald_ore"}]
 execute if score ?task exact.state matches 15 at @a[tag=!admin,tag=!exact.dead] run summon wandering_trader ~ ~ ~
@@ -155,10 +159,12 @@ execute if score ?task exact.state matches 23 run fill 50007 99 50007 49993 99 4
 execute if score ?task exact.state matches 23 run fill 49998 115 49998 50002 115 50002 grass_block
 execute if score ?task exact.state matches 23 run give @a[tag=!admin] trident[enchantments={riptide:3}]
 
-# Task 24: Touch grass!! (speed II)
-# COORDINATES ARE PLACEHOLDERS -- replace 0 0 0 with the real course spawn.
-execute if score ?task exact.state matches 24 run tp @a[tag=!admin] 0 0 0
-execute if score ?task exact.state matches 24 run effect give @a[tag=!admin] speed infinite 1 true
+# Task 24: Touch grass!! (elytra) -- the course is the waxed copper grate shell
+# around the arena, turned to grass for this round only. Nobody is teleported:
+# players take off from the platform on rockets and land on the shell.
+execute if score ?task exact.state matches 24 run fill 50028 114 49971 49971 114 50028 grass_block replace waxed_copper_grate
+execute if score ?task exact.state matches 24 run give @a[tag=!admin] elytra
+execute if score ?task exact.state matches 24 run give @a[tag=!admin] firework_rocket[fireworks={explosions:[],flight_duration:1b}] 5
 
 # Task 25: Make bread!! The platform becomes wet farmland to plant on, and the
 # y98 floor ring becomes crafting tables (bread is a 3-wide recipe). Farmland
@@ -168,6 +174,8 @@ execute if score ?task exact.state matches 25 run fill 49981 98 49981 50019 98 5
 execute if score ?task exact.state matches 25 run give @a[tag=!admin] diamond_hoe[can_break={blocks:"wheat"}]
 execute if score ?task exact.state matches 25 run give @a[tag=!admin] wheat_seeds[can_place_on={blocks:"farmland"}] 64
 execute if score ?task exact.state matches 25 run give @a[tag=!admin] bone_meal[can_place_on={blocks:"wheat"}] 64
+# Harvested crops have to drop, same as task 15, or there is no wheat to bake
+execute if score ?task exact.state matches 25 run gamerule block_drops true
 
 # Tasks 26-30: crafting tasks. Same crafting-table platform and the same
 # 64-of-everything kit, dealt into the backpack so the hotbar stays clear.

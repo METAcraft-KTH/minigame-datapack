@@ -1,6 +1,6 @@
 # ============================================================
 # exact:adv/24
-# Reward handler for task 24: Touch grass (speed course)
+# Reward handler for task 24: Touch grass (elytra course)
 # Trigger: granted by exact:state/ingame_task/tick
 #
 # Guards: the trigger is armed all game, so ignore it unless

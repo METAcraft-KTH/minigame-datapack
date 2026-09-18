@@ -32,7 +32,7 @@ have been played.
 | 21 | Wololo!! | `player_interacted_with_entity`, red dye + sheep |
 | 22 | Drink water!! | `consume_item`, potion |
 | 23 | Touch grass!! (riptide) | polled in `tick`: standing on grass |
-| 24 | Touch grass!! (speed II) | polled in `tick`: standing on grass — **placeholder coords** |
+| 24 | Touch grass!! (elytra) | polled in `tick`: standing on grass (the grate shell at y114) |
 | 25 | Make bread!! | `inventory_changed`, bread |
 | 26 | Craft blast furnace!! | `recipe_crafted`, `minecraft:blast_furnace` |
 | 27 | Craft crossbow!! | `recipe_crafted`, `minecraft:crossbow` |

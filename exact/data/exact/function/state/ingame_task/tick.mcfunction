@@ -60,9 +60,9 @@ execute if score ?task exact.state matches 25 run fill 50007 99 50007 49993 99 4
 # Keep all players near the arena if they fall too low. This is not just
 # tidiness any more: the void deals out_of_world damage, which bypasses
 # resistance, so a player left falling would lose their remaining hearts
-# and be eliminated by the scenery. Task 24 plays away from the arena, so
-# it is exempt -- catch its players on the course itself if it needs it.
-execute unless score ?task exact.state matches 24 as @a if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:55}}}}} run tp @s 50000 100 50000
+# and be eliminated by the scenery. Every task plays at the arena, so this
+# applies to all of them.
+execute as @a if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:55}}}}} run tp @s 50000 100 50000
 
 # Persistent subtitle prompts and success title
 title @a times 0 80 20

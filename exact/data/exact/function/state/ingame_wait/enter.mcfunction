@@ -46,8 +46,12 @@ execute if score ?task exact.state matches 14 run fill 50007 100 50007 49993 100
 # covered by the iron_block fill above)
 execute if score ?task exact.state matches 23 run fill 49984 126 49984 50016 99 50016 air replace grass_block
 
-# Task 24: bring everyone back from the obstacle course
-execute if score ?task exact.state matches 24 run tp @a[tag=!admin] 50000 100 50000
+# Task 24: turn the elytra course back into waxed copper grate
+execute if score ?task exact.state matches 24 run fill 50028 114 49971 49971 114 50028 waxed_copper_grate replace grass_block
+
+# Tasks 15 and 25: block drops are off again for every other task
+execute if score ?task exact.state matches 15 run gamerule block_drops false
+execute if score ?task exact.state matches 25 run gamerule block_drops false
 
 # Task 25: put the concrete powder floor back. Any crops left standing on the
 # farmland go with the iron_block platform fill above.
