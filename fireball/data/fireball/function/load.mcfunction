@@ -9,19 +9,20 @@ scoreboard players set #1000 math 1000
 scoreboard objectives add fireball.death deathCount
 
 team add fireball.black "Team Blackstone"
-team modify fireball.black collisionRule pushOtherTeams
+team modify main.it collisionRule pushOtherTeams
 team modify fireball.black color dark_gray
-team modify fireball.black friendlyFire false
+team modify main.it friendlyFire false
 
 team add fireball.red "Team Nether Brick"
-team modify fireball.red collisionRule pushOtherTeams
+team modify main.data collisionRule pushOtherTeams
 team modify fireball.red color red
-team modify fireball.red friendlyFire false
+team modify main.data friendlyFire false
 
 gamerule block_drops false
 gamerule spawn_mobs false
 gamerule immediate_respawn true
 gamerule fire_damage true
+gamerule natural_health_regeneration true
 
 function fireball:uuid/load
 
