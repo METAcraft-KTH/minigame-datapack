@@ -10,11 +10,11 @@ execute if score #fireball_count fireball matches ..5 if score #fireball_spawnti
 execute unless score #fireball_count fireball matches ..5 if score #fireball_spawntime fireball matches 200.. run function fireball:gameplay/spawn_new_ball
 
 ## end game when only one team stands
-execute if score #2teams fireball matches 1 unless entity @a[predicate=fireball:valid_target,team=main.it] run return run function fireball:gameplay/victory_red
-execute if score #2teams fireball matches 1 unless entity @a[predicate=fireball:valid_target,team=main.data] run return run function fireball:gameplay/victory_black
+execute if score #game_time fireball matches 201.. if score #2teams fireball matches 1 unless entity @a[predicate=fireball:valid_target,team=main.it] run return run function fireball:gameplay/victory_red
+execute if score #game_time fireball matches 201.. if score #2teams fireball matches 1 unless entity @a[predicate=fireball:valid_target,team=main.data] run return run function fireball:gameplay/victory_black
 
 ## end game when no one stands
-execute unless entity @a[predicate=fireball:valid_target] run return run function fireball:gameplay/game_over
+execute if score #game_time fireball matches 201.. unless entity @a[predicate=fireball:valid_target] run return run function fireball:gameplay/game_over
 
 ## intro
 execute if score #game_time fireball matches 201.. run return 1
