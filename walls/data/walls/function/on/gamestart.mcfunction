@@ -15,10 +15,6 @@ scoreboard players set ?phase walls.state 0
 scoreboard players set ?match_timer walls.timer 0
 scoreboard players set ?wall_step walls.state 0
 scoreboard players set ?sudden_death walls.state 0
-#   mid evoker bookkeeping: 0 = none, 1 = alive, 2 = just died
-scoreboard players set ?evoker_state walls.state 0
-scoreboard players set ?evoker_claimed walls.state 0
-scoreboard players set ?next_evoker walls.timer 12000
 #   how many defenders each side still has, for the "ravager fell"
 #   callout. Read from the world rather than assumed, so a ravager that
 #   failed to summon does not read as one that just died.

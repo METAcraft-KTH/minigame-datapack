@@ -72,7 +72,7 @@ data modify storage main:intro walls.howtoplay append value \
         "",\
         "Three villagers at your spawn trade for prismarine crystals.",\
         "You start with 8. Every kill you get is worth 5 more.",\
-        "A giant evoker lands in the middle every 3 minutes, worth 15.",\
+        "A spawner in the middle keeps giant evokers coming, worth 15 each.",\
     ]
 data modify storage main:intro walls.howtoplay append value \
     [\

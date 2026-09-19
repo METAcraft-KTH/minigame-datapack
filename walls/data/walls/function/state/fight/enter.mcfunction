@@ -8,5 +8,5 @@
 
 scoreboard players set ?phase walls.state 2
 
-# first evoker lands the moment the wall does, then every 3 minutes
-function walls:evoker/spawn
+# the wall is gone, so the mid evoker spawner can go in its place
+function walls:evoker/place

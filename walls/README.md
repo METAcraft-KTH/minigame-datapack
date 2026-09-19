@@ -12,8 +12,8 @@ Namespace: `walls`.
 | intro | The pack raises the bedrock wall and places the towers and shops |
 | 0:00 | Phase 0 (`prep`). Wall is up, towers are invulnerable. Mine, craft, fortify. |
 | 8:00 / 9:00 / 9:30 / 9:50 / 9:55 | Countdown shouts |
-| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 8 ticks, one slice each. Towers become vulnerable. First evoker spawns. |
-| 10:00+ | Phase 2 (`fight`). A new evoker every 3 minutes. |
+| 10:00 | Phase 1 (`drop`). The bedrock wall is removed over 8 ticks, one slice each. Towers become vulnerable. The evoker spawner goes in at mid. |
+| 10:00+ | Phase 2 (`fight`). The mid spawner keeps a giant evoker on the field. |
 | 20:00 | Sudden death — every tower gets Poison II forever |
 | 30:00 | Backstop: the side with healthier towers wins (see below) |
 | — | Game ends the moment either side loses both towers |
@@ -30,7 +30,7 @@ split by a bedrock wall on the X=30000 line, IT west and Data east.
 | `walls:map/setup`, `walls:tower/watchdog` | the 4 tower posts, 6 shop villagers |
 | `walls:player/send_to_spawn`, `walls:player/set_spawnpoints` | the two team spawns |
 | `walls:map/build_wall`, `walls:state/drop/tick` | the wall volume, raised and then taken down |
-| `walls:evoker/spawn` | where the mid evoker lands |
+| `walls:evoker/place`, `walls:evoker/tick`, `walls:end/finish` | the mid evoker spawner block |
 | `walls:on/introstart`, `walls:end/finish` | the forceload region |
 
 ### The wall
@@ -158,26 +158,33 @@ tracked purely as outro leaderboard flavour.
 
 ## The mid evoker
 
-Every 3 minutes from the moment the wall drops, one evoker spawns at
-30000 64 60000 — 100 HP, also scaled to 2.0, glowing, worth 15 💠 to
-whoever lands the kill. One at a time: if the last one is still alive, the slot
-is skipped.
+When the wall drops, `walls:evoker/place` puts a spawner at 30000 64 60000.
+It spawns one evoker at a time (`MaxNearbyEntities:1`): while an evoker is
+inside its 8-block spawn range it skips its attempt, and it tries again 10-20
+seconds later once that one is dead or has wandered off. It only runs with a
+player within 32 blocks. Each evoker is 100 HP, scaled to 2.0, glowing, and
+worth 15 💠 to whoever lands the kill. Because they keep coming, far more
+evokers spawn — and die — than the old one-every-3-minutes bounty. That is
+intentional.
 
-Unlike the defenders it **keeps its AI**. It picks its own targets, throws
-armour-piercing fangs, summons vexes and is hostile to both teams, which is the
-point of putting a bounty in no-man's land. `walls:evoker/track` follows it so
-`walls:evoker/resolve` knows where to drop the 15 crystals if it dies to
-something that is not a player.
+Unlike the defenders they **keep their AI**. They pick their own targets, throw
+armour-piercing fangs, summon vexes and are hostile to both teams, which is the
+point of putting a bounty in no-man's land.
 
-**It drops nothing.** `data/minecraft/loot_table/entities/evoker.json` overrides
+The spawner is an ordinary block, so a player can mine it out.
+`walls:evoker/tick` puts it back the next tick. `walls:end/finish` removes it.
+A kill only pays out if a player gets the credit; an evoker that dies to
+anything else just dies.
+
+**They drop nothing.** `data/minecraft/loot_table/entities/evoker.json` overrides
 the vanilla table with an empty pool list, because an evoker's totem of undying
 is a guaranteed drop and would hand out free extra lives. Overriding a vanilla
 loot table is safe here only because evokers appear in no other game on this
 server — that override is global. XP still drops, since experience does not come
 from the loot table. If a totem ever does appear, add
-`DeathLootTable:"minecraft:empty"` to the summon in `walls:evoker/spawn`.
+`DeathLootTable:"minecraft:empty"` to the entity in `walls:evoker/place`.
 
-Its vexes and fangs are swept up by `walls:end/finish` along with everything
+Their vexes and fangs are swept up by `walls:end/finish` along with everything
 else this pack put in the world.
 
 ## Economy
@@ -190,7 +197,6 @@ ever re-issued on respawn (`keep_inventory` is on).
 | Kill with a credited killer | killer +5, victim +1 |
 | Kill with no credited killer | 5 dropped where the victim died |
 | Evoker, credited | killer +15, each of their teammates +2 |
-| Evoker, no killer | 15 dropped where it fell |
 
 "Credited" means MAIN's `execute on attacker` resolved to a player other than
 the victim. A mob kill, a fall, or your own TNT all count as uncredited.
@@ -217,11 +223,8 @@ writes no `Offers` field at all**, so `Offers.Recipes` is not yet a path, and
 every `append` fails leaving a shopkeeper with an empty trade window. `set`
 creates the path, `append` needs it to exist already.
 
-Three of the trades need explaining:
+Two of the trades need explaining:
 
-- **XP.** A villager cannot sell experience, so the Miner sells a marked
-  experience bottle and `walls:econ/redeem_xp` swaps it for 16 XP on the tick
-  it lands in an inventory.
 - **Spawners.** Bought as a `spawner` item carrying `block_entity_data`, so the
   settings survive placement. `custom_spawn_rules` is what lets them spawn in
   any light level, the helmet is what stops them burning, and the `Team` on the
@@ -298,10 +301,7 @@ Phases live in `?phase walls.state`: 0 prep, 1 dropping, 2 fight, 3 over.
 | Fake player | Objective | Meaning |
 |---|---|---|
 | `?match_timer` | `walls.timer` | ticks since game start |
-| `?next_evoker` | `walls.timer` | match time the next mid evoker is due |
 | `?wall_step` | `walls.state` | which wall slice is next |
-| `?evoker_state` | `walls.state` | 0 none, 1 alive, 2 just died |
-| `?evoker_claimed` | `walls.state` | a player has been paid for this evoker |
 | `?tower_melee` | `walls.timer` | ticks until the towers swing again |
 | `?it_towers` / `?data_towers` | `walls.state` | towers still standing |
 | `?ready` | `walls.state` | the win check is allowed to fire |

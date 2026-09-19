@@ -18,3 +18,4 @@ function walls:player/tick
 function walls:tower/tick
 function walls:evoker/tick
 function walls:trident/tick
+function walls:shop/tick

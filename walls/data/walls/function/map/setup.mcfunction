@@ -23,10 +23,10 @@ function walls:map/build_wall
 # --- TOWERS ---
 #   one ravager per corner of each team's own half.
 #   yaw points each one in towards the middle of the map
-execute positioned 29880 64 59880 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-45}
-execute positioned 29880 64 60120 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-135}
-execute positioned 30120 64 59880 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:45}
-execute positioned 30120 64 60120 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:135}
+execute positioned 29893 70 59901 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-45}
+execute positioned 29910 63 60115 run function walls:map/summon_tower {side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff",yaw:-135}
+execute positioned 30107 70 59901 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:45}
+execute positioned 30090 63 60115 run function walls:map/summon_tower {side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84",yaw:135}
 
 # --- SHOPS ---
 #   IT, just inside the west spawn

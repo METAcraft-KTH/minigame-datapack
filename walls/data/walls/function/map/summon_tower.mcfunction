@@ -67,3 +67,8 @@ effect give @n[type=ravager,tag=walls.tmp_tower] instant_health 1 7 true
 
 execute unless entity @n[type=ravager,tag=walls.tmp_tower,distance=..8] run tellraw @a[tag=admin] {text:"[walls] a tower failed to summon — run the summon by hand in chat to see why.",color:"red"}
 tag @n[type=ravager,tag=walls.tmp_tower] remove walls.tmp_tower
+
+# also place a bedrock platform under it
+fill ~-3 ~-1 ~-3 ~3 ~-1 ~3 bedrock
+# and build protection
+fill ~-3 ~ ~-3 ~3 ~6 ~3 moving_piston

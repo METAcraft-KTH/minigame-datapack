@@ -1,6 +1,6 @@
 # ============================================================
 # walls:econ/drop_at
-# Called by: walls:econ/drop_death, walls:evoker/resolve
+# Called by: walls:econ/drop_death
 # Executor:  Server
 #
 # Preconditions: #dx #dy #dz #dn walls.temp are set.

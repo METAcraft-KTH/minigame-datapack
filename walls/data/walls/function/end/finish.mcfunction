@@ -19,6 +19,7 @@ team modify main.data friendlyFire true
 kill @e[type=ravager,tag=walls.tower]
 kill @e[type=armor_stand,tag=walls.tower_anchor]
 kill @e[type=evoker,tag=walls.evoker]
+setblock 30000 64 60000 air
 kill @e[type=villager,tag=walls.shop]
 #   the evoker's own summons, and anything a team built
 execute positioned 30000 64 60000 run kill @e[type=vex,distance=..400]

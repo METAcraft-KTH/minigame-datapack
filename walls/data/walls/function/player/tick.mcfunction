@@ -14,6 +14,3 @@ execute as @a[tag=!admin,gamemode=survival] store result score @s walls.z run da
 
 # --- RESPAWN QUEUE ---
 execute as @a[scores={walls.respawn=1..}] run function walls:player/tick_dead
-
-# --- XP TOKENS ---
-execute as @a[tag=!admin] if items entity @s container.* experience_bottle[custom_data~{walls_xp:1b}] run function walls:econ/redeem_xp

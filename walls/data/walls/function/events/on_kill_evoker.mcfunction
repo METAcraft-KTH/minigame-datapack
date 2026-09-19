@@ -9,9 +9,6 @@
 advancement revoke @s only walls:kill_evoker
 execute unless score ?superstate main.state matches 3 run return 0
 
-# tells walls:evoker/resolve that this one is paid for
-scoreboard players set ?evoker_claimed walls.state 1
-
 give @s prismarine_crystals 15
 scoreboard players add @s walls.st.cryst 15
 
