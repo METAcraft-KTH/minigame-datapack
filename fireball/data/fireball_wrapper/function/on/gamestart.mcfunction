@@ -15,6 +15,10 @@ scoreboard players set @a[tag=!admin] fireball.st.alive 0
 scoreboard players set @a[tag=!admin] fireball.st.hits 0
 
 
+scoreboard players set #score_it fireball 0
+scoreboard players set #score_data fireball 0
+
+
 # --- INIT ---
 function fireball:api/init
 

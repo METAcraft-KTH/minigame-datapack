@@ -14,3 +14,5 @@ title @a title {"text":"TEAM DATA WINS","color":"yellow","bold":true}
 
 # 4. Victory fanfare
 playsound minecraft:ui.toast.challenge_complete master @a ~ ~ ~ 1 1.2
+
+scoreboard players add #score_data fireball 1
