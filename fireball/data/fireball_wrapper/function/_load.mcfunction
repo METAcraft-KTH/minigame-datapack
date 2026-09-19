@@ -39,30 +39,21 @@ data modify storage main:intro fireball.player_starting_coords set value "0 129 
 data modify storage main:intro fireball.howtoplay set value []
 data modify storage main:intro fireball.howtoplay append value \
     [\
-        "A fireball hunts down the nearest player. Hit it back.",\
-        ["",{text:"Data",color:"#e83d84"}," starts on the red nether brick platform,"],\
-        ["",{text:"IT",color:"#cc99ff"}," on the blackstone one. Everything between is lava."],\
+        "Hit a fireball back and forth until it explodes!",\
         "",\
-        "Left-click the fireball with your Fireball Bat to send it away.",\
-        "The bat reaches 5 blocks, so you don't have to hug it.",\
+        "Left-click with your Fireball Bat to hit it back",\
+        "(it gives you 5-block reach).",\
+        "",\
+        "Fireball explosion takes out the platform too!",\
     ]
 data modify storage main:intro fireball.howtoplay append value \
     [\
-        ["",{text:"Every hit makes it faster.",color:"yellow",bold:true}],\
-        "It also picks a new target, usually someone on the other team.",\
+        "The fireball gets faster every hit",\
+        "and targets a random enemy.",\
         "",\
-        "If it touches a player it explodes and takes the floor with it.",\
-        "Bounce it off the ground three times and it explodes anyway.",\
-        "More fireballs join the arena the longer the game runs.",\
-    ]
-data modify storage main:intro fireball.howtoplay append value \
-    [\
-        "Fall in the lava and you are out. Mind the holes.",\
-        "Dead players spectate from the middle until the game ends.",\
+        "If you fall into the lava and die, you're out!",\
+        "Last team alive wins!",\
         "",\
-        ["",{text:"Last team standing wins.",color:"gold",bold:true}],\
-        "Afterwards we rank everyone by survival time and bat hits.",\
-        "The game starts 10 seconds after this slide fades out. Good luck!",\
     ]
 
 
