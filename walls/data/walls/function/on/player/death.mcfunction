@@ -20,8 +20,8 @@ gamemode spectator @s
 scoreboard players set @s walls.respawn 200
 
 # --- DEATH MESSAGE ---
-execute if entity @a[tag=on.attacker,tag=!walls.victim] run tellraw @a [{selector:"@s"},{text:" was killed by ",color:"gray"},{selector:"@a[tag=on.attacker,tag=!walls.victim]"}]
-execute unless entity @a[tag=on.attacker,tag=!walls.victim] run tellraw @a [{selector:"@s"},{text:" died",color:"gray"}]
+#execute if entity @a[tag=on.attacker,tag=!walls.victim] run tellraw @a [{selector:"@s"},{text:" was killed by ",color:"gray"},{selector:"@a[tag=on.attacker,tag=!walls.victim]"}]
+#execute unless entity @a[tag=on.attacker,tag=!walls.victim] run tellraw @a [{selector:"@s"},{text:" died",color:"gray"}]
 
 # --- CRYSTALS ---
 #   a credited killer takes 5, and the victim gets 1 back
