@@ -18,6 +18,7 @@ scoreboard players set @a[tag=!admin] fireball.st.hits 0
 # --- INIT ---
 function fireball:api/init
 
+scoreboard players set #wrapper.rounds fireball 3
 
 
 # --- TEAMS ---
