@@ -36,8 +36,8 @@ data modify storage main:intro fireball.camera_starting_coords set value "0 149 
 # and fireball:gameplay/tp_to_arena spreads them onto their platforms.
 data modify storage main:intro fireball.player_starting_coords set value "0 129 30 180 0"
 
-data modify storage main:intro fireball.howtoplay set value []
-data modify storage main:intro fireball.howtoplay append value \
+data modify storage main:intro fireball_wrapper.howtoplay set value []
+data modify storage main:intro fireball_wrapper.howtoplay append value \
     [\
         "Hit a fireball back and forth until it explodes!",\
         "",\
@@ -46,7 +46,7 @@ data modify storage main:intro fireball.howtoplay append value \
         "",\
         "Fireball explosion takes out the platform too!",\
     ]
-data modify storage main:intro fireball.howtoplay append value \
+data modify storage main:intro fireball_wrapper.howtoplay append value \
     [\
         "The fireball gets faster every hit",\
         "and targets a random enemy.",\
@@ -64,8 +64,8 @@ scoreboard objectives add fireball.st.hits dummy
 
 
 # --- OUTRO LEADERBOARD SLIDES ---
-data modify storage main:outro fireball.stats set value []
-data modify storage main:outro fireball.stats append value { \
+data modify storage main:outro fireball_wrapper.stats set value []
+data modify storage main:outro fireball_wrapper.stats append value { \
     objective: "fireball.st.alive",\
     name: "Longest survivors:",\
     sortby: ">",\
@@ -73,7 +73,7 @@ data modify storage main:outro fireball.stats append value { \
     suffix: "",\
     numberformat: 3,\
 }
-data modify storage main:outro fireball.stats append value { \
+data modify storage main:outro fireball_wrapper.stats append value { \
     objective: "fireball.st.hits",\
     name: "Most bat hits:",\
     sortby: ">",\
