@@ -43,30 +43,21 @@ data modify storage main:intro splat.player_starting_coords set value "-48 63 50
 data modify storage main:intro splat.howtoplay set value []
 data modify storage main:intro splat.howtoplay append value \
     [\
-        {text:"Paint the Campus",color:"aqua",bold:1b},\
-        "",\
-        "Run around the campus and paint the floor",\
+        "Run around the campus and paint every surface",\
         "in your team's colour.",\
-        "Painting over the other team's blocks counts too!",\
         "",\
+        "Team with most surface painted at the end of the timer wins.",\
+        "",\
+        "If you've played Splatoon, it's literally just that"\
     ]
 data modify storage main:intro splat.howtoplay append value \
     [\
-        {text:"Placeholder slide",color:"gray",italic:1b},\
+        "Click the compass in your inventory to change weapon.",\
         "",\
-        "More detailed rules go here once the mod",\
-        "is finished.",\
+        "Press F to throw grenade.",\
         "",\
-        "",\
-    ]
-data modify storage main:intro splat.howtoplay append value \
-    [\
-        ["",{text:"Most of the campus painted wins.",color:"yellow",bold:1b}],\
-        "",\
-        "The winning team takes 1 point in the best-of-5.",\
-        "",\
-        "The intro ends after this slide fades out!",\
-        "",\
+        ["Sneak to switch to ",{text:"squid",strikethrough:true}," Pirkko form,"],\
+        "letting you swim through your own paint."\
     ]
 
 

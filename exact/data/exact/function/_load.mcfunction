@@ -28,21 +28,21 @@ data modify storage main:intro exact.player_starting_coords set value "50000 100
 data modify storage main:intro exact.howtoplay set value []
 data modify storage main:intro exact.howtoplay append value \
     [\
-        "In this game, you'll be given various tasks to follow.",\
+        "Race to complete a random task ASAP!",\
+        "Start with 5❤, lose 1❤ for each task you don't",\
+        "complete in time.",\
+        "First player to finish a task regains 1❤.",\
         "",\
-        "All tasks have a time limit. You start with 5 ❤,",\
-        "and every task you fail costs you one of them.",\
-        "The first player to finish a task heals one back.",\
-        "Run out and you're eliminated - last team standing wins!",\
+        "0❤ = eliminated. Last team standing wins!",\
     ]
 data modify storage main:intro exact.howtoplay append value \
     [\
-        ["",{text:"Last team standing wins.",color:"yellow",bold:true}],\
+        "After a % of players have completed the task,",\
+        "the timer skips to 3 seconds left.",\
         "",\
-        "It's the whole team that has to go, not just you —",\
-        "so keep the people next to you alive.",\
+        "This % gets lower every 5 rounds.",\
         "",\
-        "The winning team takes 1 point in the best-of-5.",\
+        "Tasks will repeat after 30 rounds.",\
     ]
 
 # --- STATS VARIABLES ---

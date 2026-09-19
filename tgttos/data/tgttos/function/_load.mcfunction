@@ -43,30 +43,20 @@ data modify storage main:intro tgttos.player_starting_coords set value "20025 64
 data modify storage main:intro tgttos.howtoplay set value []
 data modify storage main:intro tgttos.howtoplay append value \
     [\
-        "Two control points, out on islands 100 blocks from your spawn.",\
-        ["",{text:"Data",color:"#e83d84"}," and ",{text:"IT",color:"#cc99ff"}," start on their own platform, and nothing connects them."],\
-        "We'll cross that bridge when we get there. Build it yourself.",\
+        "Bridge to the floating beacon islands!!",\
         "",\
-        "You get infinite team-coloured concrete that places on anything,",\
-        "an efficiency 4 pickaxe that breaks it, a bow, and 3 arrows.",\
+        "Stand still on the wool to start capturing.",\
+        "Both points need to be capped to progress objective.",\
+        "",\
+        "First to run down their 3-minute timer wins!"\
     ]
 data modify storage main:intro tgttos.howtoplay append value \
     [\
-        ["",{text:"Arrows destroy concrete.",color:"yellow",bold:true}],\
-        "Every bridge is concrete, including the one under your feet.",\
-        "You get one more arrow every 5 seconds — spend them well.",\
+        "You get 1 arrow every 5 seconds that breaks concrete,",\
+        "infinite concrete building/bridging blocks, and",\
+        "also a pickaxe that doubles as melee weapon.",\
         "",\
-        "Stand within 5 blocks of the beacon for 10 seconds to capture it.",\
-        "An enemy standing there with you freezes the capture for both.",\
-    ]
-data modify storage main:intro tgttos.howtoplay append value \
-    [\
-        "Taking a point off someone means rewinding their progress first,",\
-        "and a point never goes back to neutral once somebody owns it.",\
-        ["",{text:"Hold BOTH points",color:"yellow",bold:true}," to run your 3:00 timer down to zero."],\
-        "",\
-        "The winning team takes 1 point in the best-of-5.",\
-        "The intro ends after this slide fades out!",\
+        "Respawn is instant!",\
     ]
 
 

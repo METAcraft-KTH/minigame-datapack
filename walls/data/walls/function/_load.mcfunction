@@ -58,30 +58,30 @@ data modify storage main:intro walls.player_starting_coords set value "29880 64 
 data modify storage main:intro walls.howtoplay set value []
 data modify storage main:intro walls.howtoplay append value \
     [\
-        "Two teams, one map, split down the middle by a bedrock wall.",\
-        ["",{text:"IT",color:"#cc99ff"}," spawns on the west edge, ",{text:"Data",color:"#e83d84"}," on the east edge."],\
+        "Normal survival for 10 minutes, then",\
+        "the wall drops!",\
         "",\
-        "Each team is guarded by 2 giant ravagers, one per corner.",\
-        "They cannot move, but they hit very hard.",\
-        "Their shared health is shown in the bar above your hotbar.",\
+        "Each team has 2 giant ravagers to protect.",\
+        "",\
+        "Kill the enemy ravagers first to win!",\
     ]
 data modify storage main:intro walls.howtoplay append value \
     [\
-        ["",{text:"The wall drops after 10 minutes.",color:"yellow",bold:true}],\
-        "Until then you cannot reach the enemy — mine, craft and gear up.",\
+        "You spawn with 8 crystals and can earn",\
+        "more by killing enemies or evokers (after wall drops).",\
         "",\
-        "Three villagers at your spawn trade for prismarine crystals.",\
-        "You start with 8. Every kill you get is worth 5 more.",\
-        "A spawner in the middle keeps giant evokers coming, worth 15 each.",\
+        "Buy resources and special weapons from",\
+        "villagers at your spawn!",\
+        ""\
     ]
 data modify storage main:intro walls.howtoplay append value \
     [\
-        ["",{text:"Kill both enemy ravagers to win.",color:"yellow",bold:true}],\
-        "If neither team manages it inside 30 minutes, the win",\
-        "goes to whoever's ravagers have the most health left.",\
+        "Sudden death: 20 minutes after start,",\
+        "ravagers will be poisoned.",\
         "",\
-        "The winning team takes 1 point in the best-of-5.",\
-        "The intro ends after this slide fades out!",\
+        "If the game still doesn't end 10 minutes",\
+        "after that, whoever has most health left",\
+        "wins."\
     ]
 
 
