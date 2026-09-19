@@ -24,7 +24,7 @@ execute store result score #sec_ones main.temp run compute default integer main:
 #   set bossbar name
 execute unless score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"main.temp"}},{score:{name:"#sec_ones",objective:"main.temp"}},{text:" until the next game begins",color:"white"}]
 #   special formatting if the game is 1
-execute if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"main.temp"}},{score:{name:"#sec_ones",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"MINECRAFT HEXATHLON 5",color:"gold",bold:1b}," begins"]]
+execute if score ?minigame_id main.state matches 1 run bossbar set main:timer name [{score:{name:"#min",objective:"main.temp"},color:"green"},":",{score:{name:"#sec_tens",objective:"main.temp"}},{score:{name:"#sec_ones",objective:"main.temp"}},[{text:" until ",color:"white"},{text:"METACRAFT RIVALS",color:"gold",bold:1b}," begins"]]
 
 # --- TEAM SELECTION ---
 function main:team/tick
