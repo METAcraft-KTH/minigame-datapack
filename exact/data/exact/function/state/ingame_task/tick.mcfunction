@@ -7,6 +7,9 @@
 # "impossible" advancement that is granted from here instead.
 # ============================================================
 
+# just remove all recipes from everyone
+recipe take @a *
+
 # Saturation and resistance are handed out by exact:on/gametick now -- every
 # task including 7 keeps resistance, because hearts are the life counter and
 # nothing but exact's own /damage is allowed to move them. The advancement

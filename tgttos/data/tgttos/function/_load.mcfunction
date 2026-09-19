@@ -85,11 +85,3 @@ data modify storage main:outro tgttos.stats append value { \
     suffix: " points taken",\
     numberformat: 0,\
 }
-data modify storage main:outro tgttos.stats append value { \
-    objective: "tgttos.st.blocks",\
-    name: "Most bridge destroyed:",\
-    sortby: ">",\
-    prefix: "",\
-    suffix: " blocks",\
-    numberformat: 0,\
-}

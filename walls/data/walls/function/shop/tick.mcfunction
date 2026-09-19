@@ -10,4 +10,4 @@
 
 # Inside "at @s", @p is the player nearest to that villager, and
 # the selector filters apply before the nearest one is picked.
-execute as @e[type=villager,tag=walls.shop] at @s if entity @p[distance=..10,gamemode=!spectator] facing entity @p[distance=..10,gamemode=!spectator] eyes run tp @s ~ ~ ~ ~ ~
+#execute as @e[type=villager,tag=walls.shop] at @s if entity @p[distance=..10,gamemode=!spectator] facing entity @p[distance=..10,gamemode=!spectator] eyes run tp @s ~ ~ ~ ~ ~

@@ -7,10 +7,11 @@
 #
 # Builds one control point back to its neutral state:
 #
-#   marker  ~0.5 ~ ~0.5 the capture centre, 5 block radius. The
-#                       half block offset puts it in the MIDDLE of
-#                       the beacon's column instead of on its corner,
-#                       so the radius and the 9x9 share a centre
+#   marker  ~ ~ ~       the capture centre, 5 block radius. `positioned`
+#                       with whole numbers already centres the anchor
+#                       in its block (x.5), so this is the MIDDLE of
+#                       the beacon's column, and the radius, the 9x9
+#                       and the paint_* fills all share a centre
 #   glass   ~ ~-1 ~     white, and the beacon beam takes its colour
 #   wool    ~ ~-1 ~     9x9 around the glass — odd, so the beam
 #                       comes up through the exact middle block
@@ -23,7 +24,7 @@
 # concrete comes down. The island is what it is for the whole match.
 # ============================================================
 
-$summon minecraft:marker ~0.5 ~ ~0.5 {Tags:["tgttos.point","tgttos.p$(n)"]}
+$summon minecraft:marker ~ ~ ~ {Tags:["tgttos.point","tgttos.p$(n)"]}
 
 fill ~-1 ~-6 ~-1 ~1 ~-6 ~1 minecraft:iron_block
 setblock ~ ~-5 ~ minecraft:beacon

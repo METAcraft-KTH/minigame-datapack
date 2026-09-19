@@ -8,5 +8,5 @@
 # ### MAP CONFIG ### keep in sync with splat:on/gamestart.
 # ============================================================
 
-spawnpoint @a[scores={main.team=1}] -48 63 50070 0
-spawnpoint @a[scores={main.team=2}] 2 69 49725 -90
+spawnpoint @a[scores={main.team=1}] -48 63 50070 0 0
+spawnpoint @a[scores={main.team=2}] 2 69 49725 -90 0

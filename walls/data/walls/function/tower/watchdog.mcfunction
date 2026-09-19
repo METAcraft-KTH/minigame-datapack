@@ -13,10 +13,10 @@
 
 execute store result score #before walls.temp if entity @e[type=ravager,tag=walls.tower]
 
-execute positioned 29880 64 59880 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:-45,side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff"}
-execute positioned 29880 64 60120 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:-135,side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff"}
-execute positioned 30120 64 59880 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:45,side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84"}
-execute positioned 30120 64 60120 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:135,side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84"}
+execute positioned 29893 70 59901 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:-45,side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff"}
+execute positioned 29910 63 60115 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:-135,side:"it",team:"main.it",name:"IT Ravager",color:"#cc99ff"}
+execute positioned 30107 70 59901 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:45,side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84"}
+execute positioned 30090 63 60115 unless entity @e[type=ravager,tag=walls.tower,distance=..16] run function walls:map/summon_tower {yaw:135,side:"data",team:"main.data",name:"Data Ravager",color:"#e83d84"}
 
 execute store result score #after walls.temp if entity @e[type=ravager,tag=walls.tower]
 execute if score #after walls.temp > #before walls.temp run tellraw @a[tag=admin] {text:"[walls] a tower had vanished and was put back.",color:"yellow"}

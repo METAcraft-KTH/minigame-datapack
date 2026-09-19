@@ -11,10 +11,10 @@
 # ############################################################
 #
 # The coordinates below are the point ANCHORS. build_point puts
-# the marker half a block in on X and Z from there, which lands it
-# in the middle of the beacon's column — so the 5 block capture
-# radius and the 9x9 floor are centred on the beam, not on a corner
-# of it.
+# the marker there. `positioned` centres whole-number X and Z in the
+# block, so it sits in the middle of the beacon's column — the 5
+# block capture radius and the 9x9 floor are centred on the beam,
+# not on a corner of it.
 #
 #   Data platform   20025 64 60000      Data point (1)  20025 64 60100
 #   IT platform     19975 64 60000      IT point   (2)  19975 64 60100
