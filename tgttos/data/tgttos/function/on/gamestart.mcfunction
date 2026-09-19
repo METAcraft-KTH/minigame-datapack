@@ -39,7 +39,7 @@ scoreboard players set ?warn_it tgttos.state 0
 #   so only the people who were here at game start get a row
 scoreboard players set @a[tag=!admin] tgttos.st.kills 0
 scoreboard players set @a[tag=!admin] tgttos.st.caps 0
-scoreboard players set @a[tag=!admin] tgttos.st.wool 0
+scoreboard players set @a[tag=!admin] tgttos.st.blocks 0
 
 # --- TEAMS ---
 #   no shooting your own bridge builder off it. tgttos:end/finish

@@ -6,5 +6,5 @@
 # See tgttos:map/paint_data.
 # ============================================================
 
-fill ~-5 ~-1 ~-5 ~4 ~-1 ~4 minecraft:light_blue_wool replace #minecraft:wool
+fill ~-4 ~-1 ~-4 ~4 ~-1 ~4 minecraft:light_blue_wool replace #minecraft:wool
 setblock ~ ~-1 ~ minecraft:light_blue_stained_glass

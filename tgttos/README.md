@@ -8,7 +8,7 @@ Namespace: `tgttos`. Registered in MAIN as minigame 4, display name `WCTBWWGT`.
 ## The game
 
 Two teams start on their own platform. Two control points sit 100 blocks away
-across open air, each one a floating 10×10 wool floor over a beacon. There is
+across open air, each one a floating 9×9 wool floor over a beacon. There is
 no bridge. There is infinite concrete.
 
 - Stand within **5 blocks** of a point's marker for **10 seconds** to take it.
@@ -21,10 +21,16 @@ no bridge. There is infinite concrete.
 - You win on **0:00 while holding both points** — the overtime rule. If the other
   team knocks you off a point, your clock just stops where it is.
 
-Arrows destroy any wool within 0.3 blocks of where they land, and the control
-point floors are wool. That is how you drop somebody off a point you cannot
-reach, and why the fight over a point is usually about the floor rather than the
-people standing on it. You get one arrow every 5 seconds and you start with 3.
+Arrows destroy any **concrete** within 0.3 blocks of where they land, and every
+bridge in the game is concrete. That is how you cut a crossing you could never
+reach on foot, or drop somebody out of the middle of one. An arrow is destroyed
+the tick it sticks into something, whether or not it broke anything, so it can
+never break its own perch and keep eating the map on the way down. You get one
+arrow every 5 seconds and you start with 3.
+
+Nothing else comes down. The point floors and both spawn platforms are wool, and
+no tool or arrow in this game touches wool — the islands are fixed terrain and
+the whole fight is over what the players themselves put in the air.
 
 ## Capture model
 
@@ -53,11 +59,13 @@ reaches that end and are never set back to 0.
 | platform | `20025 64 60000` | `19975 64 60000` |
 | control point | `20025 64 60100` (point 1) | `19975 64 60100` (point 2) |
 
-Both markers sit on a block **corner** (whole-number X and Z), so the 5-block
-radius and the 10×10 floor are both exactly centred on them with 5 blocks to
-each side. Each team's own point is 100 blocks straight south; the other one is
-a 112-block diagonal. Nobody's point is closer to them than to the enemy by
-enough to matter — the diagonal is the tiebreaker.
+The coordinates above are the point **anchors**. `build_point` offsets the marker
+half a block on X and Z from there, putting it at the centre of the beacon's own
+column, so the 5-block capture radius and the 9×9 floor share a centre with the
+beam — 4 blocks of floor on every side of it. Each team's own point is 100
+blocks straight south; the other one is a 112-block diagonal. Nobody's point is
+closer to them than to the enemy by enough to matter — the diagonal is the
+tiebreaker.
 
 ### What the pack builds
 
@@ -68,18 +76,19 @@ enough to matter — the diagonal is the tiebreaker.
 | 58 | 3×3 iron blocks — the beacon's pyramid |
 | 59 | beacon |
 | 60–62 | air, kept clear so the beam reaches the glass |
-| 63 | white stained glass at the marker column, white wool 10×10 around it |
+| 63 | white stained glass in the beam's column, white wool 9×9 around it |
 | 64 | the marker |
 
 The beacon is the point of the beacon: the beam is visible from spawn, and it
 takes its colour from the stained glass four blocks up. Capturing the point
 recolours the glass, so the beam changes team colour across the whole map on the
-tick it falls. The wool recolour is `replace #minecraft:wool`, so holes people
-shot in the floor **stay holes** — capturing a point does not repair it.
+tick it falls. The floor recolour is `replace #minecraft:wool`, which also means
+any concrete somebody bridged across the point is left alone rather than being
+converted into their enemy's colour.
 
-The spawn platforms are **terracotta**, not concrete, because the pickaxe's
-`can_break` list is wool plus the two concretes and nobody should be able to
-mine their own floor out from under themselves.
+The spawn platforms are wool too, for the same reason the point floors are: the
+only thing anybody can break is concrete, so nobody can take their own spawn
+out from under themselves.
 
 The concrete both teams bridge with is left standing at the end of the match,
 the same way Walls leaves what its teams built. `tgttos:map/setup` rebuilds
@@ -93,9 +102,11 @@ do anything at all.
 - **Concrete** carries `minecraft:can_place_on={}`. An empty compound is a block
   predicate with no fields, and a block predicate with no fields matches every
   block — the current way of writing "place this on anything".
-- **The pickaxe** carries `can_break` for `#minecraft:wool` and both teams'
-  concrete, and nothing else. That one list is what keeps the beacons, the
-  glass, the iron and the platforms standing without a single protection check.
+- **The pickaxe** (efficiency 4, sharpness 5, unbreakable) carries `can_break`
+  for `#tgttos:concrete` and nothing else — the same block tag the arrows work
+  off, so there is one definition of "destructible" in the pack. That one list
+  is what keeps the beacons, the glass, the iron, the point floors and the
+  platforms standing without a single protection check.
 - The concrete stack in either hand is put back to 64 every tick by
   `tgttos:player/tick` through the `tgttos:refill_concrete` item modifier.
 
@@ -143,7 +154,7 @@ numbers here worth arguing about.
 
 ## Outro leaderboard
 
-Kills, points captured, and blocks of floor shot out.
+Kills, points captured, and blocks of concrete destroyed.
 
 ## Debug
 

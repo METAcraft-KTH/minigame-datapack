@@ -20,7 +20,7 @@ function tgttos:player/set_spawnpoints
 function tgttos:player/setup
 scoreboard players set @s tgttos.st.kills 0
 scoreboard players set @s tgttos.st.caps 0
-scoreboard players set @s tgttos.st.wool 0
+scoreboard players set @s tgttos.st.blocks 0
 bossbar set tgttos:data players @a
 bossbar set tgttos:it players @a
 tellraw @s {text:"You joined mid-game. Here is a kit — get out there and bridge.",color:"yellow"}

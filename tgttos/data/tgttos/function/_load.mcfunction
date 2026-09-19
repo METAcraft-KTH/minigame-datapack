@@ -48,12 +48,12 @@ data modify storage main:intro tgttos.howtoplay append value \
         "We'll cross that bridge when we get there. Build it yourself.",\
         "",\
         "You get infinite team-coloured concrete that places on anything,",\
-        "a pickaxe that breaks wool and concrete, a bow, and 3 arrows.",\
+        "an efficiency 4 pickaxe that breaks it, a bow, and 3 arrows.",\
     ]
 data modify storage main:intro tgttos.howtoplay append value \
     [\
-        ["",{text:"Arrows destroy wool.",color:"yellow",bold:true}],\
-        "The floor of every control point is wool. So is the way home.",\
+        ["",{text:"Arrows destroy concrete.",color:"yellow",bold:true}],\
+        "Every bridge is concrete, including the one under your feet.",\
         "You get one more arrow every 5 seconds — spend them well.",\
         "",\
         "Stand within 5 blocks of the beacon for 10 seconds to capture it.",\
@@ -74,7 +74,7 @@ data modify storage main:intro tgttos.howtoplay append value \
 #   assigned-once per-player values used for the outro leaderboard
 scoreboard objectives add tgttos.st.kills dummy
 scoreboard objectives add tgttos.st.caps dummy
-scoreboard objectives add tgttos.st.wool dummy
+scoreboard objectives add tgttos.st.blocks dummy
 
 
 # --- OUTRO LEADERBOARD SLIDES ---
@@ -96,8 +96,8 @@ data modify storage main:outro tgttos.stats append value { \
     numberformat: 0,\
 }
 data modify storage main:outro tgttos.stats append value { \
-    objective: "tgttos.st.wool",\
-    name: "Most floor shot out:",\
+    objective: "tgttos.st.blocks",\
+    name: "Most bridge destroyed:",\
     sortby: ">",\
     prefix: "",\
     suffix: " blocks",\

@@ -7,16 +7,19 @@
 # corners of a 0.6 cube around the arrow's own position, which
 # is the block it stuck into plus any block it is touching the
 # face of. Corners that land in the same block are free: the
-# first one clears it and the rest fail the wool check.
+# first one clears it and the rest fail the concrete check.
+#
+# The arrow is killed at the end regardless of whether it broke
+# anything — no falling leftovers, and nothing to pick back up.
 # ============================================================
 
-tag @s add tgttos.spent
+execute positioned ~-0.3 ~-0.3 ~-0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~-0.3 ~-0.3 ~0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~-0.3 ~0.3 ~-0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~-0.3 ~0.3 ~0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~0.3 ~-0.3 ~-0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~0.3 ~-0.3 ~0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~0.3 ~0.3 ~-0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
+execute positioned ~0.3 ~0.3 ~0.3 if block ~ ~ ~ #tgttos:concrete run function tgttos:arrow/pop
 
-execute positioned ~-0.3 ~-0.3 ~-0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~-0.3 ~-0.3 ~0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~-0.3 ~0.3 ~-0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~-0.3 ~0.3 ~0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~0.3 ~-0.3 ~-0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~0.3 ~-0.3 ~0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~0.3 ~0.3 ~-0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
-execute positioned ~0.3 ~0.3 ~0.3 if block ~ ~ ~ #minecraft:wool run function tgttos:arrow/pop
+kill @s

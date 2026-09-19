@@ -46,7 +46,7 @@ data merge storage main:game {display:[{}, \
     {id:2,namespace:"walls",gamename:"Mini Mega Walls"}, \
     {id:3,namespace:"exact",gamename:"Do or Die"}, \
     {id:4,namespace:"tgttos",gamename:"WCTBWWGT"}, \
-    {id:5,namespace:"rl",gamename:"Not Rocket League"}, \
+    {id:5,namespace:"fireball",gamename:"Not Rocket League"}, \
 ]}
 
 

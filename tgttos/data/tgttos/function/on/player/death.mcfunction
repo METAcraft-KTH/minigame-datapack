@@ -9,7 +9,7 @@
 #
 # Most deaths here are falls, not hits — but the attacker MAIN
 # hands us is whoever damaged the victim in the last 5 seconds,
-# so shooting the floor out from under somebody still counts as
+# so cutting the bridge out from under somebody still counts as
 # a kill, which is exactly what it should count as.
 # ============================================================
 
