@@ -37,12 +37,12 @@ data modify storage main:intro exact.howtoplay append value \
     ]
 data modify storage main:intro exact.howtoplay append value \
     [\
-        ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
+        ["",{text:"Last team standing wins.",color:"yellow",bold:true}],\
         "",\
-        "When you finish a task, +2💎 for each person",\
-        "who still hasn't finished",\
+        "It's the whole team that has to go, not just you —",\
+        "so keep the people next to you alive.",\
         "",\
-        "Extra +150~10💎 for the fastest 20 players",\
+        "The winning team takes 1 point in the best-of-5.",\
     ]
 
 # --- STATS VARIABLES ---

@@ -64,8 +64,13 @@ The check runs in `exact:state/ingame_task/check_cutoff`, called from `win.mcfun
 
 ## Scoring
 
-- Players earn 1 point for each round they complete successfully
-- Final stats displayed in the outro leaderboard as "Rounds Completed"
+There is no per-player scoring. The only thing this game hands out is the
+best-of-5 series point: `exact:state/end/check` decides `#winner exact.state`,
+and `exact:state/end/finish` calls `main:api/end_game_data`,
+`main:api/end_game_it` or plain `main:api/end_game` (nobody) accordingly.
+
+`exact.stats.wins` still counts rounds completed per player, but only as outro
+leaderboard flavour ("Rounds Completed").
 
 ## State
 

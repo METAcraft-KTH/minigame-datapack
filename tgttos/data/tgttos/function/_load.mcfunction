@@ -64,9 +64,9 @@ data modify storage main:intro tgttos.howtoplay append value \
         "Taking a point off someone means rewinding their progress first,",\
         "and a point never goes back to neutral once somebody owns it.",\
         ["",{text:"Hold BOTH points",color:"yellow",bold:true}," to run your 3:00 timer down to zero."],\
-        ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
-        "+5💎 per kill, +20💎 for each point you help capture",\
-        "+150💎 for everyone on the winning team",\
+        "",\
+        "The winning team takes 1 point in the best-of-5.",\
+        "The intro ends after this slide fades out!",\
     ]
 
 

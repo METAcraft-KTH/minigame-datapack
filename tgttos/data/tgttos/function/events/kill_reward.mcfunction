@@ -5,4 +5,3 @@
 # ============================================================
 
 scoreboard players add @s tgttos.st.kills 1
-function main:api/give_points {points:5,reason:"Kill"}

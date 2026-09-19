@@ -76,12 +76,12 @@ data modify storage main:intro walls.howtoplay append value \
     ]
 data modify storage main:intro walls.howtoplay append value \
     [\
-        ["",{text:"How to earn ",color:"yellow",bold:true},"💎",{text:" in this game:",color:"yellow",bold:true}],\
+        ["",{text:"Kill both enemy ravagers to win.",color:"yellow",bold:true}],\
+        "If neither team manages it inside 30 minutes, the win",\
+        "goes to whoever's ravagers have the most health left.",\
         "",\
-        "+5💎 for every enemy you kill",\
-        "+25💎 for landing the final hit on the evoker",\
-        "+150💎 for everyone on the winning team",\
-        "Kill both enemy ravagers to win!",\
+        "The winning team takes 1 point in the best-of-5.",\
+        "The intro ends after this slide fades out!",\
     ]
 
 

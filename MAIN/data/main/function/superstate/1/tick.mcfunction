@@ -29,6 +29,9 @@ execute if score ?minigame_id main.state matches 1 run bossbar set main:timer na
 # --- TEAM SELECTION ---
 function main:team/tick
 
+# --- SERIES SCORE ---
+function main:util/lobby_actionbar
+
 # --- DONT LET PLAYERS DIE ---
 #   tp players who fell off
 execute as @a[tag=!admin] if predicate {type:"entity_properties",entity:"this",predicate:{"minecraft:location":{position:{y:{max:0}}}}} run tp @s 0 64 50000

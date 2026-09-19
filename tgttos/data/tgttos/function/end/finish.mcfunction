@@ -32,4 +32,8 @@ forceload remove 19940 59960 20060 60140
 # start of the next run, which is everything the game reads.
 
 # --- SUPERSTATE 3 -> 4 ---
+#   #winner tgttos.state is set by win_data / win_it / draw.
+#   1 = Data, 2 = IT, 0 = draw (nobody takes the series point).
+execute if score #winner tgttos.state matches 1 run return run function main:api/end_game_data
+execute if score #winner tgttos.state matches 2 run return run function main:api/end_game_it
 function main:api/end_game

@@ -8,4 +8,3 @@
 # ============================================================
 
 scoreboard players add @s tgttos.st.caps 1
-function main:api/give_points {points:20,reason:"Captured a point"}

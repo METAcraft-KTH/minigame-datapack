@@ -29,8 +29,19 @@ outro to show the top 5 players:
 - `splat.stats.blocks` — blocks painted, shown as "Most blocks painted:"
 - `splat.stats.kills` — kills, shown as "Most enemies splatted:"
 
-**Ending the game** — the mod calls `main:api/end_game` itself when the game is
+**Ending the game** — the mod calls `splat:api/end_game` itself when the game is
 over. This datapack never ends the game on its own.
+
+Before calling it, the mod sets the winner in `?winner splat.state`:
+
+- `0` — draw / nobody won (this is what `on/introstart` resets it to)
+- `1` — Data won
+- `2` — IT won
+
+`splat:api/end_game` announces the result, hands the winning team their point in
+the best-of-5, and then hands superstate 3 -> 4 back to MAIN. Calling
+`main:api/end_game` directly still works, but it always counts as a draw and
+skips the announcement.
 
 ## Map config
 
@@ -48,5 +59,5 @@ and moves the IT players on to their own spawn, so nobody sees the difference.
 
 ## TODO
 
-- Intro slides in `_load` are placeholders. The scoring slide says
-  "+1💎 for each block you paint" and does not mention kills yet.
+- Intro slides 1 and 2 in `_load` are placeholders, pending the mod's final
+  rules. Slide 3 (win condition + series point) is done.

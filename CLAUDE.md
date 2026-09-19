@@ -163,11 +163,11 @@ data modify storage main:intro gamename.howtoplay append value \
     ]
 data modify storage main:intro gamename.howtoplay append value \
     [\
-        ["",{text:"How to earn ",color:"yellow",bold:1b},"💎"],\
-        "+4💎 for each death while you're alive",\
-        "+25💎 for each kill caused by you",\
+        ["",{text:"Last team standing wins.",color:"yellow",bold:1b}],\
         "",\
-        "It's courtesy to have the last slide explain scoring.",\
+        "The winning team takes 1 point in the best-of-5.",\
+        "",\
+        "It's courtesy to have the last slide explain the win condition.",\
         "The intro ends after the last slide fades out!",\
     ]
 
@@ -375,14 +375,39 @@ execute if score @s gamename.alive matches 0 run gamemode spectator @s
 
 ## Ending the Game
 
-When your game logic determines that the game is over, call MAIN's end_game API:
+This event is a **best-of-5 between two teams**, `main.data` and `main.it`. The
+only thing a minigame scores is which team won it. There are three end_game
+APIs, one per outcome:
+
+| Function | Outcome |
+|---|---|
+| `main:api/end_game_data` | Data won — `?wins_data main.state` goes up by 1 |
+| `main:api/end_game_it` | IT won — `?wins_it main.state` goes up by 1 |
+| `main:api/end_game` | draw / nobody won — neither counter moves |
+
+All three do the same superstate 3 → 4 handoff; the two team variants just add
+the series point and print the standings first.
 
 ```mcfunction
 # Transition from superstate 3 → 4 (outro sequence)
 # This sets everyone to spectator and starts the postgame stats display.
-# Do NOT call this from outside superstate 3 — it is guarded.
+# Do NOT call these from outside superstate 3 — they are guarded.
+function main:api/end_game_data
+```
+
+The established pattern is a single cleanup function that dispatches on a
+`#winner` score your win/draw functions set (`1` = Data, `2` = IT, `0` = draw),
+so cleanup lives in exactly one place:
+
+```mcfunction
+# In gamename:end/finish, after all the cleanup
+execute if score #winner gamename.state matches 1 run return run function main:api/end_game_data
+execute if score #winner gamename.state matches 2 run return run function main:api/end_game_it
 function main:api/end_game
 ```
+
+Do **not** hand out per-player point rewards. `main:api/give_points` still
+exists for older packs, but nothing in the current five-game lineup calls it.
 
 After calling `end_game`, your `on/gametick` will no longer be called (superstate is now 4). MAIN handles the outro from there, reading your `main:outro gamename.stats` config to display leaderboard slides.
 
@@ -407,6 +432,17 @@ MAIN manages several scoreboard objectives that you may **read** but should not 
 | `main.team` | Each player's event team: `1` = Data (team `main.data`), `2` = IT (team `main.it`). Locked in once a player is online when superstate 2 starts |
 | `main.team_pick` | Trigger used by the lobby team selection dialog (managed internally by MAIN) |
 | `main.used_cos` | Carrot on a stick right-clicks, reset every tick (managed internally by MAIN) |
+
+The best-of-5 series score lives in `main.state` as two fake players:
+
+| Fake player | Purpose |
+|---|---|
+| `?wins_data main.state` | Games won by team Data |
+| `?wins_it main.state` | Games won by team IT |
+
+Both are **read-only** to minigames — the only things that write to them are
+`main:api/end_game_data` and `main:api/end_game_it`. MAIN keeps the running
+score on the lobby actionbar and prints it after every outro.
 
 ### Fake player naming conventions
 
@@ -452,6 +488,12 @@ These functions are in `main:util/` and are available for any pack to call.
 ### `main:util/reset_gamerules`
 
 Resets all gamerules to their default values. Call in `on/gamestart` if your game modifies gamerules, or ensure you reset them manually in your end-game logic.
+
+### `main:util/show_standings`
+
+Prints the current best-of-5 series score to chat. MAIN already calls this from
+`end_game_data` / `end_game_it` and at the end of every outro, so a minigame
+normally has no reason to.
 
 ---
 

@@ -49,7 +49,12 @@ it only has to be done once per world.
 - `fireball.st.alive` — ticks survived, shown as `mm:ss.dd`
 - `fireball.st.hits` — successful bat hits
 
-No 💎 are awarded by this game.
+## Ending the game
+
+`gameplay/victory_data`, `gameplay/victory_it` and `gameplay/game_over` set
+`#winner fireball` to 1, 2 and 0. `gameplay/finish` reads it and hands off to
+`main:api/end_game_data`, `main:api/end_game_it` or plain `main:api/end_game`,
+which is what awards the best-of-5 series point.
 
 ## Public API
 

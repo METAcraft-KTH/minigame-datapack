@@ -1,6 +1,6 @@
 # ============================================================
 # walls:end/finish
-# Called by: walls:end/win_it, walls:end/win_data
+# Called by: walls:end/win_it, walls:end/win_data, walls:end/draw
 # Executor:  Server
 #
 # Tidy up everything this pack put into the world, then hand
@@ -48,4 +48,8 @@ forceload remove 30000 59872 30127 59999
 forceload remove 30000 60000 30127 60127
 
 # --- SUPERSTATE 3 -> 4 ---
+#   #winner walls.state is set by win_data / win_it / draw.
+#   1 = Data, 2 = IT, 0 = draw (nobody takes the series point).
+execute if score #winner walls.state matches 1 run return run function main:api/end_game_data
+execute if score #winner walls.state matches 2 run return run function main:api/end_game_it
 function main:api/end_game

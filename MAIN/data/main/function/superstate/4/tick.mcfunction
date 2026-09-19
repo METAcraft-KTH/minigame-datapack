@@ -30,6 +30,7 @@ execute if score ?supertimer main.time matches 401 run function main:superstate/
 # if there are slides to show, the timer will be dialed back to 201.
 # if there are no more slides, the timer will continue ticking.
 execute if score ?supertimer main.time matches 402 run tellraw @a ["",{text:"\nWell played!",color:"#E83D84",bold:true},{text:"\nReturning to lobby in 10 seconds...\n",color:"gray",italic:true}]
+execute if score ?supertimer main.time matches 402 run function main:util/show_standings
 
 # --- DISPLAY SCREEN TRANSITION TITLE ---
 # these values are just temporary until i figure out postgame stats

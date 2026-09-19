@@ -14,7 +14,6 @@ scoreboard players set ?evoker_claimed walls.state 1
 
 give @s prismarine_crystals 15
 scoreboard players add @s walls.st.cryst 15
-function main:api/give_points {points:25,reason:"Evoker"}
 
 # 2 crystals for the rest of the killer's team
 tag @s add walls.tmp_killer

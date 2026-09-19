@@ -35,6 +35,13 @@ execute unless score ?minigame_id main.state matches -2147483648..2147483647 run
 # if this is the first time the datapack is run, set the first ID to 1 and increment it per player
 execute unless score ! main.id matches -2147483648..2147483647 run scoreboard players set ! main.id 1
 
+# ?wins_data / ?wins_it main.state --- the best-of-5 series score.
+#   Incremented by main:api/end_game_data and main:api/end_game_it, which the
+#   minigames call instead of main:api/end_game when a team takes the game.
+#   main:api/end_game on its own is the draw / nobody-won case.
+execute unless score ?wins_data main.state matches -2147483648..2147483647 run scoreboard players set ?wins_data main.state 0
+execute unless score ?wins_it main.state matches -2147483648..2147483647 run scoreboard players set ?wins_it main.state 0
+
 
 # --- GAME NAMES ---
 #   used to call each game's api functions, and to generate the title.

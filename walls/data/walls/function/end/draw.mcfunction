@@ -8,6 +8,9 @@
 
 title @a times 5 70 20
 title @a title {text:"DRAW",color:"gray",bold:true}
-tellraw @a {text:"Dead even. Nobody takes the win bonus.",color:"gray"}
+tellraw @a {text:"Dead even. Neither team takes the series point.",color:"gray"}
+
+# nobody takes the series point
+scoreboard players set #winner walls.state 0
 
 function walls:end/finish

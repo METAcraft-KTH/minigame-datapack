@@ -145,10 +145,21 @@ ravager off an item, which is why they hold the job now.
   pure "last towers standing" game. (Ravagers are not undead, so poison does
   tick them down.)
 
+## Scoring
+
+There is no per-player scoring. The only thing this game hands out is the
+best-of-5 series point, which goes to the winning team: `walls:end/win_data`
+and `walls:end/win_it` set `#winner walls.state`, and `walls:end/finish` calls
+`main:api/end_game_data` / `main:api/end_game_it` accordingly. `walls:end/draw`
+sets it to 0, so plain `main:api/end_game` runs and nobody gets the point.
+
+Prismarine crystals are the in-game shop currency only, and kills/crystals are
+tracked purely as outro leaderboard flavour.
+
 ## The mid evoker
 
 Every 3 minutes from the moment the wall drops, one evoker spawns at
-30000 64 60000 — 100 HP, also scaled to 2.0, glowing, worth 15 💠 and 25 💎 to
+30000 64 60000 — 100 HP, also scaled to 2.0, glowing, worth 15 💠 to
 whoever lands the kill. One at a time: if the last one is still alive, the slot
 is skipped.
 

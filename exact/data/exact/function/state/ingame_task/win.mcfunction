@@ -64,30 +64,3 @@ scoreboard players add @s exact.stats.wins 1
 
 # Cut the round short once enough players have finished
 function exact:state/ingame_task/check_cutoff
-
-# check how many players are still in it and have not finished yet,
-# and give points based on that
-execute store result storage exact.temp points int 2 if entity @a[tag=!admin,tag=!exact.dead,tag=!exact.win]
-function score:add_points with storage exact.temp
-
-# check top 20 spots
-execute if score #playersdone exact.state matches 1 run function score:add_points {points:100}
-execute if score #playersdone exact.state matches 2 run function score:add_points {points:85}
-execute if score #playersdone exact.state matches 3 run function score:add_points {points:70}
-execute if score #playersdone exact.state matches 4 run function score:add_points {points:60}
-execute if score #playersdone exact.state matches 5 run function score:add_points {points:50}
-execute if score #playersdone exact.state matches 6 run function score:add_points {points:40}
-execute if score #playersdone exact.state matches 7 run function score:add_points {points:30}
-execute if score #playersdone exact.state matches 8 run function score:add_points {points:25}
-execute if score #playersdone exact.state matches 9 run function score:add_points {points:20}
-execute if score #playersdone exact.state matches 10 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 11 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 12 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 13 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 14 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 15 run function score:add_points {points:15}
-execute if score #playersdone exact.state matches 16 run function score:add_points {points:10}
-execute if score #playersdone exact.state matches 17 run function score:add_points {points:10}
-execute if score #playersdone exact.state matches 18 run function score:add_points {points:10}
-execute if score #playersdone exact.state matches 19 run function score:add_points {points:10}
-execute if score #playersdone exact.state matches 20 run function score:add_points {points:10}

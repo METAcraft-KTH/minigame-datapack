@@ -32,4 +32,8 @@ tag @a remove exact.dead
 tag @a remove exact.win
 
 # --- SUPERSTATE 3 -> 4 ---
+#   #winner exact.state was decided by exact:state/end/check.
+#   1 = Data, 2 = IT, 0 = nobody (neither team takes the series point).
+execute if score #winner exact.state matches 1 run return run function main:api/end_game_data
+execute if score #winner exact.state matches 2 run return run function main:api/end_game_it
 function main:api/end_game

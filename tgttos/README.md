@@ -141,16 +141,16 @@ adventure mode still lets people throw a pickaxe off the edge.
 The backstop exists because a match where neither side ever holds both points at
 once has no natural end. It should never be reached.
 
-## 💎 scoring
+## Scoring
 
-The spec did not set these; they are tuned against Walls and are the one set of
-numbers here worth arguing about.
+There is no per-player scoring. The only thing this game hands out is the
+best-of-5 series point, which goes to the winning team: `tgttos:end/win_data`
+and `tgttos:end/win_it` set `#winner tgttos.state`, and `tgttos:end/finish`
+calls `main:api/end_game_data` / `main:api/end_game_it` accordingly. A draw
+calls plain `main:api/end_game` and nobody gets the point.
 
-| Award | Where |
-|---|---|
-| +5 per kill | `tgttos:events/kill_reward` |
-| +20 per point captured, to everyone standing on it | `tgttos:cap/reward` |
-| +150 to the winning team | `tgttos:end/win_data`, `tgttos:end/win_it` |
+Kills, captures and blocks destroyed are still tracked, but only as outro
+leaderboard flavour.
 
 ## Outro leaderboard
 

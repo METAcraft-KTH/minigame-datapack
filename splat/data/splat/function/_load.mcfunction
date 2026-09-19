@@ -6,14 +6,18 @@
 # This datapack only exists to:
 #   1. expose a running flag the mod can poll
 #   2. supply the intro slides and outro leaderboard to MAIN
-# The mod calls main:api/end_game itself when the game is over.
+# The mod calls splat:api/end_game itself when the game is over.
 # ============================================================
 
 # --- DECLARE GAME VARIABLES ---
 #   ?running splat.state
 #       0 = the minigame is NOT active
 #       1 = the minigame IS active (superstate 3, mod has control)
-#   The mod reads this to know when to run its own game logic.
+#   ?winner splat.state
+#       0 = draw / nobody won (the default)
+#       1 = Data won
+#       2 = IT won
+#   The mod sets ?winner, then calls splat:api/end_game.
 scoreboard objectives add splat.state dummy "game internal state"
 
 #   make sure the flag exists (and is off) after a fresh /reload
@@ -57,9 +61,9 @@ data modify storage main:intro splat.howtoplay append value \
     ]
 data modify storage main:intro splat.howtoplay append value \
     [\
-        ["",{text:"How to earn ",color:"yellow",bold:1b},"💎"],\
+        ["",{text:"Most of the campus painted wins.",color:"yellow",bold:1b}],\
         "",\
-        "+1💎 for each block you paint",\
+        "The winning team takes 1 point in the best-of-5.",\
         "",\
         "The intro ends after this slide fades out!",\
         "",\

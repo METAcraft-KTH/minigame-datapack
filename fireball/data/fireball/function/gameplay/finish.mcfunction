@@ -33,4 +33,8 @@ forceload remove 49950 59940 50050 60060
 # has to be run once by hand.
 
 # --- SUPERSTATE 3 -> 4 ---
+#   #winner fireball is set by victory_data / victory_it / game_over.
+#   1 = Data, 2 = IT, 0 = draw (nobody takes the series point).
+execute if score #winner fireball matches 1 run return run function main:api/end_game_data
+execute if score #winner fireball matches 2 run return run function main:api/end_game_it
 function main:api/end_game

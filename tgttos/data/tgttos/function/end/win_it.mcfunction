@@ -11,6 +11,7 @@ title @a title [{text:"IT",color:"#cc99ff",bold:true},{text:" WINS",color:"white
 title @a subtitle {text:"They crossed that bridge",color:"gray"}
 tellraw @a [{text:"IT",color:"#cc99ff",bold:true},{text:" ran the clock out holding both points!",color:"white"}]
 
-execute as @a[team=main.it,tag=!admin] run function main:api/give_points {points:150,reason:"Your team won"}
+# tells tgttos:end/finish which main:api/end_game_* to hand off to
+scoreboard players set #winner tgttos.state 2
 
 function tgttos:end/finish

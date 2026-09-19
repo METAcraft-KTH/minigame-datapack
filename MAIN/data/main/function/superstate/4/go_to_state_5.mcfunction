@@ -12,5 +12,9 @@ title @a title {"text":"ABA","font":"hexathlon:font","shadow_color":0}
 
 setworldspawn 0 64 50000
 
+# --- DECLARE THE SERIES WINNER ---
+#   after the screen wipe above has cleared, so it doesn't get overwritten
+schedule function main:superstate/5/announce_winner 40t replace
+
 # --- BEGIN SUPERSTATE 5 ---
 scoreboard players set ?superstate main.state 5

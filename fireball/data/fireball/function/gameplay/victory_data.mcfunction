@@ -11,4 +11,7 @@ title @a title [{text:"Data",color:"#e83d84",bold:true},{text:" WINS",color:"whi
 tellraw @a [{text:"Data",color:"#e83d84",bold:true},{text:" is the last team standing!",color:"white"}]
 execute as @a at @s run playsound minecraft:entity.blaze.death voice @s ~ ~ ~ 1 0.7
 
+# tell fireball:gameplay/finish which main:api/end_game_* to hand off to
+scoreboard players set #winner fireball 1
+
 function fireball:api/game_ended

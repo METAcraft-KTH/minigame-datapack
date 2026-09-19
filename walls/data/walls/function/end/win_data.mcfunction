@@ -11,6 +11,7 @@ title @a title [{text:"Data",color:"#e83d84",bold:true},{text:" WINS",color:"whi
 title @a subtitle {text:"Both IT ravagers are down",color:"gray"}
 tellraw @a [{text:"Data",color:"#e83d84",bold:true},{text:" wins — both IT ravagers are down!",color:"white"}]
 
-execute as @a[team=main.data,tag=!admin] run function main:api/give_points {points:150,reason:"Your team won"}
+# tells walls:end/finish which main:api/end_game_* to hand off to
+scoreboard players set #winner walls.state 1
 
 function walls:end/finish
