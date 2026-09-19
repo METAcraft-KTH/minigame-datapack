@@ -2,6 +2,8 @@ function fireball:api/end_game_early
 #function fireball:ball/kill_all
 function fireball:api/game_ended
 
+scoreboard players add #score_data fireball 1
+
 # 1. Clear previous titles and configure timings (0.5s fade-in, 4s stay, 1s fade-out)
 title @a clear
 title @a times 10 80 20
@@ -14,5 +16,3 @@ title @a title {"text":"TEAM DATA WINS","color":"yellow","bold":true}
 
 # 4. Victory fanfare
 playsound minecraft:ui.toast.challenge_complete master @a ~ ~ ~ 1 1.2
-
-scoreboard players add #score_data fireball 1
