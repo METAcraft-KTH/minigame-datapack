@@ -29,11 +29,32 @@ team modify main.it collisionRule pushOtherTeams
 scoreboard players set @a[tag=!admin] fireball.st.alive 0
 scoreboard players set @a[tag=!admin] fireball.st.hits 0
 
+# --- DIMENSION ---
+#   main:superstate/2/go_to_state_3 ran "tp @a" and "spawnpoint @a"
+#   in the overworld a few commands ago, so right now everybody is
+#   standing at the overworld copy of player_starting_coords with an
+#   overworld respawn point. fireball:api/start pulls them into the
+#   nether below. Move the respawn point too, or every elimination
+#   bounces the victim through an overworld loading screen and back
+#   before fireball:on/player/death can put them in spectator.
+#
+#   Data's platform, because it is solid ground — the arena centre
+#   they end up spectating from is lava.
+execute in minecraft:the_nether run spawnpoint @a[tag=!admin] 0 129 30 180
+
+#   go_to_state_3 tried to clean up the cutscene camera with an
+#   overworld-scoped "kill @e[type=block_display,tag=main.camera]",
+#   which missed the one fireball:on/introstart moved to the nether.
+execute in minecraft:the_nether run kill @e[type=block_display,tag=main.camera]
+
 # --- START ---
-function fireball:api/start
+#   everything below fireball:tick selects the ball with @e / @n and
+#   those are scoped to the execution dimension, so the nether has to
+#   be entered here rather than sprinkled through ball/.
+execute in minecraft:the_nether run function fireball:api/start
 
 # --- SANITY CHECK ---
 #   no centre marker means no ball spawns and no way to win, so say
 #   so loudly rather than running a silent stalemate
-execute store result score #n temp if entity @e[type=marker,tag=fireball.arena_center]
+execute in minecraft:the_nether store result score #n temp if entity @e[type=marker,tag=fireball.arena_center]
 execute unless score #n temp matches 1.. run tellraw @a[tag=admin] {text:"[fireball] no fireball.arena_center marker found — run /function fireball:setup/create_arena.",color:"red"}

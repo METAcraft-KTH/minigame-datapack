@@ -30,12 +30,21 @@ function fireball:uuid/load
 # cutscene, so it starts north of the blackstone platform on the
 # arena's centre line and flies the length of the lava field:
 # IT's platform first, then the middle, then Data's.
-data modify storage main:intro fireball.camera_starting_coords set value "50000 85 59950 0 25"
+#
+# 21 blocks above the floor at a 25 degree pitch puts the horizon
+# line 45 blocks ahead, which is also roughly how far the camera
+# drifts before the last slide fades out.
+#
+# These are NETHER coordinates, but MAIN summons its camera with a
+# bare "tp @a", so the cutscene starts at the overworld copy of them
+# and fireball:on/introstart carries it across five ticks later. Keep
+# the two identical so the framing survives the move.
+data modify storage main:intro fireball.camera_starting_coords set value "0 149 -50 0 25"
 
-# MAIN drops everyone on one coordinate, so they all land on Data's
-# platform for a single tick and fireball:gameplay/tp_to_arena
-# immediately spreads IT back onto the blackstone one.
-data modify storage main:intro fireball.player_starting_coords set value "50000 65 60030 180 0"
+# MAIN drops everyone on one coordinate, in the overworld, for the
+# single tick before fireball:on/gamestart pulls them into the nether
+# and fireball:gameplay/tp_to_arena spreads them onto their platforms.
+data modify storage main:intro fireball.player_starting_coords set value "0 129 30 180 0"
 
 data modify storage main:intro fireball.howtoplay set value []
 data modify storage main:intro fireball.howtoplay append value \
@@ -109,3 +118,13 @@ execute \
 execute \
     unless data storage fireball:config arena_dimension \
         run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: Arena Dimension not set",bold:true,color:red}]
+
+#   the on/ callbacks hardcode "execute in minecraft:the_nether" —
+#   they have to, because MAIN calls them from the overworld and a
+#   macro cannot reach into every selector underneath. If the config
+#   says the arena lives anywhere else, the two disagree and the game
+#   will run with an empty arena rather than fail outright.
+execute \
+    if data storage fireball:config arena_dimension \
+    unless data storage fireball:config {arena_dimension:"minecraft:the_nether"} \
+        run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: arena_dimension is not minecraft:the_nether — the on/ callbacks are hardcoded to the nether roof",bold:true,color:red}]
