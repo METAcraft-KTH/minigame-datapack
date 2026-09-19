@@ -7,6 +7,11 @@
 # Loads the arena while everybody is watching the cutscene.
 # ============================================================
 
+# No result yet. fireball:gameplay/victory_data / victory_it / game_over
+# overwrite this, and fireball:gameplay/finish reads it to pick which
+# main:api/end_game_* to hand off to. 0 = nobody won.
+scoreboard players set #winner fireball 0
+
 # The whole playfield has to stay loaded for the whole game. The
 # fireball is an item_display walking itself forward one step at a
 # time, and a ball that drifts into an unloaded chunk stops ticking

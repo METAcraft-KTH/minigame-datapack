@@ -1,4 +1,4 @@
-# ============================================================
+# ====walls:place_spawner_skeleton========================================================
 # walls:events/on_place_spawner_skeleton
 # Called by: advancement walls:place_spawner_skeleton
 # Executor:  The player who placed the spawner

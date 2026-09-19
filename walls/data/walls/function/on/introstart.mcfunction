@@ -8,6 +8,11 @@
 # is watching the intro cutscene.
 # ============================================================
 
+# No result yet. walls:end/win_data / win_it / draw
+# overwrite this, and walls:end/finish reads it to pick which
+# main:api/end_game_* to hand off to. 0 = nobody won.
+scoreboard players set #winner walls.state 0
+
 # The whole 256x256 arena stays loaded for the entire game. Without
 # this, the wall fill fails and every selector silently misses the
 # ravagers, villagers and mobs in whatever corner has nobody standing

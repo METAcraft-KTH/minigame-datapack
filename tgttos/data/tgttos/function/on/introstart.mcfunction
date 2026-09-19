@@ -8,6 +8,11 @@
 # watching the intro cutscene.
 # ============================================================
 
+# No result yet. tgttos:end/win_data / win_it / draw
+# overwrite this, and tgttos:end/finish reads it to pick which
+# main:api/end_game_* to hand off to. 0 = nobody won.
+scoreboard players set #winner tgttos.state 0
+
 # The arena has to stay loaded for the whole game: the two control
 # points are 50 blocks apart with nobody standing between them for
 # most of the match, and an unloaded marker means the capture tick
