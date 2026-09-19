@@ -25,8 +25,9 @@ execute store result score #playersdone exact.state if entity @a[tag=!admin,tag=
 # the 5-heart cap from exact:util/init_player. Finishing in the last 3
 # seconds of a round is the one case where ingame_wait/enter's effect clear
 # cuts the heal short -- the cutoff timer keeps that rare.
-execute if score #playersdone exact.state matches 1 run effect give @s minecraft:regeneration 3 1 true
-execute if score #playersdone exact.state matches 1 run title @s subtitle {"text":"First! +1 heart","color":"green"}
+# From round 21 onwards nobody gets healed any more.
+execute if score ?round exact.state matches ..20 if score #playersdone exact.state matches 1 run effect give @s minecraft:regeneration 3 1 true
+execute if score ?round exact.state matches ..20 if score #playersdone exact.state matches 1 run title @s subtitle {"text":"First! +1 heart","color":"green"}
 
 execute if score ?task exact.state matches 1 run function exact:state/ingame_task/win_tellraw {verb:"was good, son, maybe even the best!"}
 execute if score ?task exact.state matches 2 run function exact:state/ingame_task/win_tellraw {verb:"shovels well!"}

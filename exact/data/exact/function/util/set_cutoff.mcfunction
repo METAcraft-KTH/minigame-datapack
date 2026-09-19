@@ -5,7 +5,8 @@
 #
 # Sets ?cutoff exact.state: the percentage of players allowed to
 # finish the task before the round is cut short to 3 seconds
-# remaining (see exact:state/ingame_task/check_cutoff).
+# remaining, or ended at once from round 21 (see
+# exact:state/ingame_task/check_cutoff).
 #
 # Lower = harsher, so the value ramps down as the game goes on.
 # Keyed on ?round (game progress), NOT ?task (which is shuffled).

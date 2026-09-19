@@ -1,6 +1,6 @@
 # ============================================================
 # exact:state/ingame_task/enter
-# Called once when entering the task phase (20 seconds = 400 ticks)
+# Called once when entering the task phase (40 seconds = 800 ticks)
 #
 # Draws the round's task, builds the arena for it and hands out
 # the items it needs. Everything here is keyed on ?task, NOT

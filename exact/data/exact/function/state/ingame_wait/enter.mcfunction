@@ -24,7 +24,10 @@ execute as @a[tag=!admin,tag=!exact.dead] run scoreboard players operation @s ex
 clear @a[tag=!admin]
 effect clear @a[tag=!admin]
 
-# Restore the platform and sweep away every mob the task spawned
+# Restore the platform and sweep away every mob the task spawned. Players get
+# dismounted first: teleporting a vehicle takes its passengers along, so anyone
+# riding a pig would be carried out of bounds with it.
+execute as @a run ride @s dismount
 fill 50007 99 50007 49993 99 49993 iron_block
 execute positioned 50000 100 50000 run tp @e[type=!player,distance=..100] 50000 -10 50050
 

@@ -1,6 +1,6 @@
 # ============================================================
 # exact:state/ingame_task/tick
-# Called every tick during the task phase (20 seconds = 400 ticks)
+# Called every tick during the task phase (40 seconds = 800 ticks)
 #
 # Holds the win checks for every task that has no vanilla
 # advancement trigger to hang off. Those tasks use an
@@ -56,7 +56,7 @@ execute if score ?task exact.state matches 23 as @a[tag=!exact.win,tag=!admin] a
 execute if score ?task exact.state matches 24 as @a[tag=!exact.win,tag=!admin] at @s if block ~ ~-1 ~ grass_block run advancement grant @s only exact:24
 
 # Task 25: jumping on farmland tramples it back to dirt, which would eat the
-# field over 20 seconds, so keep replacing it (the crop that was on top is
+# field over 40 seconds, so keep replacing it (the crop that was on top is
 # still lost -- players have to replant that tile)
 execute if score ?task exact.state matches 25 run fill 50007 99 50007 49993 99 49993 farmland[moisture=7] replace dirt
 
@@ -107,8 +107,8 @@ title @a[tag=exact.win] title {"text":"SUCCESS","color":"green","bold":true}
 bossbar set exact:timer players @a
 bossbar set exact:timer color blue
 bossbar set exact:timer name "Following instructions..."
-bossbar set exact:timer max 400
+bossbar set exact:timer max 800
 execute store result bossbar exact:timer value run scoreboard players get ?phase_timer exact.timer
 
-# Check if task duration (400 ticks) has passed
-execute if score ?phase_timer exact.timer matches 400.. run function exact:state/ingame_task/exit
+# Check if task duration (800 ticks) has passed
+execute if score ?phase_timer exact.timer matches 800.. run function exact:state/ingame_task/exit

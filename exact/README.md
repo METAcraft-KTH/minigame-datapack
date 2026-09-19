@@ -1,6 +1,6 @@
 # exact - Task Completion Elimination Minigame
 
-A minigame where players have 20 seconds to complete a task. There are 30 tasks and no fixed number of rounds: the game runs until only one team's players are left alive.
+A minigame where players have 40 seconds to complete a task. There are 30 tasks and no fixed number of rounds: the game runs until only one team's players are left alive.
 
 The task order is **shuffled every game**: `exact:on/gamestart` fills `storage exact:tasks pool` with `[1..30]`, and `exact:util/draw_task` pops one random entry out of it at the start of each round into `?task exact.state`. Because the entry is removed, no task repeats until all 30 have been played — at which point `exact:util/refill_pool` puts them all back, announces it in chat, and the shuffle starts over.
 
@@ -10,7 +10,7 @@ Health **is** the life counter.
 
 - `exact:util/init_player` sets `max_health` to `10` (5 hearts) and heals every player to full at game start.
 - Failing a task costs 1 heart: `exact:state/ingame_wait/enter` runs `damage @s 2 minecraft:out_of_world` on everyone still in the game without the `exact.win` tag.
-- The **first** player to finish a task gets `regeneration II` for 3 seconds in `exact:state/ingame_task/win`, which heals exactly 1 heart back and cannot overshoot the cap.
+- The **first** player to finish a task gets `regeneration II` for 3 seconds in `exact:state/ingame_task/win`, which heals exactly 1 heart back and cannot overshoot the cap. From round 21 onwards nobody is healed any more.
 - Running out of hearts kills the player. MAIN reports that to `exact:on/player/death`, which tags them `exact.dead` and puts them in spectator for the rest of the game.
 
 Nothing else is allowed to move a health bar:
@@ -33,7 +33,7 @@ Late joiners are enrolled at `exact.lastround` = 1, so they start on 5 hearts an
 ## Gameplay Flow
 
 1. **Pregame** (15 seconds) — Players prepare
-2. **Task Phase** (20 seconds per round) — Players must complete the task; successful completion shows "SUCCESS" title
+2. **Task Phase** (40 seconds per round) — Players must complete the task; successful completion shows "SUCCESS" title
 3. **Wait Phase** (6 seconds) — Players who failed see "FAILURE" and lose a heart; win counts are updated
 4. `exact:state/end/check` decides whether the game is over. If not, back to step 2 with the next task.
 5. **End Game** — one team (or one player) left standing, or everybody out on the same round
@@ -60,7 +60,7 @@ Edit advancement JSON files in `data/exact/advancement/` to use custom triggers 
 
 `?cutoff exact.state` is the percentage of players still alive who may finish a task before the round is cut short to 3 seconds remaining. It is set once per round by `exact:util/set_cutoff` and ramps down (90 → 50) as rounds go on, so later rounds punish slow players harder. Edit that one file to retune the ramp. This ramp is what keeps the elimination moving — without it two evenly matched players could trade tasks forever.
 
-The check runs in `exact:state/ingame_task/check_cutoff`, called from `win.mcfunction` each time somebody finishes. It only ever shortens a round — if fewer than 3 seconds are left already, the timer is untouched. Eliminated players are left out of the count, or the threshold would become unreachable.
+The check runs in `exact:state/ingame_task/check_cutoff`, called from `win.mcfunction` each time somebody finishes. It only ever shortens a round — if fewer than 3 seconds are left already, the timer is untouched. From round 21 onwards the round ends immediately when the threshold is hit instead of leaving 3 seconds. Eliminated players are left out of the count, or the threshold would become unreachable.
 
 ## Scoring
 
