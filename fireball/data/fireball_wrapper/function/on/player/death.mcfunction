@@ -16,4 +16,3 @@ execute unless score ?superstate main.state matches 3 run return 0
 execute if entity @s[tag=admin] run return 0
 
 tellraw @a [{selector:"@s"},{text:" is out!",color:"gray"}]
-execute in minecraft:the_nether run function fireball:gameplay/on_death

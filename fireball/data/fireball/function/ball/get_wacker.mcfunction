@@ -1,8 +1,5 @@
 # ran on the wacking player
 tag @s add this_wacker
-
-# outro leaderboard stat
-scoreboard players add @s fireball.st.hits 1
 #say wacked the fireball
 
 # change target

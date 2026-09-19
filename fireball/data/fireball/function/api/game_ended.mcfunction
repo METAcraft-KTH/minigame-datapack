@@ -1,3 +1,2 @@
-# Called when the game ends naturally. Cleans up, then hands
-# superstate 3 -> 4 back to MAIN.
-function fireball:gameplay/finish
+# Called when game ends naturally.
+function fireball_wrapper:game_end

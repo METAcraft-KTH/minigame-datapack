@@ -24,7 +24,7 @@ scoreboard players set #winner fireball 0
 # under forceload's 256 chunk per command cap. That covers both
 # platforms and everything between them; the lava sheet runs out to
 # 180 blocks but nothing ever goes that far.
-execute in minecraft:the_nether run forceload add -64 -80 64 80
+execute in minecraft:the_nether run forceload add 11 40 -4 -35
 
 # --- CARRY THE CUTSCENE INTO THE NETHER ---
 #   MAIN summoned its camera in the overworld and put everyone in
@@ -52,4 +52,4 @@ execute in minecraft:the_nether as @a[gamemode=spectator] run spectate @n[type=b
 
 #   MAIN's camera drift dies on exactly the same overworld-scoped @n,
 #   so take that over too. See fireball:intro/drift.
-function fireball:intro/drift
+function fireball_wrapper:intro/drift

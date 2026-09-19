@@ -10,4 +10,4 @@
 # @e / @n / @p lookup for the ball and its passengers, and those only
 # ever see the execution dimension, so the arena's dimension is
 # entered once at this door instead of on 15 separate lines in ball/.
-execute in minecraft:the_nether run function fireball:tick
+function fireball:api/tick

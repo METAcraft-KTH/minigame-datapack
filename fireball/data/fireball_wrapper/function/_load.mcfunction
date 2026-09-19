@@ -11,17 +11,7 @@
 # fireball:on/gamestart sets them up instead.
 # ============================================================
 
-# --- DECLARE GAME VARIABLES ---
-scoreboard objectives add fireball dummy
-scoreboard objectives add fireball.wack_age dummy
-scoreboard objectives add math dummy
-scoreboard objectives add temp dummy
-scoreboard objectives add fireball.spin_tick dummy
-scoreboard objectives add fireball.step_count dummy
-scoreboard objectives add fireball.bounce_count dummy
-scoreboard players set #1000 math 1000
 
-function fireball:uuid/load
 
 
 # --- INTRO ANIMATION AND TEXT ---
@@ -100,31 +90,3 @@ data modify storage main:outro fireball.stats append value { \
     suffix: " hits",\
     numberformat: 0,\
 }
-
-
-# --- CONFIG SANITY CHECKS ---
-execute \
-    unless data storage fireball:config start_speed \
-        run function fireball:config/set_start_speed {speed:0.4}
-
-execute \
-    unless data storage fireball:config red_spawn_x \
-        run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: Data (red) spawn not set",bold:true,color:red}]
-
-execute \
-    unless data storage fireball:config black_spawn_x \
-        run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: IT (black) spawn not set",bold:true,color:red}]
-
-execute \
-    unless data storage fireball:config arena_dimension \
-        run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: Arena Dimension not set",bold:true,color:red}]
-
-#   the on/ callbacks hardcode "execute in minecraft:the_nether" —
-#   they have to, because MAIN calls them from the overworld and a
-#   macro cannot reach into every selector underneath. If the config
-#   says the arena lives anywhere else, the two disagree and the game
-#   will run with an empty arena rather than fail outright.
-execute \
-    if data storage fireball:config arena_dimension \
-    unless data storage fireball:config {arena_dimension:"minecraft:the_nether"} \
-        run tellraw @a[tag=admin] ["",{text:"[Fireball] WARNING: arena_dimension is not minecraft:the_nether — the on/ callbacks are hardcoded to the nether roof",bold:true,color:red}]

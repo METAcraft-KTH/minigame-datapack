@@ -12,5 +12,5 @@ execute if entity @s[tag=admin] run return 0
 
 gamemode spectator @s
 # warn-off target-selector-no-dimension
-execute in minecraft:the_nether at @n[tag=fireball.arena_center,type=marker] run tp @s ~ ~ ~
+execute at @n[tag=fireball.arena_center,type=marker] run tp @s ~ ~ ~
 tellraw @s {text:"Not Rocket League is already in progress. You are now spectating.",color:"yellow"}
